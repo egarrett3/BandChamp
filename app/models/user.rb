@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
 
   def self.find_by_credentials(username, password)
-    if username.includes?('@')
+    if username.include?('@')
       user = User.find_by(email: username)
     else
       user = User.find_by(username: username)
