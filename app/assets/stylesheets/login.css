@@ -1,0 +1,18 @@
+.login-container {
+    height:50%;
+    width:70%;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    margin: 0 auto;
+    font-family: helvetica;
+}
+
+h3.login-header {
+    font-weight: 520;
+}
+
+.divider {
+    border-bottom: 1px dotted grey;
+    margin: 40px;
+}
