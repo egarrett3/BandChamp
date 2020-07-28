@@ -4,6 +4,7 @@ import * as APIutil from './util/session_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    console.log("hello world");
     window.login = APIutil.login;
     window.signup = APIutil.signup;
     window.logout = APIutil.logout;
