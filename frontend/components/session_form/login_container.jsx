@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 const mapStateToProps = (state) => {
     return {
         errors: state.errors.session,
-        formType: 'login',
         LinkTo: <Link to="/signup">fan</Link>,
     }
 };

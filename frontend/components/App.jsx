@@ -8,7 +8,7 @@ import SignupContainer from './session_form/signup_container'
 const App = () => (
     <div>
         <header>
-            <h1>BandChamp!!!!</h1>
+            <h1></h1>
             
         </header>
 

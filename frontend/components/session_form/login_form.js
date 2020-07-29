@@ -5,8 +5,8 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "--username--",
-            password: "--password--"
+            username: "",
+            password: ""
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -43,44 +43,47 @@ class LoginForm extends React.Component {
             <Redirect to='/' />
         }
         return (
-            <div class="login-container">
-              <h3 class="login-header">Log In</h3>
-                <div class="divider"></div>
-                
-                <article class='login-form-container'>
-                    <form onSubmit={this.handleSubmit}>
-                        
-                        {this.showErrors()} 
-                        <div class='login-username'>
-                            <label>Username:
-                                    <input type="text"
-                                    value={this.state.username}
-                                    name="username"
-                                    onChange={this.handleChange}
-                                    />
-                            </label>
-                        </div>
+            <div id="pageBody">
+                <div class="login-container">
+                <h3 class="login-header">Log In</h3>
+                    <div class="divider"></div>
+                    
+                    <article class='login-form-container'>
+                        <form onSubmit={this.handleSubmit}>
+                            
+                            <div class='login-username'> 
+                                <label for='username-field'>Username / Email</label>
+                                        <input type="text"
+                                        id='username-field'
+                                        value={this.state.username}
+                                        name="username"
+                                        onChange={this.handleChange}
+                                        />
+                                    {this.showErrors()} 
+                            </div>
 
-                        <div class='login-password'>
-                            <label>Password:
-                                    <input type="password"
-                                    value={this.state.password}
-                                    name="password"
-                                    onChange={this.handleChange}
-                                    />
-                            </label>
-                        </div>
+                            <div class='login-password'> 
+                                <label for='password-field'>Password</label>
+                                        <input type="password"
+                                        id='password-field'
+                                        value={this.state.password}
+                                        name="password"
+                                        onChange={this.handleChange}
+                                        />
+                                    {this.showErrors()} 
+                            </div>
 
-                        <div class='login-button'>
-                            <button>{this.props.formType}</button>
-                        </div>
+                            <div class='login-button'>
+                                <button type='submit'>Log in</button>
+                            </div>
 
-                        <footer id='login-footer'>
-                            <h6>Don't have an account? sign up as a {this.props.LinkTo}</h6>
-                        </footer>
-                    </form>
-                </article>
+                            <footer id='login-footer'>
+                                <h6 id='switch-text'>Don't have an account? sign up as a {this.props.LinkTo}</h6>
+                            </footer>
+                        </form>
+                    </article>
 
+                </div>
             </div>
         );
     }
