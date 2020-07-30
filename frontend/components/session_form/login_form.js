@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import { $CombinedState } from 'redux';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -25,11 +26,11 @@ class LoginForm extends React.Component {
         this.props.processForm(user);
     }
 
-    showErrors() {
+    showServerErrors() {
         return (
             <ul>
                 {this.props.errors.map((error, idx) =>
-                    <li key={`error number ${idx}`}>
+                    <li class='error-message' key={`error number ${idx}`}>
                         {error}
                     </li>
                 )}
@@ -37,18 +38,27 @@ class LoginForm extends React.Component {
         )
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.errors.length > 0 && this.state === prevState) {
+            $("input").addClass("invalid-creds");
+        } else {
+            $("input").removeClass("invalid-creds");
+            $("li.error-message").addClass("disappear");
+        }
+    }
+
 
     render() {
         if (!this.props.currentUser) {
             <Redirect to='/' />
         }
+        
         return (
             <div id="pageBody">
                 <div class="login-container">
                 <h3 class="login-header">Log In</h3>
                     <div class="divider"></div>
                     
-                    <article class='login-form-container'>
                         <form onSubmit={this.handleSubmit}>
                             
                             <div class='login-username'> 
@@ -58,8 +68,8 @@ class LoginForm extends React.Component {
                                         value={this.state.username}
                                         name="username"
                                         onChange={this.handleChange}
+                                        
                                         />
-                                    {this.showErrors()} 
                             </div>
 
                             <div class='login-password'> 
@@ -70,7 +80,7 @@ class LoginForm extends React.Component {
                                         name="password"
                                         onChange={this.handleChange}
                                         />
-                                    {this.showErrors()} 
+                                {this.showServerErrors()} 
                             </div>
 
                             <div class='login-button'>
@@ -81,7 +91,7 @@ class LoginForm extends React.Component {
                                 <h6 id='switch-text'>Don't have an account? sign up as a {this.props.LinkTo}</h6>
                             </footer>
                         </form>
-                    </article>
+                   
 
                 </div>
             </div>
@@ -89,5 +99,7 @@ class LoginForm extends React.Component {
     }
 
 }
+
+
 
 export default LoginForm;

@@ -21,17 +21,19 @@ const receiveErrors = (errors) => ({
 });    /*(regular action creator)*/
 
 export const logIn = (userCreds) => dispatch => login(userCreds)
-    .then(user => dispatch(receiveCurrentUser(user), err => dispatch(receiveErrors(err))));
+    .then(user => dispatch(receiveCurrentUser(user)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 
 /*thunk action creator*/
 
 
 export const logOut = () => dispatch => logout()
-    .then(() => dispatch(logoutCurrentUser(), err => dispatch(receiveErrors(err))));
+    .then(() => dispatch(logoutCurrentUser(), err => dispatch(receiveErrors(err.responseJSON))));
 
 /*(thunk action creator)*/
 
 
 export const signUp = (userForm) => dispatch => signup(userForm)
-    .then(user => dispatch(receiveCurrentUser(user), err => dispatch(receiveErrors(err))));
+    .then(user => dispatch(receiveCurrentUser(user)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
    /*(thunk action creator)*/

@@ -45,11 +45,9 @@ class SignupForm extends React.Component {
         }
         return (
             <div class="login-container">
-                <h3 class="login-header">Log In</h3>
+                <h3 class="login-header">Sign Up</h3>
                 <div class="divider">
                     <form onSubmit={this.handleSubmit}>
-                        <h1>Please, {this.props.formType}</h1>
-                        {this.showErrors()}
                         <label>Username:
                                 <input type="text"
                                 value={this.state.username}
@@ -57,6 +55,7 @@ class SignupForm extends React.Component {
                                 onChange={this.handleChange}
                                 />
                         </label>
+                        {this.showErrors()}
                         <label>Email:
                                 <input type="text"
                                 value={this.state.username}
@@ -64,6 +63,7 @@ class SignupForm extends React.Component {
                                 onChange={this.handleChange}
                                 />
                         </label>
+                        {this.showErrors()}
                         <label>Password:
                                 <input type="password"
                                 value={this.state.password}
@@ -71,6 +71,7 @@ class SignupForm extends React.Component {
                                 onChange={this.handleChange}
                                 />
                         </label>
+                        {this.showErrors()}
                         <button>{this.props.formType}</button>
                         <h6>Already have an account? {this.props.LinkTo}</h6>
                     </form>

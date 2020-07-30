@@ -8,7 +8,7 @@
 .login-container {
     position: fixed;
     top:25%;
-    width: 800px;
+    width: 100%;
     display:flex;
     flex-direction:column;
     justify-content: center;
@@ -17,10 +17,15 @@
     text-align: center;
 }
 
-.login-form-container {
+form {
+    width: 100%;
+}
+
+
+form {
     display: flex;
-    text-align: center;
-    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
 }
 
 h3.login-header {
@@ -38,10 +43,12 @@ h3.login-header {
 }
 
 .login-username {
+    width: 100%;
     padding: 10px;
 }
 
 .login-password {
+    width: 100%;
     padding: 10px;
 }
 
@@ -67,16 +74,37 @@ button {
     height: 33px;
     color:white;
     font-weight: 550;
+    outline: none;
+}
+
+input#password-field.invalid-creds {
+    border-color: red;
+}
+
+input#username-field.invalid-creds {
+    border-color: red;
 }
 
 #password-field {
+  
     border: 1px solid lightgrey;
     width: 300px;
     height: 33px;
+    outline: none;
 }
 
 #username-field {
+   
     border: 1px solid lightgrey;
     width: 300px;
     height: 33px;
+    outline: none;
+}
+
+.error-message {
+    color: red
+}
+
+.disappear {
+    display:none;
 }
