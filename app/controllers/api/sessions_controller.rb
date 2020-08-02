@@ -10,7 +10,7 @@ class Api::SessionsController < ApplicationController
     @user1 ? @user3 = @user1 : @user3 = @user2
 
     if !@user3
-      render json: ['Incorrect username. Please try again'], status: 404
+      render json: ['Incorrect username or password. Please try again'], status: 404
     else
       password = params[:user][:password]
 
@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
         login!(@user)
         render "api/users/show"
       else
-        render json: ['Incorrect password. Please try again'], status: 401
+        render json: ['Incorrect username or password. Please try again'], status: 401
       end
       
     end

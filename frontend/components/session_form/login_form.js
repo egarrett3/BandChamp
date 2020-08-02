@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(this.props.closeModal);
     }
 
     showServerErrors() {
@@ -41,10 +41,37 @@ class LoginForm extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.errors.length > 0 && this.state === prevState) {
             $("input").addClass("invalid-creds");
+            $("li.error-message").removeClass("disappear");
         } else {
             $("input").removeClass("invalid-creds");
             $("li.error-message").addClass("disappear");
         }
+    }
+
+    redirectRoute() {
+        this.props.history.push('/');
+    }
+
+    handleRoutes() {
+        const crossRoad = this.props.modal ? (
+            <h5 id='switch-text'>Don't have an account? sign up as
+                <span onClick={this.props.openModal}>
+                    <span class='afan' onClick={this.props.closeModal}> a fan</span>
+                </span>
+            </h5>
+        ) : (
+            <h5 id='switch-text'>Don't have an account? sign up as
+                <span onClick={this.props.openModal}>
+                        <span class='afan' onClick={() => this.redirectRoute()}> a fan</span>
+                </span>
+            </h5>
+        );
+
+        return (
+            <div>
+                {crossRoad}
+            </div>
+        )
     }
 
 
@@ -54,44 +81,50 @@ class LoginForm extends React.Component {
         }
         
         return (
-            <div id="pageBody">
-                <div class="login-container">
-                <h3 class="login-header">Log In</h3>
+            <div class="pageBody">
+                <div class='banner'>
+                    <Link class='login-page-logo' to='/'>
+                        <div class="purple-box"></div>
+                        <h1 class="title">bandchamp</h1>
+                    </Link>
+                </div>
+                <div class="container">
+                <h3 class="header">Log in</h3>
                     <div class="divider"></div>
                     
                         <form onSubmit={this.handleSubmit}>
-                            
-                            <div class='login-username'> 
+                            <div class='username'> 
                                 <label for='username-field'>Username / Email</label>
-                                        <input type="text"
-                                        id='username-field'
-                                        value={this.state.username}
-                                        name="username"
-                                        onChange={this.handleChange}
-                                        
-                                        />
+                                    <input type="text"
+                                    id='username-field'
+                                    value={this.state.username}
+                                    name="username"
+                                    onChange={this.handleChange}
+                                    />
                             </div>
 
-                            <div class='login-password'> 
+                            <div class='password'> 
                                 <label for='password-field'>Password</label>
-                                        <input type="password"
-                                        id='password-field'
-                                        value={this.state.password}
-                                        name="password"
-                                        onChange={this.handleChange}
-                                        />
+                                    <input type="password"
+                                    id='password-field'
+                                    value={this.state.password}
+                                    name="password"
+                                    onChange={this.handleChange}
+                                    />
                                 {this.showServerErrors()} 
                             </div>
 
-                            <div class='login-button'>
+                            <div class='button'>
                                 <button type='submit'>Log in</button>
                             </div>
 
-                            <footer id='login-footer'>
-                                <h6 id='switch-text'>Don't have an account? sign up as a {this.props.LinkTo}</h6>
-                            </footer>
+                            <div id='login-footer'>
+                               {this.handleRoutes()}
+                            </div>
                         </form>
-                   
+                    <footer>
+
+                    </footer>
 
                 </div>
             </div>

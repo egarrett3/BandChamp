@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LoginForm from './login_form';
+import ModalLoginForm from './modal_login_form'
 import { logIn } from '../../actions/session_actions';
-import { Link,Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 
@@ -24,4 +24,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalLoginForm);

@@ -5,9 +5,9 @@ class SignupForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: "--username--",
-            password: "--password--",
-            email: "email",
+            username: "",
+            password: "",
+            email: "",
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -23,19 +23,56 @@ class SignupForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.processForm(user).then(this.props.closeModal);
     }
 
-    showErrors() {
+    showPasswordErrors() {
         return (
-            <ul>
-                {this.props.errors.map((error, idx) =>
+            <ul class='modal-error-message'>
+                {this.props.errors.filter((error, idx) => error.includes('Password'))
+                .map((errorName,idx) => (
                     <li key={`error number ${idx}`}>
-                        {error}
+                        {errorName}
                     </li>
-                )}
+                ))}
             </ul>
         )
+    };
+
+    showUsernameErrors() {
+        return (
+            <ul class='modal-error-message'>
+                {this.props.errors.filter((error, idx) => error.includes('Username'))
+                    .map((errorName, idx) => (
+                        <li key={`error number ${idx}`}>
+                            {errorName}
+                        </li>
+                    ))}
+            </ul>
+        )
+    };
+
+    showEmailErrors() {
+        return (
+            <ul class='modal-error-message'>
+                {this.props.errors.filter((error, idx) => error.includes('Email'))
+                    .map((errorName, idx) => (
+                        <li key={`error number ${idx}`}>
+                            {errorName}
+                        </li>
+                    ))}
+            </ul>
+        )
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.errors.length > 0 && this.state === prevState) {
+            $("input").addClass("invalid-creds");
+            $("ul.modal-error-message").removeClass("disappear");
+        } else {
+            $("input").removeClass("invalid-creds");
+            $("ul.modal-error-message").addClass("disappear");
+        }
     }
 
 
@@ -44,39 +81,54 @@ class SignupForm extends React.Component {
             <Redirect to='/' />
         }
         return (
-            <div class="login-container">
-                <h3 class="login-header">Sign Up</h3>
-                <div class="divider">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Username:
-                                <input type="text"
-                                value={this.state.username}
-                                name="username"
-                                onChange={this.handleChange}
-                                />
-                        </label>
-                        {this.showErrors()}
-                        <label>Email:
-                                <input type="text"
-                                value={this.state.username}
-                                name="email"
-                                onChange={this.handleChange}
-                                />
-                        </label>
-                        {this.showErrors()}
-                        <label>Password:
-                                <input type="password"
-                                value={this.state.password}
-                                name="password"
-                                onChange={this.handleChange}
-                                />
-                        </label>
-                        {this.showErrors()}
-                        <button>{this.props.formType}</button>
-                        <h6>Already have an account? {this.props.LinkTo}</h6>
-                    </form>
-                </div>
-            </div>
+            <form class='modal-signup-form' onSubmit={this.handleSubmit}>
+                
+                    <div class='modal-signup-username'> 
+                        <label class='signup-username-label'>Username</label>
+                        <input type="text"
+                        value={this.state.username}
+                        name="username"
+                        class='modal-signup-field'
+                        onChange={this.handleChange}
+                        />
+                        {this.showUsernameErrors()}
+                    </div>
+                    
+                    <div class='modal-signup-email'> 
+                        <label class='signup-email-label'>Email</label>
+                        <input type="text"
+                        value={this.state.email}
+                        name="email"
+                        class='modal-signup-field'
+                        onChange={this.handleChange}
+                        />
+                        {this.showEmailErrors()}
+                    </div>
+                    
+                    <div class='modal-signup-password'>
+                        <label class='signup-password-label'>Password</label>
+                        <input type="password"
+                        value={this.state.password}
+                        name="password"
+                        class='modal-signup-field'
+                        onChange={this.handleChange}
+                        />
+                        {this.showPasswordErrors()}
+                    </div>
+
+                    <div>
+                        <button class='modal-signup-version'>{this.props.formType}</button>
+                    </div>
+                    
+                    <h6>Already have an account?
+                        <span onClick={this.props.openModal}>
+                            <span class='afan'onClick={this.props.closeModal}> Log in
+                            </span>
+                        </span>
+                    </h6>
+            
+            </form>
+            
         );
     }
 
