@@ -20,7 +20,7 @@ const Modal = ({modal, closeModal}) => {
     }
     
     
-    if (component.type.displayName === 'Connect(SignupForm)') {
+    if (modal === 'signup') {
         return (
             <div class='bg-modal' onClick={closeModal}>
                 <div class='modal-content1' onClick={(e) => e.stopPropagation()}>
