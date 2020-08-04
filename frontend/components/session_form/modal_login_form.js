@@ -9,6 +9,7 @@ class ModalLoginForm extends React.Component {
             username: "",
             password: ""
         };
+        this.baseState = this.state;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -18,6 +19,10 @@ class ModalLoginForm extends React.Component {
             ...this.state,
             [e.target.name]: e.currentTarget.value,
         })
+    }
+
+    resetState() {
+        this.setState(this.baseState);
     }
 
     handleSubmit(e) {
@@ -95,7 +100,7 @@ class ModalLoginForm extends React.Component {
                     </div>
 
                     <div>
-                        <button class='modal-version' type='submit'>Log in</button>
+                        <button class='modal-version' type='submit' onClick={() => this.resetState()}>Log in</button>
                     </div>
 
                     <div id='login-footer'>

@@ -9,6 +9,7 @@ class SignupForm extends React.Component {
             password: "",
             email: "",
         };
+        this.baseState = this.state;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -20,6 +21,10 @@ class SignupForm extends React.Component {
         })
     }
 
+    resetState() {
+        this.setState(this.baseState);
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
@@ -28,10 +33,10 @@ class SignupForm extends React.Component {
 
     showPasswordErrors() {
         return (
-            <ul class='modal-error-message'>
+            <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Password'))
                 .map((errorName,idx) => (
-                    <li key={`error number ${idx}`}>
+                    <li class='modal-error-message' key={`error number ${idx}`}>
                         {errorName}
                     </li>
                 ))}
@@ -41,10 +46,10 @@ class SignupForm extends React.Component {
 
     showUsernameErrors() {
         return (
-            <ul class='modal-error-message'>
+            <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Username'))
                     .map((errorName, idx) => (
-                        <li key={`error number ${idx}`}>
+                        <li class='modal-error-message' key={`error number ${idx}`}>
                             {errorName}
                         </li>
                     ))}
@@ -54,10 +59,10 @@ class SignupForm extends React.Component {
 
     showEmailErrors() {
         return (
-            <ul class='modal-error-message'>
+            <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Email'))
                     .map((errorName, idx) => (
-                        <li key={`error number ${idx}`}>
+                        <li class='modal-error-message' key={`error number ${idx}`}>
                             {errorName}
                         </li>
                     ))}
@@ -68,10 +73,10 @@ class SignupForm extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.errors.length > 0 && this.state === prevState) {
             $("input").addClass("invalid-creds");
-            $("ul.modal-error-message").removeClass("disappear");
+            $("li.modal-error-message").removeClass("disappear");
         } else {
             $("input").removeClass("invalid-creds");
-            $("ul.modal-error-message").addClass("disappear");
+            $("li.modal-error-message").addClass("disappear");
         }
     }
 
@@ -117,13 +122,12 @@ class SignupForm extends React.Component {
                     </div>
 
                     <div>
-                        <button class='modal-signup-version'>{this.props.formType}</button>
+                        <button class='modal-signup-version' onClick={() => this.resetState()}>{this.props.formType}</button>
                     </div>
                     
                     <h6>Already have an account?
                         <span onClick={this.props.openModal}>
-                            <span class='afan'onClick={this.props.closeModal}> Log in
-                            </span>
+                            <span class='afan'onClick={this.props.closeModal}> Log in</span>
                         </span>
                     </h6>
             

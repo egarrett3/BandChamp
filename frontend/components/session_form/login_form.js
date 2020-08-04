@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
             username: "",
             password: ""
         };
+        this.baseState = this.state;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -18,6 +19,10 @@ class LoginForm extends React.Component {
             ...this.state,
             [e.target.name]: e.currentTarget.value,
         })
+    }
+
+    resetState() {
+        this.setState(this.baseState);
     }
 
     handleSubmit(e) {
@@ -62,7 +67,7 @@ class LoginForm extends React.Component {
         ) : (
             <h5 id='switch-text'>Don't have an account? sign up as
                 <span onClick={this.props.openModal}>
-                        <span class='afan' onClick={() => this.redirectRoute()}> a fan</span>
+                    <span class='afan' onClick={() => this.redirectRoute()}> a fan</span>
                 </span>
             </h5>
         );
@@ -115,7 +120,7 @@ class LoginForm extends React.Component {
                             </div>
 
                             <div class='button'>
-                                <button type='submit'>Log in</button>
+                                <button type='submit' onClick={() => this.resetState()}>Log in</button>
                             </div>
 
                             <div id='login-footer'>
