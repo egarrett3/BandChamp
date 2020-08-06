@@ -21,9 +21,9 @@ class LoginForm extends React.Component {
         })
     }
 
-    resetState() {
-        this.setState(this.baseState);
-    }
+    // resetState() {
+    //     this.setState(this.baseState);
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -119,8 +119,8 @@ class LoginForm extends React.Component {
                                 {this.showServerErrors()} 
                             </div>
 
-                            <div class='button'>
-                                <button type='submit' onClick={() => this.resetState()}>Log in</button>
+                            <div >
+                                <button class='button' type='submit'>Log in</button>
                             </div>
 
                             <div id='login-footer'>

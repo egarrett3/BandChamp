@@ -21,9 +21,9 @@ class ModalLoginForm extends React.Component {
         })
     }
 
-    resetState() {
-        this.setState(this.baseState);
-    }
+    // resetState() {
+    //     this.setState(this.baseState);
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -100,7 +100,7 @@ class ModalLoginForm extends React.Component {
                     </div>
 
                     <div>
-                        <button class='modal-version' type='submit' onClick={() => this.resetState()}>Log in</button>
+                        <button class='modal-version' type='submit'>Log in</button>
                     </div>
 
                     <div id='login-footer'>

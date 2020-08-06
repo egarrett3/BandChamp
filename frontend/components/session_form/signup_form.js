@@ -21,9 +21,9 @@ class SignupForm extends React.Component {
         })
     }
 
-    resetState() {
-        this.setState(this.baseState);
-    }
+    // resetState() {
+    //     this.setState(this.baseState);
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -122,7 +122,7 @@ class SignupForm extends React.Component {
                     </div>
 
                     <div>
-                        <button class='modal-signup-version' onClick={() => this.resetState()}>{this.props.formType}</button>
+                        <button class='modal-signup-version button'>{this.props.formType}</button>
                     </div>
                     
                     <h6>Already have an account?
