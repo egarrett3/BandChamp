@@ -2,16 +2,16 @@ const { HashRouter } = require("react-router-dom")
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute,ProtectedRoute } from '../util/route_util';
 import LoginContainer from './session_form/login_container'
 import GreetingContainer from "./greeting/greeting_container";
-import SongShowContainer from './song/song_container';
+import SongShowContainer from './song/song_show_container';
 import Modal from './modal/modal';
 
 const App = () => {
 
     return (
-        <div>
+        <div class='page'>
             <Modal />
             <header class='bandchamp-header'>
                 <div class="logo">
@@ -26,7 +26,7 @@ const App = () => {
             
             <Switch>
                 <Route exact path='/' component={SongShowContainer} />
-                <Route path='/login' component={LoginContainer} />
+                <ProtectedRoute path='/login' component={LoginContainer} />
             </Switch>
         </div>
     )

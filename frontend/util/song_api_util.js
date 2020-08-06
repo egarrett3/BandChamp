@@ -3,3 +3,10 @@ export const fetchsong = (id) => (
         url: `api/songs/${id}`,
     })
 )
+
+export const fetchsongs = () => (
+    $.ajax({
+        url: 'api/songs/',
+    })
+)
+

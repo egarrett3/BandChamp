@@ -5,6 +5,11 @@ class Api::SongsController < ApplicationController
         render :show
     end
     
+    def index
+        @songs = Song.all
+        render :index
+    end
+
     def song_params
         params.require(:song).permit(:id)
     end

@@ -12,6 +12,8 @@ class SongShow extends React.Component {
     
     componentDidMount() {
         this.props.fetchSong(this.state.id);
+        let aud = document.getElementById('audio-track');
+        aud.value = '0';
         this.audio.addEventListener("timeupdate", e => {
             this.setState({
                 currentTime: e.target.currentTime,
@@ -66,55 +68,63 @@ class SongShow extends React.Component {
     }
 
     render() {
-        const { title,url } = this.props
+        const { title,song_url,photo_url } = this.props
 
         const ct = this.getTime(this.state.currentTime);
         const dur = this.getTime(this.state.duration);
 
         return (
-            <div id='audio-player'>
-                <audio 
-                    ref={ref => this.audio = ref} src={url} duration type="audio/mpeg"
-                    onLoadedMetadata ={ () =>  this.seekbar.max = this.audio.duration}
-                    // this.seekbar.value = this.audio.currentTime
-                    />
-                    <div class='btns'>
-                        <div id="timer"></div>
-                        <div id='play-btn' class=''
-                            onClick={() => {
-                                this.audio.play();
-                                this.flipPlaybtn();
-                            }}>
-                        </div>
-                    <div class='disappear' id='pause-btn'
-                            onClick={() => {
-                                this.audio.pause();
-                                this.flipPausebtn();
-                            }}>
-                        </div>
-                    </div>
-                    <div class='audio-label'>
-                        <div class='weekly-label'>
-                            <h3 class='weekly'>BandChamp Weekly</h3>
-                            <div class='date'>{this.time()}</div>
-                        </div>
-                        <div class='lower-label'>
-                            <div class='afan'>past shows</div>
-                        </div>
-                        <div class='feature-artist'></div>
-                        <div class='hosts'></div>
-                    </div>
+            <div>
+                <div class='img-container'>
+                    <img src={photo_url} class='graffiti-image'/>
+                        <div id='audio-player'>
+                            <audio 
+                                ref={ref => this.audio = ref} src={song_url} duration type="audio/mpeg"
+                                onLoadedMetadata ={ () =>  this.seekbar.max = this.audio.duration}
+                                // this.seekbar.value = this.audio.currentTime
+                                />
+                                <div class='btns'>
+                                    <div id="timer"></div>
+                                    <div id='play-btn' class=''
+                                        onClick={() => {
+                                            this.audio.play();
+                                            this.flipPlaybtn();
+                                        }}>
+                                    </div>
+                                <div class='disappear' id='pause-btn'
+                                        onClick={() => {
+                                            this.audio.pause();
+                                            this.flipPausebtn();
+                                        }}>
+                                    </div>
+                                </div>
+                                <div class='audio-label'>
+                                    <div class='weekly-label'>
+                                        <h3 class='weekly'>BandChamp Weekly</h3>
+                                        <div class='date'>{this.time()}</div>
+                                    </div>
+                                    <div class='lower-label'>
+                                        <div class='afan'>past shows</div>
+                                    </div>
+                                    <div class='feature-artist'></div>
+                                    <div class='hosts'></div>
+                                </div>
 
-                <input ref={ref => this.seekbar = ref} type='range' min='0' value='0' step='0.01' id='audio-track'
-                    onChange ={() => 
-                        this.audio.currentTime = this.seekbar.value
-                    }>
-                </input>
-                <div class='timer'>
-                <span id="curTimeText">{ct}</span>/<span id="durTimeText">{dur}</span>
+                            <input ref={ref => this.seekbar = ref} type='range' min='0' step='0.01' id='audio-track'
+                                onChange ={() => 
+                                    this.audio.currentTime = this.seekbar.value
+                                }>
+                            </input>
+                            <div class='timer'>
+                            <span id="curTimeText">{ct}</span>/<span id="durTimeText">{dur}</span>
+                            </div>
+                        </div>
+                    <div class='sidebar-container'>
+                        
+                    </div>
                 </div>
             </div>
-        )
+        )  
     }
 }
 

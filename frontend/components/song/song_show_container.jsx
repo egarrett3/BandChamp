@@ -6,7 +6,8 @@ import SongShow from './song_show_form';
 const mapStateToProps = ({entities:{ songs }}) => {
     return {
         title : songs.title,
-        url : songs.url,
+        song_url : songs.song_url,
+        photo_url : songs.photo_url
         // contentType : songs.content_type
     }
 }
