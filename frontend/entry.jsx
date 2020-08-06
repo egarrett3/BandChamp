@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import * as APIutil from './util/session_api_util';
 import configureStore from "./store/store";
 import Root from './components/Root';
 import { fetchSong } from './actions/song_actions'
@@ -22,10 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
 
-    window.fetchsong = fetchsong;
-    window.fetchSongs = fetchSongs;
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root);
 });

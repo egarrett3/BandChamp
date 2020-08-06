@@ -8,7 +8,7 @@ const mapStateToProps = ({ entities: { songs } }) => {
         title: songs.title,
         song_url: songs.song_url,
         photo_url: songs.photo_url
-        // contentType : songs.content_type
+        
     }
 }
 

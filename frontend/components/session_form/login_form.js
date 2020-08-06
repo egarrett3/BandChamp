@@ -21,9 +21,6 @@ class LoginForm extends React.Component {
         })
     }
 
-    // resetState() {
-    //     this.setState(this.baseState);
-    // }
 
     handleSubmit(e) {
         e.preventDefault();

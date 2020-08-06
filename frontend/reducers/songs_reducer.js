@@ -7,7 +7,6 @@ const songsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_SONG:
-            // return Object.assign({}, {[action.song.id] :action.song.title} , action.song.song_blob )
             return Object.assign({}, state, action.song )
         case RECEIVE_SONGS:
             return Object.assign({}, state, action.songs)

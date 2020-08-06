@@ -14,7 +14,7 @@
  *= require_self
  */
 
- /* Logo and signUp Login Tabs */
+ 
  
 
 
@@ -108,7 +108,7 @@
     text-decoration: underline;
 }
 
-/* signup and login form */
+
 
 .pageBody {
    position:fixed;
@@ -249,7 +249,7 @@ div.banner {
     height:120px;
 }
 
-/* modals */
+
 
 .header {
    text-decoration: none;

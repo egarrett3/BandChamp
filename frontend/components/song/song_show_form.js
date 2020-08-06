@@ -81,7 +81,6 @@ class SongShow extends React.Component {
                             <audio 
                                 ref={ref => this.audio = ref} src={song_url} duration type="audio/mpeg"
                                 onLoadedMetadata ={ () =>  this.seekbar.max = this.audio.duration}
-                                // this.seekbar.value = this.audio.currentTime
                                 />
                                 <div class='btns'>
                                     <div id="timer"></div>
