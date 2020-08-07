@@ -7,6 +7,7 @@ import LoginContainer from './session_form/login_container'
 import GreetingContainer from "./greeting/greeting_container";
 import SongShowContainer from './song/song_show_container';
 import Modal from './modal/modal';
+import Carousel from './carousel/carousel';
 
 const App = () => {
 
@@ -21,13 +22,17 @@ const App = () => {
                     </Link>
                     <h3>Discover amazing new music and <a class='gradient'>directly support </a>the artists who make it.</h3>
                 </div>
+                <div>
+                    <input type='text' placeholder='Search and Discover Music              &#128269;' class='search-bar'></input>
+                </div>
                 <GreetingContainer />
             </header>
             
             <Switch>
                 <Route exact path='/' component={SongShowContainer} />
-                <ProtectedRoute path='/login' component={LoginContainer} />
+                <Route exact path='/login' component={LoginContainer} />
             </Switch>
+            
         </div>
     )
 }

@@ -2,9 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from './components/Root';
-import { fetchSong } from './actions/song_actions'
-import { fetchSongs } from './actions/song_actions'
-import { fetchsong } from './util/song_api_util'
+import { fetchSg } from './actions/song_actions';
+import { fetchSgs } from './actions/song_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
@@ -20,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         store = configureStore();
     }
+
+    window.fetchSg = fetchSg;
+    window.fetchSgs = fetchSgs;
+    window.dispatch = store.dispatch;
 
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root);

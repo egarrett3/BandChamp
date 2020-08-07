@@ -1,17 +1,17 @@
 import React from 'react';
+import Carousel from '../carousel/carousel';
 
 class SongShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: 1,
             currentTime: 0,
             duration: 0 
         }
     }
     
     componentDidMount() {
-        this.props.fetchSong(this.state.id);
+        this.props.fetchSongs();
         let aud = document.getElementById('audio-track');
         aud.value = '0';
         this.audio.addEventListener("timeupdate", e => {
@@ -68,7 +68,8 @@ class SongShow extends React.Component {
     }
 
     render() {
-        const { title,song_url,photo_url } = this.props
+        const slist = this.props.songs.map(song => song.song_url)
+        const plist = this.props.songs.map(song => song.photo_url)
 
         const ct = this.getTime(this.state.currentTime);
         const dur = this.getTime(this.state.duration);
@@ -76,10 +77,10 @@ class SongShow extends React.Component {
         return (
             <div>
                 <div class='img-container'>
-                    <img src={photo_url} class='graffiti-image'/>
+                    <img src={plist[0]} class='graffiti-image'/>
                         <div id='audio-player'>
                             <audio 
-                                ref={ref => this.audio = ref} src={song_url} duration type="audio/mpeg"
+                                ref={ref => this.audio = ref} src={slist[0]} duration type="audio/mpeg"
                                 onLoadedMetadata ={ () =>  this.seekbar.max = this.audio.duration}
                                 />
                                 <div class='btns'>
@@ -119,9 +120,15 @@ class SongShow extends React.Component {
                             </div>
                         </div>
                     <div class='sidebar-container'>
-                        
+                        <img src={plist[6]} class='building-image' />
+                            <div id='building-image'>Idris Ickamoor and the Pyramids continue their musical journey</div>
+                        <img src={plist[2]} class='cloud-image' />
+                            <div id='cloud-image'>This Friday, support artists all over the world impacted by COV-ID 19</div>
+                        <img src={plist[5]} class='lake-image' />
+                            <div id='lake-image'>The Best Lo-Fi chill-hop beats by BandChamp</div>
                     </div>
                 </div>
+                <Carousel />
             </div>
         )  
     }

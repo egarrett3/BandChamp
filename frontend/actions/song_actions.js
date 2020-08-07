@@ -1,8 +1,8 @@
-import { fetchsong } from '../util/song_api_util';
-import { fetchsongs } from '../util/song_api_util';
+import { fetchSong } from '../util/song_api_util';
+import { fetchSongs } from '../util/song_api_util';
 
 export const RECEIVE_SONG = 'RECEIVE_SONG';
-export const RECEIVE_SONGS = 'RECEIVE_SONGS';
+export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 
 const receiveSong = (song) => {
     return {
@@ -11,17 +11,18 @@ const receiveSong = (song) => {
     }
 };
 
-const receiveSongs = (songs) => {
+const receiveAllSongs = (songs) => {
     return {
-        type: RECEIVE_SONGS,
+        type: RECEIVE_ALL_SONGS,
         songs,
     }
 };
 
 
 
-export const fetchSong = (songId) => dispatch => fetchsong(songId)
-    .then(song => dispatch(receiveSong(song)))
+export const fetchSg = (songId) => dispatch => fetchSong(songId)
+    .then(song => dispatch(receiveSong(song)));
 
-export const fetchSongs = () => dispatch => fetchsongs()
-    .then(songs => dispatch(receiveSongs(songs)))
+
+export const fetchSgs = () => dispatch => fetchSongs()
+    .then(songs => dispatch(receiveAllSongs(songs)));

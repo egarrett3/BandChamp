@@ -42,9 +42,13 @@ class LoginForm extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.errors.length > 0 && this.state === prevState) {
+            $('button.button').addClass('greyed-out')
+            $('button.button').prop('disabled',true)
             $("input").addClass("invalid-creds");
             $("li.error-message").removeClass("disappear");
         } else {
+            $('button.button').removeClass('greyed-out')
+            $('button.button').prop('disabled',false)
             $("input").removeClass("invalid-creds");
             $("li.error-message").addClass("disappear");
         }

@@ -13,7 +13,7 @@ const Greeting = ({ currentUser, logout, login, openModal }) => {
     )
     const welcomeGreeting = () => (
         <div class='demo-login-sign'>
-            <div class='welcome'>Welcome {currentUser.username}, to BandChamp</div>
+            <div class='welcome'></div>
             <div class='logout-dropdown'>
                 <span class='dot'></span>
                 <a class='logout-dropdown-content' onClick={logout}>Log Out</a>

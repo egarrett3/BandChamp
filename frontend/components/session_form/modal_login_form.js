@@ -42,9 +42,13 @@ class ModalLoginForm extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.errors.length > 0 && this.state === prevState) {
+            $('button.modal-version').addClass('greyed-out')
+            $('button.modal-version').prop('disabled', true)
             $("input").addClass("invalid-creds");
             $("li.error-message").removeClass("disappear");
         } else {
+            $('button.modal-version').removeClass('greyed-out')
+            $('button.modal-version').prop('disabled', false)
             $("input").removeClass("invalid-creds");
             $("li.error-message").addClass("disappear");
         }
@@ -100,6 +104,7 @@ class ModalLoginForm extends React.Component {
                         <button class='modal-version' type='submit'>Log in</button>
                     </div>
 
+            
                     <div id='login-footer'>
                         {this.handleRoutes()}
                     </div>

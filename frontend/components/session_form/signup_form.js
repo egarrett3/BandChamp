@@ -9,7 +9,7 @@ class SignupForm extends React.Component {
             password: "",
             email: "",
         };
-        this.baseState = this.state;
+        this.base = this.props.errors;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
             <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Password'))
                 .map((errorName,idx) => (
-                    <li class='modal-error-message' key={`error number ${idx}`}>
+                    <li class='modal-error-password' key={`error number ${idx}`}>
                         {errorName}
                     </li>
                 ))}
@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
             <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Username'))
                     .map((errorName, idx) => (
-                        <li class='modal-error-message' key={`error number ${idx}`}>
+                        <li class='modal-error-username' key={`error number ${idx}`}>
                             {errorName}
                         </li>
                     ))}
@@ -58,7 +58,7 @@ class SignupForm extends React.Component {
             <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Email'))
                     .map((errorName, idx) => (
-                        <li class='modal-error-message' key={`error number ${idx}`}>
+                        <li class='modal-error-email' key={`error number ${idx}`}>
                             {errorName}
                         </li>
                     ))}
@@ -68,11 +68,19 @@ class SignupForm extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.errors.length > 0 && this.state === prevState) {
+            $('button.modal-signup-version-button').addClass('greyed-out')
+            $('button.modal-signup-version-button').prop('disabled', true)
             $("input").addClass("invalid-creds");
-            $("li.modal-error-message").removeClass("disappear");
+            $("li.modal-error-username").removeClass("disappear");
+            $("li.modal-error-email").removeClass("disappear");
+            $("li.modal-error-password").removeClass("disappear");
         } else {
+            $('button.modal-signup-version-button').removeClass('greyed-out')
+            $('button.modal-signup-version-button').prop('disabled', false)
             $("input").removeClass("invalid-creds");
-            $("li.modal-error-message").addClass("disappear");
+            $("li.modal-error-username").addClass("disappear");
+            $("li.modal-error-email").addClass("disappear");
+            $("li.modal-error-password").addClass("disappear");
         }
     }
 
@@ -89,7 +97,7 @@ class SignupForm extends React.Component {
                         <input type="text"
                         value={this.state.username}
                         name="username"
-                        class='modal-signup-field'
+                        class='modal-input-username'
                         onChange={this.handleChange}
                         />
                         {this.showUsernameErrors()}
@@ -100,7 +108,7 @@ class SignupForm extends React.Component {
                         <input type="text"
                         value={this.state.email}
                         name="email"
-                        class='modal-signup-field'
+                        class='modal-input-email'
                         onChange={this.handleChange}
                         />
                         {this.showEmailErrors()}
@@ -111,21 +119,21 @@ class SignupForm extends React.Component {
                         <input type="password"
                         value={this.state.password}
                         name="password"
-                        class='modal-signup-field'
+                        class='modal-input-password'
                         onChange={this.handleChange}
                         />
                         {this.showPasswordErrors()}
                     </div>
 
                     <div>
-                        <button class='modal-signup-version button'>{this.props.formType}</button>
+                        <button class='modal-signup-version-button'>Sign up</button>
                     </div>
                     
-                    <h6>Already have an account?
+                    <h5 id='switch-text'>Already have an account?
                         <span onClick={this.props.openModal}>
                             <span class='afan'onClick={this.props.closeModal}> Log in</span>
                         </span>
-                    </h6>
+                    </h5>
             
             </form>
             
