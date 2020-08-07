@@ -76,38 +76,38 @@ class SongShow extends React.Component {
 
         return (
             <div>
-                <div class='img-container'>
-                    <img src={plist[0]} class='graffiti-image'/>
+                <div className='img-container'>
+                    <img src={plist[0]} className='graffiti-image'/>
                         <div id='audio-player'>
                             <audio 
-                                ref={ref => this.audio = ref} src={slist[0]} duration type="audio/mpeg"
-                                onLoadedMetadata ={ () =>  this.seekbar.max = this.audio.duration}
+                                ref={ref => this.audio = ref} src={slist[0]} type="audio/mpeg"
+                                onLoadedMetadata ={() =>  this.seekbar.max = this.audio.duration}
                                 />
-                                <div class='btns'>
+                                <div className='btns'>
                                     <div id="timer"></div>
-                                    <div id='play-btn' class=''
+                                    <div id='play-btn'
                                         onClick={() => {
                                             this.audio.play();
                                             this.flipPlaybtn();
                                         }}>
                                     </div>
-                                <div class='disappear' id='pause-btn'
+                                <div className='disappear' id='pause-btn'
                                         onClick={() => {
                                             this.audio.pause();
                                             this.flipPausebtn();
                                         }}>
                                     </div>
                                 </div>
-                                <div class='audio-label'>
-                                    <div class='weekly-label'>
-                                        <h3 class='weekly'>BandChamp Weekly</h3>
-                                        <div class='date'>{this.time()}</div>
+                                <div className='audio-label'>
+                                    <div className='weekly-label'>
+                                        <h3 className='weekly'>BandChamp Weekly</h3>
+                                        <div className='date'>{this.time()}</div>
                                     </div>
-                                    <div class='lower-label'>
-                                        <div class='afan'>past shows</div>
+                                    <div className='lower-label'>
+                                        <div className='afan'>past shows</div>
                                     </div>
-                                    <div class='feature-artist'></div>
-                                    <div class='hosts'></div>
+                                    <div className='feature-artist'></div>
+                                    <div className='hosts'></div>
                                 </div>
 
                             <input ref={ref => this.seekbar = ref} type='range' min='0' step='0.01' id='audio-track'
@@ -115,16 +115,16 @@ class SongShow extends React.Component {
                                     this.audio.currentTime = this.seekbar.value
                                 }>
                             </input>
-                            <div class='timer'>
+                            <div className='timer'>
                             <span id="curTimeText">{ct}</span>/<span id="durTimeText">{dur}</span>
                             </div>
                         </div>
-                    <div class='sidebar-container'>
-                        <img src={plist[6]} class='building-image' />
+                    <div className='sidebar-container'>
+                        <img src={plist[6]} className='building-image' />
                             <div id='building-image'>Idris Ickamoor and the Pyramids continue their musical journey</div>
-                        <img src={plist[2]} class='cloud-image' />
+                        <img src={plist[2]} className='cloud-image' />
                             <div id='cloud-image'>This Friday, support artists all over the world impacted by COV-ID 19</div>
-                        <img src={plist[5]} class='lake-image' />
+                        <img src={plist[5]} className='lake-image' />
                             <div id='lake-image'>The Best Lo-Fi chill-hop beats by BandChamp</div>
                     </div>
                 </div>

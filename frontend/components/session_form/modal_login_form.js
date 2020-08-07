@@ -32,7 +32,7 @@ class ModalLoginForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, idx) =>
-                    <li class='error-message' key={`error number ${idx}`}>
+                    <li className='error-message' key={`error number ${idx}`}>
                         {error}
                     </li>
                 )}
@@ -62,7 +62,7 @@ class ModalLoginForm extends React.Component {
         return (
             <h5 id='switch-text'>Don't have an account? sign up as
                 <span onClick={this.props.openModal}>
-                    <span class='afan' onClick={this.props.closeModal}> a fan</span>
+                    <span className='afan' onClick={this.props.closeModal}> a fan</span>
                 </span>
             </h5>
         ) 
@@ -76,32 +76,32 @@ class ModalLoginForm extends React.Component {
 
         return (
             <div>
-                <form class='modal-login-form' onSubmit={this.handleSubmit}>
-                    <div class='username'>
+                <form className='modal-login-form' onSubmit={this.handleSubmit}>
+                    <div className='username'>
                         <input type="text"
                             placeholder="Username / Email"
-                            class='modal-username-field'
+                            className='modal-username-field'
                             value={this.state.username}
                             name="username"
                             onChange={this.handleChange}
                         />
                     </div>
 
-                    <div class='password'>
+                    <div className='password'>
                         <input type="password"
                             placeholder="Password"
-                            class='modal-password-field'
+                            className='modal-password-field'
                             value={this.state.password}
                             name="password"
                             onChange={this.handleChange}
                         />
-                        <div class='error-position'>
+                        <div className='error-position'>
                             {this.showServerErrors()}
                         </div>
                     </div>
 
                     <div>
-                        <button class='modal-version' type='submit'>Log in</button>
+                        <button className='modal-version' type='submit'>Log in</button>
                     </div>
 
             

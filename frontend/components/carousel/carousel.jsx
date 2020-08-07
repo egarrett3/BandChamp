@@ -10,14 +10,15 @@ class Carousel extends React.Component {
 
     render() {
         return (
-            <div class='carousel-component'>
-                <div class='payment'>
-                    <div class='payment-text'>Fans have paid artists <span class='highlighted'>$557 million</span> using Bandchamp, and <span class='highlighted'>$12.8 million</span> in the last 30 days alone.</div>
+            <div className='carousel-component'>
+                <div className='payment'>
+                    <div className='payment-text'>Fans have paid artists <span className='highlighted'>$557 million</span> using Bandchamp, and <span className='highlighted'>$12.8 million</span> in the last 30 days alone.</div>
                 </div>
-                <ul class='album-block'>
+                <ul className='album-block'>
                     {
-                    this.props.songs.map(song => (
+                    this.props.songs.map((song,idx) => (
                         <CarouselItem
+                        key={idx}
                         song={song}
                         />
                         ))

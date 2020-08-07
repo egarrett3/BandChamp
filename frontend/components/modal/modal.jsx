@@ -22,11 +22,11 @@ const Modal = ({modal, closeModal}) => {
     
     if (modal === 'signup') {
         return (
-            <div class='bg-modal' onClick={closeModal}>
-                <div class='modal-content1' onClick={(e) => e.stopPropagation()}>
-                    <div class='modal-header'>
-                        <h3 class="modal-login-header">Sign up for a Bandchamp fan account</h3>
-                        <div onClick={closeModal} class="close">X</div>
+            <div className='bg-modal' onClick={closeModal}>
+                <div className='modal-content1' onClick={(e) => e.stopPropagation()}>
+                    <div className='modal-header'>
+                        <h3 className="modal-login-header">Sign up for a Bandchamp fan account</h3>
+                        <div onClick={closeModal} className="close">X</div>
                     </div>
                     {component}
                 </div>
@@ -34,11 +34,11 @@ const Modal = ({modal, closeModal}) => {
         )
     } else {
         return (
-            <div class='bg-modal' onClick={closeModal}>
-                <div class='modal-content2' onClick={(e) => e.stopPropagation()}>
-                    <div class='modal-header'>
-                        <h3 class="modal-login-header">Log in</h3>
-                        <div onClick={closeModal} class="close">X</div>
+            <div className='bg-modal' onClick={closeModal}>
+                <div className='modal-content2' onClick={(e) => e.stopPropagation()}>
+                    <div className='modal-header'>
+                        <h3 className="modal-login-header">Log in</h3>
+                        <div onClick={closeModal} className="close">X</div>
                     </div>
                     {component}
                 </div>

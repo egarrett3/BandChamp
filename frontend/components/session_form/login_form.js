@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, idx) =>
-                    <li class='error-message' key={`error number ${idx}`}>
+                    <li className='error-message' key={`error number ${idx}`}>
                         {error}
                     </li>
                 )}
@@ -62,13 +62,13 @@ class LoginForm extends React.Component {
         const crossRoad = this.props.modal ? (
             <h5 id='switch-text'>Don't have an account? sign up as
                 <span onClick={this.props.openModal}>
-                    <span class='afan' onClick={this.props.closeModal}> a fan</span>
+                    <span className='afan' onClick={this.props.closeModal}> a fan</span>
                 </span>
             </h5>
         ) : (
             <h5 id='switch-text'>Don't have an account? sign up as
                 <span onClick={this.props.openModal}>
-                    <span class='afan' onClick={() => this.redirectRoute()}> a fan</span>
+                    <span className='afan' onClick={() => this.redirectRoute()}> a fan</span>
                 </span>
             </h5>
         );
@@ -87,19 +87,19 @@ class LoginForm extends React.Component {
         }
         
         return (
-            <div class="pageBody">
-                <div class='banner'>
-                    <Link class='login-page-logo' to='/'>
-                        <div class="purple-box"></div>
-                        <h1 class="title">bandchamp</h1>
+            <div className="pageBody">
+                <div className='banner'>
+                    <Link className='login-page-logo' to='/'>
+                        <div className="purple-box"></div>
+                        <h1 className="title">bandchamp</h1>
                     </Link>
                 </div>
-                <div class="container">
-                <h3 class="header">Log in</h3>
-                    <div class="divider"></div>
+                <div className="container">
+                <h3 className="header">Log in</h3>
+                    <div className="divider"></div>
                     
                         <form onSubmit={this.handleSubmit}>
-                            <div class='username'> 
+                            <div className='username'> 
                                 <label for='username-field'>Username / Email</label>
                                     <input type="text"
                                     id='username-field'
@@ -109,7 +109,7 @@ class LoginForm extends React.Component {
                                     />
                             </div>
 
-                            <div class='password'> 
+                            <div className='password'> 
                                 <label for='password-field'>Password</label>
                                     <input type="password"
                                     id='password-field'
@@ -121,7 +121,7 @@ class LoginForm extends React.Component {
                             </div>
 
                             <div >
-                                <button class='button' type='submit'>Log in</button>
+                                <button className='button' type='submit'>Log in</button>
                             </div>
 
                             <div id='login-footer'>

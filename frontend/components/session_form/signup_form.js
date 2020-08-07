@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
             <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Password'))
                 .map((errorName,idx) => (
-                    <li class='modal-error-password' key={`error number ${idx}`}>
+                    <li className='modal-error-password' key={`error number ${idx}`}>
                         {errorName}
                     </li>
                 ))}
@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
             <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Username'))
                     .map((errorName, idx) => (
-                        <li class='modal-error-username' key={`error number ${idx}`}>
+                        <li className='modal-error-username' key={`error number ${idx}`}>
                             {errorName}
                         </li>
                     ))}
@@ -58,7 +58,7 @@ class SignupForm extends React.Component {
             <ul>
                 {this.props.errors.filter((error, idx) => error.includes('Email'))
                     .map((errorName, idx) => (
-                        <li class='modal-error-email' key={`error number ${idx}`}>
+                        <li className='modal-error-email' key={`error number ${idx}`}>
                             {errorName}
                         </li>
                     ))}
@@ -90,48 +90,48 @@ class SignupForm extends React.Component {
             <Redirect to='/' />
         }
         return (
-            <form class='modal-signup-form' onSubmit={this.handleSubmit}>
+            <form className='modal-signup-form' onSubmit={this.handleSubmit}>
                 
-                    <div class='modal-signup-username'> 
-                        <label class='signup-username-label'>Username</label>
+                    <div className='modal-signup-username'> 
+                        <label className='signup-username-label'>Username</label>
                         <input type="text"
                         value={this.state.username}
                         name="username"
-                        class='modal-input-username'
+                        className='modal-input-username'
                         onChange={this.handleChange}
                         />
                         {this.showUsernameErrors()}
                     </div>
                     
-                    <div class='modal-signup-email'> 
-                        <label class='signup-email-label'>Email</label>
+                    <div className='modal-signup-email'> 
+                        <label className='signup-email-label'>Email</label>
                         <input type="text"
                         value={this.state.email}
                         name="email"
-                        class='modal-input-email'
+                        className='modal-input-email'
                         onChange={this.handleChange}
                         />
                         {this.showEmailErrors()}
                     </div>
                     
-                    <div class='modal-signup-password'>
-                        <label class='signup-password-label'>Password</label>
+                    <div className='modal-signup-password'>
+                        <label className='signup-password-label'>Password</label>
                         <input type="password"
                         value={this.state.password}
                         name="password"
-                        class='modal-input-password'
+                        className='modal-input-password'
                         onChange={this.handleChange}
                         />
                         {this.showPasswordErrors()}
                     </div>
 
                     <div>
-                        <button class='modal-signup-version-button'>Sign up</button>
+                        <button className='modal-signup-version-button'>Sign up</button>
                     </div>
                     
                     <h5 id='switch-text'>Already have an account?
                         <span onClick={this.props.openModal}>
-                            <span class='afan'onClick={this.props.closeModal}> Log in</span>
+                            <span className='afan'onClick={this.props.closeModal}> Log in</span>
                         </span>
                     </h5>
             

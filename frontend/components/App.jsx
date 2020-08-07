@@ -12,18 +12,18 @@ import Carousel from './carousel/carousel';
 const App = () => {
 
     return (
-        <div class='page'>
+        <div className='page'>
             <Modal />
-            <header class='bandchamp-header'>
-                <div class="logo">
-                    <Link class='alignment' to='/'>
-                        <div class="purple-box"></div>
-                        <h1 class="title">bandchamp</h1>
+            <header className='bandchamp-header'>
+                <div className="logo">
+                    <Link className='alignment' to='/'>
+                        <div className="purple-box"></div>
+                        <h1 className="title">bandchamp</h1>
                     </Link>
-                    <h3>Discover amazing new music and <a class='gradient'>directly support </a>the artists who make it.</h3>
+                    <h3>Discover amazing new music and <a className='gradient'>directly support </a>the artists who make it.</h3>
                 </div>
                 <div>
-                    <input type='text' placeholder='Search and Discover Music              &#128269;' class='search-bar'></input>
+                    <input type='text' placeholder='Search and Discover Music              &#128269;' className='search-bar'></input>
                 </div>
                 <GreetingContainer />
             </header>
