@@ -6,7 +6,7 @@ const Greeting = ({ currentUser, logout, login, openModal }) => {
 
     const signUpSession = () => (
         <nav className="login-signup">
-            <a className='session-links' onClick={() => login({username:'user',password:'demologin'})}>demo login</a>
+            <a className='session-links' onClick={() => login({username:'user',password:'password'})}>demo login</a>
             <a className='session-links' onClick={() => openModal('signup')}>sign up</a>
             <Link className='session-links' to='/login'>log in</Link>
         </nav>
