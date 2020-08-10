@@ -8,34 +8,35 @@
 
 require 'open-uri'
 
-User.create(username: "user", email: "andy@email.com", password: "password")
-
-s1=Song.create(title:"Tank")
-s2=Song.create(title:"symmetricbuilding")
-s3=Song.create(title:"zelda")
-s4=Song.create(title:"Buffalo Roamer")
-s5=Song.create(title:"Lake")
-s6=Song.create(title:"Pollack")
-s7=Song.create(title:"glassball")
 
 
-s1.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/graffiti.jpg'), filename: 'graffiti.jpg')
-s1.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/COWBOY BEBOP OPHQ.mp3'), filename: 'COWBOY BEBOP OPHQ.mp3')
+s1=Song.find(1)
+s2=Song.find(7)
+s3=Song.find(2)
+s4=Song.find(3)
+s5=Song.find(4)
+s6=Song.find(5)
+s7=Song.find(6)
 
-s2.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/symmetricbuilding.jpg.jpg'), filename: 'symmetricbuilding.jpg.jpg')
-s2.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/file_example_MP3_700KB.mp3'), filename: 'file_example_MP3_700KB.mp3.')
 
-s3.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/moon.jpg'), filename: 'moon.jpg')
-s3.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/file_example_MP3_700KB.mp3'), filename: 'file_example_MP3_700KB.mp3')
+s1.photo.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/CC9LTSMf3uBbFx9Ww3nf2zf1'), filename: 'graffiti.jpg')
+s1.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/q3t92Q2U4hFt9et3dZui2Dka'), filename: 'COWBOY BEBOP OPHQ.mp3')
 
-s4.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/buffalo.jpg'), filename: 'buffalo.jpg')
-s4.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/file_example_MP3_700KB.mp3'), filename: 'file_example_MP3_700KB.mp3')
+s2.photo.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/QK2WSskcg2qeLTX5HzruPbfj'), filename: 'symmetricbuilding.jpg.jpg')
+s2.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'file_example_MP3_700KB.mp3.')
 
-s5.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/lake.jpg'), filename: 'lake.jpg')
-s5.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/file_example_MP3_700KB.mp3'), filename: 'file_example_MP3_700KB.mp3')
+s3.photo.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/KofTRZM5vjEZVkBNyueSV97Q'), filename: 'moon.jpg')
+s3.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'file_example_MP3_700KB.mp3')
 
-s6.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/pollack.jpg'), filename: 'pollack.jpg')
-s6.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/file_example_MP3_700KB.mp3'), filename: 'file_example_MP3_700KB.mp3')
+s4.photo.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/ZDPJBeWDxmpffDVEoBUKZdCb'), filename: 'buffalo.jpg')
+s4.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'file_example_MP3_700KB.mp3')
 
-s7.photo.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/photos_for_AWS3/glassball.jpg'), filename: 'glassball.jpg')
-s7.song.attach(io: open('https://active-storage-bandchamp-dev.us-east-1.amazonaws.com/home/edwardg/Desktop/TestSongs/file_example_MP3_700KB.mp3'), filename: 'file_example_MP3_700KB.mp3')
+s5.photo.attach(io: File.open('https://active-storage-bandchahttps://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'lake.jpg')
+s5.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'file_example_MP3_700KB.mp3')
+
+s6.photo.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/UAK28vwTtbd2vn4WE7NpNbhT'), filename: 'pollack.jpg')
+s6.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'file_example_MP3_700KB.mp3')
+
+s7.photo.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BSKz5fv1RsNQ93uTFS8yPLH5'), filename: 'glassball.jpg')
+s7.song.attach(io: File.open('https://active-storage-bandchamp-dev.s3.us-east-1.amazonaws.com/BJZbEQtUuvMPARQgkWZBkZDL'), filename: 'file_example_MP3_700KB.mp3')
+
