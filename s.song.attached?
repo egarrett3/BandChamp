@@ -1,0 +1,12 @@
+=> [32m#<ActiveStorage::Attached::One:0x000055a2c567d0f0[0m
+ @dependent[32m=[0m[33m:purge_later[0m,
+ @name[32m=[0m[31m[1;31m"[0m[31msong[1;31m"[0m[31m[0m,
+ @record[32m=[0m
+  [32m#<Song:0x00007fb34c81a2c0[0m
+   id: [1;34m1[0m,
+   artist_id: [1;36mnil[0m,
+   album_id: [1;36mnil[0m,
+   genre_id: [1;36mnil[0m,
+   title: [31m[1;31m"[0m[31mTank[1;31m"[0m[31m[0m,
+   created_at: [1;34;4mMon[0m, [1;34m03[0m [1;34;4mAug[0m [1;34m2020[0m [1;34m18[0m:[1;34m32[0m:[1;34m22[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+   updated_at: [1;34;4mThu[0m, [1;34m06[0m [1;34;4mAug[0m [1;34m2020[0m [1;34m15[0m:[1;34m10[0m:[1;34m47[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m[32m>[0m

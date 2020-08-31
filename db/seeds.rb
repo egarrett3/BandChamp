@@ -8,8 +8,6 @@
 
 require 'open-uri'
 
-
-
 s1=Song.find(1)
 s2=Song.find(7)
 s3=Song.find(2)
