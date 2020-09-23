@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { $CombinedState } from 'redux';
+import FooterItem from '../footer/footer'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -87,53 +88,54 @@ class LoginForm extends React.Component {
         }
         
         return (
+          <div>
             <div className="pageBody">
-                <div className='banner'>
-                    <Link className='login-page-logo' to='/'>
-                        <div className="purple-box"></div>
-                        <h1 className="title">bandchamp</h1>
-                    </Link>
-                </div>
-                <div className="container">
+              <div className="banner">
+                <Link className="login-page-logo" to="/">
+                  <div className="purple-box"></div>
+                  <h1 className="title">bandchamp</h1>
+                </Link>
+              </div>
+              <div className="container">
                 <h3 className="header">Log in</h3>
-                    <div className="divider"></div>
-                    
-                        <form onSubmit={this.handleSubmit}>
-                            <div className='username'> 
-                                <label for='username-field'>Username / Email</label>
-                                    <input type="text"
-                                    id='username-field'
-                                    value={this.state.username}
-                                    name="username"
-                                    onChange={this.handleChange}
-                                    />
-                            </div>
+                <div className="divider"></div>
 
-                            <div className='password'> 
-                                <label for='password-field'>Password</label>
-                                    <input type="password"
-                                    id='password-field'
-                                    value={this.state.password}
-                                    name="password"
-                                    onChange={this.handleChange}
-                                    />
-                                {this.showServerErrors()} 
-                            </div>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="username">
+                    <label htmlFor="username-field">Username / Email</label>
+                    <input
+                      type="text"
+                      id="username-field"
+                      value={this.state.username}
+                      name="username"
+                      onChange={this.handleChange}
+                    />
+                  </div>
 
-                            <div >
-                                <button className='button' type='submit'>Log in</button>
-                            </div>
+                  <div className="password">
+                    <label htmlFor="password-field">Password</label>
+                    <input
+                      type="password"
+                      id="password-field"
+                      value={this.state.password}
+                      name="password"
+                      onChange={this.handleChange}
+                    />
+                    {this.showServerErrors()}
+                  </div>
 
-                            <div id='login-footer'>
-                               {this.handleRoutes()}
-                            </div>
-                        </form>
-                    <footer>
+                  <div>
+                    <button className="button" type="submit">
+                      Log in
+                    </button>
+                  </div>
 
-                    </footer>
-
-                </div>
+                  <div id="login-footer">{this.handleRoutes()}</div>
+                </form>
+              </div>
             </div>
+            <FooterItem/>
+          </div>
         );
     }
 

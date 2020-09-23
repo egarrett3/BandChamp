@@ -1,5 +1,7 @@
 import React from 'react';
 import Carousel from '../carousel/carousel';
+import FooterItem from '../footer/footer';
+import GreetingContainer from "../greeting/greeting_container";
 
 class SongShow extends React.Component {
     constructor(props) {
@@ -76,6 +78,7 @@ class SongShow extends React.Component {
 
         return (
             <div>
+                <GreetingContainer />
                 <div className='img-container'>
                     <img src={plist[0]} className='graffiti-image'/>
                         <div id='audio-player'>
@@ -129,6 +132,7 @@ class SongShow extends React.Component {
                     </div>
                 </div>
                 <Carousel />
+                <FooterItem />
             </div>
         )  
     }
