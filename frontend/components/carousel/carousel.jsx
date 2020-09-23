@@ -10,22 +10,84 @@ class Carousel extends React.Component {
 
     render() {
         return (
-            <div className='carousel-component'>
-                <div className='payment'>
-                    <div className='payment-text'>Fans have paid artists <span className='highlighted'>$557 million</span> using Bandchamp, and <span className='highlighted'>$12.8 million</span> in the last 30 days alone.</div>
+          <div className="carousel-component">
+            <div className="payment">
+              <div className="dot-grid">
+                <div className="line">
+                  <span className="dot1"></span>
+                  <span className="dot2"></span>
+                  <span className="dot3"></span>
+                  <span className="dot4"></span>
+                  <span className="dot5"></span>
+                  <span className="dot6"></span>
+                  <span className="dot7"></span>
+                  <span className="dot8"></span>
                 </div>
-                <ul className='album-block'>
-                    {
-                    this.props.songs.map((song,idx) => (
-                        <CarouselItem
-                        key={idx}
-                        song={song}
-                        />
-                        ))
-                    }
-                </ul>
+                <div className="line">
+                  <span className="dot1"></span>
+                  <span className="dot2"></span>
+                  <span className="dot3"></span>
+                  <span className="dot4"></span>
+                  <span className="dot5"></span>
+                  <span className="dot6"></span>
+                </div>
+                <div className="line">
+                  <span className="dot1"></span>
+                  <span className="dot2"></span>
+                  <span className="dot3"></span>
+                  <span className="dot4"></span>
+                  <span className="dot5"></span>
+                  <span className="dot6"></span>
+                  <span className="dot7"></span>
+                  <span className="dot8"></span>
+                </div>
+              </div>
+
+              <div className="payment-text">
+                Fans have paid artists{" "}
+                <span className="highlighted">$557 million</span> using
+                Bandchamp, and{" "}
+                <span className="highlighted">$12.8 million</span> in the last
+                30 days alone.
+              </div>
+              <div className="dot-grid">
+                <div className="line">
+                  <span className="dot8"></span>
+                  <span className="dot7"></span>
+                  <span className="dot6"></span>
+                  <span className="dot5"></span>
+                  <span className="dot4"></span>
+                  <span className="dot3"></span>
+                  <span className="dot2"></span>
+                  <span className="dot1"></span>
+                </div>
+                <div className="line">
+                  <span className="dot6"></span>
+                  <span className="dot5"></span>
+                  <span className="dot4"></span>
+                  <span className="dot3"></span>
+                  <span className="dot2"></span>
+                  <span className="dot1"></span>
+                </div>
+                <div className="line">
+                  <span className="dot8"></span>
+                  <span className="dot7"></span>
+                  <span className="dot6"></span>
+                  <span className="dot5"></span>
+                  <span className="dot4"></span>
+                  <span className="dot3"></span>
+                  <span className="dot2"></span>
+                  <span className="dot1"></span>
+                </div>
+              </div>
             </div>
-        )
+            <ul className="album-block">
+              {this.props.songs.map((song, idx) => (
+                <CarouselItem key={idx} song={song} />
+              ))}
+            </ul>
+          </div>
+        );
     }
 }
 

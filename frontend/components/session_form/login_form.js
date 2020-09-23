@@ -91,10 +91,12 @@ class LoginForm extends React.Component {
           <div>
             <div className="pageBody">
               <div className="banner">
-                <Link className="login-page-logo" to="/">
-                  <div className="purple-box"></div>
-                  <h1 className="title">bandchamp</h1>
-                </Link>
+                <div id='banner-spacing'>
+                  <Link className="login-page-logo" to="/">
+                    <div className="purple-box"></div>
+                    <h1 className="title">bandchamp</h1>
+                  </Link>
+                </div>
               </div>
               <div className="container">
                 <h3 className="header">Log in</h3>
