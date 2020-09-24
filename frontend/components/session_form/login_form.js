@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
 
     showServerErrors() {
         return (
-            <ul>
+            <ul id='Err'>
                 {this.props.errors.map((error, idx) =>
                     <li className='error-message' key={`error number ${idx}`}>
                         {error}
@@ -40,6 +40,7 @@ class LoginForm extends React.Component {
             </ul>
         )
     }
+
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.errors.length > 0 && this.state === prevState) {

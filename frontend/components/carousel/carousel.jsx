@@ -3,7 +3,25 @@ import { connect } from 'react-redux';
 import { fetchSgs } from '../../actions/song_actions';
 import CarouselItem from './carousel_item';
 
+Array.prototype.shuffle = function(callback) {
+    const resultArray = []
+    
+    for (let index = 0; index < this.length; index++) {
+      const element = this[index];
+      
+    }
+
+    return resultArray;
+}
+
 class Carousel extends React.Component {
+    constructor(props) {
+      super(props) 
+        this.state = {
+            
+        }
+    }
+    
     componentDidMount() {
         this.props.fetchSongs();
     }
@@ -82,9 +100,10 @@ class Carousel extends React.Component {
               </div>
             </div>
             <ul className="album-block">
-              {this.props.songs.map((song, idx) => (
-                <CarouselItem key={idx} song={song} />
-              ))}
+              {this.props.songs.map(function(song, idx) { 
+                
+                return <CarouselItem key={idx} song={song} />
+              })}
             </ul>
           </div>
         );
