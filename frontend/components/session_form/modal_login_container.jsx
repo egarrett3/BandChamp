@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ModalLoginForm from './modal_login_form'
-import { logIn } from '../../actions/session_actions';
+import { logIn, clearErrors } from '../../actions/session_actions';
 import { Link, Redirect } from 'react-router-dom';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -18,10 +18,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        processForm: (user) => dispatch(logIn(user)),
-        closeModal: () => dispatch(closeModal()),
-        openModal: () => dispatch(openModal('signup')),
-    }
+      processForm: (user) => dispatch(logIn(user)),
+      closeModal: () => dispatch(closeModal()),
+      openModal: () => dispatch(openModal("signup")),
+      clearErrors: () => dispatch(clearErrors()),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalLoginForm);
