@@ -73,6 +73,7 @@
 
 .alignment {
     display: flex;
+    width: 160px;
     align-items: center;
     margin-top: 15px;
 }
