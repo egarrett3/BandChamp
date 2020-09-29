@@ -20,10 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
 
-    window.fetchSg = fetchSg;
-    window.fetchSgs = fetchSgs;
-    window.dispatch = store.dispatch;
-
     const root = document.getElementById("root");
     ReactDOM.render(<Root store={store}/>, root);
 });
