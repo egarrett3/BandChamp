@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { fetchSgs } from '../../actions/song_actions';
 import SongShow from './song_show_form';
 
-const mapStateToProps = ({entities:{songs}}) => {
+const mapStateToProps = ({session,entities:{songs,users}}) => {
     return {
+        currentUser : users[session.id],
         songs : Object.values(songs)
     }
 }

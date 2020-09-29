@@ -8,7 +8,8 @@ class SongShow extends React.Component {
         super(props);
         this.state = {
             currentTime: 0,
-            duration: 0 
+            duration: 0,
+            user: false
         }
     }
     
@@ -69,18 +70,38 @@ class SongShow extends React.Component {
         }
     }
 
+    LoggedIn() {
+        this.setState(() => ({
+            user: this.currentUsr()
+        }))
+    }
+
+    currentUsr() {
+        let bool;
+        if (this.props.currentUser) {
+            bool = true
+        } else {
+            bool = false
+        }
+        return bool;
+    }
+
     render() {
         const slist = this.props.songs.map(song => song.song_url)
         const plist = this.props.songs.map(song => song.photo_url)
 
         const ct = this.getTime(this.state.currentTime);
         const dur = this.getTime(this.state.duration);
+        
+        // this.currentUsr()
+        // const { user } = this.state;
 
         return (
             <div>
                 <GreetingContainer />
-                <div className='img-container'>
-                    <img src={plist[0]} className='graffiti-image'/>
+                <div className={`img-container ${this.currentUsr() ? "adjust-small" : "adjust-large"}`} >
+                    <div className='graf-container'>
+                        <img src={plist[0]} className='graffiti-image'/>
                         <div id='audio-player'>
                             <audio 
                                 ref={ref => this.audio = ref} src={slist[0]} type="audio/mpeg"
@@ -122,13 +143,14 @@ class SongShow extends React.Component {
                             <span id="curTimeText">{ct}</span>/<span id="durTimeText">{dur}</span>
                             </div>
                         </div>
-                    <div className='sidebar-container'>
+                    </div>
+                    <div className='sidebar-container' >
                         <img src={plist[6]} className='building-image' />
-                            <div id='building-image'>Idris Ickamoor and the Pyramids continue their musical journey</div>
+                            <div id='building-image'></div>
                         <img src={plist[2]} className='cloud-image' />
-                            <div id='cloud-image'>This Friday, support artists all over the world impacted by COV-ID 19</div>
+                            <div id='cloud-image'></div>
                         <img src={plist[5]} className='lake-image' />
-                            <div id='lake-image'>The Best Lo-Fi chill-hop beats by BandChamp</div>
+                            <div id='lake-image'></div>
                     </div>
                 </div>
                 <Carousel />

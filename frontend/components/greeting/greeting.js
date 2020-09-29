@@ -11,6 +11,7 @@ class Greeting extends React.Component {
     super(props);
     this.state = {
       listOpen : false,
+      user : false,
     };
     this.headers = this.headers.bind(this);
     this.toggleList = this.toggleList.bind(this);
@@ -22,13 +23,25 @@ class Greeting extends React.Component {
     }))
   }
 
-  headers() {
+  LoggedIn() {
+    this.setState(() => ({
+      user : this.currentUsr()
+    }))
+  }
+
+  currentUsr() {
     let bool;
     if (this.props.currentUser) {
       bool = true
     } else {
       bool = false
     }
+    return bool;
+  }
+
+  headers() {
+    const bool = this.currentUsr()
+    const { user } = this.state;
 
     const header = !bool ? (
       <header className="bandchamp-header">
@@ -53,10 +66,9 @@ class Greeting extends React.Component {
 
             <nav className="login-signup">
               <a
-                className="session-links"
+                className="session-links" 
                 onClick={() =>
-                  this.props.login({ username: "user1", password: "password" })
-                }
+                  this.props.login({ username: "user1", password: "password" })}
               >
                 demo login
               </a>
@@ -102,9 +114,15 @@ class Greeting extends React.Component {
             <div className="dot"></div>
               {this.state.listOpen ? (
                 <div className="logout-dropdown-content">
-                  <a href="#" onClick={this.props.logout}>
-                    Log out
-                  </a>
+                  <div id='username-content'>
+                    <div id='username'>{this.props.currentUser.username}</div>
+                    <div id='user-collection'>view collection</div>
+                  </div>
+                  <div className='drpdown-item'>purchases</div>
+                  <hr style={{ width : '85%', borderColor : '#f5f5f5'}}/>
+                  <div className='drpdown-item'>settings</div>
+                  <div className='drpdown-item'>help</div>
+                  <div onClick={this.props.logout} className='drpdown-item'>log out</div>
                 </div>
               ) : (null)}
             </div>
@@ -120,7 +138,9 @@ class Greeting extends React.Component {
     
    return (
      <div>
-       {this.headers()}
+       { 
+        this.headers()
+       }
      </div>
    )
   }
