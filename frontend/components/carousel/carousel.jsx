@@ -3,16 +3,6 @@ import { connect } from 'react-redux';
 import { fetchSgs } from '../../actions/song_actions';
 import CarouselItem from './carousel_item';
 
-Array.prototype.shuffle = function(callback) {
-    const resultArray = []
-    
-    for (let index = 0; index < this.length; index++) {
-      const element = this[index];
-      
-    }
-
-    return resultArray;
-}
 
 class Carousel extends React.Component {
     constructor(props) {
@@ -20,10 +10,6 @@ class Carousel extends React.Component {
         this.state = {
             
         }
-    }
-    
-    componentDidMount() {
-        this.props.fetchSongs();
     }
 
     render() {
@@ -113,7 +99,7 @@ class Carousel extends React.Component {
 
 const mapStateToProps = ({ entities: { songs } }) => {
     return {
-        songs: Object.values(songs)
+        sng: Object.values(songs)
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from '../carousel/carousel';
 import FooterItem from '../footer/footer';
+import Daily from '../bandchampdaily/daily';
 import GreetingContainer from "../greeting/greeting_container";
 
 class SongShow extends React.Component {
@@ -92,9 +93,8 @@ class SongShow extends React.Component {
 
         const ct = this.getTime(this.state.currentTime);
         const dur = this.getTime(this.state.duration);
+
         
-        // this.currentUsr()
-        // const { user } = this.state;
 
         return (
             <div>
@@ -105,7 +105,7 @@ class SongShow extends React.Component {
                         <div id='audio-player'>
                             <audio 
                                 ref={ref => this.audio = ref} src={slist[0]} type="audio/mpeg"
-                                onLoadedMetadata ={() =>  this.seekbar.max = this.audio.duration}
+                                onLoadedMetadata ={() => this.seekbar.max = this.audio.duration}
                                 />
                                 <div className='btns'>
                                     <div id="timer"></div>
@@ -153,7 +153,8 @@ class SongShow extends React.Component {
                             <div id='lake-image'></div>
                     </div>
                 </div>
-                <Carousel />
+                <Carousel songs={this.props.songs}/>
+                <Daily songs={this.props.songs}/>
                 <FooterItem />
             </div>
         )  

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 const countries = ['Germany','America','Japan','China','England','Argentina','Iran','India']
 

@@ -132,7 +132,7 @@
 
 .signedIn-alignment {
     display: flex;
-    width: 110px;
+    width: 120px;
     align-items: center;
     text-decoration: none;
 }
@@ -1226,4 +1226,15 @@ span#lng-color:hover {
     justify-content: space-evenly;
     width: 100px;
     height: 5px;
+}
+
+#bandcamp-daily {
+    display: block;
+    width: 100%;
+    height: 854px;
+}
+
+#song-collage {
+    width:1110px;
+    height: 584px;
 }
