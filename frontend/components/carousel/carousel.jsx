@@ -87,7 +87,6 @@ class Carousel extends React.Component {
             </div>
             <ul className="album-block">
               {this.props.songs.map(function(song, idx) { 
-                
                 return <CarouselItem key={idx} song={song} />
               })}
             </ul>

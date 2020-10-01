@@ -958,7 +958,7 @@ input[type='range']::-webkit-slider-runnable-track {
     width:100%;
     height: 400px;
     position: relative;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(255, 255, 255);
 }
 
 .album-block {
@@ -1232,9 +1232,47 @@ span#lng-color:hover {
     display: block;
     width: 100%;
     height: 854px;
+    background-color: #e9f1f2;
 }
 
 #song-collage {
-    width:1110px;
-    height: 584px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-sizing: content-box;
+    padding: 87px;
+    width: 1110px;
+    height: 600px;
 }
+
+.album-page {
+    background-color: white;
+    height: 280px;
+    width: 208px;
+}
+
+.alb-pics {
+    height: 150px;
+    width: 208px;
+}
+
+#song-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#showcase {
+    display: inline-flex;
+    width: 655px;
+    height: 280px;
+    background-color: white;
+}
+
+#showcase-pic {
+    width: 280px;
+    height: 280px;
+}
+
