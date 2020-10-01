@@ -7,10 +7,10 @@ const DailyItems = props => {
             <img src={props.song.photo_url} className='alb-pics'/>
             <div className='frames'>
                 <div>
-                    <div>Lorem ipsum. Veni vidi vici. alia iacta est</div>
-                    <div>{props.song.title}</div>
+                    <div className='descriptions'>Lorem ipsum. Veni vidi vici. alia iacta est.</div>
+                    <div className="sng-title">{props.song.title}</div>
                 </div>
-                <div>FEATURE</div>
+                <div className="feature">FEATURE</div>
             </div>
         </div>
     )

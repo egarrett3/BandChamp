@@ -14,8 +14,8 @@ class Daily extends React.Component {
     render() {
 
         return (
-            <div id="bandcamp-daily">
-                <h3>BandChamp Daily</h3>
+            <div id="bandchamp-daily">
+                <h3 id="daily-title">BANDCHAMP DAILY</h3>
                 <div id="song-collage">
                     {this.props.songs.map(function (song, idx) {
                         if (idx === 0) {
