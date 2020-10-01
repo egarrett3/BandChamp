@@ -1247,6 +1247,7 @@ span#lng-color:hover {
 }
 
 .album-page {
+    
     background-color: white;
     height: 280px;
     width: 208px;
@@ -1276,3 +1277,19 @@ span#lng-color:hover {
     height: 280px;
 }
 
+#frame {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: content-box;
+    padding: 15px;
+}
+
+.frames {
+    display: flex;
+    height: 105px;
+    justify-content: space-between;
+    flex-direction: column;
+    box-sizing: content-box;
+    padding: 10px;
+}
