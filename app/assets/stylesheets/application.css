@@ -683,6 +683,7 @@ h6 {
     padding-left: 20px;
     widows: 100%;
     height: 60px;
+    text-decoration: none;
 }
 
 #username-content:hover {
@@ -1346,4 +1347,106 @@ span#lng-color:hover {
     position: relative;
     top: 68px;
     left: 86px;
+}
+
+#profile-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#profile-banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 55px;
+    height:100px;
+    width:100%;
+    background-color: rgb(235, 236, 240);
+}
+
+#add-banner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    height: 30px;
+    margin-bottom: 18px;
+    color: rgb(119, 119, 119);
+    font-size: 12px;
+
+
+}
+
+.banner-image {
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#spacer-banner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height:100px;
+    width:93%;
+    background-color: rgb(235, 236, 240);
+}
+
+#profile-settings {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 55px;
+    width: 100%;
+    height: 204px;
+}
+
+#profile-spacer {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 93%;
+}
+
+#prof-pic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    top:-30px;
+    border: 1px dashed grey;
+    width: 210px;
+    height: 220px;
+    background-color: rgb(235, 236, 240);
+}
+
+.specifications {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(119, 119, 119);
+    width: 100%;
+    height: 55%;
+}
+
+#spec {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width:100%;
+    height: 55%;
+}
+
+#spec3 {
+    padding:10px;
 }

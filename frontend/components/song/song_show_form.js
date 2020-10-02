@@ -147,7 +147,7 @@ class SongShow extends React.Component {
                     <div className='sidebar-container' >
                         <img src={plist[6]} className='building-image' />
                             <div id='building-image'></div>
-                        <img src={plist[2]} className='cloud-image' />
+                        <img src={plist[4]} className='cloud-image' />
                             <div id='cloud-image'></div>
                         <img src={plist[5]} className='lake-image' />
                             <div id='lake-image'></div>

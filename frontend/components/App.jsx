@@ -7,6 +7,7 @@ import LoginContainer from './session_form/login_container'
 import GreetingContainer from "./greeting/greeting_container";
 import SongShowContainer from './song/song_show_container';
 import Modal from './modal/modal';
+import UserProfileContainer from './profile/user_container';
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={SongShowContainer} />
           <Route exact path="/login" component={LoginContainer} />
+          <ProtectedRoute exact path="/usrprofile" component={UserProfileContainer} />
         </Switch>
         
       </div>

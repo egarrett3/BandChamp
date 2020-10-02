@@ -5,7 +5,6 @@ import { faBolt, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-
 class Greeting extends React.Component {
   constructor(props) {
     super(props);
@@ -114,10 +113,10 @@ class Greeting extends React.Component {
             <div className="dot"></div>
               {this.state.listOpen ? (
                 <div className="logout-dropdown-content">
-                  <div id='username-content'>
-                    <div id='username'>{this.props.currentUser.username}</div>
+                  <Link id='username-content' to='/usrprofile'>
+                    <div id='username' >{this.props.currentUser.username}</div>
                     <div id='user-collection'>view collection</div>
-                  </div>
+                  </Link>
                   <div className='drpdown-item'>purchases</div>
                   <hr style={{ width : '85%', borderColor : '#f5f5f5'}}/>
                   <div className='drpdown-item'>settings</div>
