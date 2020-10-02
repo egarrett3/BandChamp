@@ -1409,6 +1409,7 @@ span#lng-color:hover {
 #profile-spacer {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     height: 100px;
     width: 93%;
 }
@@ -1449,4 +1450,55 @@ span#lng-color:hover {
 
 #spec3 {
     padding:10px;
+}
+
+#profile-editors {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:430px;
+    height: 100px;
+}
+
+#edit-profile {
+    height: 27px;
+    width: 125px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: rgb(165, 165, 165);
+    border: 1px solid rgb(165, 165, 165);
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#this-user {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color:rgb(63, 59, 59);
+}
+
+#share-profile {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(26, 134, 206);
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    width:90px;
+    cursor: pointer;
+}
+
+.pointer-underline:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }

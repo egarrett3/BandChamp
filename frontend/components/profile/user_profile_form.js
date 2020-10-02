@@ -1,6 +1,6 @@
 import React from 'react'
 import GreetingContainer from "../greeting/greeting_container";
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faEdit, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class UserProf extends React.Component {
@@ -36,8 +36,16 @@ class UserProf extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <div>{this.props.currentUser.username}</div>
+                            <div id='profile-editors'>
+                                <div id='this-user'>{this.props.currentUser.username}</div>
+                                <button id='edit-profile'>
+                                    <FontAwesomeIcon icon={faEdit} size='1x' />
+                                    <div className='pointer-underline'>EDIT PROFILE</div>
+                                </button>
+                                <div id='share-profile'>
+                                    <FontAwesomeIcon icon={faPaperPlane} size='1x' />
+                                    <div className='pointer-underline'>share profile</div>
+                                </div>
                             </div>
                         </div>
                     </div>
