@@ -5,7 +5,13 @@ class User < ApplicationRecord
 
   attr_reader :password
   after_initialize :ensure_session_token
+  has_one_attached :photo
 
+  # validates :check_file_presence
+
+  # def check_file_presence
+  #   errors.add(:photo, "no file added") unless photo.attached?
+  # end
 
   def self.find_by_credentials(username, password)
     if username.include?('@')

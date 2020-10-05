@@ -27,7 +27,7 @@ class UserProf extends React.Component {
                     </div>
                     <div id='profile-settings'>
                         <div id='profile-spacer'>
-                            <div id='prof-pic'>
+                            <div id='prof-pic' onClick={() => this.props.openModal('addimage')}>
                                 <div className='specifications'>
                                     <FontAwesomeIcon icon={faCamera} size='2x' />
                                     <div id='spec'>
