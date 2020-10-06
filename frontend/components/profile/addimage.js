@@ -6,18 +6,47 @@ class AddImage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            photoFile: null
         }
+    }
+
+    handleFile(e) {
+        this.setState({photoFile: e.currentTarget.files[0]});
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        const id = this.props.id;
+        formData.append('user[username]',this.props.currentUser.username);
+        formData.append('user[photo]', this.state.PhotoFile);
+        debugger
+        this.props.placePic(formData, id);
+        // $.ajax({
+        //     url: `api/users/${id}`,
+        //     method: 'PATCH',
+        //     data: { formData },
+        //     contentType: false,
+        //     processData: false,
+        // }).then(
+        //     (response) => console.log(response.message),
+        //     (response) => console.log(response.responseJSON)
+        // )
     }
 
     render() {
 
         return (
             <div id='choose-file'>
-                <input type='file' name="file" id="file" className="inputfile"/>
-
-                <label htmlFor="file"><div id='computer-icon'><FontAwesomeIcon icon={faDesktop} /></div>Upload an image from my Computer</label>
-
+                <input type='file' 
+                    name="file" id="file" 
+                    className="inputfile" 
+                    onChange={
+                        this.handleFile.bind(this),
+                        this.handleSubmit.bind(this)
+                    }/>
+                <label htmlFor="file"><div id='computer-icon'><FontAwesomeIcon icon={faDesktop} /></div>
+                       Upload an image from my Computer</label>
                 <div id='stipulations'>480 pixels minimum (bigger is better), .jpg, .gif or .png, 4MB max</div>
             </div>
         )

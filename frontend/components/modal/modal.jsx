@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalLoginContainer from '../session_form/modal_login_container';
 import SignupContainer from '../session_form/signup_container';
-import AddImage from '../profile/addimage';
+import AddImageContainer from '../profile/add_image';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 
@@ -17,7 +17,7 @@ const Modal = ({modal, closeModal}) => {
             component = <SignupContainer />
             break;
         case 'addimage':
-            component = <AddImage />
+            component = <AddImageContainer />
             break;
         default:
             return null;
@@ -56,7 +56,7 @@ const Modal = ({modal, closeModal}) => {
                         <h3 className="modal-login-header">Add a Profile Image</h3>
                         <div onClick={closeModal} className="close">X</div>
                     </div>
-                    {component}
+                    {component }
                 </div>
             </div>
         )
@@ -67,12 +67,14 @@ const Modal = ({modal, closeModal}) => {
 const mapStateToProps = (state) => {
     return {
         modal: state.ui.modal,
+        id: state.session.id
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         closeModal: () => dispatch(closeModal()),
+        placePic: (formData, id) => dispatch(updateUser(formData, id))
     };
 };
 

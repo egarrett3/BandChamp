@@ -18,8 +18,6 @@ const receiveAllSongs = (songs) => {
     }
 };
 
-
-
 export const fetchSg = (songId) => dispatch => fetchSong(songId)
     .then(song => dispatch(receiveSong(song)));
 
