@@ -1596,3 +1596,97 @@ ul#social-media-list li {
     list-style-type: none;
     padding-bottom: 25px;
 }
+
+#song-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 900px;
+    margin-bottom: 30px;
+    background-color: rgb(167, 128, 182);
+}
+
+#single-track {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 76%;
+    height: 70%;
+    background-color: white;
+}
+
+#song-header {
+    width: 76%;
+    height: 15%;
+    background-color: rgb(255, 180, 217);
+}
+
+#music-community {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height: 38px;
+    background-color: rgb(232, 232, 232);
+}
+
+.song-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 104px;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#song-info {
+    display: flex;
+    width: 100%;
+    height: 94%;
+    flex-direction: row;
+    
+}
+
+#album-track-title {
+    width: 85%;
+    height: 100%;
+    background-color: lawngreen;
+}
+
+#discography {
+    width: 15%;
+    height: 100%;
+    background-color: lightblue;
+}
+
+#song-info-title {
+    width:100%;
+    height:15%;
+    background-color: lightsalmon;
+}
+
+#trackANDalbum {
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height:85%;
+    background-color: lightslategray;
+}
+
+#musicPlayerTrack {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    height: 100%;
+    background-color: maroon;
+}
+
+#album-picture {
+    height: 100%;
+    width: 50%;
+    background-color: rgb(255, 245, 153);
+}
