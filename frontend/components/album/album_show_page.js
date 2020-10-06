@@ -21,7 +21,10 @@ class AlbumShow extends React.Component {
     }
 
     render() {
-        let id = this.props.location.aboutProps.id ? this.props.location.aboutProps.id : this.state.id
+        let id = this.props.location.aboutProps.id 
+        id = this.props.location.aboutProps.id
+          ? this.props.location.aboutProps.id
+          : this.state.id;
         id = (id - 1) % 7;
         const photo_url = this.props.songs[id].photo_url;
         const song_url = this.props.songs[id].song_url;

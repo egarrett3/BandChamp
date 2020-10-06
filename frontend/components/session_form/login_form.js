@@ -85,7 +85,6 @@ class LoginForm extends React.Component {
       </h5>
     );
 
-    debugger
     return <div>{crossRoad}</div>;
   }
 

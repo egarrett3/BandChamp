@@ -34,16 +34,5 @@ class Daily extends React.Component {
 
 }
 
-// const mapStateToProps = ({ entities: { songs } }) => {
-//     return {
-//         sng: Object.values(songs)
-//     }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         fetchSongs: () => dispatch(fetchSgs()),
-//     }
-// }
 
 export default Daily
