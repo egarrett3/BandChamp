@@ -1,4 +1,7 @@
 import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin, faAngellist, faGithub } from "@fortawesome/free-brands-svg-icons";
+
 
 const footerItem = () => (
         <footer id="bottom">
@@ -32,7 +35,13 @@ const footerItem = () => (
               <li>Contact/Help</li>
             </ul>
           </div>
-          <div className="col"></div>
+        <div className="col">
+          <ul id='social-media-list'>
+            <li> <a href="https://www.linkedin.com/in/edward-garrett-9b54b5b1/" ><FontAwesomeIcon icon={faLinkedin} size='2x' color='black'/></a></li>
+            <li> <a href="https://angel.co/u/edward-garrett-1" ><FontAwesomeIcon icon={faAngellist} size='2x' color='black'/></a></li>
+            <li> <a href="https://github.com/egarrett3" ><FontAwesomeIcon icon={faGithub} size='2x' color='black'/></a></li>
+          </ul>
+        </div>
           <div className="col">
             <ul className="clean-list">
               <li>Login</li>

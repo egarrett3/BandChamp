@@ -1585,3 +1585,9 @@ input[type="file"]{
     font-size: 22px;
     color: rgb(138, 128, 128);
 }
+
+ul#social-media-list li {
+		display: block;
+        list-style-type: none;
+        padding-bottom: 25px;
+	}

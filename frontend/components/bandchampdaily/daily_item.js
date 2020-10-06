@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const DailyItem = props => {
 
     return (
-        <div id='showcase'>
+        <Link id='showcase' to='/songPage'>
             <img src={props.song.photo_url} id='showcase-pic' />
             <div id="frame">
                 <div>
@@ -17,7 +18,7 @@ const DailyItem = props => {
                 </div>
                 <div className="feature">FEATURE</div>
             </div>
-        </div>
+        </Link>
     )
 
 }
