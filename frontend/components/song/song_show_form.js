@@ -94,8 +94,6 @@ class SongShow extends React.Component {
         const ct = this.getTime(this.state.currentTime);
         const dur = this.getTime(this.state.duration);
 
-        
-
         return (
             <div>
                 <GreetingContainer />
