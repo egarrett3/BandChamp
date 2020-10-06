@@ -1244,6 +1244,7 @@ span#lng-color:hover {
 }
 
 .album-page {
+    text-decoration: none;
     background-color: white;
     height: 280px;
     width: 208px;
@@ -1330,6 +1331,10 @@ span#lng-color:hover {
     font-family:Georgia, Times, serif;
     line-height: 17px;
     font-size: 14px;
+}
+
+.descriptions {
+    color: black;
 }
 
 .descriptions:hover {
@@ -1587,7 +1592,7 @@ input[type="file"]{
 }
 
 ul#social-media-list li {
-		display: block;
-        list-style-type: none;
-        padding-bottom: 25px;
-	}
+    display: block;
+    list-style-type: none;
+    padding-bottom: 25px;
+}

@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 const DailyItems = props => {
     
     return (
-        <div className='album-page'>
+        <Link className='album-page' to='/songPage'>
             <img src={props.song.photo_url} className='alb-pics'/>
             <div className='frames'>
                 <div>
@@ -12,7 +14,7 @@ const DailyItems = props => {
                 </div>
                 <div className="feature">FEATURE</div>
             </div>
-        </div>
+        </Link>
     )
 
 }
