@@ -3,11 +3,10 @@ import AlbumShow from './album_show_page';
 import { fetchSg } from "../../actions/song_actions";
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ session, entities: { users, songs }}) => {
+const mapStateToProps = ({ session, entities: { users, song }}) => {
   return {
     currentUser: users[session.id],
-    id: session.id,
-    songs: songs
+    song: song,
   };
 };
 

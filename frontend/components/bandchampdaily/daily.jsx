@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import { fetchSong } from '../../util/song_api_util'
 import DailyItem from './daily_item'
 import DailyItems from './daily_items'
 
@@ -24,7 +25,7 @@ class Daily extends React.Component {
                     })}
                     
                     {this.props.songs.map(function (song, idx) {
-                        return <DailyItems key={idx} song={song} />
+                        return <DailyItems key={idx} song={song} id={song.id}/>    
                     })}
                     
                 </div>
@@ -35,4 +36,7 @@ class Daily extends React.Component {
 }
 
 
+
 export default Daily
+
+

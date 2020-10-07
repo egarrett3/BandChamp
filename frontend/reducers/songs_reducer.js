@@ -6,10 +6,8 @@ const songsReducer = (state = {}, action) => {
     Object.freeze(state)
 
     switch (action.type) {
-        case RECEIVE_SONG:
-            return Object.assign({}, state, action.song )
         case RECEIVE_ALL_SONGS:
-            return ( action.songs )
+            return Object.assign({}, state, action.songs )
         default:
             return state;
     };

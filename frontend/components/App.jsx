@@ -18,7 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={SongShowContainer} />
           <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/songPage" component={AlbumContainer} />
+          <Route exact path="/songPage/:songId" component={AlbumContainer} />
           <ProtectedRoute exact path="/usrprofile" component={UserProfileContainer} />
         </Switch>
         

@@ -7,30 +7,29 @@ class AlbumShow extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-          id: localStorage.getItem("id")
-            ? JSON.parse(localStorage.getItem("id"))
-            : [],
+          id : 1
         };
         
     }
 
     componentDidMount() {
-        let id = this.props.location.aboutProps.id ? this.props.location.aboutProps.id : this.state.id;
-        this.props.fetchSong(id)
-        if (this.props.location.aboutProps.id) {localStorage.setItem('id',(this.props.location.aboutProps.id))};
+        this.props.fetchSong(this.props.match.params.songId)
+    }
+
+    loadSongURL() {
+        debugger
+        if (this.props.song.song_url) {
+            document.getElementById('src').src = this.props.song.song_url;
+            document.getElementById('indi').load();
+        }
     }
 
     render() {
-        let id = this.props.location.aboutProps.id 
-        id = this.props.location.aboutProps.id
-          ? this.props.location.aboutProps.id
-          : this.state.id;
-        id = (id - 1) % 7;
-        const photo_url = this.props.songs[id].photo_url;
-        const song_url = this.props.songs[id].song_url;
-        const title = this.props.songs[id].title;
-        
         debugger
+        const photo_url = this.props.song.photo_url;
+        const song_url = this.props.song.song_url;
+        const title = this.props.song.title;
+        
         return (
           <div>
             <GreetingContainer />
@@ -50,8 +49,13 @@ class AlbumShow extends React.Component {
                     <div id="trackANDalbum">
                       <div id="musicPlayerTrack">
                         <div>
+                            {this.loadSongURL()}
                           <audio id="indi" controls>
-                            <source src={song_url} type="audio/mp3" />
+                            <source
+                              id ='src'
+                              src={this.props.song.song_url}
+                              type="audio/mp3"
+                            />
                           </audio>
                         </div>
                         <div className="digital-track">Digital Track </div>
@@ -66,7 +70,8 @@ class AlbumShow extends React.Component {
                         <div id="buy-full">Buy the Full Digital Album</div>
                         <div className="digital-track">
                           from Mousse T´s Classic Remixes Vol. 1, released
-                          September 3, 2020 <br /><br />
+                          September 3, 2020 <br />
+                          <br />
                         </div>
                         <div className="digital-track">all rights reserved</div>
                       </div>
