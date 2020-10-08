@@ -640,7 +640,7 @@ h6 {
     padding: 18px;
 }
 
-.logout-dropdown-content {
+#logout-dropdown-content {
     display: block;
     position: relative;
     left: -88px;
