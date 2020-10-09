@@ -1235,21 +1235,23 @@ span#lng-color:hover {
 }
 
 #bandchamp-daily {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 1279px;
-    height: 854px;
+    height: 554px;
     background-color: #f0f2f2;
-    overflow-x: hidden;
 }
 
 #song-collage {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-between;
-    box-sizing: content-box;
-    padding: 84px;
-    width: 1110px;
-    height: 600px;
+
+    width: 1106px;
+    height: 280px;
     overflow-x: hidden;
 }
 
@@ -1258,6 +1260,7 @@ span#lng-color:hover {
     background-color: white;
     height: 280px;
     width: 208px;
+    margin-left:20px;
     cursor: pointer;
 }
 
@@ -1270,11 +1273,12 @@ span#lng-color:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+
 }
 
 #showcase {
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     width: 655px;
     height: 280px;
     background-color: white;
@@ -1288,6 +1292,7 @@ span#lng-color:hover {
 
 #frame {
     display: flex;
+    width:375px;
     justify-content: space-between;
     flex-direction: column;
     box-sizing: content-box;
@@ -1352,13 +1357,14 @@ span#lng-color:hover {
 }
 
 #daily-title {
-    display: block;
+    display: flex;
+    position: relative;
+    left: -488px; 
+    top: -50px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: rgb(54, 113, 145);
-    position: relative;
-    top: 68px;
-    left: 86px;
+    
 }
 
 #profile-canvas {
