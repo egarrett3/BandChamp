@@ -1235,9 +1235,10 @@ span#lng-color:hover {
 }
 
 #bandchamp-daily {
-    width: 100%;
+    width: 1279px;
     height: 854px;
     background-color: #f0f2f2;
+    overflow-x: hidden;
 }
 
 #song-collage {
@@ -1246,9 +1247,10 @@ span#lng-color:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     box-sizing: content-box;
-    padding: 87px;
+    padding: 84px;
     width: 1110px;
     height: 600px;
+    overflow-x: hidden;
 }
 
 .album-page {
