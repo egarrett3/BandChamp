@@ -9,7 +9,7 @@ const DailyItems = props => {
         <Link className='album-page' to={{
             pathname:`/songPage/${props.song.id}`
         }}>
-            <img src={props.song.photo_url} className='alb-pics'/>
+            <img src={props.song.photo_url} className='alb-pics d-block'/>
             <div className='frames'>
                 <div>
                     <div className='descriptions'>Lorem ipsum. Veni vidi vici. alia iacta est.</div>

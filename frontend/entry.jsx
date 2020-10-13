@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from './components/Root';
-import { fetchSg } from './actions/song_actions';
-import { fetchSgs } from './actions/song_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;

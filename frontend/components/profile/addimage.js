@@ -6,32 +6,34 @@ class AddImage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            photoFile: null
+            // photoFile: null
         }
     }
 
-    handleFile(e) {
-        this.setState({photoFile: e.currentTarget.files[0]});
-    }
+    // handleFile(e) {
+        
+    //     debugger
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
         const id = this.props.id;
-        formData.append('user[username]',this.props.currentUser.username);
-        formData.append('user[photo]', this.state.PhotoFile);
-        debugger
-        this.props.placePic(formData, id);
-        // $.ajax({
-        //     url: `api/users/${id}`,
-        //     method: 'PATCH',
-        //     data: { formData },
-        //     contentType: false,
-        //     processData: false,
-        // }).then(
-        //     (response) => console.log(response.message),
-        //     (response) => console.log(response.responseJSON)
-        // )
+        formData.append('user[username]', this.props.currentUser.username);
+        formData.append('user[photo]', e.currentTarget.files[0] );
+        formData.append('user[id]', id );
+        formData.append('user[email]', this.props.currentUser.email );
+        // this.props.placePic(formData, id);
+        $.ajax({
+            url: `api/users/${id}`,
+            method: 'PATCH',
+            data: { formData },
+            contentType: false,
+            processData: false,
+        }).then(
+            (response) => console.log(response.message),
+            (response) => console.log(response.responseJSON)
+        )
     }
 
     render() {
@@ -41,8 +43,8 @@ class AddImage extends React.Component {
                 <input type='file' 
                     name="file" id="file" 
                     className="inputfile" 
-                    onChange={
-                        this.handleFile.bind(this),
+                    onInput={
+                        // this.handleFile.bind(this),
                         this.handleSubmit.bind(this)
                     }/>
                 <label htmlFor="file"><div id='computer-icon'><FontAwesomeIcon icon={faDesktop} /></div>

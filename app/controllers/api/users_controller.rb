@@ -13,11 +13,13 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    
     debugger
-    if @user
-      @user.update!(photo: params[:user][:photo])
+    if @user.update!(photo: params[:user][:photo])
+      debugger
       render "api/users/show"
     else
+      debugger
       render json: @user.errors.full_messages, status: 420
     end
 

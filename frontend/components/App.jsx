@@ -9,21 +9,21 @@ import SongShowContainer from './song/song_show_container';
 import Modal from './modal/modal';
 import UserProfileContainer from './profile/user_container';
 
-const App = () => {
+function App() {
 
-    return (
-      <div className="page">
-        <Modal />
+  return (
+    <div className="page">
+      <Modal />
 
-        <Switch>
-          <Route exact path="/" component={SongShowContainer} />
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/songPage/:songId" component={AlbumContainer} />
-          <ProtectedRoute exact path="/usrprofile" component={UserProfileContainer} />
-        </Switch>
-        
-      </div>
-    );
+      <Switch>
+        <Route exact path="/" component={SongShowContainer} />
+        <Route exact path="/login" component={LoginContainer} />
+        <Route exact path="/songPage/:songId" component={AlbumContainer} />
+        <ProtectedRoute exact path="/usrprofile" component={UserProfileContainer} />
+      </Switch>
+
+    </div>
+  );
 }
 
 export default App;

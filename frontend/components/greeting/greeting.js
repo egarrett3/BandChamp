@@ -28,10 +28,12 @@ class Greeting extends React.Component {
   closeList(e) {
     let ele = document.getElementById('logout-dropdown-content')
   
-    if (!ele.contains(e.target)) {
-      this.setState({ showList: false }, () => {
-        document.removeEventListener("click", this.closeList);
-      });
+    if (ele) {
+      if (!ele.contains(e.target)) {
+        this.setState({ showList: false }, () => {
+          document.removeEventListener("click", this.closeList);
+        });
+      }
     }
   }
 

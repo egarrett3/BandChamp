@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
  
 .adjust-small {
     margin-top: 55px;
@@ -1240,19 +1241,45 @@ span#lng-color:hover {
     align-items: center;
     justify-content: center;
     width: 1279px;
-    height: 554px;
+    height: 800px;
     background-color: #f0f2f2;
 }
 
 #song-collage {
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-between;
-
-    width: 1106px;
-    height: 280px;
+    /* box-sizing: content-box; */
+    padding: 84px;
+    width: 1110px;
+    height: 600px;
     overflow-x: hidden;
+}
+
+.slideRight {
+    animation: slideRight 300ms ease;
+}
+
+.slideLeft {
+    animation: slideLeft 300ms ease;
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translate(0px);
+    }
+    100% {
+        transform: translate(1106px);
+    }
+}
+@keyframes slideLeft {
+    0% {
+        transform: translate(0px);
+    }
+    100% {
+        transform: translate(-1106px);
+    }
 }
 
 .album-page {
@@ -1260,7 +1287,7 @@ span#lng-color:hover {
     background-color: white;
     height: 280px;
     width: 208px;
-    margin-left:20px;
+    /* margin-left:20px; */
     cursor: pointer;
 }
 
@@ -1360,7 +1387,7 @@ span#lng-color:hover {
     display: flex;
     position: relative;
     left: -488px; 
-    top: -50px;
+    top: 50px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: rgb(54, 113, 145);

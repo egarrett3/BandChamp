@@ -4,7 +4,7 @@ import { fetchSgs } from '../../actions/song_actions';
 import CarouselItem from './carousel_item';
 
 
-class Carousel extends React.Component {
+class SellingItems extends React.Component {
     constructor(props) {
       super(props) 
         this.state = {
@@ -108,4 +108,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Carousel)
+export default connect(mapStateToProps, mapDispatchToProps)(SellingItems)
