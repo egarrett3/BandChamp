@@ -165,15 +165,24 @@ class SongShow extends React.Component {
               </div>
               <div className="sidebar-container">
                 <img src={plist[6]} className="building-image" />
-                <div id="building-image"></div>
+                <div className="building-image-words">
+                  <div>Lorem Ipsum</div>
+                  <div>Veni Vidi Vici. Alia Iacta Est.</div>
+                </div>
                 <img src={plist[4]} className="cloud-image" />
-                <div id="cloud-image"></div>
+                <div className="cloud-image-words">
+                  <div>Lorem Ipsum</div>
+                  <div>Ad Astra per Aspera</div>
+                </div>
                 <img src={plist[5]} className="lake-image" />
-                <div id="lake-image"></div>
+                <div className="lake-image-words">
+                  <div>Lorem Ipsum</div>
+                  <div className='smaller-print'>Audentes Fortuna Iuvat</div>
+                </div>
               </div>
             </div>
             <SellingItems songs={this.props.songs} />
-              <Daily songs={this.props.songs}/>
+            <Daily songs={this.props.songs} />
             <FooterItem />
           </div>
         );  
