@@ -17,7 +17,7 @@ class AlbumShow extends React.Component {
     }
 
     loadSongURL() {
-        debugger
+        
         if (this.props.song.song_url) {
             document.getElementById('src').src = this.props.song.song_url;
             document.getElementById('indi').load();
@@ -25,7 +25,7 @@ class AlbumShow extends React.Component {
     }
 
     render() {
-        debugger
+
         const photo_url = this.props.song.photo_url;
         const song_url = this.props.song.song_url;
         const title = this.props.song.title;

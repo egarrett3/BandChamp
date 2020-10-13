@@ -10,10 +10,6 @@ class AddImage extends React.Component {
         }
     }
 
-    // handleFile(e) {
-        
-    //     debugger
-    // }
 
     handleSubmit(e) {
         e.preventDefault();
