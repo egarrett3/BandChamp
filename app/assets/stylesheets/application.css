@@ -370,21 +370,22 @@ div.banner {
     position: relative;
     display: flex; 
     align-items: center;
-    justify-content: space-around;
     background: #f5f5f5;
     height: 50px;
 }
 
 .modal-login-header {
     position: absolute;
+    left: 20px;
     display:block;
-    right:45%;
     color:rgb(51,51,51);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: larger;
 }
 
 .close {
+    position: absolute;
+    right: 20px;
     font-size: x-large;
     font-family: OCR A Std, monospace;
     color:rgb(179, 179, 179);
