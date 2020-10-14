@@ -6,7 +6,8 @@ import AddImage from './addimage';
 const mapStateToProps = ({ session, entities: { users } }) => {
     return {
         currentUser: users[session.id],
-        id: session.id
+        id: session.id,
+        photo: users[session.id].photo
     };
 }
 
