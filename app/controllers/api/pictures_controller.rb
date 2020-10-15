@@ -1,34 +1,39 @@
 class Api::PicturesController < ApplicationController
-
-    def index
-        @imageable = find_imageable
-        @pictures = @imageable.pictures
-        render :index
-    end
+    before_action :ensure_logged_in
+    # def index
+    #     @imageable = find_imageable
+    #     @pictures = @imageable.pictures
+    #     render :index
+    # end
 
     def show
-        
+        @imageable = Picture.find(picture_params)
+        @pictures = @imageable.pictures[0]
+        render :show
     end
 
     def create 
-        @imageable = find_imageable
-        @picture = @imageable.comments.build(params[:pictures])
-            if @picture.save
-                flash[:notice] = "Successfully created comment."
-                redirect_to :id => nil
-            else
-                render :action => 'new'
-            end
+        @picture = @imageable.pictures.new(name: params[:name])
+        debugger
+        if @picture.save
+            debugger
+            render json: @picture, notice: 'picture successfully created'
+        else
+            render json: @user.errors.full_messages, status: 422
+        end
+    end
+
+    def destroy
+        @picture = Picture.find_by(params[:id])
+        if @picture.delete!
+            render notice: 'delete successful'
+        end
     end
 
     private
 
-    def find_imageable
-        params.each do |name, value|
-            if name =~ /(.+)_id$/
-                return $1.classify.constantize.find(value)
-            end
-        end
+    def picture_params
+        params.require(:picture).permit(:name,:id)
     end
 
 end
