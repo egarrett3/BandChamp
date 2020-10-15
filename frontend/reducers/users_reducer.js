@@ -4,7 +4,7 @@ import { PLACE_PHOTO } from '../actions/user_actions'
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state)
-    debugger
+
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return Object.assign({}, state, { [action.currentUser.id]: action.currentUser })
