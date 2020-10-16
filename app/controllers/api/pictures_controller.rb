@@ -1,3 +1,4 @@
+require 'aws-sdk-s3'
 class Api::PicturesController < ApplicationController
     # def index
     #     @imageable = find_imageable
@@ -5,20 +6,35 @@ class Api::PicturesController < ApplicationController
     #     render :index
     # end
 
+    # s3 = Aws::S3::Resource.new(region: 'us-east-1')
+    # file = params[:photo]
+    # bucket = 'active-storage-banchamp-pro'
+    # name = File.basename(file)
+    # obj = s3.bucket(bucket).object(name)
+    # obj.upload_file(file)
+
     def show
-        @imageable = Picture.find(picture_params)
-        @pictures = @imageable.pictures[0]
+        @imageable = Picture.find_by(params[:picture][:user_id])
+        @picture = @imageable.pictures[0]
         render :show
     end
 
-    def create 
-        @picture = @imageable.pictures.new(name: params[:name])
-        debugger
-        if @picture.save
-            debugger
-            render json: @picture, notice: 'picture successfully created'
+    def update
+        if params[:picture][:type] == 'User'
+            @user = User.find_by(id: params[:id])
+            @id = @user.pictures[0].imageable_id
+        else params[:picture][:type] == 'Song'
+            @song = User.find_by(id: params[:id])
+            @id = @song.pictures[0].imageable_id
+        end
+        @picture = Picture.find_by(id: @id)
+        
+        if @picture.photo.attached?
+            @picture.photo.purge
+            @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
+            render 'api/users/profile'
         else
-            render json: @user.errors.full_messages, status: 422
+            render 'api/users/profile'
         end
     end
 
@@ -29,10 +45,5 @@ class Api::PicturesController < ApplicationController
         end
     end
 
-    private
-
-    def picture_params
-        params.require(:picture).permit(:name,:id)
-    end
 
 end

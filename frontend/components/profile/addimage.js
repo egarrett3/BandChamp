@@ -19,20 +19,13 @@ class AddImage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let user = Object.assign({}, this.props.currentUser, { photo: e.currentTarget.files[0] })
-        const id = this.props.currentUser.id
-        // this.props.placePic(formData, id);
-        debugger
-        $.ajax({
-            url: `/api/users/${id}`,
-            method: 'PATCH',
-            data: { user },
-            contentType: false,
-            processData: false,
-        }).then(
-            (response) => console.log(response.message),
-            (response) => console.log(response.responseJSON)
-        )
+        // let user = Object.assign({}, {type: 'User'}, { photo: e.currentTarget.files[0] })
+        const user_id = this.props.currentUser.id
+        let u = 'User'
+        const user = new FormData();
+        user.append('picture[photo]', e.currentTarget.files[0] );
+        user.append('picture[type]', u );
+        this.props.placePic(user, user_id);
     }
 
     render() {

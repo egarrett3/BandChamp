@@ -11,6 +11,18 @@ class UserProf extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.props.getUser(this.props.currentUser.id)
+    }
+
+    profileFrame() {
+        if (this.props.photo) {
+            return <img id='profile-picture' src={this.props.photo} />
+        } else {
+          return <></>;
+        }
+    }
+
     render() {
 
         return (
@@ -28,6 +40,7 @@ class UserProf extends React.Component {
                     <div id='profile-settings'>
                         <div id='profile-spacer'>
                             <div id='prof-pic' onClick={() => this.props.openModal('addimage')}>
+                                {this.profileFrame()}
                                 <div className='specifications'>
                                     <FontAwesomeIcon icon={faCamera} size='2x' />
                                     <div id='spec'>

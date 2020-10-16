@@ -933,8 +933,6 @@ input[type='range']::-webkit-slider-runnable-track {
    opacity: 0.8;
 }
 
-
-
 .building-image-words {
    position: absolute;
    top: 24%;
@@ -1792,4 +1790,11 @@ ul#social-media-list li {
     font-weight:bold;
     color: rgb(55, 117, 175);
     margin-bottom: 20px;
+}
+
+#profile-picture {
+    position: absolute;
+    top: -1px;
+    width: 212px;
+    height: 222px;
 }

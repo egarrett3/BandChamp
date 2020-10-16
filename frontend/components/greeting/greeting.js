@@ -46,11 +46,11 @@ class Greeting extends React.Component {
     }
   }
 
-  LoggedIn() {
-    this.setState(() => ({
-      user: this.currentUsr(),
-    }));
-  }
+  // LoggedIn() {
+  //   this.setState(() => ({
+  //     user: this.currentUsr(),
+  //   }));
+  // }
 
   currentUsr() {
     let bool;
