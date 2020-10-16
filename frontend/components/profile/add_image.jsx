@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateUser } from '../../actions/picture_actions';
+import { closeModal } from "../../actions/modal_actions";
 import AddImage from './addimage';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
@@ -12,7 +13,8 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        placePic: (user, user_id) => dispatch(updateUser(user, user_id))
+        placePic: (user, user_id) => dispatch(updateUser(user, user_id)),
+        closeModal: () => dispatch(closeModal())
     }
 }
 

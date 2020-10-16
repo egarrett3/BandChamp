@@ -25,7 +25,7 @@ class AddImage extends React.Component {
         const user = new FormData();
         user.append('picture[photo]', e.currentTarget.files[0] );
         user.append('picture[type]', u );
-        this.props.placePic(user, user_id);
+        this.props.placePic(user, user_id).then(() => this.props.closeModal());
     }
 
     render() {
