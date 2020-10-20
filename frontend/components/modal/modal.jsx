@@ -2,6 +2,7 @@ import React from 'react'
 import ModalLoginContainer from '../session_form/modal_login_container';
 import SignupContainer from '../session_form/signup_container';
 import AddImageContainer from '../profile/add_image';
+import BannerContainer from '../profile/banner';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 

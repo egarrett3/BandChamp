@@ -11,7 +11,6 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchSongs();
     let aud = document.getElementById("audio-track");
     aud.value = "0";
     this.audio.addEventListener("timeupdate", (e) => {
@@ -68,27 +67,11 @@ class AudioPlayer extends React.Component {
     }
   }
 
-//   LoggedIn() {
-//     this.setState(() => ({
-//       user: this.currentUsr(),
-//     }));
-//   }
-
-//   currentUsr() {
-//     let bool;
-//     if (this.props.currentUser) {
-//       bool = true;
-//     } else {
-//       bool = false;
-//     }
-//     return bool;
-//   }
-
   render() {
     const slist = this.props.songs.map((song) => song.song_url);
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
-
+    
     return (
       <div>
         

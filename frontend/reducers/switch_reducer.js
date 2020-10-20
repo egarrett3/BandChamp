@@ -1,6 +1,10 @@
 import { OPEN_SONG, CLOSE_SONG } from "../actions/song_actions";
+import { merge } from "lodash";
 
-const modalReducer = (state = null, action) => {
+const switchReducer = (state = null, action) => {
+  Object.freeze(state);
+
+
   switch (action.type) {
     case OPEN_SONG:
       return merge({}, action.song);
@@ -11,4 +15,4 @@ const modalReducer = (state = null, action) => {
   }
 };
 
-export default modalReducer;
+export default switchReducer;
