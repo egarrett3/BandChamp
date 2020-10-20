@@ -21,6 +21,14 @@ s5=Song.create(title: 'Pollack')
 s6=Song.create(title: 'GlassBall')
 s7=Song.create(title: 'SymmetricBuilding')
 
+p2=Picture.create(imageable: Song.find_by(id:'2', name: 'Zelda')
+p3=Picture.create(imageable: Song.find_by(id:'3', name: 'Bufallo Roamer')
+p4=Picture.create(imageable: Song.find_by(id:'4', name: 'Lake')
+p1=Picture.create(imageable: Song.find_by(id:'1', name: 'Tank')
+p5=Picture.create(imageable: Song.find_by(id:'5', name: 'Pollack')
+p6=Picture.create(imageable: Song.find_by(id:'6', name: 'GlassBall')
+p7=Picture.create(imageable: Song.find_by(id:'7', name: 'SymmetricBuilding')
+
 file1 = open('https://active-storage-bandchamp-pro.s3.amazonaws.com/graffiti.jpg')
 file2 = open('https://active-storage-bandchamp-pro.s3.amazonaws.com/COWBOY+BEBOP+OPHQ.mp3')
 
@@ -44,13 +52,13 @@ file14 = open('https://active-storage-bandchamp-pro.s3.amazonaws.com/file_exampl
 
 
 
-s2.photo.attach(io: file5, filename: 'moon.jpg')
-s3.photo.attach(io: file7, filename: 'buffalo.jpg')
-s4.photo.attach(io: file9, filename: 'lake.jpg')
-s1.photo.attach(io: file1, filename: 'graffiti.jpg')
-s5.photo.attach(io: file11, filename: 'pollack.jpg')
-s6.photo.attach(io: file13, filename: 'glassball.jpg')
-s7.photo.attach(io: file3, filename: 'symmetricbuilding.jpg')
+p2.photo.attach(io: file5, filename: 'moon.jpg')
+p3.photo.attach(io: file7, filename: 'buffalo.jpg')
+p4.photo.attach(io: file9, filename: 'lake.jpg')
+p1.photo.attach(io: file1, filename: 'graffiti.jpg')
+p5.photo.attach(io: file11, filename: 'pollack.jpg')
+p6.photo.attach(io: file13, filename: 'glassball.jpg')
+p7.photo.attach(io: file3, filename: 'symmetricbuilding.jpg')
 
 s2.song.attach(io: file6, filename: 'Track 5.wav')
 s3.song.attach(io: file8, filename: 'COWBOY BEBOP OPHQ.mp3')
