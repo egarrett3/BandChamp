@@ -1,60 +1,30 @@
-import React from 'react';
-import SellingItems from '../carousel/carousel';
-import FooterItem from '../footer/footer';
-import Daily from '../bandchampdaily/daily';
-import GreetingContainer from "../greeting/greeting_container";
-import AudioPlayer from './audio_player';
+import React from "react";
+import { closeSong } from "../../actions/song_actions";
+import { connect } from "react-redux";
+
+const SongSwitch = ({ song }) => {
+  if (!song) {
+    return null;
+  }
+
+  
+  const slist = this.props.song.map((song) => song.song_url);
+  const plist = this.props.song.map((song) => song.photo_url);
+
+  const ct = this.getTime(this.state.currentTime);
+  const dur = this.getTime(this.state.duration);
 
 
-class SongShow extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-           
-        }
-    }
-    
-    componentDidMount() {
-        this.props.fetchSongs();
-    }
-
-    LoggedIn() {
-        this.setState(() => ({
-            user: this.currentUsr()
-        }))
-    }
-
-    currentUsr() {
-        let bool;
-        if (this.props.currentUser) {
-            bool = true
-        } else {
-            bool = false
-        }
-        return bool;
-    }
-
-
-    render() {
-       debugger
-        // const slist = this.props.songs.map(song => song.song_url)
-        const plist = this.props.songs.map(song => song.photo_url)
-
-        // const ct = this.getTime(this.state.currentTime);
-        // const dur = this.getTime(this.state.duration);
-        
-        return (
-          <div>
-            <GreetingContainer />
-            <div
+  return (
+      <div>
+        <div
               className={`img-container ${
                 this.currentUsr() ? "adjust-small" : "adjust-large"
               }`}
             >
               <div className="graf-container">
                 <img src={plist[0]} className="graffiti-image" />
-                <AudioPlayer songs={this.props.songs} />
-                {/* <div id="audio-player">
+                <div id="audio-player">
                   <audio
                     ref={(ref) => (this.audio = ref)}
                     src={slist[0]}
@@ -107,33 +77,23 @@ class SongShow extends React.Component {
                     <span id="curTimeText">{ct}</span>/
                     <span id="durTimeText">{dur}</span>
                   </div>
-                </div> */}
-              </div>
-              <div className="sidebar-container">
-                <img src={plist[6]} className="building-image" />
-                <div className="building-image-words">
-                  <div>Lorem Ipsum</div>
-                  <div>Veni Vidi Vici. Alia Iacta Est.</div>
                 </div>
-                <img src={plist[4]} className="cloud-image" />
-                <div className="cloud-image-words">
-                  <div>Lorem Ipsum</div>
-                  <div>Ad Astra per Aspera</div>
-                </div>
-                <img src={plist[5]} className="lake-image" />
-                <div className="lake-image-words">
-                  <div>Lorem Ipsum</div>
-                  <div className='smaller-print'>Audentes Fortuna Iuvat</div>
-                </div>
-              </div>
             </div>
-            <SellingItems songs={this.props.songs} />
-            <Daily songs={this.props.songs} />
-            <FooterItem />
-          </div>
-        );  
-    }
-}
+        </div>
+      </div>
+  )
+};
 
+const mapStateToProps = (state) => {
+  return {
+    modal: state.ui.modal,
+  };
+};
 
-export default SongShow;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    closeSong: () => dispatch(closeSong()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongSwitch);

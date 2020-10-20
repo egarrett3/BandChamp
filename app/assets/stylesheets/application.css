@@ -873,10 +873,10 @@ input[type='range']::-webkit-slider-runnable-track {
     height: 480px;
 }
 
-.graffiti-image:hover {
+/* .graffiti-image:hover {
     cursor: pointer;
     opacity: 0.8;
-}
+} */
 
 .img-container {
     display: flex;

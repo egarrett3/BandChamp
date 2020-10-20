@@ -4,6 +4,22 @@ import { fetchSongs } from '../util/song_api_util';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
 export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 
+export const OPEN_SONG = "OPEN_SONG";
+export const CLOSE_SONG = "CLOSE_SONG";
+
+export const openSong = (song) => {
+  return {
+    type: OPEN_SONG,
+    song,
+  };
+};
+
+export const closeSong = () => {
+  return {
+    type: CLOSE_SONG,
+  };
+};
+
 const receiveSong = (song) => {
     return {
         type: RECEIVE_SONG,
