@@ -10,6 +10,7 @@ require 'open-uri'
 
 Song.destroy_all
 User.destroy_all
+Picture.destroy_all
 
 user1 = User.create(username: 'user1', email: 'fake@fake.com', password:'password')
 
