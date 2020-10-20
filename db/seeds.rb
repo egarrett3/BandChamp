@@ -11,6 +11,8 @@ require 'open-uri'
 Song.destroy_all
 User.destroy_all
 Picture.destroy_all
+Active_storage_blob.destroy_all
+Active_storage_attachments.destroy_all
 
 user1 = User.create(username: 'user1', email: 'fake@fake.com', password:'password')
 
