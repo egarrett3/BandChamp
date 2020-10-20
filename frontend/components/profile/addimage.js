@@ -12,14 +12,10 @@ class AddImage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // handleFile(e) {
-    //     this.setState({ photo: e.currentTarget.files[0] });
-    //     debugger
-    // }
+    
 
     handleSubmit(e) {
         e.preventDefault();
-        // let user = Object.assign({}, {type: 'User'}, { photo: e.currentTarget.files[0] })
         const user_id = this.props.currentUser.id
         let u = 'User'
         const user = new FormData();

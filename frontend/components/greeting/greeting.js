@@ -128,12 +128,12 @@ class Greeting extends React.Component {
             </div>
           </div>
           <div id="right-loggedin-header">
-            <div className="user-icons">
+            {/* <div className="user-icons">
               <FontAwesomeIcon icon={faBolt} size="2x" />
             </div>
             <div className="user-icons">
               <FontAwesomeIcon icon={faHeart} size="2x" />
-            </div>
+            </div> */}
             <div className="user-icons" onClick={this.showList}>
               <div className="dot"></div>
               {this.state.showList ? (

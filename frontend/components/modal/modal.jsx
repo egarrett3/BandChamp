@@ -19,6 +19,9 @@ const Modal = ({modal, closeModal}) => {
         case 'addimage':
             component = <AddImageContainer />
             break;
+        case 'addbanner':
+            component = <BannerContainer />
+            break;
         default:
             return null;
     }
@@ -57,6 +60,18 @@ const Modal = ({modal, closeModal}) => {
                         <div onClick={closeModal} className="close">X</div>
                     </div>
                     {component }
+                </div>
+            </div>
+        )
+    } else if(modal === 'addbanner') {
+        return (
+            <div className='bg-modal' onClick={closeModal}>
+                <div className='modal-content3' onClick={(e) => e.stopPropagation()}>
+                    <div className='modal-header1'>
+                        <h3 className="modal-login-header">Set banner image</h3>
+                        <button className="cancel-button" onClick={closeModal}>Cancel</button>
+                    </div>
+                    {component}
                 </div>
             </div>
         )

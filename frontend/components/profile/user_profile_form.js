@@ -33,7 +33,7 @@ class UserProf extends React.Component {
                         <div id='spacer-banner'>
                             <div id='add-banner'>
                                 <FontAwesomeIcon icon={faCamera} size='2x'/>
-                                <div className='banner-image'>set banner image</div>
+                                <div className='banner-image' onClick={this.props.openModal('addbanner')}>set banner image</div>
                             </div>
                         </div>
                     </div>
