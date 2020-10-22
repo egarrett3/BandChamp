@@ -73,8 +73,6 @@ class SongShow extends React.Component {
     }
 
     render() {
-        const plist = this.props.songs.map(song => song.photo_url)
-        const songlist = this.props.songs.map(song => song)
         
         return (
           <div>

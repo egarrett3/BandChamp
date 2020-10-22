@@ -73,8 +73,7 @@ class AudioPlayer extends React.Component {
     const dur = this.getTime(this.state.duration);
     
     return (
-      <div>
-        
+      <>
         <div id="audio-player">
             <audio
             ref={(ref) => (this.audio = ref)}
@@ -127,8 +126,7 @@ class AudioPlayer extends React.Component {
             <span id="durTimeText">{dur}</span>
             </div>
         </div>
-        
-      </div>
+      </>
     );
   }
 }

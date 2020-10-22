@@ -718,13 +718,14 @@ h6 {
 }
 
 #audio-player {
-    display:flex;
+    display: flex;
     width: 414px;
     height: 71px;
     position: relative;
-    top: 360px;
-    left: 100px;
+    top: 75%;
+    left: 7%;
     background: #faf7f7;
+    z-index: 10;
 }
 
 input[type='range'] {
@@ -859,7 +860,7 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .graffiti-image {
-    display:block;
+    display: block;
     height: 480px;
     width: 72.8%;
     transition: .5s ease;
@@ -886,11 +887,12 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .full-screen-img {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    display: block;
     height: 480px;
+    width: 100%;
     transition: .5s ease;
+    backface-visibility: hidden;
+    position: absolute;
 }
 
 .sidebar-container {
@@ -1805,4 +1807,8 @@ ul#social-media-list li {
     top: -1px;
     width: 212px;
     height: 222px;
+}
+
+#close-audio {
+    position: relative;
 }
