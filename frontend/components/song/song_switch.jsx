@@ -10,7 +10,7 @@ const SongSwitch = ({ song, closeSong, currentUser }) => {
 
   return (
     <div 
-      className={`img-container ${currentUser ? "adjust-small" : "adjust-large"
+      className={`switch-container ${currentUser ? "adjust-small" : "adjust-large"
         }`}
     >
         <img src={song.photo_url} className="full-screen-img" />
