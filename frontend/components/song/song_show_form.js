@@ -50,13 +50,13 @@ class SongShow extends React.Component {
             <img src={plist[0]} className="graffiti-image" />
             <AudioPlayer songs={this.props.songs} />
           </div>
-          <div className="sidebar-container">
+          <ul className="sidebar-container">
             {this.props.songs.map(function(song, idx) {
               if (idx > 0 && idx < 4) {
                 return <SideContainer key={idx} song={song} />;
               }
             })}
-          </div>
+          </ul>
         </div>
       ) : (<SongSwitch />)
 
