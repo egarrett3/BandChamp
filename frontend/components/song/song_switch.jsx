@@ -9,14 +9,17 @@ const SongSwitch = ({ song, closeSong, currentUser }) => {
     }
 
   return (
-    <div 
-      className={`switch-container ${currentUser ? "adjust-small" : "adjust-large"
-        }`}
+    <div
+      className={`switch-container ${
+        currentUser ? "adjust-small" : "adjust-large"
+      }`}
     >
-        <img src={song.photo_url} className="full-screen-img" />
-        <div onClick={closeSong} id='close-audio'>CLOSE SONG</div>
-        <AudioPlayer songs={[song]} />
-
+      <img src={song.photo_url} className="full-screen-img" />
+      <div onClick={closeSong} id="close-audio">
+        CLOSE SONG
+      </div>
+      <AudioPlayer songs={[song]} />
+      
     </div>
   );
 }

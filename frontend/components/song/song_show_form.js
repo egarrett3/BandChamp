@@ -5,6 +5,7 @@ import Daily from '../bandchampdaily/daily';
 import GreetingContainer from "../greeting/greeting_container";
 import SongSwitch from './song_switch';
 import AudioPlayer from './audio_player';
+import SideContainer from './sidebar_component';
 
 
 class SongShow extends React.Component {
@@ -50,21 +51,11 @@ class SongShow extends React.Component {
             <AudioPlayer songs={this.props.songs} />
           </div>
           <div className="sidebar-container">
-            <img src={plist[6]} className="building-image" onClick={() => this.props.openSong(songlist[6])}/>
-            <div className="building-image-words">
-              <div>Lorem Ipsum</div>
-              <div>Veni Vidi Vici. Alia Iacta Est.</div>
-            </div>
-            <img src={plist[4]} className="cloud-image" />
-            <div className="cloud-image-words">
-              <div>Lorem Ipsum</div>
-              <div>Ad Astra per Aspera</div>
-            </div>
-            <img src={plist[5]} className="lake-image" />
-            <div className="lake-image-words">
-              <div>Lorem Ipsum</div>
-              <div className='smaller-print'>Audentes Fortuna Iuvat</div>
-            </div>
+            {this.props.songs.map(function(song, idx) {
+              if (idx > 0 && idx < 4) {
+                return <SideContainer key={idx} song={song} />;
+              }
+            })}
           </div>
         </div>
       ) : (<SongSwitch />)
@@ -73,7 +64,7 @@ class SongShow extends React.Component {
     }
 
     render() {
-        
+    
         return (
           <div>
             <GreetingContainer />
