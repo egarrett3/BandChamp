@@ -13,10 +13,16 @@ class AudioPlayer extends React.Component {
   componentDidMount() {
     let aud = document.getElementById("audio-track");
     aud.value = "0";
+    this.audio.addEventListener('loadedmetadata',(e) => {
+      this.setState({
+        duration: e.target.duration
+      })
+    });
+
     this.audio.addEventListener("timeupdate", (e) => {
       this.setState({
         currentTime: e.target.currentTime,
-        duration: e.target.duration,
+        // duration: e.target.duration,
       });
     });
     this.audio.addEventListener("timeupdate", (e) => {
@@ -67,6 +73,14 @@ class AudioPlayer extends React.Component {
     }
   }
 
+  loadSongURL() {
+    if (this.props.songs[0].song_url && document.getElementById('src2')) {
+      debugger
+      this.source.src = this.props.songs[0].song_url;
+      this.audio.load();
+    }
+  }
+
   render() {
     const slist = this.props.songs.map((song) => song.song_url);
     const ct = this.getTime(this.state.currentTime);
@@ -76,13 +90,19 @@ class AudioPlayer extends React.Component {
       <>
         <div id="audio-player">
             <audio
-            ref={(ref) => (this.audio = ref)}
-            src={slist[0]}
-            type="audio/mpeg"
-            onLoadedMetadata={() =>
-                (this.seekbar.max = this.audio.duration)
-            }
-            />
+              id='ply'
+              ref={(ref) => (this.audio = ref)}
+              // src={slist[0]}
+              type="audio/mpeg"
+              onLoadedMetadata={() =>
+                  (this.seekbar.max = this.audio.duration)
+              }
+            > <source
+              ref={(ref) => (this.source = ref)}
+              id='src2'
+              src={this.props.songs[0].song_url}
+              />
+            </audio>
             <div className="btns">
             <div id="timer"></div>
             <div
