@@ -899,6 +899,7 @@ input[type='range']::-webkit-slider-runnable-track {
     animation-duration: .25s;
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
+    z-index: 20;
 }
 
 @keyframes animate {
@@ -1807,7 +1808,25 @@ ul#social-media-list li {
 }
 
 #close-audio {
+    border-style: none;
+    text-decoration-color: white;
+    opacity: .5;
+    background-color: gray;
+    color: white;
     position: relative;
+    top: 15%;
+    left: 15%;
+    z-index: 25;
+    border-radius: 5px;
+}
+
+button#close-audio:active {
+    text-decoration: none;
+    border-style: none;
+}
+
+button#close-audio:hover {
+    cursor: pointer;
 }
 
 .switch-container {

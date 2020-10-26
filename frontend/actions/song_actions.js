@@ -8,7 +8,6 @@ export const OPEN_SONG = "OPEN_SONG";
 export const CLOSE_SONG = "CLOSE_SONG";
 
 export const openSong = (song) => {
-  debugger
   return {
     type: OPEN_SONG,
     song,
