@@ -70,7 +70,7 @@ class SongShow extends React.Component {
     render() {
     
       const plist = this.props.songs.map((song) => song.photo_url);
-      const songlist = this.props.songs.map((song) => song);
+      // const songlist = this.props.songs.map((song) => song);
 
         return (
           <div>
@@ -86,7 +86,9 @@ class SongShow extends React.Component {
                 {!this.props.song ? <></> : <button onClick={this.props.closeSong} id="close-audio">
                   X CLOSE SONG
                 </button>}
-                <AudioPlayer songs={this.props.songs} />
+                {!this.props.song ? <></> : 
+                  <AudioPlayer songs={!this.props.song ? this.props.songs : [this.props.song] } />
+                }
               </div>
               <ul className="sidebar-container">
                 {this.props.songs.map(function (song, idx) {

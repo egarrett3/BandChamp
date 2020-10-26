@@ -726,7 +726,17 @@ h6 {
     top: 75%;
     left: 7%;
     background: #faf7f7;
-    z-index: -10
+    z-index: 20;
+    animation: appear .5s ease;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 input[type='range'] {
@@ -1799,7 +1809,7 @@ ul#social-media-list li {
     color: white;
     position: relative;
     top: 35px;
-    left: 15%;
+    left: 7%;
     z-index: 25;
     border-radius: 5px;
 }
