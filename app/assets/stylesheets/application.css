@@ -725,7 +725,7 @@ h6 {
     top: 75%;
     left: 7%;
     background: #faf7f7;
-    z-index: 10;
+    z-index: -10
 }
 
 input[type='range'] {
@@ -869,6 +869,7 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .graf-container {
+    background-color: rgb(214, 214, 214);
     display: block;
     width: 73%;
     height: 480px;
@@ -930,6 +931,7 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .sidebar-container {
+    background-color: rgb(218, 218, 218);
     display: flex;
     flex-direction: column;
     width: 27%;
@@ -946,78 +948,31 @@ input[type='range']::-webkit-slider-runnable-track {
     backface-visibility: hidden;
 }
 
-.building-image:hover {
-   cursor: pointer;
-   opacity: 0.8;
-}
-
-.cloud-image {
-   border-top: 1px solid white;
-   border-bottom: 1px solid white;
-   box-sizing: border-box;
-   transition: .5s ease;
-   backface-visibility: hidden;
-}
-
-.cloud-image:hover {
-   cursor: pointer;
-   opacity: 0.8;
-}
-
-.lake-image {
-   border-top: 2px solid white;
-   box-sizing: border-box;
-   transition: .5s ease;
-   backface-visibility: hidden;
-}
-
-.lake-image:hover {
+.side-img-container:hover {
    cursor: pointer;
    opacity: 0.8;
 }
 
 .building-image-words {
-   position: relative;
-   display: inline;
-   top: 24%;
-   left: 75%;
+   position: absolute;
+   display: block;
+   top: 5%;
+   left: 5%;
    color:rgb(255, 255, 255);
    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
    font-weight: bolder;
-    line-height: 21px;
-    text-shadow: gray;
+   line-height: 21px;
+   text-shadow: 2px 2px 2px rgb(7, 6, 6);
 }
 
 .side-img-container {
+    position: relative;
     display: block;
     height: 33.33%;
     width: 100%;
     box-sizing: border-box;
     transition: .5s ease;
     backface-visibility: hidden;
-}
-
-.cloud-image-words {
-   position: absolute;
-   top: 48%;
-   left: 75%;
-   z-index: 20;
-   color:white;
-   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-   font-weight: bolder;
-    line-height: 21px;
-    text-shadow: gray;
-}
-
-.lake-image-words {
-   position: absolute;
-   top: 72%;
-   left: 75%;
-   color:white;
-   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
-   font-weight: bolder;
-    line-height: 21px;
-    text-shadow: gray;
 }
 
 .carousel-component {
