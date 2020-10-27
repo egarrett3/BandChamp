@@ -1028,6 +1028,7 @@ input[type='range']::-webkit-slider-runnable-track {
     width: 140px;
     height: 120px;
     bottom: 0%;
+    color:black;
 }
 
 .song-title {
@@ -1332,6 +1333,14 @@ span#lng-color:hover {
     height: 280px;
     background-color: white;
     cursor: pointer;
+    color:black;
+    text-decoration: none;
+}
+#showcase:active {
+   color: black;
+}
+#showcase:visited {
+   color:black;
 }
 
 #showcase-pic {
