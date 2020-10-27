@@ -902,7 +902,7 @@ input[type='range']::-webkit-slider-runnable-track {
 .full-screen-img {
     display: block;
     height: 575px;
-    width: 100%;
+    width: 1279px;
     backface-visibility: hidden;
     position: absolute;
     -webkit-animation-name: animate;
@@ -921,7 +921,7 @@ input[type='range']::-webkit-slider-runnable-track {
         opacity: .5;
     }
     100% {
-        width: 100%;
+        width: 1279px;
         height: 575px;
         opacity: 1;
     }

@@ -9,24 +9,36 @@ class Daily extends React.Component {
     this.state = {
         
     }
-
   }
 
-//   slideRight() {
-//     let ele = document.getElementById("song-collage");
-//     ele.classList.remove('slideLeft');
-//     ele.classList.remove('slideRight');
-//     ele.classList.add("slideRight");
-//   }
+  describers(id) {
+    switch (id) {
+      case (1):
+        return 'The song of your dreams'
+      case (2):
+        return 'Who else but the best in their genre'
+      case (3):
+        return 'So good, So raw'
+      case (4):
+        return 'The strongest case for song of the year'
+      case (5):
+        return 'A crowd favorite'
+      case (6):
+        return 'Beauty to my Brains'
+      case (7):
+        return 'A top classic'
+      case (8):
+        return 'A bandchamp favorite'
+      default:
+        return "This band's number one hit"
+    }
+  }
 
-//   slideLeft() {
-//     let ele = document.getElementById("song-collage");
-//     ele.classList.remove("slideLeft");
-//     ele.classList.remove("slideRight");
-//     ele.classList.add("slideLeft");
-//   }
 
   render() {
+
+    let that = this;
+
     return (
         <div id="bandchamp-daily">
           <h3 id="daily-title">BANDCHAMP DAILY</h3>
@@ -34,11 +46,11 @@ class Daily extends React.Component {
             
             {this.props.songs.map(function (song, idx) {
               if (idx === 0) {
-                  return <DailyItem key={idx} song={song} />;
+                return <DailyItem key={idx} song={song} descrip={that.describers(song.id)}/>;
               }
             })}
             {this.props.songs.map(function (song, idx) {
-                return <DailyItems key={idx} song={song} id={song.id} />;    
+              return <DailyItems key={idx} song={song} id={song.id} descrip={that.describers(song.id)}/>;    
             })}
             
           </div>

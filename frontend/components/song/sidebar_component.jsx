@@ -11,7 +11,6 @@ class SideContainer extends React.Component {
   }
 
   describers() {
-    debugger
     switch(this.props.song.id) {
       case(1):
         return 'The song of your dreams'
