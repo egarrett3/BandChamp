@@ -13,7 +13,8 @@ class AlbumShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchSong(this.props.match.params.songId)
+      window.scroll(0,0);
+      this.props.fetchSong(this.props.match.params.songId);
     }
 
     loadSongURL() {
@@ -32,7 +33,7 @@ class AlbumShow extends React.Component {
         const title = this.props.song.title;
         
         return (
-          <div>
+          <>
             <GreetingContainer />
             <div id="song-page">
               <div id="song-header"></div>
@@ -88,7 +89,7 @@ class AlbumShow extends React.Component {
               </div>
             </div>
             <FooterItem />
-          </div>
+          </>
         );
     }
 }

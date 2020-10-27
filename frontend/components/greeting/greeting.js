@@ -164,7 +164,7 @@ class Greeting extends React.Component {
   }
 
   render() {
-    return <div>{this.headers()}</div>;
+    return <>{this.headers()}</>;
   }
 };
 
