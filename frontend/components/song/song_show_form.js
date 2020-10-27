@@ -68,13 +68,15 @@ class SongShow extends React.Component {
                 }`}
             >
               <div className="graf-container">
-                <div id='bandchamp-selection'>
-                  Selection of BandChamp's Classics: {this.date()}
+                <div className='selection-container'>
+                  <div id='bandchamp-selection'>
+                    Selection of BandChamp's Classics: {this.date()}
+                  </div>
+                  {/* <button id='read-more'>
+                    read more 
+                    <span id="arrow">&#8594;</span>
+                  </button> */}
                 </div>
-                <button id='read-more'>
-                  read more 
-                  {/* <span id="arrow">&#8594;</span> */}
-                </button>
                 <img src={!this.props.song ? plist[0] : this.props.song.photo_url}
                   className={!this.props.song ? "graffiti-image" : "full-screen-img"}
                 />

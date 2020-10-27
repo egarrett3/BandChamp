@@ -5,7 +5,7 @@ import { faLinkedin, faAngellist, faGithub } from "@fortawesome/free-brands-svg-
 
 const footerItem = () => (
         <footer id="bottom">
-          <div className="col">
+          {/* <div className="col">
             <ul className="clean-list">
               <li>About Us</li>
               <li>Fair Trade Music Policy</li>
@@ -34,15 +34,15 @@ const footerItem = () => (
               <li>Instagram</li>
               <li>Contact/Help</li>
             </ul>
-          </div>
+          </div> */}
         <div className="col">
           <ul id='social-media-list'>
-            <li> <a href="https://www.linkedin.com/in/edward-garrett-9b54b5b1/" ><FontAwesomeIcon icon={faLinkedin} size='2x' color='black'/></a></li>
-            <li> <a href="https://angel.co/u/edward-garrett-1" ><FontAwesomeIcon icon={faAngellist} size='2x' color='black'/></a></li>
-            <li> <a href="https://github.com/egarrett3" ><FontAwesomeIcon icon={faGithub} size='2x' color='black'/></a></li>
+            <li> <a href="https://www.linkedin.com/in/edward-garrett-9b54b5b1/" ><FontAwesomeIcon icon={faLinkedin} size='6x' color='black'/></a></li>
+            <li> <a href="https://angel.co/u/edward-garrett-1" ><FontAwesomeIcon icon={faAngellist} size='6x' color='black'/></a></li>
+            <li> <a href="https://github.com/egarrett3" ><FontAwesomeIcon icon={faGithub} size='6x' color='black'/></a></li>
           </ul>
         </div>
-          <div className="col">
+          {/* <div className="col">
             <ul className="clean-list">
               <li>Login</li>
               <li>BandChamp for Artists</li>
@@ -55,7 +55,7 @@ const footerItem = () => (
                 <span id="und">English</span>
               </div>
             </ul>
-          </div>
+          </div> */}
         </footer>
 )
 

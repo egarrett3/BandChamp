@@ -873,13 +873,14 @@ input[type='range']::-webkit-slider-runnable-track {
 .graffiti-image {
     display: block;
     height: 480px;
-    width: 72.8%;
+    width: 100%;
     backface-visibility: hidden;
     position: absolute;
     z-index: 10;
 }
 
 .graf-container {
+    position: relative;
     background-color: rgb(214, 214, 214);
     display: block;
     width: 73%;
@@ -1076,10 +1077,14 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .col {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    /* display: inline-block;     <-- old code with links
     width: 230px;
-    margin-top: 41px;
-    /* margin-left: 20px; */
+    margin-top: 41px; */
 }
 
 .clean-list li {
@@ -1643,11 +1648,20 @@ input[type="file"]{
     color: rgb(138, 128, 128);
 }
 
-ul#social-media-list li {
-    display: block;
+ul#social-media-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width:100%;
+}
+
+/* ul#social-media-list li {
+    list-style-type: none;
+    display: block;       <-- old code w/ links 
     list-style-type: none;
     padding-bottom: 25px;
-}
+} */
 
 #song-page {
     display: flex;
@@ -1878,3 +1892,11 @@ button#close-audio:hover {
     outline: none;
 }
 
+.selection-container {
+    position: absolute;
+    top: 50%;
+    left: 7%;
+    height: 150px;
+    width: 765px;
+    z-index: 15;
+}

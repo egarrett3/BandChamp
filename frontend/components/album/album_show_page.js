@@ -17,10 +17,12 @@ class AlbumShow extends React.Component {
     }
 
     loadSongURL() {
+      if (document.getElementById('src')) {
         if (this.props.song.song_url) {
             document.getElementById('src').src = this.props.song.song_url;
             document.getElementById('indi').load();
         }
+      }
     }
 
     render() {
@@ -36,8 +38,8 @@ class AlbumShow extends React.Component {
               <div id="song-header"></div>
               <div id="single-track">
                 <div id="music-community">
-                  <div className="song-tab">music</div>
-                  <div className="song-tab">community</div>
+                  {/* <div className="song-tab">music</div>
+                  <div className="song-tab">community</div> */}
                 </div>
 
                 <div id="song-info">
@@ -52,7 +54,7 @@ class AlbumShow extends React.Component {
                           <audio id="indi" controls>
                             <source
                               id ='src'
-                              src={this.props.song.song_url}
+                              src={song_url}
                               type="audio/mp3"
                             />
                           </audio>
