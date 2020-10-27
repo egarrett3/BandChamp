@@ -45,7 +45,7 @@ class Daily extends React.Component {
             <div id="song-collage">
             
             {this.props.songs.map(function (song, idx) {
-              if (idx === 0) {
+              if (idx === 3) {
                 return <DailyItem key={idx} song={song} descrip={that.describers(song.id)}/>;
               }
             })}
