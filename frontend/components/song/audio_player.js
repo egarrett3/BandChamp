@@ -22,12 +22,12 @@ class AudioPlayer extends React.Component {
     this.audio.addEventListener("timeupdate", (e) => {
       this.setState({
         currentTime: e.target.currentTime,
-        // duration: e.target.duration,
       });
     });
+    
     this.audio.addEventListener("timeupdate", (e) => {
       this.seekbar.value = e.target.currentTime;
-    });
+    }); 
   }
 
   flipPlaybtn() {
@@ -73,26 +73,25 @@ class AudioPlayer extends React.Component {
     }
   }
 
-  loadSongURL() {
-    if (this.props.songs[0].song_url && document.getElementById('src2')) {
-      debugger
-      this.source.src = this.props.songs[0].song_url;
-      this.audio.load();
-    }
-  }
-
   render() {
-    const slist = this.props.songs.map((song) => song.song_url);
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
+
+    let that = this;
     
+    if (document.getElementById('ply')) { 
+      if (that.audio.ended) {
+        that.audio.currentTime = 0;
+        that.flipPausebtn();
+      }
+    }
+
     return (
       <>
         <div id="audio-player">
             <audio
               id='ply'
               ref={(ref) => (this.audio = ref)}
-              // src={slist[0]}
               type="audio/mpeg"
               onLoadedMetadata={() =>
                   (this.seekbar.max = this.audio.duration)
@@ -134,16 +133,16 @@ class AudioPlayer extends React.Component {
             </div>
 
             <input
-            ref={(ref) => (this.seekbar = ref)}
-            type="range"
-            min="0"
-            step="0.01"
-            id="audio-track"
-            onChange={() => (this.audio.currentTime = this.seekbar.value)}
+              ref={(ref) => (this.seekbar = ref)}
+              type="range"
+              min="0"
+              step="0.01"
+              id="audio-track"
+              onChange={() => (this.audio.currentTime = this.seekbar.value)}
             ></input>
             <div className="timer">
-            <span id="curTimeText">{ct}</span>/
-            <span id="durTimeText">{dur}</span>
+              <span id="curTimeText">{ct}</span>/
+              <span id="durTimeText">{dur}</span>
             </div>
         </div>
       </>
