@@ -90,7 +90,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         closeModal: () => dispatch(closeModal()),
-        placePic: (formData, id) => dispatch(updateUser(formData, id))
     };
 };
 

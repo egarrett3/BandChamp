@@ -33,7 +33,7 @@ class UserProf extends React.Component {
                         <div id='spacer-banner'>
                             <div id='add-banner'>
                                 <FontAwesomeIcon icon={faCamera} size='2x'/>
-                                <div className='banner-image' onClick={this.props.openModal('addbanner')}>set banner image</div>
+                                <div className='banner-image' onClick={() => this.props.openModal('addbanner')}>set banner image</div>
                             </div>
                         </div>
                     </div>
@@ -55,10 +55,10 @@ class UserProf extends React.Component {
                                     <FontAwesomeIcon icon={faEdit} size='1x' />
                                     <div className='pointer-underline'>EDIT PROFILE</div>
                                 </button>
-                                <div id='share-profile'>
+                                {/* <div id='share-profile'>
                                     <FontAwesomeIcon icon={faPaperPlane} size='1x' />
                                     <div className='pointer-underline'>share profile</div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

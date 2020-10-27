@@ -13,7 +13,6 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    placePic: (user, user_id) => dispatch(updateUser(user, user_id)),
     closeModal: () => dispatch(closeModal()),
   };
 };

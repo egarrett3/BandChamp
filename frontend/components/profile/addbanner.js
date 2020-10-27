@@ -14,7 +14,10 @@ class AddBanner extends React.Component {
   render() {
     return (
       <div>
-        
+        <ul>
+          <li></li>
+        </ul>
+        <button>Add banner</button>
       </div>
     );
   }
