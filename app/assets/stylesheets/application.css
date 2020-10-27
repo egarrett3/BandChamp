@@ -958,7 +958,7 @@ input[type='range']::-webkit-slider-runnable-track {
    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
    font-weight: bolder;
    line-height: 21px;
-   text-shadow: 2px 2px 2px rgb(7, 6, 6);
+   text-shadow: 1.5px 1.5px 2px rgb(7, 6, 6);
 }
 
 .side-img-container {
@@ -1830,4 +1830,51 @@ button#close-audio:hover {
     height: 575px;
 }
 
+#bandchamp-selection {
+   position: absolute;
+   display: block;
+   font-size: 30px;
+   bottom: 28%;
+   left: 5%;
+   color:rgb(255, 255, 255);
+   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+   font-weight: bolder;
+   line-height: 21px;
+   text-shadow: 1.5px 1.5px 2px rgb(7, 6, 6);
+   z-index: 11;
+}
+
+#read-more {
+    display: inline-block;
+    padding: 4px 7px 4px 7px;
+    background: transparent;
+    border: 1px solid white;
+    text-decoration-color: white;
+    background-color: none;
+    color: white;
+    height: 30px;
+    width: 90px;
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 12;
+    transition: opacity .3s ease-in-out;
+}
+
+#read-more:hover {
+    /* width: 120px; */
+    cursor: pointer;
+    opacity: .6;
+}
+
+#read-more:active {
+    outline: none;
+}
+
+#read-more:visited {
+    outline: none;
+}
 
