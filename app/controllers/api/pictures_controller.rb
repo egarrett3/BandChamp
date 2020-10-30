@@ -24,7 +24,7 @@ class Api::PicturesController < ApplicationController
             @user = User.find_by(id: params[:id])
             @id = @user.pictures[0].imageable_id
         else params[:picture][:type] == 'Song'
-            @song = User.find_by(id: params[:id])
+            @song = Song.find_by(id: params[:id])
             @id = @song.pictures[0].imageable_id
         end
         @picture = Picture.find_by(imageable_id: @id)
@@ -34,6 +34,7 @@ class Api::PicturesController < ApplicationController
             @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
             render 'api/users/profile'
         else
+            @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
             render 'api/users/profile'
         end
     end
