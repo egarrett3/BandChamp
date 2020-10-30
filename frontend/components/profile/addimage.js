@@ -12,8 +12,6 @@ class AddImage extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    
-
     handleSubmit(e) {
         e.preventDefault();
         const user_id = this.props.currentUser.id

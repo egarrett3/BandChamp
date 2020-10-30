@@ -12,7 +12,7 @@ Song.destroy_all
 User.destroy_all
 Picture.destroy_all
 
-user1 = User.create(username: 'user1', email: 'fake@fake.com', password:'password')
+user1 = User.create(username: 'tutu', email: 'tutu@tutu.com', password:'pineapple1')
 
 s2=Song.create(title: 'Zelda')
 s3=Song.create(title: 'Bufallo Roamer')
