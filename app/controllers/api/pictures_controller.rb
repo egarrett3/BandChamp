@@ -27,8 +27,8 @@ class Api::PicturesController < ApplicationController
             @song = User.find_by(id: params[:id])
             @id = @song.pictures[0].imageable_id
         end
-        @picture = Picture.find_by(id: @id)
-        
+        @picture = Picture.find_by(imageable_id: @id)
+
         if @picture.photo.attached?
             @picture.photo.purge
             @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
