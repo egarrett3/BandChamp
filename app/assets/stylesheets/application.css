@@ -1528,7 +1528,7 @@ span#lng-color:hover {
     padding:10px;
 }
 
-#profile-editors {
+.profile-editors {
     display: flex;
     flex-direction: row;
     align-items: center;
