@@ -16,18 +16,18 @@ class Api::PicturesController < ApplicationController
     def show
         @imageable = Picture.find_by(params[:picture][:user_id])
         @picture = @imageable.pictures[0]
-        render :show
+        render 'api/users/profile'
     end
 
     def update
         if params[:picture][:type] == 'User'
             @user = User.find_by(id: params[:id])
-            @id = @user.pictures[0].imageable_id
+            @picture = @user.pictures[0]
         else params[:picture][:type] == 'Song'
             @song = Song.find_by(id: params[:id])
-            @id = @song.pictures[0].imageable_id
+            @picture = @song.pictures[0]
         end
-        @picture = Picture.find_by(imageable_id: @id)
+        # @picture = Picture.find_by(imageable_id: @id)
 
         if @picture.photo.attached?
             @picture.photo.purge
