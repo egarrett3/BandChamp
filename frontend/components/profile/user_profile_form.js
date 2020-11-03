@@ -1,5 +1,6 @@
 import React from 'react'
 import GreetingContainer from "../greeting/greeting_container";
+import { merge } from 'lodash';
 import { faCamera, faEdit, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,10 +9,12 @@ class UserProf extends React.Component {
     super(props);
     this.state = {
       edited: true,
-      username: this.props.currentUser.username,
-      location: '',
-      website: '',
-      description: '',
+      user: {
+        username: this.props.currentUser.username,
+        location: '',
+        website: '',
+        description: '',
+      }
     };
   }
 
@@ -38,6 +41,12 @@ class UserProf extends React.Component {
       ...this.state,
       [e.target.name]: e.currentTarget.value,
     });
+  }
+
+  SubmitForm(e) {
+    e.preventDefault();
+    const user = Object.assign({}, this.state.user)
+    this.props.editUser(user);
   }
 
   render() {
@@ -102,7 +111,7 @@ class UserProf extends React.Component {
                     <input
                       id="name-input"
                       name="username"
-                      value={this.state.username}
+                      value={this.state.user.username}
                       onChange={this.handleChange}
                     ></input>
                   </div>
@@ -115,7 +124,7 @@ class UserProf extends React.Component {
                       <input
                         id="location-input"
                         name="location"
-                        value={this.state.location}
+                        value={this.state.user.location}
                         onChange={this.handleChange}
                       ></input>
                     </div>
@@ -127,7 +136,7 @@ class UserProf extends React.Component {
                       <input
                         id="link-input"
                         name="website"
-                        value={this.state.website}
+                        value={this.state.user.website}
                         onChange={this.handleChange}
                       ></input>
                     </div>
@@ -140,7 +149,7 @@ class UserProf extends React.Component {
                     <textarea
                       id="about-me"
                       name="description"
-                      value={this.state.description}
+                      value={this.state.user.description}
                       onChange={this.handleChange}
                     ></textarea>
                   </div>
