@@ -113,7 +113,7 @@ class SignupForm extends React.Component {
         <div className="modal-signup-email">
           <label className="signup-email-label">Email</label>
           <input
-            type="text"
+            type="email"
             value={this.state.email}
             name="email"
             className="modal-input-email"

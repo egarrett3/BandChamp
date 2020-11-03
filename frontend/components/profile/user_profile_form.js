@@ -71,11 +71,20 @@ class UserProf extends React.Component {
                                 </div> */}
                             </div>
                             <div className={this.state.edited ? 'disappear' : 'userEditField'}>
-                                <input></input>
-                                <input></input>
-                                <input></input>
-                                <input></input>
-                                <button></button>
+                                <label>
+                                    <input></input>
+                                </label>
+                                <label>
+                                    <input></input>
+                                </label>
+                                <label>
+                                    <input></input>
+                                </label>
+                                <label>
+                                    <input></input>
+                                </label>
+                                
+                                <button>Save Changes</button>
                                 <button onClick={() => this.toggleEdit()}>Cancel</button>
                             </div>
                         </div>
