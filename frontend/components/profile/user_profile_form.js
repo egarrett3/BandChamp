@@ -34,64 +34,104 @@ class UserProf extends React.Component {
     render() {
 
         return (
-            <div>
-                <GreetingContainer />
-                <div id='Profile-canvas'>
-                    <div id='profile-banner'>
-                        <div id='spacer-banner'>
-                            <div id='add-banner'>
-                                <FontAwesomeIcon icon={faCamera} size='2x'/>
-                                <div className='banner-image' onClick={() => this.props.openModal('addbanner')}>set banner image</div>
-                            </div>
-                        </div>
+          <div>
+            <GreetingContainer />
+            <div id="Profile-canvas">
+              <div id="profile-banner">
+                <div id="spacer-banner">
+                  <div id="add-banner">
+                    <FontAwesomeIcon icon={faCamera} size="2x" />
+                    <div
+                      className="banner-image"
+                      onClick={() => this.props.openModal("addbanner")}
+                    >
+                      set banner image
                     </div>
-                    <div id='profile-settings'>
-                        <div id='profile-spacer'>
-                            <div id='prof-pic' onClick={() => this.props.openModal('addimage')}>
-                                {this.profileFrame()}
-                                <div className='specifications'>
-                                    <FontAwesomeIcon icon={faCamera} size='2x' />
-                                    <div id='spec'>
-                                        <div id='spec2'>jpg or png</div>
-                                        <div id='spec3'>480px min - 4MB max</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={this.state.edited ? 'profile-editors' : 'disappear'}>
-                                <div id='this-user'>{this.props.currentUser.username}</div>
-                                <button id='edit-profile'>
-                                    <FontAwesomeIcon icon={faEdit} size='1x' />
-                                    <div className='pointer-underline'
-                                        onClick={() => this.toggleEdit()}
-                                    >EDIT PROFILE</div>
-                                </button>
-                                {/* <div id='share-profile'>
+                  </div>
+                </div>
+              </div>
+              <div id="profile-settings">
+                <div id="profile-spacer">
+                  <div
+                    id="prof-pic"
+                    onClick={() => this.props.openModal("addimage")}
+                  >
+                    {this.profileFrame()}
+                    <div className="specifications">
+                      <FontAwesomeIcon icon={faCamera} size="2x" />
+                      <div id="spec">
+                        <div id="spec2">jpg or png</div>
+                        <div id="spec3">480px min - 4MB max</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={
+                      this.state.edited ? "profile-editors" : "disappear"
+                    }
+                  >
+                    <div id="this-user">{this.props.currentUser.username}</div>
+                    <button id="edit-profile">
+                      <FontAwesomeIcon icon={faEdit} size="1x" />
+                      <div
+                        className="pointer-underline"
+                        onClick={() => this.toggleEdit()}
+                      >
+                        EDIT PROFILE
+                      </div>
+                    </button>
+                    {/* <div id='share-profile'>
                                     <FontAwesomeIcon icon={faPaperPlane} size='1x' />
                                     <div className='pointer-underline'>share profile</div>
                                 </div> */}
-                            </div>
-                            <div className={this.state.edited ? 'disappear' : 'userEditField'}>
-                                <label>
-                                    <input></input>
-                                </label>
-                                <label>
-                                    <input></input>
-                                </label>
-                                <label>
-                                    <input></input>
-                                </label>
-                                <label>
-                                    <input></input>
-                                </label>
-                                
-                                <button>Save Changes</button>
-                                <button onClick={() => this.toggleEdit()}>Cancel</button>
-                            </div>
+                  </div>
+                  <div
+                    className={
+                      this.state.edited ? "disappear" : "userEditField"
+                    }
+                  >
+                    <form id="edit-frame">
+                      <div className='input-col-name'>
+                        <div className="input-label" htmlFor="name-input">your name</div>
+                        <input id="name-input"
+                        value={this.props.currentUser.username}
+                        
+                        ></input>
+                      </div>
+
+                      <div className="row">
+                          
+                        <div className='input-col'>
+                            <div className="input-label" htmlFor="location-input">location</div>
+                            <input id="location-input"></input>
                         </div>
-                    </div>
+    
+                        <div className='input-col'>
+                            <div className="input-label" htmlFor="link-input">link to your website or blog</div>
+                            <input id="link-input"></input>
+                        </div>
+                        
+                      </div>
+                      
+                      <div className='input-col-about'>
+                        <div className="input-label" htmlFor="about-me">about you</div>
+                        <textarea id="about-me"></textarea>
+                      </div>
+
+            
+                      <div className='row arranged'>
+                        <button className="save-changes">SAVE CHANGES</button>
+                        <button onClick={() => this.toggleEdit()} className='cancel-changes'>CANCEL</button>
+                      </div>
+            
+
+                    </form>
+                  </div>
                 </div>
+              </div>
             </div>
-        )
+          </div>
+        );
     }
 }
 

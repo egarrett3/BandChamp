@@ -114,7 +114,6 @@
 }
 
 .logo h3 {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     margin-top: 18px;
     margin-right:3px;
 }
@@ -145,7 +144,6 @@
     font-size: x-large;
     font-weight: 520;
     color: rgb(36, 39, 39);
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     text-decoration: none;
 }
 
@@ -153,7 +151,6 @@
     display: block;
     font-size: large;
     color: rgb(36, 39, 39);
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-decoration: none;
@@ -174,7 +171,6 @@
     display: block;
     color:black;
     text-decoration: none;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: 600;
 }
 
@@ -193,7 +189,6 @@
 .container {
     padding: 90px;
     display: block;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     text-align: center;
 }
 
@@ -206,7 +201,6 @@ form {
 
 h3.header {
     color:rgb(51,51,51);
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: x-large;
 }
 
@@ -232,7 +226,6 @@ h3.header {
 
 
 #switch-text {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: small;
     color: grey;
 }
@@ -380,7 +373,6 @@ div.banner {
     left: 20px;
     display:block;
     color:rgb(51,51,51);
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: larger;
 }
 
@@ -388,7 +380,6 @@ div.banner {
     position: absolute;
     right: 20px;
     font-size: x-large;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     color:rgb(179, 179, 179);
     border-radius: 2%;
 }
@@ -544,7 +535,6 @@ h6 {
 }
 
 .signup-username-label {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     display: block;
     position: absolute;
     top:36%;
@@ -552,7 +542,6 @@ h6 {
 }
 
 .signup-email-label {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     display: block;
     position: absolute;
     top:9%;
@@ -560,7 +549,6 @@ h6 {
 }
 
 .signup-password-label {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     display: block;
     position: absolute;
     top:-18%;
@@ -637,7 +625,6 @@ h6 {
 }
 
 .welcome {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     display:inline-block;
     width: 100%;
     padding: 18px;
@@ -669,7 +656,6 @@ h6 {
     font-size: 15px;
     cursor: pointer;
     color:black;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 .drpdown-item:hover {
@@ -695,7 +681,6 @@ h6 {
     text-decoration: none;
     cursor: pointer;
     color:black;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: bold;
 }
 
@@ -704,7 +689,6 @@ h6 {
     margin-top: 5px;
     cursor: pointer;
     color:black;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: small;
 }
 
@@ -826,7 +810,6 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .weekly-label {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 14px;
     display: flex;
     flex-direction: row;
@@ -843,7 +826,6 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .lower-label {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -853,12 +835,10 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .weekly {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: 600;
 }
 
 .timer {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 11px;
     display: flex;
     align-items:center;
@@ -956,7 +936,6 @@ input[type='range']::-webkit-slider-runnable-track {
    top: 5%;
    left: 5%;
    color:rgb(255, 255, 255);
-   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
    font-weight: bolder;
    line-height: 21px;
    text-shadow: 1.5px 1.5px 2px rgb(7, 6, 6);
@@ -1061,7 +1040,6 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 .payment-text {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: large;
 }
 
@@ -1103,7 +1081,6 @@ input[type='range']::-webkit-slider-runnable-track {
     margin-bottom: 15px;
     list-style: none;
     color: rgb(226, 226, 226);
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: smaller;
 }
 
@@ -1118,7 +1095,6 @@ input[type='range']::-webkit-slider-runnable-track {
     height: 25px;
     width: 125px;
     color: rgb(226, 226, 226);
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: smaller;
     background-color: rgba(16, 104, 119, 0.844);
 }
@@ -1137,7 +1113,6 @@ span#lng-color:hover {
 
 #custom-item {
     color: rgb(226, 226, 226);
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: smaller;
     margin-bottom: 19px;
 }
@@ -1355,14 +1330,12 @@ span#lng-color:hover {
     flex-direction: column;
     box-sizing: content-box;
     padding: 20px;
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 13px;
 }
 
 .frames {
     display: flex;
     height: 105px;
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
     justify-content: space-between;
     flex-direction: column;
     box-sizing: content-box;
@@ -1383,7 +1356,6 @@ span#lng-color:hover {
 }
 
 #main-title {
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 20px;
     font-weight: bold;
     line-height: 25px;
@@ -1395,13 +1367,11 @@ span#lng-color:hover {
 
 #by-title {
     margin-top: 7px;
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 18px;
 }
 
 #paragraph {
     margin-top: 14px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     line-height: 17px;
     font-size: 14px;
 }
@@ -1419,7 +1389,6 @@ span#lng-color:hover {
     position: relative;
     left: -488px; 
     top: 50px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 14px;
     color: rgb(54, 113, 145);
     
@@ -1458,7 +1427,6 @@ span#lng-color:hover {
 
 .banner-image {
     padding-left: 10px;
-    font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 #spacer-banner {
@@ -1509,7 +1477,6 @@ span#lng-color:hover {
     align-items: center;
     justify-content: space-between;
     font-size: 12px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     color: rgb(119, 119, 119);
     width: 100%;
     height: 55%;
@@ -1546,7 +1513,6 @@ span#lng-color:hover {
     justify-content: space-evenly;
     border-radius: 6px;
     font-size: 13px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     background-color: white;
     color: rgb(165, 165, 165);
     border: 1px solid rgb(165, 165, 165);
@@ -1556,7 +1522,6 @@ span#lng-color:hover {
 }
 
 #this-user {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 30px;
     font-weight: bolder;
     color:rgb(63, 59, 59);
@@ -1569,7 +1534,6 @@ span#lng-color:hover {
     align-items: center;
     color: rgb(26, 134, 206);
     font-size: 13px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     width: 90px;
     cursor: pointer;
 }
@@ -1609,7 +1573,6 @@ span#lng-color:hover {
     font-size: 11px;
     color:rgb(148, 147, 147);
     padding-top: 7px;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 input[type="file"]{
@@ -1637,7 +1600,6 @@ input[type="file"]{
     flex-direction: row;
     align-items: center;
     border: 1px rgb(192, 192, 192) solid;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     border-radius: 5px;
     margin-right: 0px;
 }
@@ -1720,7 +1682,6 @@ ul#social-media-list {
     align-items: center;
     width: 104px;
     height: 100%;
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 14px;
     font-weight: bold;
 }
@@ -1790,27 +1751,23 @@ ul#social-media-list {
 }
 
 .digital-track {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 14px;
     color: rgb(94, 88, 88);
 }
 
 #streaming-download {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 12px;
     color: rgb(181, 181, 181);
     margin-bottom: 10px;
 }
 
 #includes-free {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 12px;
     color: rgb(167, 164, 164);
     margin-bottom: 10px;
 }
 
 #buy-digi-track {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 16px;
     font-weight:bold;
     color: rgb(55, 117, 175);
@@ -1818,7 +1775,6 @@ ul#social-media-list {
 }
 
 #buy-full {
-    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 16px;
     font-weight:bold;
     color: rgb(55, 117, 175);
@@ -1868,7 +1824,6 @@ button#close-audio:hover {
    bottom: 28%;
    left: 5%;
    color:rgb(255, 255, 255);
-   font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
    font-weight: bolder;
    line-height: 21px;
    text-shadow: 1.5px 1.5px 2px rgb(7, 6, 6);
@@ -1916,4 +1871,118 @@ button#close-audio:hover {
     height: 150px;
     width: 765px;
     z-index: 15;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    color: gray;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    height: 74px;
+}
+
+#edit-frame {
+    display: flex;
+    flex-direction: column;
+    padding: 43px;
+    width: 730px;
+    height: 430px;
+}
+
+#name-input {
+    height: 34px;
+    width: 464px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+#location-input {
+    height: 34px;
+    width: 322px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+#link-input {
+    height: 34px;
+    width: 307px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+#about-me {
+    height: 143px;
+    width: 647px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.input-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 74px;
+}
+.input-col:nth-of-type(2) {
+    margin-left: 11px;
+}
+
+.input-col-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 80px;
+}
+.input-col-about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 157px;
+}
+
+.save-changes {
+    display: block;
+    height: 31px;
+    width: 143px;
+    color:white;
+    background-color:rgb(53, 181, 220);
+    border-radius: 5px;
+    font-weight: bold;
+    border-style: none;
+}
+.save-changes:active {
+    text-decoration: none;
+    border-style: none;
+}
+.save-changes:hover {
+    cursor: pointer;
+}
+
+.cancel-changes {
+    display: block;
+    height: 17px;
+    width: 66px;
+    margin-left:12px;
+    margin-bottom:7px;
+    border:none;
+    background-color: transparent;
+    font-weight: bold;
+    color:rgb(53, 181, 220);
+}
+.cancel-changes:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+form#edit-frame input:focus {
+    outline:none;
+    border-color: rgb(53, 181, 220);
+    box-shadow: 0 0 1.5px rgb(53, 181, 220);
+}
+form#edit-frame textarea:focus {
+    outline:none;
+    border-color: rgb(53, 181, 220);
+    box-shadow: 0 0 1.5px rgb(53, 181, 220);
 }
