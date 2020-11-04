@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 import { getUser } from '../../actions/picture_actions';
@@ -15,7 +14,8 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 const mapDispatchToProps = dispatch => { 
     return { 
         openModal: (modal) => dispatch(openModal(modal)), 
-        getUser: (id) => dispatch(getUser(id))
+        getUser: (id) => dispatch(getUser(id)),
+        changeUser: (user,id) => dispatch(changeUser(user,id)),
     }
 }
 

@@ -18,11 +18,17 @@ class Api::UsersController < ApplicationController
     end
     
   end
+
+  def update
+    @user = User.find_by(params[:id])
+
+    debugger
+  end
   
   
   private
 
   def user_params
-    params.require(:user).permit(:email, :username, :password, :id)
+    params.require(:user).permit(:email, :username, :password, :id, :website, :location, :description)
   end
 end

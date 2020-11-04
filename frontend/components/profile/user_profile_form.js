@@ -1,6 +1,5 @@
 import React from 'react'
 import GreetingContainer from "../greeting/greeting_container";
-import { merge } from 'lodash';
 import { faCamera, faEdit, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -9,13 +8,13 @@ class UserProf extends React.Component {
     super(props);
     this.state = {
       edited: true,
-      user: {
-        username: this.props.currentUser.username,
-        location: '',
-        website: '',
-        description: '',
-      }
+      username: this.props.currentUser.username,
+      location: "",
+      website: "",
+      description: "",
     };
+    this.submitForm = this.submitForm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -38,15 +37,15 @@ class UserProf extends React.Component {
 
   handleChange(e) {
     this.setState({
-      ...this.state,
       [e.target.name]: e.currentTarget.value,
     });
   }
 
-  SubmitForm(e) {
+  submitForm(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state.user)
-    this.props.editUser(user);
+    const user = Object.assign({}, this.state.username, this.state.location, this.state.website, this.state.description);
+    debugger;
+    this.props.changeUser(user,this.props.currentUser.id);
   }
 
   render() {
@@ -96,9 +95,9 @@ class UserProf extends React.Component {
                   </div>
                 </button>
                 {/* <div id='share-profile'>
-                                    <FontAwesomeIcon icon={faPaperPlane} size='1x' />
-                                    <div className='pointer-underline'>share profile</div>
-                                </div> */}
+                      <FontAwesomeIcon icon={faPaperPlane} size='1x' />
+                      <div className='pointer-underline'>share profile</div>
+                    </div> */}
               </div>
               <div
                 className={this.state.edited ? "disappear" : "userEditField"}
@@ -111,9 +110,9 @@ class UserProf extends React.Component {
                     <input
                       id="name-input"
                       name="username"
-                      value={this.state.user.username}
+                      value={this.state.username}
                       onChange={this.handleChange}
-                    ></input>
+                    />
                   </div>
 
                   <div className="row">
@@ -124,9 +123,9 @@ class UserProf extends React.Component {
                       <input
                         id="location-input"
                         name="location"
-                        value={this.state.user.location}
+                        value={this.state.location}
                         onChange={this.handleChange}
-                      ></input>
+                      />
                     </div>
 
                     <div className="input-col">
@@ -136,9 +135,9 @@ class UserProf extends React.Component {
                       <input
                         id="link-input"
                         name="website"
-                        value={this.state.user.website}
+                        value={this.state.website}
                         onChange={this.handleChange}
-                      ></input>
+                      />
                     </div>
                   </div>
 
@@ -149,9 +148,9 @@ class UserProf extends React.Component {
                     <textarea
                       id="about-me"
                       name="description"
-                      value={this.state.user.description}
+                      value={this.state.description}
                       onChange={this.handleChange}
-                    ></textarea>
+                    />
                   </div>
 
                   <div className="row arranged">
