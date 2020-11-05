@@ -20,9 +20,11 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(params[:id])
-
-    debugger
+    @user = User.find(params[:id])
+    if @user.update!(website:params[:user][:website],location:params[:user][:location],description:params[:user][:description])
+      @user.save!
+    end
+    render "api/users/profile"
   end
   
   

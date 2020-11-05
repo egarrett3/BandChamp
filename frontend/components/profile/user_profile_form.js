@@ -1,5 +1,6 @@
 import React from 'react'
 import GreetingContainer from "../greeting/greeting_container";
+import { merge } from 'lodash';
 import { faCamera, faEdit, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -8,13 +9,16 @@ class UserProf extends React.Component {
     super(props);
     this.state = {
       edited: true,
-      username: this.props.currentUser.username,
-      location: "",
-      website: "",
-      description: "",
+      username: props.currentUser.username,
+      location: props.currentUser.location,
+      website: props.currentUser.website,
+      description: props.currentUser.description,
     };
     this.submitForm = this.submitForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.showWebsite = this.showWebsite.bind(this);
+    this.showDescription = this.showDescription.bind(this);
+    this.showLocation = this.showLocation.bind(this);
   }
 
   componentDidMount() {
@@ -43,12 +47,40 @@ class UserProf extends React.Component {
 
   submitForm(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state.username, this.state.location, this.state.website, this.state.description);
-    debugger;
+    // const user = merge({}, this.state);
+    const user = new FormData();
+    user.append("user[website]", this.state.website);
+    user.append("user[location]", this.state.location);
+    user.append("user[description]", this.state.description);
     this.props.changeUser(user,this.props.currentUser.id);
   }
 
+  showLocation() {
+    if (this.props.currentUser.location !== "undefined") {
+      return <div id="web-location">{this.props.currentUser.location}</div>;
+    } else {
+      return <div></div>;
+    }
+  }
+  showWebsite() {
+    if (this.props.currentUser.website !== "undefined") {
+      return <div id="web-link">{this.props.currentUser.website}</div>
+    } else {
+      return <div></div>
+    }
+  }
+  showDescription() {
+    if (this.props.currentUser.description !== "undefined") {
+      return (
+        <div id="web-description">{this.props.currentUser.description}</div>
+      );
+    } else {
+      return <div></div>;
+    }
+  }
+
   render() {
+
     return (
       <div>
         <GreetingContainer />
@@ -102,7 +134,7 @@ class UserProf extends React.Component {
               <div
                 className={this.state.edited ? "disappear" : "userEditField"}
               >
-                <form id="edit-frame">
+                <form id="edit-frame" onSubmit={this.submitForm}>
                   <div className="input-col-name">
                     <div className="input-label" htmlFor="name-input">
                       your name
@@ -167,6 +199,11 @@ class UserProf extends React.Component {
                 </form>
               </div>
             </div>
+          </div>
+          <div id="profile">
+            {this.showLocation()}
+            {this.showWebsite()}
+            {this.showDescription()}
           </div>
         </div>
       </div>

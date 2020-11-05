@@ -6,13 +6,6 @@ class Api::PicturesController < ApplicationController
     #     render :index
     # end
 
-    # s3 = Aws::S3::Resource.new(region: 'us-east-1')
-    # file = params[:photo]
-    # bucket = 'active-storage-banchamp-pro'
-    # name = File.basename(file)
-    # obj = s3.bucket(bucket).object(name)
-    # obj.upload_file(file)
-
     def show
         @imageable = Picture.find_by(params[:picture][:user_id])
         @picture = @imageable.pictures[0]

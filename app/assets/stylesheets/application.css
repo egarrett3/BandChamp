@@ -1500,7 +1500,7 @@ span#lng-color:hover {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width:430px;
+    width: 330px;
     height: 100px;
 }
 
@@ -1986,3 +1986,13 @@ form#edit-frame textarea:focus {
     border-color: rgb(53, 181, 220);
     box-shadow: 0 0 1.5px rgb(53, 181, 220);
 }
+
+#profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 250px;
+    width: 700px;
+}
+
