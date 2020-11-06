@@ -70,6 +70,7 @@ class UserProf extends React.Component {
     }
   }
   showDescription() {
+    debugger
     if (this.props.currentUser.description !== "undefined") {
       return (
         <div id="web-description">{this.props.currentUser.description}</div>
@@ -114,22 +115,30 @@ class UserProf extends React.Component {
                 </div>
               </div>
               <div
-                className={this.state.edited ? "profile-editors" : "disappear"}
+                className={this.state.edited ? "settings-col" : "disappear"}
               >
-                <div id="this-user">{this.props.currentUser.username}</div>
-                <button id="edit-profile">
-                  <FontAwesomeIcon icon={faEdit} size="1x" />
-                  <div
-                    className="pointer-underline"
-                    onClick={() => this.toggleEdit()}
-                  >
-                    EDIT PROFILE
-                  </div>
-                </button>
-                {/* <div id='share-profile'>
-                      <FontAwesomeIcon icon={faPaperPlane} size='1x' />
-                      <div className='pointer-underline'>share profile</div>
-                    </div> */}
+                <div
+                  className="profile-editors">
+                  <div id="this-user">{this.props.currentUser.username}</div>
+                  <button id="edit-profile">
+                    <FontAwesomeIcon icon={faEdit} size="1x" />
+                    <div
+                      className="pointer-underline"
+                      onClick={() => this.toggleEdit()}
+                    >
+                      EDIT PROFILE
+                    </div>
+                  </button>
+                  {/* <div id='share-profile'>
+                        <FontAwesomeIcon icon={faPaperPlane} size='1x' />
+                        <div className='pointer-underline'>share profile</div>
+                      </div> */}
+                </div>
+                <div className="profile">
+                  {this.showLocation()}
+                  {this.showWebsite()}
+                  {this.showDescription()}
+                </div>
               </div>
               <div
                 className={this.state.edited ? "disappear" : "userEditField"}
@@ -199,11 +208,6 @@ class UserProf extends React.Component {
                 </form>
               </div>
             </div>
-          </div>
-          <div id="profile">
-            {this.showLocation()}
-            {this.showWebsite()}
-            {this.showDescription()}
           </div>
         </div>
       </div>

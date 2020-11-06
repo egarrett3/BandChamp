@@ -1442,8 +1442,9 @@ span#lng-color:hover {
 #profile-settings {
     position: relative;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     top: 55px;
     width: 100%;
     height: 204px;
@@ -1455,6 +1456,13 @@ span#lng-color:hover {
     justify-content: flex-start;
     height: 100px;
     width: 93%;
+}
+
+.settings-col {
+    display: flex;
+    flex-direction: column;
+    height: 192px;
+    width: 600px;
 }
 
 #prof-pic {
@@ -1501,7 +1509,7 @@ span#lng-color:hover {
     align-items: center;
     justify-content: center;
     width: 330px;
-    height: 100px;
+    height: 75px;
 }
 
 #edit-profile {
@@ -1987,12 +1995,25 @@ form#edit-frame textarea:focus {
     box-shadow: 0 0 1.5px rgb(53, 181, 220);
 }
 
-#profile {
+.profile {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
-    height: 250px;
-    width: 700px;
+    align-items: flex-start; 
+    height: 110px;
 }
 
+#web-description {
+    display:block;
+    margin-left: 55px;
+}
+
+#web-link {
+    display:block;
+    margin-left: 55px;
+}
+
+#web-location {
+    display:block;
+    margin-left: 55px;
+}
