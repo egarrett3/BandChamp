@@ -1,8 +1,8 @@
-class Song < ApplicationRecord
+class Album < ApplicationRecord
     validates :title, presence: true
 
     has_one_attached :song
     has_many :pictures, as: :imageable
-    belongs_to :album
+    has_many :songs
     
 end
