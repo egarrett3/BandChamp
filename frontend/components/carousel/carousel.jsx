@@ -96,15 +96,17 @@ class SellingItems extends React.Component {
 }
 
 
-const mapStateToProps = ({ entities: { songs } }) => {
+const mapStateToProps = ({ entities: { songs, album } }) => {
     return {
-        sng: Object.values(songs)
+        sng: Object.values(songs),
+        albs: Object.values(albums)
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSongs: () => dispatch(fetchSgs()),
+        fetchAlbums: () => dispatch(fetchAls())
     }
 }
 

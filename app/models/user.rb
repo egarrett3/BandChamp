@@ -7,7 +7,7 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
   has_many :pictures, as: :imageable
-  has_many :albums, 
+  has_many :albums
 
   # validates :check_file_presence
 
