@@ -6,13 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class UserProf extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); debugger
     this.state = {
       edited: true,
-      username: this.props.currentUser.username,
-      location: this.props.currentUser.location,
-      website: this.props.currentUser.website,
-      description: this.props.currentUser.description,
+      username: props.currentUser.username,
+      location: props.currentUser.location,
+      website: props.currentUser.website,
+      description: props.currentUser.description,  
     };
     this.submitForm = this.submitForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -42,6 +42,7 @@ class UserProf extends React.Component {
 
   handleChange(e) {
     this.setState({
+      ...this.state,
       [e.target.name]: e.currentTarget.value,
     });
   }
@@ -115,11 +116,8 @@ class UserProf extends React.Component {
                   </div>
                 </div>
               </div>
-              <div
-                className={this.state.edited ? "settings-col" : "disappear"}
-              >
-                <div
-                  className="profile-editors">
+              <div className={this.state.edited ? "settings-col" : "disappear"}>
+                <div className="profile-editors">
                   <div id="this-user">{this.props.currentUser.username}</div>
                   <button id="edit-profile">
                     <FontAwesomeIcon icon={faEdit} size="1x" />
@@ -196,13 +194,17 @@ class UserProf extends React.Component {
                   </div>
 
                   <div className="row arranged">
-                    <button className="save-changes" type="submit">
+                    <button
+                      className="save-changes"
+                      type="submit"
+                      onClick={() => this.toggleEdit()}
+                    >
                       SAVE CHANGES
                     </button>
                     <button
                       onClick={() => this.toggleEdit()}
                       className="cancel-changes"
-                      type='button'
+                      type="button"
                     >
                       CANCEL
                     </button>
