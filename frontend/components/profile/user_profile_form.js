@@ -9,10 +9,10 @@ class UserProf extends React.Component {
     super(props);
     this.state = {
       edited: true,
-      username: props.currentUser.username,
-      location: props.currentUser.location,
-      website: props.currentUser.website,
-      description: props.currentUser.description,
+      username: this.props.currentUser.username,
+      location: this.props.currentUser.location,
+      website: this.props.currentUser.website,
+      description: this.props.currentUser.description,
     };
     this.submitForm = this.submitForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -22,6 +22,7 @@ class UserProf extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.getUser(this.props.currentUser.id);
   }
 
@@ -46,6 +47,7 @@ class UserProf extends React.Component {
   }
 
   submitForm(e) {
+    debugger
     e.preventDefault();
     // const user = merge({}, this.state);
     const user = new FormData();
@@ -70,7 +72,6 @@ class UserProf extends React.Component {
     }
   }
   showDescription() {
-    debugger
     if (this.props.currentUser.description !== "undefined") {
       return (
         <div id="web-description">{this.props.currentUser.description}</div>
@@ -201,6 +202,7 @@ class UserProf extends React.Component {
                     <button
                       onClick={() => this.toggleEdit()}
                       className="cancel-changes"
+                      type='button'
                     >
                       CANCEL
                     </button>
