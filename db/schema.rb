@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_06_141151) do
+ActiveRecord::Schema.define(version: 2020_11_09_163357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,13 +39,11 @@ ActiveRecord::Schema.define(version: 2020_11_06_141151) do
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
     t.integer "artist_id"
-    t.integer "song_id", array: true
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["genre_id"], name: "index_albums_on_genre_id"
-    t.index ["song_id"], name: "index_albums_on_song_id"
   end
 
   create_table "pictures", force: :cascade do |t|
