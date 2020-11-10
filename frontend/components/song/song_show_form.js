@@ -58,8 +58,7 @@ class SongShow extends React.Component {
 
     render() {
       debugger
-    
-      const albumList = this.props.album.map((album) => album.photo_url);
+      const albumList = this.props.albums.map((album) => album.photo_url);
       // const songlist = this.props.songs.map((song) => song);
 
         return (
@@ -79,18 +78,18 @@ class SongShow extends React.Component {
                     <span id="arrow">&#8594;</span>
                   </button> */}
                 </div>
-                <img src={!this.props.song ? albumList[0] : this.props.song.photo_url}
+                <img src={!this.props.song ? albumList[0] : this.props.song.album[0].photo_url }
                   className={!this.props.song ? "graffiti-image" : "full-screen-img"}
                 />
                 {!this.props.song ? <></> : <button onClick={this.props.closeSong} id="close-audio">
                   X CLOSE SONG
                 </button>}
                 {!this.props.song ? <></> : 
-                  <AudioPlayer songs={!this.props.song ? this.props.songs : [this.props.song] } />
+                  <AudioPlayer songs={!this.props.song ? this.props.songs : this.props.song.album[0].song_url } />
                 }
               </div>
               <ul className="sidebar-container">
-                {this.props.album.map(function (album, idx) {
+                {this.props.albums.map(function (album, idx) {
                   if (idx < 4) {
                     return <SideContainer key={idx} album={album} />;
                   }
@@ -98,7 +97,7 @@ class SongShow extends React.Component {
               </ul>
             </div>
             <SellingItems albums={this.props.albums} />
-            <Daily albums={this.props.album} />
+            <Daily albums={this.props.albums} />
             <FooterItem />
           </div>
         );  

@@ -99,7 +99,7 @@ class AudioPlayer extends React.Component {
             > <source
               ref={(ref) => (this.source = ref)}
               id='src2'
-              src={this.props.songs[0].song_url}
+              src={this.props.songs}
               />
             </audio>
             <div className="btns">

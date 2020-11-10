@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openSong, closeSong } from '../../actions/song_actions';
+import { fetchAl } from '../../actions/album_actions'
 
 class SideContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+    
     }
+    this.fetchAlbumSongs = this.fetchAlbumSongs.bind(this)
   }
 
   describers() {
     switch(this.props.album.id) {
-      case(0):
+      case(1):
         return 'The song of your dreams'
       case(2):
         return 'Who else but the best in their genre'
@@ -32,6 +34,10 @@ class SideContainer extends React.Component {
         return "This band's number one hit"
     }
   }
+
+  fetchAlbumSongs() {
+    this.props.fetchAlbum(this.props.album.id).then((album) => this.props.openSong(album))
+  }
  
   
   render() {
@@ -44,7 +50,7 @@ class SideContainer extends React.Component {
         <img
         src={this.props.album.photo_url}
         className="building-image"
-        onClick={() => this.props.openSong(this.props.album)}
+        onClick={() => this.fetchAlbumSongs()}
         />
       </li>
     );
@@ -61,6 +67,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchAlbum: (id) => dispatch(fetchAl(id)),
     openSong: (song) => dispatch(openSong(song)),
     closeSong: () => dispatch(closeSong()),
   };
