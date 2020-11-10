@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSgs, openSong, closeSong } from '../../actions/song_actions';
+import { fetchAls } from '../../actions/album_actions';
 import SongShow from './song_show_form';
 
-const mapStateToProps = ({ui,session,entities:{songs,users}}) => {
+const mapStateToProps = ({ui,session,entities:{songs,users,album}}) => {
+    debugger
     return {
       currentUser: users[session.id],
       songs: Object.values(songs),
+      album: Object.values(album),
       song: ui.switch,
     };
 }
@@ -14,6 +17,7 @@ const mapStateToProps = ({ui,session,entities:{songs,users}}) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchSongs: () => dispatch(fetchSgs()),
+        fetchAlbums: () => dispatch(fetchAls()),
         openSong: (song) => dispatch(openSong(song)),
         closeSong: () => dispatch(closeSong()),
     }

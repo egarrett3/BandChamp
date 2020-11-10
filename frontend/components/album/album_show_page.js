@@ -14,7 +14,7 @@ class AlbumShow extends React.Component {
 
     componentDidMount() {
       window.scroll(0,0);
-      this.props.fetchSong(this.props.match.params.songId);
+      this.props.fetchAlbum(this.props.match.params.songId);
     }
 
     loadSongURL() {
@@ -27,10 +27,11 @@ class AlbumShow extends React.Component {
     }
 
     render() {
+      debugger
 
-        const photo_url = this.props.song.photo_url;
-        const song_url = this.props.song.song_url;
-        const title = this.props.song.title;
+        const photo_url = this.props.album.photo_url;
+        const title = this.props.album.title;
+        const song_url = this.props.album.songs;
         
         return (
           <>

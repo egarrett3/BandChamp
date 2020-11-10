@@ -6,13 +6,14 @@ import CarouselItem from './carousel_item';
 
 class SellingItems extends React.Component {
     constructor(props) {
-      super(props) 
+      super(props); 
         this.state = {
             
         }
     }
 
     render() {
+      debugger
         return (
           <div className="carousel-component">
             <div className="payment">
@@ -86,8 +87,8 @@ class SellingItems extends React.Component {
               </div>
             </div>
             <ul className="album-block">
-              {this.props.songs.map(function(song, idx) { 
-                return <CarouselItem key={idx} song={song} />
+              {this.props.albs.map(function(album, idx) { 
+                return <CarouselItem key={idx} album={album} />
               })}
             </ul>
           </div>
@@ -96,10 +97,10 @@ class SellingItems extends React.Component {
 }
 
 
-const mapStateToProps = ({ entities: { songs, albums } }) => {
+const mapStateToProps = ({ entities: { songs, album } }) => {
     return {
         sng: Object.values(songs),
-        // albs: Object.values(albums)
+        albs: Object.values(album)
     }
 }
 

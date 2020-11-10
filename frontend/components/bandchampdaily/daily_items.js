@@ -6,19 +6,18 @@ const DailyItems = props => {
 
     return (
         <Link className='album-page' to={{
-            pathname:`/songPage/${props.song.id}`
+            pathname:`/songPage/${props.album.id}`
         }}>
-            <img src={props.song.photo_url} className='alb-pics d-block'/>
+            <img src={props.album.photo_url} className='alb-pics d-block'/>
             <div className='frames'>
                 <div>
                     <div className='descriptions'>{props.descrip}</div>
-                    <div className="sng-title">{props.song.title}</div>
+                    <div className="sng-title">{props.album.title}</div>
                 </div>
                 <div className="feature">FEATURE</div>
             </div>
         </Link>
     )
-
 }
 
 export default DailyItems

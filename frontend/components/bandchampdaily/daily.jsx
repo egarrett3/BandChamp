@@ -1,11 +1,11 @@
 import React from 'react'
 import DailyItem from './daily_item'
 import DailyItems from './daily_items'
-import Carousel from "react-bootstrap/Carousel";
+// import Carousel from "react-bootstrap/Carousel";
 
 class Daily extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); 
     this.state = {
         
     }
@@ -44,13 +44,13 @@ class Daily extends React.Component {
           <h3 id="daily-title">BANDCHAMP DAILY</h3>
             <div id="song-collage">
             
-            {this.props.songs.map(function (song, idx) {
+            {this.props.albums.map(function (album, idx) {
               if (idx === 3) {
-                return <DailyItem key={idx} song={song} descrip={that.describers(song.id)}/>;
+                return <DailyItem key={idx} album={album} descrip={that.describers(album.id)}/>;
               }
             })}
-            {this.props.songs.map(function (song, idx) {
-              return <DailyItems key={idx} song={song} id={song.id} descrip={that.describers(song.id)}/>;    
+            {this.props.albums.map(function (album, idx) {
+              return <DailyItems key={idx} album={album} id={album.id} descrip={that.describers(album.id)}/>;    
             })}
             
           </div>

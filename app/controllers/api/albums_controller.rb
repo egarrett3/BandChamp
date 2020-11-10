@@ -1,15 +1,13 @@
 class Api::AlbumsController < ApplicationController
 
     def index
-        @album = Album.find_by(params[:id])
-        @collection = @album.song_id.map do |song_id|
-             Song.find_by(params[:id])
-        end
+        @albums = Album.all
         render 'api/albums/index'
     end
 
     def show 
-        @album = Album.find_by(params[:id])
+        @album = Album.find_by(id: params[:id])
+        @all_songs = @album.songs
         render 'api/albums/show'
     end
 

@@ -9,14 +9,16 @@ import SideContainer from './sidebar_component';
 
 class SongShow extends React.Component {
     constructor(props) {
-        super(props);
+        super(props); 
         this.state = {
            openShow: true
         }
     }
     
     componentDidMount() {
-        this.props.fetchSongs();
+      debugger
+        // this.props.fetchSongs();
+        this.props.fetchAlbums();
     }
 
     LoggedIn() {
@@ -56,6 +58,7 @@ class SongShow extends React.Component {
     }
 
     render() {
+      debugger
     
       const plist = this.props.songs.map((song) => song.photo_url);
       // const songlist = this.props.songs.map((song) => song);
@@ -95,8 +98,8 @@ class SongShow extends React.Component {
                 })}
               </ul>
             </div>
-            <SellingItems songs={this.props.songs} />
-            <Daily songs={this.props.songs} />
+            <SellingItems albums={this.props.albums} />
+            <Daily albums={this.props.album} />
             <FooterItem />
           </div>
         );  

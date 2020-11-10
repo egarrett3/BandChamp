@@ -1,18 +1,19 @@
 import React from "react";
 import AlbumShow from './album_show_page';
-import { fetchSg } from "../../actions/song_actions";
+import { fetchAl } from "../../actions/album_actions";
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ session, entities: { users, song }}) => {
+const mapStateToProps = ({ session, entities: { users, song, album }}) => {
   return {
     currentUser: users[session.id],
     song: song,
+    album: album,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSong: (id) => dispatch(fetchSg(id)),
+    fetchAlbum: (id) => dispatch(fetchAl(id)),
   };
 };
 
