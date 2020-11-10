@@ -97,10 +97,10 @@ class SellingItems extends React.Component {
 }
 
 
-const mapStateToProps = ({ entities: { songs, album } }) => {
+const mapStateToProps = ({ entities: { songs, albums } }) => {
     return {
         sng: Object.values(songs),
-        albs: Object.values(album)
+        albs: Object.values(albums)
     }
 }
 

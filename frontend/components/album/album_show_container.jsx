@@ -7,7 +7,7 @@ const mapStateToProps = ({ session, entities: { users, song, album }}) => {
   return {
     currentUser: users[session.id],
     song: song,
-    album: album,
+    album: Object.values(album),
   };
 };
 

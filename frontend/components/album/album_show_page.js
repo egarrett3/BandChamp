@@ -1,6 +1,7 @@
 import React from 'react'
 import FooterItem from "../footer/footer";
 import GreetingContainer from "../greeting/greeting_container";
+import AlbumAudioPlayer from './album_audio_player';
 
 
 class AlbumShow extends React.Component {
@@ -14,13 +15,14 @@ class AlbumShow extends React.Component {
 
     componentDidMount() {
       window.scroll(0,0);
+      debugger
       this.props.fetchAlbum(this.props.match.params.songId);
     }
 
-    loadSongURL() {
+    loadSongURL(song_src) {
       if (document.getElementById('src')) {
-        if (this.props.song.song_url) {
-            document.getElementById('src').src = this.props.song.song_url;
+        if (this.props.album) {
+            document.getElementById('src').src = song_src;
             document.getElementById('indi').load();
         }
       }
@@ -28,10 +30,12 @@ class AlbumShow extends React.Component {
 
     render() {
       
-
-        const photo_url = this.props.album.photo_url;
-        const title = this.props.album.title;
-        const song_url = this.props.album.songs;
+        const photo_urls = this.props.album.map(song => song.photo_url);
+        const song_urls = this.props.album.map(song => song.song_url);
+        const titles = this.props.album.map(song => song.album_title);
+      debugger
+        // const title = this.props.album.album_title;
+        // const song_url = this.props.album.song_url;
         
         return (
           <>
@@ -47,21 +51,24 @@ class AlbumShow extends React.Component {
                 <div id="song-info">
                   <div id="album-track-title">
                     <div id="song-info-title">
-                      <div>{title}</div>
+                      <div>{titles[0]}</div>
                     </div>
                     <div id="trackANDalbum">
                       <div id="musicPlayerTrack">
                         <div>
-                            {this.loadSongURL()}
+                            {/* {this.loadSongURL(song_urls[0])}
                           <audio id="indi" controls>
                             <source
                               id ='src'
-                              src={song_url}
+                              src={song_urls[0]}
                               type="audio/mp3"
                             />
-                          </audio>
+                          </audio> */}
+                          {this.props.album.map((song,idx) => 
+                            <AlbumAudioPlayer key={idx} src={song.song_url} title={song.title}/>
+                          )}
                         </div>
-                        <div className="digital-track">Digital Track </div>
+                        {/* <div className="digital-track">Digital Track </div>
                         <div id="streaming-download">Streaming + Download</div>
                         <div id="includes-free">
                           Includes unlimited streaming via the free Bandcamp
@@ -76,11 +83,11 @@ class AlbumShow extends React.Component {
                           September 3, 2020 <br />
                           <br />
                         </div>
-                        <div className="digital-track">all rights reserved</div>
+                        <div className="digital-track">all rights reserved</div> */}
                       </div>
                       <div id="album-picture">
                         <div>
-                          <img src={photo_url} id="album-picture-frame" />
+                          <img src={photo_urls[0]} id="album-picture-frame" />
                         </div>
                       </div>
                     </div>
