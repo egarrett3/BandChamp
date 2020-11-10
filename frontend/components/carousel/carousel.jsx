@@ -13,7 +13,7 @@ class SellingItems extends React.Component {
     }
 
     render() {
-      debugger
+      
         return (
           <div className="carousel-component">
             <div className="payment">

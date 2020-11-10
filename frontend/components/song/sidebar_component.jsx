@@ -11,8 +11,8 @@ class SideContainer extends React.Component {
   }
 
   describers() {
-    switch(this.props.song.id) {
-      case(1):
+    switch(this.props.album.id) {
+      case(0):
         return 'The song of your dreams'
       case(2):
         return 'Who else but the best in their genre'
@@ -38,13 +38,13 @@ class SideContainer extends React.Component {
     return (
       <li className="side-img-container">
         <div className="building-image-words">
-          <div>{this.props.song.title}</div>
+          <div>{this.props.album.title}</div>
           <div>{this.describers()}</div>
         </div>
         <img
-        src={this.props.song.photo_url}
+        src={this.props.album.photo_url}
         className="building-image"
-        onClick={() => this.props.openSong(this.props.song)}
+        onClick={() => this.props.openSong(this.props.album)}
         />
       </li>
     );

@@ -1875,9 +1875,9 @@ button#close-audio:hover {
 .selection-container {
     position: absolute;
     top: 60%;
-    left: 7%;
-    height: 150px;
-    width: 765px;
+    left: 5%;
+    height: 100px;
+    width: 865px;
     z-index: 15;
 }
 

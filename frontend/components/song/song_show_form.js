@@ -16,7 +16,6 @@ class SongShow extends React.Component {
     }
     
     componentDidMount() {
-      debugger
         // this.props.fetchSongs();
         this.props.fetchAlbums();
     }
@@ -60,7 +59,7 @@ class SongShow extends React.Component {
     render() {
       debugger
     
-      const plist = this.props.songs.map((song) => song.photo_url);
+      const albumList = this.props.album.map((album) => album.photo_url);
       // const songlist = this.props.songs.map((song) => song);
 
         return (
@@ -80,7 +79,7 @@ class SongShow extends React.Component {
                     <span id="arrow">&#8594;</span>
                   </button> */}
                 </div>
-                <img src={!this.props.song ? plist[0] : this.props.song.photo_url}
+                <img src={!this.props.song ? albumList[0] : this.props.song.photo_url}
                   className={!this.props.song ? "graffiti-image" : "full-screen-img"}
                 />
                 {!this.props.song ? <></> : <button onClick={this.props.closeSong} id="close-audio">
@@ -91,9 +90,9 @@ class SongShow extends React.Component {
                 }
               </div>
               <ul className="sidebar-container">
-                {this.props.songs.map(function (song, idx) {
-                  if (idx > 0 && idx < 4) {
-                    return <SideContainer key={idx} song={song} />;
+                {this.props.album.map(function (album, idx) {
+                  if (idx < 4) {
+                    return <SideContainer key={idx} album={album} />;
                   }
                 })}
               </ul>

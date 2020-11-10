@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class UserProf extends React.Component {
   constructor(props) {
-    super(props); debugger
+    super(props);
     this.state = {
       edited: true,
       username: props.currentUser.username,
@@ -22,7 +22,6 @@ class UserProf extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.getUser(this.props.currentUser.id);
   }
 
@@ -48,7 +47,6 @@ class UserProf extends React.Component {
   }
 
   submitForm(e) {
-    debugger
     e.preventDefault();
     // const user = merge({}, this.state);
     const user = new FormData();

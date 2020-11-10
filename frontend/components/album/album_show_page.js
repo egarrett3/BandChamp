@@ -27,7 +27,7 @@ class AlbumShow extends React.Component {
     }
 
     render() {
-      debugger
+      
 
         const photo_url = this.props.album.photo_url;
         const title = this.props.album.title;
