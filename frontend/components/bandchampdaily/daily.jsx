@@ -45,11 +45,12 @@ class Daily extends React.Component {
             <div id="song-collage">
             
             {this.props.albums.map(function (album, idx) {
-              if (idx === 3) {
+              if (idx === 0) {
                 return <DailyItem key={idx} album={album} descrip={that.describers(album.id)}/>;
               }
             })}
             {this.props.albums.map(function (album, idx) {
+              if (idx > 0 && idx < 7)
               return <DailyItems key={idx} album={album} id={album.id} descrip={that.describers(album.id)}/>;    
             })}
             

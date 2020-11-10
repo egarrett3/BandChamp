@@ -2129,3 +2129,26 @@ form#edit-frame textarea:focus {
 .next-song-arrow {
     cursor: pointer;
 }
+
+#full-package {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:baseline;
+}
+
+#songLinkList {
+    list-style-type: decimal;
+    margin-top: 30px;
+    margin-right: 10px;
+}
+
+.song-links {
+    display: flex;
+    justify-content: space-between;
+    margin:10px;
+}
+
+.link-link {
+    display: flex;
+}

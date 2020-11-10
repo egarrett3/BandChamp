@@ -2,14 +2,20 @@ import React from 'react'
 import FooterItem from "../footer/footer";
 import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
+import DownloadLink from './download_link';
+import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 class AlbumShow extends React.Component {
     constructor(props) {
         super(props) 
         this.state = {
-          id : 1
+          id : 1,
+          counter : 0
         };
+      this.nextSong = this.nextSong.bind(this);
+      this.previousSong = this.previousSong.bind(this);
         
     }
 
@@ -19,21 +25,45 @@ class AlbumShow extends React.Component {
       this.props.fetchAlbum(this.props.match.params.songId);
     }
 
-    loadSongURL(song_src) {
-      if (document.getElementById('src')) {
-        if (this.props.album) {
-            document.getElementById('src').src = song_src;
-            document.getElementById('indi').load();
-        }
-      }
+  nextSong(songListLength) {
+    debugger
+    if (this.state.counter < songListLength - 1) {
+      this.setState({
+        counter: this.state.counter + 1
+      })
     }
+    // this.loadSongURL(this.props.song_urls[this.state.counter]) 
+
+  }
+
+  previousSong() {
+    debugger
+    if (this.state.counter >= 1) {
+      this.setState({
+        counter: this.state.counter - 1
+      })
+    }
+    // this.loadSongURL(this.props.song_urls[this.state.counter]) 
+
+  }
+
+    // loadSongURL(song_src) {
+    //   if (document.getElementById('src')) {
+    //     if (this.props.album) {
+    //         document.getElementById('src').src = song_src;
+    //         document.getElementById('indi').load();
+    //     }
+    //   }
+    // }
 
     render() {
+      debugger
       
         const photo_urls = this.props.album.map(song => song.photo_url);
         const song_urls = this.props.album.map(song => song.song_url);
-        const titles = this.props.album.map(song => song.album_title);
-      debugger
+        const song_titles = this.props.album.map(song => song.song_title);
+        const AlLength = this.props.album.length
+        const title = this.props.album.map(song => song.album_title);
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;
         
@@ -51,7 +81,7 @@ class AlbumShow extends React.Component {
                 <div id="song-info">
                   <div id="album-track-title">
                     <div id="song-info-title">
-                      <div>{titles[0]}</div>
+                      <div>{title[0]}</div>
                     </div>
                     <div id="trackANDalbum">
                       <div id="musicPlayerTrack">
@@ -64,9 +94,27 @@ class AlbumShow extends React.Component {
                               type="audio/mp3"
                             />
                           </audio> */}
-                          {this.props.album.map((song,idx) => 
-                            <AlbumAudioPlayer key={idx} src={song.song_url} title={song.title}/>
-                          )}
+                          <div id='full-package'>
+                            <AlbumAudioPlayer 
+                              song_url={song_urls[this.state.counter]} 
+                              song_title={song_titles[this.state.counter]}
+                            />
+                            <div id='space-it-out'>
+                              <div className='next-song-arrow' onClick={() => this.previousSong()}>
+                                <FontAwesomeIcon icon={faChevronLeft} />
+                              </div>
+                              <div className='next-song-arrow' onClick={() => this.nextSong(AlLength)}>
+                                <FontAwesomeIcon icon={faChevronRight} />
+                              </div>
+                            </div>
+                          </div>
+                          <ol id='songLinkList'>
+                            {this.props.album.map((song,idx) => 
+                              <DownloadLink key={idx} title={song.title} url={song.song_url} />
+                            )}
+                          </ol>
+                          {/* <UploadLink /> */}
+                          
                         </div>
                         {/* <div className="digital-track">Digital Track </div>
                         <div id="streaming-download">Streaming + Download</div>

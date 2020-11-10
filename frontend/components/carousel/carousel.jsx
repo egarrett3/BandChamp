@@ -88,7 +88,9 @@ class SellingItems extends React.Component {
             </div>
             <ul className="album-block">
               {this.props.albs.map(function(album, idx) { 
-                return <CarouselItem key={idx} album={album} />
+                if (idx > 7 && idx < 15) {
+                  return <CarouselItem key={idx} album={album} />
+                }
               })}
             </ul>
           </div>
