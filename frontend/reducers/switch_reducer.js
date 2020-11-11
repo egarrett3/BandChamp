@@ -1,5 +1,4 @@
 import { OPEN_SONG, CLOSE_SONG } from "../actions/song_actions";
-import { merge } from "lodash";
 
 const switchReducer = (state = null, action) => {
   Object.freeze(state);
@@ -7,7 +6,7 @@ const switchReducer = (state = null, action) => {
 
   switch (action.type) {
     case OPEN_SONG:
-      return merge({}, action.song);
+      return true;
     case CLOSE_SONG:
       return null;
     default:

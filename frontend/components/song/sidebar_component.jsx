@@ -36,7 +36,7 @@ class SideContainer extends React.Component {
   }
 
   fetchAlbumSongs() {
-    this.props.fetchAlbum(this.props.album.id).then((album) => this.props.openSong(album))
+    this.props.fetchAlbum(this.props.album.id).then(() => this.props.openSong())
   }
  
   
