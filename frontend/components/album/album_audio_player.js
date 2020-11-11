@@ -68,7 +68,6 @@ class AlbumAudioPlayer extends React.Component {
     //         if (this.props.song_url) {
     //             this.source1.src = this.props.song_url;
     //             this.audio1.load();
-    //             debugger
     //         }
     //     }
     // }
@@ -76,7 +75,6 @@ class AlbumAudioPlayer extends React.Component {
    
     render() {
 
-        debugger
         const song_url = this.props.song_url;
         const title = this.props.song_title;
 

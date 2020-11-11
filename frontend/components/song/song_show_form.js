@@ -20,6 +20,7 @@ class SongShow extends React.Component {
         this.props.fetchAlbums();
     }
 
+
     LoggedIn() {
         this.setState(() => ({
             user: this.currentUsr()
@@ -57,7 +58,7 @@ class SongShow extends React.Component {
     }
 
     render() {
-      debugger
+      
       const albumList = this.props.albums.map((album) => album.photo_url);
       // const songlist = this.props.songs.map((song) => song);
 
@@ -90,7 +91,7 @@ class SongShow extends React.Component {
               </div>
               <ul className="sidebar-container">
                 {this.props.albums.map(function (album, idx) {
-                  if (idx < 4) {
+                  if (idx < 3) {
                     return <SideContainer key={idx} album={album} />;
                   }
                 })}

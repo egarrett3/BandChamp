@@ -21,12 +21,10 @@ class AlbumShow extends React.Component {
 
     componentDidMount() {
       window.scroll(0,0);
-      debugger
       this.props.fetchAlbum(this.props.match.params.songId);
     }
 
   nextSong(songListLength) {
-    debugger
     if (this.state.counter < songListLength - 1) {
       this.setState({
         counter: this.state.counter + 1
@@ -37,7 +35,6 @@ class AlbumShow extends React.Component {
   }
 
   previousSong() {
-    debugger
     if (this.state.counter >= 1) {
       this.setState({
         counter: this.state.counter - 1
@@ -57,7 +54,6 @@ class AlbumShow extends React.Component {
     // }
 
     render() {
-      debugger
       
         const photo_urls = this.props.album.map(song => song.photo_url);
         const song_urls = this.props.album.map(song => song.song_url);
