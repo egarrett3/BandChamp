@@ -36,11 +36,12 @@ class SideContainer extends React.Component {
   }
 
   fetchAlbumSongs() {
-    this.props.fetchAlbum(this.props.album.id).then(() => this.props.openSong())
+    
+    this.props.fetchAlbum(this.props.album.id).then(() => this.props.openSong(this.props.album.id));
   }
- 
   
   render() {
+    debugger
     return (
       <li className="side-img-container">
         <div className="building-image-words">
@@ -68,7 +69,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAlbum: (id) => dispatch(fetchAl(id)),
-    openSong: (song) => dispatch(openSong(song)),
+    openSong: (albumId) => dispatch(openSong(albumId)),
     closeSong: () => dispatch(closeSong()),
   };
 }

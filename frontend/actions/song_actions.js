@@ -7,9 +7,10 @@ export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 export const OPEN_SONG = "OPEN_SONG";
 export const CLOSE_SONG = "CLOSE_SONG";
 
-export const openSong = () => {
+export const openSong = (albumId) => {
   return {
     type: OPEN_SONG,
+    albumId
   };
 };
 
