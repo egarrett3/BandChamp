@@ -58,7 +58,9 @@ class SongShow extends React.Component {
     }
 
     render() {
+  
       const albumList = this.props.albums.map((album) => album.photo_url);
+      let album = this.props.album ? this.props.album : albumList;
       // const songlist = this.props.songs.map((song) => song);
 
         return (
@@ -78,14 +80,14 @@ class SongShow extends React.Component {
                     <span id="arrow">&#8594;</span>
                   </button> */}
                 </div>
-                <img src={!this.props.song ? albumList[0] : this.props.album[0].photo_url }
+                <img src={!this.props.song ? albumList[0] : album[0].photo_url }
                   className={!this.props.song ? "graffiti-image" : "full-screen-img"}
                 />
                 {!this.props.song ? <></> : <button onClick={this.props.closeSong} id="close-audio">
                   X CLOSE SONG
                 </button>}
                 {!this.props.song ? <></> : 
-                  <AudioPlayer songs={!this.props.song ? this.props.songs : this.props.album[0].song_url } />
+                  <AudioPlayer songs={!this.props.song ? this.props.songs : album[0].song_url } />
                 }
               </div>
               <ul className="sidebar-container">
