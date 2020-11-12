@@ -90,7 +90,6 @@ class AudioPlayer extends React.Component {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
     const songList = this.props.albumData.map(song => song.song_url);
-    debugger
 
     let that = this;
     
