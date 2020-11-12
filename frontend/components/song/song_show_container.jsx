@@ -10,7 +10,7 @@ const mapStateToProps = ({ui,session,entities:{songs,users,albums,album}}) => {
       songs: Object.values(songs),
       albums: Object.values(albums),
       album: Object.values(album),
-      song: ui.switch,
+      switchSong: ui.switch,
     };
 }
 
