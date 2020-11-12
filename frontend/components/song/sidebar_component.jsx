@@ -69,7 +69,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchAlbum: (id) => dispatch(fetchAl(id)),
     openSong: (albumId) => dispatch(openSong(albumId)),
-    closeSong: () => dispatch(closeSong()),
+    // closeSong: () => dispatch(closeSong()),
   };
 }
 

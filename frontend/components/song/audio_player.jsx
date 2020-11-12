@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { openSong, closeSong } from "../../actions/song_actions";
+import { fetchAls } from "../../actions/album_actions";
 
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -11,8 +14,6 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-    debugger
-    this.props.fetchAlbum(this.props.id);
     let aud = document.getElementById("audio-track");
     aud.value = "0";
     this.audio.addEventListener('loadedmetadata',(e) => {
@@ -164,7 +165,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchAlbums: () => dispatch(fetchAls()),
+    fetchAlbum: (id) => dispatch(fetchAl(id)),
     openSong: (song) => dispatch(openSong(song)),
     closeSong: () => dispatch(closeSong()),
   };
