@@ -79,6 +79,7 @@ class AudioPlayer extends React.Component {
   render() {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
+    const songList = this.props.albumData.map(song => song.song_url)
 
     let that = this;
     
@@ -102,7 +103,7 @@ class AudioPlayer extends React.Component {
             > <source
               ref={(ref) => (this.source = ref)}
               id='src2'
-              src={this.props.albumData[0].song_url}
+              src={songList[0]}
               />
             </audio>
             <div className="btns">
