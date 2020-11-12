@@ -86,7 +86,7 @@ class SongShow extends React.Component {
                   X CLOSE SONG
                 </button>}
                 {!this.props.switchSong ? <></> : 
-                  <AudioPlayer songs={!this.props.switchSong ? '' : this.props.album[0].song_url } />
+                  <AudioPlayer id={this.props.switchSong} />
                 }
               </div>
               <ul className="sidebar-container">

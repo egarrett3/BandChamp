@@ -11,6 +11,8 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
+    debugger
+    this.props.fetchAlbum(this.props.id);
     let aud = document.getElementById("audio-track");
     aud.value = "0";
     this.audio.addEventListener('loadedmetadata',(e) => {
@@ -99,7 +101,7 @@ class AudioPlayer extends React.Component {
             > <source
               ref={(ref) => (this.source = ref)}
               id='src2'
-              src={this.props.songs}
+              src={this.props.albumData[0].song_url}
               />
             </audio>
             <div className="btns">
@@ -150,4 +152,22 @@ class AudioPlayer extends React.Component {
   }
 }
 
-export default AudioPlayer;
+const mapStateToProps = ({
+  ui,
+  entities: { album },
+}) => {
+  return {
+    albumData: Object.values(album),
+    switchSong: ui.switch,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAlbums: () => dispatch(fetchAls()),
+    openSong: (song) => dispatch(openSong(song)),
+    closeSong: () => dispatch(closeSong()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);
