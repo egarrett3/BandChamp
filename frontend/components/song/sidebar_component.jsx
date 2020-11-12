@@ -12,11 +12,11 @@ class SideContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAlbum(this.props.album.id)
+    this.props.fetchAlbum((this.props.id+1))
   }
 
   describers() {
-    switch(this.props.album.id) {
+    switch((this.props.id+1)) {
       case(1):
         return 'The song of your dreams'
       case(2):
@@ -50,7 +50,7 @@ class SideContainer extends React.Component {
         <img
         src={this.props.album.photo_url}
         className="building-image"
-        onClick={() => this.props.openSong(this.props.album.id)}
+        onClick={() => this.props.openSong((this.props.id+1))}
         />
       </li>
     );

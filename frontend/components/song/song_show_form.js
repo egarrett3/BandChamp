@@ -93,7 +93,7 @@ class SongShow extends React.Component {
                 {this.props.albums.map(function (album, idx) {
                   if (idx < 3) {
                     // this.props.fetchAlbum(idx);
-                    return <SideContainer key={idx} album={album} />;
+                    return <SideContainer key={idx} id={idx} album={album} />;
                   }
                 })}
               </ul>
