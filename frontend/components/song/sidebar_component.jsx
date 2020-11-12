@@ -41,6 +41,7 @@ class SideContainer extends React.Component {
 
   
   render() {
+    debugger
     return (
       <li className="side-img-container">
         <div className="building-image-words">

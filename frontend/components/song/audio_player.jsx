@@ -11,6 +11,7 @@ class AudioPlayer extends React.Component {
       duration: 0,
       user: false,
     };
+    this.loadSongURL = this.loadSongURL.bind(this);
   }
 
   componentDidMount() {
@@ -76,10 +77,20 @@ class AudioPlayer extends React.Component {
     }
   }
 
+  loadSongURL(song_src) {
+    if (document.getElementById('src1')) {
+      if (this.props.album) {
+          document.getElementById('src1').src = song_src;
+          document.getElementById('ply').load();
+      }
+    }
+  }
+
   render() {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
-    const songList = this.props.albumData.map(song => song.song_url)
+    const songList = this.props.albumData.map(song => song.song_url);
+    debugger
 
     let that = this;
     
@@ -93,6 +104,7 @@ class AudioPlayer extends React.Component {
     return (
       <>
         <div id="audio-player">
+          {this.loadSongURL(songList[0])}
             <audio
               id='ply'
               ref={(ref) => (this.audio = ref)}
@@ -102,7 +114,7 @@ class AudioPlayer extends React.Component {
               }
             > <source
               ref={(ref) => (this.source = ref)}
-              id='src2'
+              id='src1'
               src={songList[0]}
               />
             </audio>

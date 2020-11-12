@@ -61,6 +61,7 @@ class SongShow extends React.Component {
       const albumList = this.props.albums.map((album) => album.photo_url);
       // let album = this.props.album ? this.props.album : albumList;
       // const songlist = this.props.songs.map((song) => song);
+      debugger
 
         return (
           <div>
