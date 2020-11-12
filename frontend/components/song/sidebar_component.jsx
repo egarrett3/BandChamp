@@ -9,7 +9,10 @@ class SideContainer extends React.Component {
     this.state = {
     
     }
-    this.fetchAlbumSongs = this.fetchAlbumSongs.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.fetchAlbum(this.props.album.id)
   }
 
   describers() {
@@ -35,9 +38,7 @@ class SideContainer extends React.Component {
     }
   }
 
-  fetchAlbumSongs() {
-    this.props.fetchAlbum(this.props.album.id).then(() => this.props.openSong(this.props.album.id));
-  }
+
   
   render() {
     return (
@@ -49,7 +50,7 @@ class SideContainer extends React.Component {
         <img
         src={this.props.album.photo_url}
         className="building-image"
-        onClick={() => this.fetchAlbumSongs()}
+        onClick={() => this.props.openSong(this.props.album.id)}
         />
       </li>
     );
