@@ -89,7 +89,8 @@ class AudioPlayer extends React.Component {
   render() {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
-    // const songList = this.props.albumData.map(song => song.song_url);
+    const song_url = this.props.albumData.song_url;
+    debugger  
 
     let that = this;
     
@@ -103,7 +104,7 @@ class AudioPlayer extends React.Component {
     return (
       <>
         <div id="audio-player">
-          {this.loadSongURL(this.props.albumData[0].song_url)}
+          {this.loadSongURL(song_url)}
           <audio
             id="ply"
             ref={(ref) => (this.audio = ref)}
@@ -115,7 +116,7 @@ class AudioPlayer extends React.Component {
             <source
               ref={(ref) => (this.source = ref)}
               id="src1"
-              src={this.props.albumData[0].song_url}
+              src={song_url}
             />
           </audio>
           <div className="btns">
@@ -168,10 +169,10 @@ class AudioPlayer extends React.Component {
 
 const mapStateToProps = ({
   ui,
-  entities: { album },
+  entities: { },
 }) => {
   return {
-    albumData: Object.values(album),
+    // albumData: Object.values(album),
     switchSong: ui.switch,
   };
 };

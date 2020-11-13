@@ -61,6 +61,9 @@ class SongShow extends React.Component {
       const albumList = this.props.albums.map((album) => album.photo_url);
       // let album = this.props.album ? this.props.album : albumList;
       // const songlist = this.props.songs.map((song) => song);
+      let selectAlbums=[];
+      selectAlbums.push(this.props.album);
+      debugger
 
         return (
           <div>
@@ -86,7 +89,7 @@ class SongShow extends React.Component {
                   X CLOSE SONG
                 </button>}
                 {!this.props.switchSong ? <></> : 
-                  <AudioPlayer id={this.props.switchSong} />
+                  <AudioPlayer id={this.props.switchSong} albumData={this.props.albumData[0]}/>
                 }
               </div>
               <ul className="sidebar-container">
