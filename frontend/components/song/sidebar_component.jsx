@@ -12,7 +12,7 @@ class SideContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAlbum((this.props.id+1))
+    this.props.fetchAlbum((this.props.album.id))
   }
 
   describers() {
@@ -41,7 +41,7 @@ class SideContainer extends React.Component {
 
   
   render() {
-    
+
     return (
       <li className="side-img-container">
         <div className="building-image-words">
