@@ -103,63 +103,63 @@ class AudioPlayer extends React.Component {
     return (
       <>
         <div id="audio-player">
-          {this.loadSongURL(songList[0])}
-            <audio
-              id='ply'
-              ref={(ref) => (this.audio = ref)}
-              preload='auto'
-              type="audio/mpeg"
-              onLoadedMetadata={() =>
-                  (this.seekbar.max = this.audio.duration)
-              }
-            > <source
+          {this.loadSongURL(this.props.albumData[0].song_url)}
+          <audio
+            id="ply"
+            ref={(ref) => (this.audio = ref)}
+            preload="auto"
+            type="audio/mpeg"
+            onLoadedMetadata={() => (this.seekbar.max = this.audio.duration)}
+          >
+            {" "}
+            <source
               ref={(ref) => (this.source = ref)}
-              id='src1'
+              id="src1"
               src={this.props.albumData[0].song_url}
-              />
-            </audio>
-            <div className="btns">
+            />
+          </audio>
+          <div className="btns">
             <div id="timer"></div>
             <div
-                id="play-btn"
-                onClick={() => {
+              id="play-btn"
+              onClick={() => {
                 this.audio.play();
                 this.flipPlaybtn();
-                }}
+              }}
             ></div>
             <div
-                className="disappear"
-                id="pause-btn"
-                onClick={() => {
+              className="disappear"
+              id="pause-btn"
+              onClick={() => {
                 this.audio.pause();
                 this.flipPausebtn();
-                }}
+              }}
             ></div>
-            </div>
-            <div className="audio-label">
+          </div>
+          <div className="audio-label">
             <div className="weekly-label">
-                <h3 className="weekly">BandChamp Weekly</h3>
-                <div className="date">{this.time()}</div>
+              <h3 className="weekly">BandChamp Weekly</h3>
+              <div className="date">{this.time()}</div>
             </div>
             <div className="lower-label">
-                <div className="afan">past shows</div>
+              <div className="afan">past shows</div>
             </div>
             <div className="feature-artist"></div>
             <div className="hosts"></div>
-            </div>
+          </div>
 
-            <input
-              ref={(ref) => (this.seekbar = ref)}
-              type="range"
-              min="0"
-              step="0.01"
-              id="audio-track"
-              onChange={() => (this.audio.currentTime = this.seekbar.value)}
-            ></input>
-            <div className="timer">
-              <span id="curTimeText">{ct}</span>/
-              <span id="durTimeText">{dur}</span>
-            </div>
+          <input
+            ref={(ref) => (this.seekbar = ref)}
+            type="range"
+            min="0"
+            step="0.01"
+            id="audio-track"
+            onChange={() => (this.audio.currentTime = this.seekbar.value)}
+          ></input>
+          <div className="timer">
+            <span id="curTimeText">{ct}</span>/
+            <span id="durTimeText">{dur}</span>
+          </div>
         </div>
       </>
     );
