@@ -108,7 +108,7 @@ const mapStateToProps = ({ entities: { songs, albums } }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchSongs: () => dispatch(fetchSgs()),
+        fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
         fetchAlbums: () => dispatch(fetchAls())
     }
 }

@@ -61,8 +61,7 @@ class SongShow extends React.Component {
       const albumList = this.props.albums.map((album) => album.photo_url);
       // let album = this.props.album ? this.props.album : albumList;
       // const songlist = this.props.songs.map((song) => song);
-      let selectAlbums=[];
-      selectAlbums.push(this.props.album);
+    
       debugger
 
         return (
@@ -82,14 +81,14 @@ class SongShow extends React.Component {
                     <span id="arrow">&#8594;</span>
                   </button> */}
                 </div>
-                <img src={!this.props.switchSong ? albumList[0] : albumList[this.props.switchSong-1] }
-                  className={!this.props.switchSong ? "graffiti-image" : "full-screen-img"}
+                <img src={!this.props.photo_url ? albumList[0] : this.props.photo_url }
+                  className={!this.props.photo_url ? "graffiti-image" : "full-screen-img"}
                 />
-                {!this.props.switchSong ? <></> : <button onClick={this.props.closeSong} id="close-audio">
+                {!this.props.photo_url ? <></> : <button onClick={this.props.closeSong} id="close-audio">
                   X CLOSE SONG
                 </button>}
-                {!this.props.switchSong ? <></> : 
-                  <AudioPlayer id={this.props.switchSong} albumData={this.props.albumData[0]}/>
+                {!this.props.photo_url ? <></> : 
+                  <AudioPlayer song={this.props.song} />
                 }
               </div>
               <ul className="sidebar-container">

@@ -7,10 +7,10 @@ export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 export const OPEN_SONG = "OPEN_SONG";
 export const CLOSE_SONG = "CLOSE_SONG";
 
-export const openSong = (albumId) => {
+export const openSong = (photo_url) => {
   return {
     type: OPEN_SONG,
-    albumId
+    photo_url
   };
 };
 
@@ -34,9 +34,9 @@ const receiveAllSongs = (songs) => {
     }
 };
 
-export const fetchSg = (songId) => dispatch => fetchSong(songId)
+export const fetchSg = (albumId,songId) => dispatch => fetchSong(albumId,songId)
     .then(song => dispatch(receiveSong(song)));
 
 
-export const fetchSgs = () => dispatch => fetchSongs()
+export const fetchSgs = (albumId) => dispatch => fetchSongs(albumId)
     .then(songs => dispatch(receiveAllSongs(songs)));

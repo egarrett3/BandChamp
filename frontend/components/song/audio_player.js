@@ -1,7 +1,4 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { openSong, closeSong } from "../../actions/song_actions";
-import { fetchAls } from "../../actions/album_actions";
 
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -89,7 +86,6 @@ class AudioPlayer extends React.Component {
   render() {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
-    const song_url = this.props.albumData.song_url;
     debugger  
 
     let that = this;
@@ -104,7 +100,7 @@ class AudioPlayer extends React.Component {
     return (
       <>
         <div id="audio-player">
-          {this.loadSongURL(song_url)}
+          {this.loadSongURL(this.props.song)}
           <audio
             id="ply"
             ref={(ref) => (this.audio = ref)}
@@ -116,7 +112,7 @@ class AudioPlayer extends React.Component {
             <source
               ref={(ref) => (this.source = ref)}
               id="src1"
-              src={song_url}
+              src={this.props.song}
             />
           </audio>
           <div className="btns">
@@ -167,22 +163,4 @@ class AudioPlayer extends React.Component {
   }
 }
 
-const mapStateToProps = ({
-  ui,
-  entities: { },
-}) => {
-  return {
-    // albumData: Object.values(album),
-    switchSong: ui.switch,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchAlbum: (id) => dispatch(fetchAl(id)),
-    openSong: (song) => dispatch(openSong(song)),
-    closeSong: () => dispatch(closeSong()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);
+export default AudioPlayer;

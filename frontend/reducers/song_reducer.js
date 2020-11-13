@@ -3,6 +3,7 @@ import { merge } from 'lodash';
 
 const songReducer = (state = {}, action) => {
   Object.freeze(state);
+  
   switch (action.type) {
     case RECEIVE_SONG:
       return merge({}, state, action.song);

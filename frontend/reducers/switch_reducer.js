@@ -3,10 +3,10 @@ import { merge } from "lodash";
 
 const switchReducer = (state = null, action) => {
   Object.freeze(state);
-
+  
   switch (action.type) {
     case OPEN_SONG:
-      return action.albumId;
+      return action.photo_url;
     case CLOSE_SONG:
       return null;
     default:

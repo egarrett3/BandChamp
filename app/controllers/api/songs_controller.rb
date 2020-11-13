@@ -1,7 +1,11 @@
 class Api::SongsController < ApplicationController
 
     def show 
-        @song = Song.find(params[:id])
+        
+        @album = Album.find(params[:album_id])
+        @songs = @album.songs
+        @song = @songs[params[:id].to_i]
+
         render :show
     end
     

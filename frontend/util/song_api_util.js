@@ -1,12 +1,12 @@
-export const fetchSong = (id) => (
+export const fetchSong = (album_id,song_id) => (
     $.ajax({
-        url: `api/songs/${id}`,
+        url: `api/albums/${album_id}/songs/${song_id}`,
     })
 )
 
-export const fetchSongs = () => (
+export const fetchSongs = (album_id) => (
     $.ajax({
-        url: 'api/songs/',
+        url: `api/albums/${album_id}/songs`,
     })
 )
 
