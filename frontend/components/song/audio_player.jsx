@@ -89,7 +89,7 @@ class AudioPlayer extends React.Component {
   render() {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
-    const songList = this.props.albumData.map(song => song.song_url);
+    // const songList = this.props.albumData.map(song => song.song_url);
 
     let that = this;
     
@@ -107,6 +107,7 @@ class AudioPlayer extends React.Component {
             <audio
               id='ply'
               ref={(ref) => (this.audio = ref)}
+              preload='auto'
               type="audio/mpeg"
               onLoadedMetadata={() =>
                   (this.seekbar.max = this.audio.duration)
@@ -114,7 +115,7 @@ class AudioPlayer extends React.Component {
             > <source
               ref={(ref) => (this.source = ref)}
               id='src1'
-              src={songList[0]}
+              src={this.props.albumData[0].song_url}
               />
             </audio>
             <div className="btns">
