@@ -1,6 +1,7 @@
 class Api::AlbumsController < ApplicationController
 
     def index
+        debugger
         @albums = Album.all
         render 'api/albums/index'
     end
