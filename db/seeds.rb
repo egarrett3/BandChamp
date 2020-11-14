@@ -13,7 +13,7 @@ require 'open-uri'
 # Picture.destroy_all
 # Album.destroy_all
 
-user1 = User.find_by(username: 'tutu', email: 'tutu@tutu.com', password:'pineapple1')
+user1 = User.find_by(username: 'tutu', email: 'tutu@tutu.com')
 
 a1=Album.find_by(title: 'The One')
 a2=Album.find_by(title: 'Dosie Doe')
