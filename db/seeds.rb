@@ -185,7 +185,7 @@ file28 = open('s3://active-storage-bandchamp-pro/Chad_Crouch_-_Spring_Migration_
 # s18.song.attach(io: File.read(file25), filename: 'Kai_Engel_-_03_-_Contention.mp3')
 # s19.song.attach(io: File.read(file26), filename: 'Chad_Crouch_-_Stratum_Instrumental.mp3')
 # s20.song.attach(io: File.read(file27), filename: 'Chad_Crouch_-_Ballad_Of_The_Blackbirds_Instrumental.mp3')
-s21.song.attach(io: File.read(file28), filename: 'Chad_Crouch_-_Spring_Migration_Instrumental.mp3')
+s21.song.attach(io: file28, filename: 'Chad_Crouch_-_Spring_Migration_Instrumental.mp3')
 # s22.song.attach(io: File.read(file29), filename: 'Dee_Yan-Key_-_03_-_Triton.mp3')
 # s23.song.attach(io: File.read(file30), filename: 'Chad_Crouch_-_Cove_Instrumental.mp3')
 # s24.song.attach(io: File.read(file31), filename: 'David_Hilowitz_-_01_-_Equal_Proportions.mp3')
