@@ -86,7 +86,6 @@ class AudioPlayer extends React.Component {
   render() {
     const ct = this.getTime(this.state.currentTime);
     const dur = this.getTime(this.state.duration);
-    debugger  
 
     let that = this;
     
