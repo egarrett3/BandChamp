@@ -21,7 +21,8 @@ class AlbumShow extends React.Component {
 
     componentDidMount() {
       window.scroll(0,0);
-      this.props.fetchAlbum(this.props.match.params.songId);
+      this.props.fetchSongs(this.props.match.params.albumId);
+      this.props.fetchAlbum(this.props.match.params.albumId);
     }
 
   nextSong(songListLength) {
@@ -56,9 +57,9 @@ class AlbumShow extends React.Component {
     render() {
       
         const photo_urls = this.props.album.map(song => song.photo_url);
-        const song_urls = this.props.album.map(song => song.song_url);
-        const song_titles = this.props.album.map(song => song.song_title);
-        const AlLength = this.props.album.length
+        const song_urls = this.props.songs.map(song => song.song_url);
+        const song_titles = this.props.songs.map(song => song.song_title);
+        const AlLength = this.props.songs.length
         const title = this.props.album.map(song => song.album_title);
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;

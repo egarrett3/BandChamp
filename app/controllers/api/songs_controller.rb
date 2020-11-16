@@ -1,15 +1,14 @@
 class Api::SongsController < ApplicationController
 
     def show 
-        
         @album = Album.find(params[:album_id])
         @songs = @album.songs
         @song = @songs[params[:id].to_i]
-
         render :show
     end
     
     def index
+        debugger
         @songs = Song.all
         render :index
     end
