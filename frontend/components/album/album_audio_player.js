@@ -34,6 +34,7 @@ class AlbumAudioPlayer extends React.Component {
         this.audio1.addEventListener("timeupdate", (e) => {
             this.seekbar1.value = e.target.currentTime;
         });
+
     }
 
     
@@ -86,8 +87,8 @@ class AlbumAudioPlayer extends React.Component {
             this.source1.src = song_src;
             this.audio1.pause();
             this.audio1.load();
-            this.audio1.play();
-            this.flipPlaybtn();
+            // this.audio1.play();
+            // this.flipPlaybtn();
             debugger
         }
       }
@@ -122,7 +123,7 @@ class AlbumAudioPlayer extends React.Component {
                     ><source
                             ref={(ref) => (this.source1 = ref)}
                             id='src2'
-                            src={this.props.firstSong}
+                            src={this.props.songs[this.state.counter]}
                         />
                     </audio>
                     <div className="btns2">
@@ -150,7 +151,7 @@ class AlbumAudioPlayer extends React.Component {
                                 <span id="curTimeText">{ct}</span>/
                                 <span id="durTimeText">{dur}</span>
                             </div>
-                            {/* <h3 className="weekly">{!this.props.songs ? <></> : this.props.songs[this.state.counter].title}</h3> */}
+                            <h3 className="weekly">Title: {this.props.titles[this.state.counter]}</h3>
                             <div id='space-it-out'>
                                 <button className='next-song-arrow' onClick={() => this.previousSong()}>
                                     <FontAwesomeIcon icon={faChevronLeft} />

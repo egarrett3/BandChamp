@@ -16,7 +16,7 @@ class Api::PicturesController < ApplicationController
         if params[:picture][:type] == 'User'
             @user = User.find_by(id: params[:id])
             @picture = @user.pictures[0]
-        else params[:picture][:type] == 'Song'
+        else params[:picture][:type] == 'Album'
             @song = Song.find_by(id: params[:id])
             @picture = @song.pictures[0]
         end

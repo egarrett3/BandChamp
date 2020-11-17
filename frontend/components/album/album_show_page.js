@@ -26,38 +26,18 @@ class AlbumShow extends React.Component {
       this.props.fetchAlbum(this.props.match.params.songId)
     }
 
-  // nextSong(songListLength) {
-  //   if (this.state.counter < songListLength - 1) {
-  //     this.setState({
-  //       counter: this.state.counter + 1
-  //     })
-  //   }
-    
-  //   // this.loadSongURL(this.props.song_urls[this.state.counter]) 
-
-  // }
-
-  // previousSong() {
-  //   if (this.state.counter >= 1) {
-  //     this.setState({
-  //       counter: this.state.counter - 1
-  //     })
-  //   }
-  //   // this.loadSongURL(this.props.song_urls[this.state.counter]) 
-
-  // }
-
-    // loadSongURL(song_src) {
-    //   if (document.getElementById('src')) {
-    //     if (this.props.album) {
-    //         document.getElementById('src').src = song_src;
-    //         document.getElementById('indi').load();
-    //     }
-    //   }
-    // }
+    handleSubmit(e) {
+      e.preventDefault();
+      const album_id = this.props.match.params.songId;
+      let title = e.currentTarget.files[0].name.split('.').slice(0, -1).join('.');
+      const song = new FormData();
+      song.append('song[sg]', e.currentTarget.files[0]);
+      song.append('song[title]', title);
+      song.append('song[album_id]', album_id);
+      this.props.createSong(song, album_id).then(() =>  this.props.fetchSongs(this.props.match.params.songId));
+    }
 
     render() {
-        const song_urls = this.props.songs.map(song => song.song_url)
         const photo_url = this.props.album.photo_url;
         const title = this.props.album.album_title;
         // const AlLength = this.props.songs.length;
@@ -94,7 +74,7 @@ class AlbumShow extends React.Component {
                             />
                           </audio> */}
                           <div id='full-package'>
-                            <AlbumAudioPlayer firstSong={song_urls[0]} songs={this.props.songs}/>
+                            <AlbumAudioPlayer titles={this.props.songs.map(song => song.title)} songs={this.props.songs}/>
                           </div>
                           {/* <div id='space-it-out'>
                             <button className='next-song-arrow' onClick={() => this.previousSong()}>
@@ -109,7 +89,11 @@ class AlbumShow extends React.Component {
                               <DownloadLink key={idx} title={song.title} url={song.song_url} />
                             )}
                           </ol>
-                          {/* <UploadLink /> */}
+                          <input type='file'
+                            name="file" id="file"
+                            className="inputfile"
+                            onInput={(e) => { this.handleSubmit(e) }} />
+                          <label htmlFor='file'>Upload</label>
                           
                         </div>
                         {/* <div className="digital-track">Digital Track </div>

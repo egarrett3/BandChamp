@@ -4,7 +4,6 @@ class Api::SongsController < ApplicationController
         @album = Album.find(params[:album_id])
         @songs = @album.songs
         @song = @songs[params[:id].to_i]
-
         render :show
     end
     
@@ -12,6 +11,18 @@ class Api::SongsController < ApplicationController
         @album = Album.find(params[:album_id])
         @songs = @album.songs
         render :index
+    end
+
+    def create 
+        debugger
+        @song = Song.create(title: params[:song][:title], album_id: params[:song][:album_id])
+        if @song.save
+            @song.song.attach(io: File.open(params[:song][:sg].tempfile), filename: params[:song][:sg].original_filename)
+            render 'api/songs/show'
+        else
+            render json: @song.errors.full_messages
+        end
+
     end
 
     def song_params
