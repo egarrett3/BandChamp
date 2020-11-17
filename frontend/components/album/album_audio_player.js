@@ -4,16 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
-        super(props); 
+        super(props);
         this.state = { 
             currentTime: 0,
             duration: 0,
             user: false,
-            // counter: 0,
+            counter: 0,
         };
-        // this.nextSong = this.nextSong.bind(this);
-        // this.previousSong = this.previousSong.bind(this);
-        // this.loadSongURL = this.loadSongURL.bind(this);
+        this.nextSong = this.nextSong.bind(this);
+        this.previousSong = this.previousSong.bind(this);
+        this.loadSongURL = this.loadSongURL.bind(this);
     }
 
     componentDidMount() {
@@ -34,12 +34,9 @@ class AlbumAudioPlayer extends React.Component {
         this.audio1.addEventListener("timeupdate", (e) => {
             this.seekbar1.value = e.target.currentTime;
         });
-        if (document.getElementById('src2') && this.props.song_url) {
-            this.source1.src = this.props.song_url;
-            this.audio1.load();
-        }
     }
 
+    
     componentWillUnmount() {
         this.audio1.removeEventListener("timeupdate", () => { });
     }
@@ -63,33 +60,53 @@ class AlbumAudioPlayer extends React.Component {
         }
     }
 
-    // loadSongURL() {
-    //     if (this.source1) {
-    //         if (this.props.song_url) {
-    //             this.source1.src = this.props.song_url;
-    //             this.audio1.load();
-    //         }
-    //     }
-    // }
+    nextSong(songListLength) {
+        if (this.state.counter < songListLength - 1) {
+            this.setState({
+                counter: this.state.counter + 1
+            })
+        }
+        debugger
+        this.loadSongURL(this.props.songs[this.state.counter].song_url) 
+    }
+
+    previousSong() {
+        if (this.state.counter >= 1) {
+            this.setState({
+                counter: this.state.counter - 1
+            })
+        }
+        debugger
+        this.loadSongURL(this.props.songs[this.state.counter].song_url) 
+    }
+
+    loadSongURL(song_src) {
+      if (this.source1) {
+        if (this.props.songs) {
+            this.source1.src = song_src;
+            this.audio1.pause();
+            this.audio1.load();
+            this.audio1.play();
+            this.flipPlaybtn();
+            debugger
+        }
+      }
+    }
 
    
     render() {
-
-        const song_url = this.props.song_url;
-        const title = this.props.song_title;
-
-        const ct = this.getTime(this.state.currentTime);
         const dur = this.getTime(this.state.duration);
-
-        let that = this;
+        const ct = this.getTime(this.state.currentTime);
+        
+        const AlLength = this.props.songs.length;
 
         if (document.getElementById('ply1')) {
-            if (that.audio1.ended) {
-                that.audio1.currentTime = 0;
-                that.flipPausebtn();
+            if (this.audio1.ended) {
+                this.audio1.currentTime = 0;
+                this.flipPausebtn();
             }
         }
-        
+        debugger
 
         return (
             <>
@@ -98,13 +115,14 @@ class AlbumAudioPlayer extends React.Component {
                         id='ply1'
                         ref={(ref) => (this.audio1 = ref)}
                         type="audio/mpeg"
+                        preload='auto'
                         onLoadedMetadata={() =>
-                            (this.seekbar.max = this.audio1.duration)
+                            (this.seekbar1.max = this.audio1.duration)
                         }
                     ><source
                             ref={(ref) => (this.source1 = ref)}
                             id='src2'
-                            src={song_url}
+                            src={this.props.firstSong}
                         />
                     </audio>
                     <div className="btns2">
@@ -127,22 +145,20 @@ class AlbumAudioPlayer extends React.Component {
                     </div>
                     <div className="audio-label2">
                         <div className="weekly-label">
-                            <h3 className="weekly">{title}</h3>
                             {/* <div className="date">{this.time()}</div> */}
                             <div className="timer2">
                                 <span id="curTimeText">{ct}</span>/
                                 <span id="durTimeText">{dur}</span>
                             </div>
-                            {/* <div id='space-it-out'>
-                                <div className='next-song-arrow' onClick={() => this.previousSong()}>
+                            {/* <h3 className="weekly">{!this.props.songs ? <></> : this.props.songs[this.state.counter].title}</h3> */}
+                            <div id='space-it-out'>
+                                <button className='next-song-arrow' onClick={() => this.previousSong()}>
                                     <FontAwesomeIcon icon={faChevronLeft} />
-        
-                                </div>
-                                <div className='next-song-arrow' onClick={() => this.nextSong(songListLength)}>
+                                </button>
+                                <button className='next-song-arrow' onClick={() => this.nextSong(AlLength)}>
                                     <FontAwesomeIcon icon={faChevronRight} />
-
-                                </div>
-                            </div> */}
+                                </button>
+                            </div>
                         </div>
                         <div className="lower-label">
                             {/* <div className="afan">past shows</div> */}

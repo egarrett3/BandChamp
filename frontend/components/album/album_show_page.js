@@ -12,38 +12,40 @@ class AlbumShow extends React.Component {
         super(props) 
         this.state = {
           id : 1,
-          counter : 0
+          counter : 0,
         };
-      this.nextSong = this.nextSong.bind(this);
-      this.previousSong = this.previousSong.bind(this);
+      // this.nextSong = this.nextSong.bind(this);
+      // this.previousSong = this.previousSong.bind(this);
         
     }
 
     componentDidMount() {
       window.scroll(0,0);
-      this.props.fetchSongs(this.props.match.params.albumId);
-      this.props.fetchAlbum(this.props.match.params.albumId);
+      debugger
+      this.props.fetchSongs(this.props.match.params.songId)
+      this.props.fetchAlbum(this.props.match.params.songId)
     }
 
-  nextSong(songListLength) {
-    if (this.state.counter < songListLength - 1) {
-      this.setState({
-        counter: this.state.counter + 1
-      })
-    }
-    // this.loadSongURL(this.props.song_urls[this.state.counter]) 
+  // nextSong(songListLength) {
+  //   if (this.state.counter < songListLength - 1) {
+  //     this.setState({
+  //       counter: this.state.counter + 1
+  //     })
+  //   }
+    
+  //   // this.loadSongURL(this.props.song_urls[this.state.counter]) 
 
-  }
+  // }
 
-  previousSong() {
-    if (this.state.counter >= 1) {
-      this.setState({
-        counter: this.state.counter - 1
-      })
-    }
-    // this.loadSongURL(this.props.song_urls[this.state.counter]) 
+  // previousSong() {
+  //   if (this.state.counter >= 1) {
+  //     this.setState({
+  //       counter: this.state.counter - 1
+  //     })
+  //   }
+  //   // this.loadSongURL(this.props.song_urls[this.state.counter]) 
 
-  }
+  // }
 
     // loadSongURL(song_src) {
     //   if (document.getElementById('src')) {
@@ -55,12 +57,12 @@ class AlbumShow extends React.Component {
     // }
 
     render() {
-      
-        const photo_urls = this.props.album.map(song => song.photo_url);
-        const song_urls = this.props.songs.map(song => song.song_url);
-        const song_titles = this.props.songs.map(song => song.song_title);
-        const AlLength = this.props.songs.length
-        const title = this.props.album.map(song => song.album_title);
+        const song_urls = this.props.songs.map(song => song.song_url)
+        const photo_url = this.props.album.photo_url;
+        const title = this.props.album.album_title;
+        // const AlLength = this.props.songs.length;
+
+        debugger
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;
         
@@ -78,7 +80,7 @@ class AlbumShow extends React.Component {
                 <div id="song-info">
                   <div id="album-track-title">
                     <div id="song-info-title">
-                      <div>{title[0]}</div>
+                      <div>{title}</div>
                     </div>
                     <div id="trackANDalbum">
                       <div id="musicPlayerTrack">
@@ -92,21 +94,18 @@ class AlbumShow extends React.Component {
                             />
                           </audio> */}
                           <div id='full-package'>
-                            <AlbumAudioPlayer 
-                              song_url={song_urls[this.state.counter]} 
-                              song_title={song_titles[this.state.counter]}
-                            />
-                            <div id='space-it-out'>
-                              <div className='next-song-arrow' onClick={() => this.previousSong()}>
-                                <FontAwesomeIcon icon={faChevronLeft} />
-                              </div>
-                              <div className='next-song-arrow' onClick={() => this.nextSong(AlLength)}>
-                                <FontAwesomeIcon icon={faChevronRight} />
-                              </div>
-                            </div>
+                            <AlbumAudioPlayer firstSong={song_urls[0]} songs={this.props.songs}/>
                           </div>
+                          {/* <div id='space-it-out'>
+                            <button className='next-song-arrow' onClick={() => this.previousSong()}>
+                              <FontAwesomeIcon icon={faChevronLeft} />
+                            </button>
+                            <button className='next-song-arrow' onClick={() => this.nextSong(AlLength)}>
+                              <FontAwesomeIcon icon={faChevronRight} />
+                            </button>
+                          </div> */}
                           <ol id='songLinkList'>
-                            {this.props.album.map((song,idx) => 
+                            {this.props.songs.map((song,idx) => 
                               <DownloadLink key={idx} title={song.title} url={song.song_url} />
                             )}
                           </ol>
@@ -132,7 +131,7 @@ class AlbumShow extends React.Component {
                       </div>
                       <div id="album-picture">
                         <div>
-                          <img src={photo_urls[0]} id="album-picture-frame" />
+                          <img src={photo_url} id="album-picture-frame" />
                         </div>
                       </div>
                     </div>

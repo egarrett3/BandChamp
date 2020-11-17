@@ -13,6 +13,7 @@ class SongShow extends React.Component {
         this.state = {
            openShow: true
         }
+        // this.loggedIn = this.loggedIn.bind(this);
     }
     
     componentDidMount() {
@@ -20,12 +21,16 @@ class SongShow extends React.Component {
         this.props.fetchAlbums();
     }
 
-
-    LoggedIn() {
-        this.setState(() => ({
-            user: this.currentUsr()
-        }))
+    componentWillUnmount() {
+      this.props.closeSong();
     }
+
+
+    // loggedIn() {
+    //     this.setState(() => ({
+    //         user: this.currentUsr()
+    //     }))
+    // }
 
     currentUsr() {
         let bool;
@@ -58,6 +63,7 @@ class SongShow extends React.Component {
     }
 
     render() {
+      debugger
       const albumList = this.props.albums.map((album) => album.photo_url);
       // let album = this.props.album ? this.props.album : albumList;
       // const songlist = this.props.songs.map((song) => song);
