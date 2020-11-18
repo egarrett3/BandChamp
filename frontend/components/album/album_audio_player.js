@@ -10,6 +10,7 @@ class AlbumAudioPlayer extends React.Component {
             duration: 0,
             user: false,
             counter: 0,
+            loaded: false,
         };
         this.nextSong = this.nextSong.bind(this);
         this.previousSong = this.previousSong.bind(this);
@@ -37,9 +38,20 @@ class AlbumAudioPlayer extends React.Component {
 
     }
 
-    
     componentWillUnmount() {
         this.audio1.removeEventListener("timeupdate", () => { });
+    }
+
+    componentDidUpdate() {
+        let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
+        
+        if (this.state.loaded === false && src_url === "") {
+            this.setState({
+                ...this.state,
+                loaded: true
+            })
+            this.loadSongURL(src_url)
+        }
     }
 
     flipPlaybtn() {
@@ -67,7 +79,6 @@ class AlbumAudioPlayer extends React.Component {
                 counter: this.state.counter + 1
             })
         }
-        debugger
         this.loadSongURL(this.props.songs[this.state.counter].song_url) 
     }
 
@@ -77,7 +88,6 @@ class AlbumAudioPlayer extends React.Component {
                 counter: this.state.counter - 1
             })
         }
-        debugger
         this.loadSongURL(this.props.songs[this.state.counter].song_url) 
     }
 
@@ -88,8 +98,7 @@ class AlbumAudioPlayer extends React.Component {
             this.audio1.pause();
             this.audio1.load();
             // this.audio1.play();
-            // this.flipPlaybtn();
-            debugger
+            this.flipPausebtn();
         }
       }
     }
@@ -100,6 +109,7 @@ class AlbumAudioPlayer extends React.Component {
         const ct = this.getTime(this.state.currentTime);
         
         const AlLength = this.props.songs.length;
+        const src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
 
         if (document.getElementById('ply1')) {
             if (this.audio1.ended) {
@@ -107,8 +117,7 @@ class AlbumAudioPlayer extends React.Component {
                 this.flipPausebtn();
             }
         }
-        debugger
-
+        
         return (
             <>
                 <div id="audio-player2">
@@ -123,7 +132,7 @@ class AlbumAudioPlayer extends React.Component {
                     ><source
                             ref={(ref) => (this.source1 = ref)}
                             id='src2'
-                            src={this.props.songs[this.state.counter]}
+                            src={src_url}
                         />
                     </audio>
                     <div className="btns2">

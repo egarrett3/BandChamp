@@ -21,9 +21,12 @@ class AlbumShow extends React.Component {
 
     componentDidMount() {
       window.scroll(0,0);
-      debugger
       this.props.fetchSongs(this.props.match.params.songId)
       this.props.fetchAlbum(this.props.match.params.songId)
+    }
+
+    componentWillUnmount() {
+      this.props.clearSongs()
     }
 
     handleSubmit(e) {
@@ -42,7 +45,6 @@ class AlbumShow extends React.Component {
         const title = this.props.album.album_title;
         // const AlLength = this.props.songs.length;
 
-        debugger
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;
         
@@ -60,7 +62,7 @@ class AlbumShow extends React.Component {
                 <div id="song-info">
                   <div id="album-track-title">
                     <div id="song-info-title">
-                      <div>{title}</div>
+                      <div>{title} by: {this.props.author}</div>
                     </div>
                     <div id="trackANDalbum">
                       <div id="musicPlayerTrack">
@@ -93,7 +95,7 @@ class AlbumShow extends React.Component {
                             name="file" id="file"
                             className="inputfile"
                             onInput={(e) => { this.handleSubmit(e) }} />
-                          <label htmlFor='file'>Upload</label>
+                          <label htmlFor='file'>Upload Song</label>
                           
                         </div>
                         {/* <div className="digital-track">Digital Track </div>

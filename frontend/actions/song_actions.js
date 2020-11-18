@@ -8,6 +8,8 @@ export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 export const OPEN_SONG = "OPEN_SONG";
 export const CLOSE_SONG = "CLOSE_SONG";
 
+export const CLEAR_SONGS = "CLEAR_SONGS";
+
 export const openSong = (photo_url) => {
   return {
     type: OPEN_SONG,
@@ -18,6 +20,12 @@ export const openSong = (photo_url) => {
 export const closeSong = () => {
   return {
     type: CLOSE_SONG,
+  };
+};
+
+export const clearSongs = () => {
+  return {
+    type: CLEAR_SONGS,
   };
 };
 

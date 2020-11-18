@@ -142,10 +142,10 @@ class Greeting extends React.Component {
                     <div id="username">{this.props.currentUser.username}</div>
                     <div id="user-collection">view collection</div>
                   </Link>
-                  <div className="drpdown-item">purchases</div>
+                  {/* <div className="drpdown-item">purchases</div> */}
                   <hr style={{ width: "85%", borderColor: "#f5f5f5" }} />
-                  <div className="drpdown-item">settings</div>
-                  <div className="drpdown-item">help</div>
+                  {/* <div className="drpdown-item">settings</div> */}
+                  {/* <div className="drpdown-item">help</div> */}
                   <div onClick={this.props.logout} className="drpdown-item">
                     log out
                   </div>
