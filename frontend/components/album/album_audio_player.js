@@ -11,6 +11,7 @@ class AlbumAudioPlayer extends React.Component {
             user: false,
             counter: 0,
             loaded: false,
+            loading: false,
         };
         this.nextSong = this.nextSong.bind(this);
         this.previousSong = this.previousSong.bind(this);
@@ -44,13 +45,14 @@ class AlbumAudioPlayer extends React.Component {
 
     componentDidUpdate() {
         let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
-        
-        if (this.state.loaded === false && src_url === "") {
-            this.setState({
-                ...this.state,
-                loaded: true
+        if (this.state.loaded === false && src_url !== "") {
+            this.setState({loading:true}, () => {
+                this.loadSongURL(src_url).then(() => this.setState({
+                    ...this.state,
+                    loaded: true,
+                    loading: false,
+                }));
             })
-            this.loadSongURL(src_url)
         }
     }
 
@@ -137,13 +139,13 @@ class AlbumAudioPlayer extends React.Component {
                     </audio>
                     <div className="btns2">
                         <div id="timer2"></div>
-                        <div
+                        {this.state.loading ? (<div
                             id="play-btn2"
                             onClick={() => {
                                 this.audio1.play();
                                 this.flipPlaybtn();
                             }}
-                        ></div>
+                        ></div>) : }
                         <div
                             className="disappear"
                             id="pause-btn2"
