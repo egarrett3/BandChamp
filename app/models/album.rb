@@ -5,7 +5,6 @@ class Album < ApplicationRecord
     has_many :pictures, as: :imageable
     has_many :songs
 
-    belongs_to :user,
-      foreign_key: :artist_id
+    belongs_to :user
     
 end

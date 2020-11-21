@@ -43,11 +43,17 @@ class AlbumShow extends React.Component {
     render() {
         const photo_url = this.props.album.photo_url;
         const title = this.props.album.album_title;
-        // const AlLength = this.props.songs.length;
-
+        let bool = false;
+    
+        let alb = this.props.currentUser ? this.props.currentUser.albums : false;
+        if (alb) {
+          bool = alb.filter(album => this.props.match.params.songId === album.id)
+        }
+        
+          debugger;
+        
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;
-        
         return (
           <>
             <GreetingContainer />
@@ -78,25 +84,16 @@ class AlbumShow extends React.Component {
                           <div id='full-package'>
                             <AlbumAudioPlayer titles={this.props.songs.map(song => song.title)} songs={this.props.songs}/>
                           </div>
-                          {/* <div id='space-it-out'>
-                            <button className='next-song-arrow' onClick={() => this.previousSong()}>
-                              <FontAwesomeIcon icon={faChevronLeft} />
-                            </button>
-                            <button className='next-song-arrow' onClick={() => this.nextSong(AlLength)}>
-                              <FontAwesomeIcon icon={faChevronRight} />
-                            </button>
-                          </div> */}
                           <ol id='songLinkList'>
                             {this.props.songs.map((song,idx) => 
                               <DownloadLink key={idx} title={song.title} url={song.song_url} />
                             )}
                           </ol>
-                          <input type='file'
+                          {bool ? (<div><input type='file'
                             name="file" id="file"
                             className="inputfile"
                             onInput={(e) => { this.handleSubmit(e) }} />
-                          <label htmlFor='file'>Upload Song</label>
-                          
+                          <label htmlFor='file'>Upload Song</label></div>) : <div></div>}
                         </div>
                         {/* <div className="digital-track">Digital Track </div>
                         <div id="streaming-download">Streaming + Download</div>

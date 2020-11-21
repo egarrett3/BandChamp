@@ -17,6 +17,7 @@ class Api::SessionsController < ApplicationController
       @user = User.find_by_credentials(username,password)
       if @user
         login!(@user)
+        @albums = @user.albums
         render "api/users/show"
       else
         render json: ['Incorrect username or password. Please try again'], status: 401
