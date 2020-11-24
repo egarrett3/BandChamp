@@ -4,6 +4,5 @@ json.username @user.username
 json.website @user.website
 json.location @user.location
 json.description @user.description
-json.albums @albums unless @albums.nil?
-
+json.user_albums @albums unless @albums.nil?
 

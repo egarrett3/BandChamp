@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @albums = @user.albums
     render :profile
   end
 
@@ -10,6 +11,7 @@ class Api::UsersController < ApplicationController
     
     if @user.save
       login!(@user)
+      @album = @user.albums
       # render "api/users/show" json.partial! "api/users/user", user: @user
       @user.pictures.create(name: params[:user][:username])
       render "api/users/show"

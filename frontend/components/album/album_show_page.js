@@ -3,6 +3,7 @@ import FooterItem from "../footer/footer";
 import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
 import DownloadLink from './download_link';
+import { Link } from 'react-router-dom'
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -45,13 +46,12 @@ class AlbumShow extends React.Component {
         const title = this.props.album.album_title;
         let bool = false;
     
-        let alb = this.props.currentUser ? this.props.currentUser.albums : false;
+        let alb = this.props.currentUser ? this.props.currentUser.user_albums : false;
         if (alb) {
           bool = alb.filter(album => this.props.match.params.songId === album.id)
         }
         
-          debugger;
-        
+        debugger;
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;
         return (
@@ -68,7 +68,9 @@ class AlbumShow extends React.Component {
                 <div id="song-info">
                   <div id="album-track-title">
                     <div id="song-info-title">
-                      <div>{title} by: {this.props.author}</div>
+                      <div>{title} <Link to={{
+                        pathname: `/usrprofile/`
+                      }}>{this.props.album.album_user}</Link></div>
                     </div>
                     <div id="trackANDalbum">
                       <div id="musicPlayerTrack">

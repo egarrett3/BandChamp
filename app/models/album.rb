@@ -5,6 +5,6 @@ class Album < ApplicationRecord
     has_many :pictures, as: :imageable
     has_many :songs
 
-    belongs_to :user
+    has_one :user
     
 end

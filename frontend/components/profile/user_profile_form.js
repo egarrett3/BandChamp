@@ -80,8 +80,8 @@ class UserProf extends React.Component {
     }
   }
 
-  render() {
-
+  
+  render() {    
     return (
       <div>
         <GreetingContainer />
@@ -212,6 +212,11 @@ class UserProf extends React.Component {
             </div>
           </div>
         </div>
+        <ul>
+          <li>
+            
+          </li>
+        </ul>
       </div>
     );
   }

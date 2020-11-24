@@ -38,12 +38,15 @@ class Greeting extends React.Component {
   }
 
   componentDidUpdate(prevState) {
-
     if (!prevState.currentUser) {
       this.setState({
         showList : false
       })
     }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.closeList);
   }
 
   // LoggedIn() {
