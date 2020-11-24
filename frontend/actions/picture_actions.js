@@ -3,7 +3,7 @@ import { placePic,getPic } from '../util/picture_api_util';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 
 const receivePhoto = (currentUser) => {
-    debugger
+    
     return {
         type: RECEIVE_CURRENT_USER,
         currentUser

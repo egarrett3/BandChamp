@@ -5,7 +5,7 @@ import { fetchAls } from '../../actions/album_actions';
 import SongShow from './song_show_form';
 
 const mapStateToProps = ({ui,session,entities:{songs,users,albums,song}}) => {
-    debugger
+    
     return {
       currentUser: users[session.id],
       songs: Object.values(songs),

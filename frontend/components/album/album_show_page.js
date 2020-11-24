@@ -48,10 +48,10 @@ class AlbumShow extends React.Component {
     
         let alb = this.props.currentUser ? this.props.currentUser.user_albums : false;
         if (alb) {
-          bool = alb.filter(album => this.props.match.params.songId === album.id)
+          bool = alb.filter(album => this.props.match.params.songId == album.id)
         }
         
-        debugger;
+        
         // const title = this.props.album.album_title;
         // const song_url = this.props.album.song_url;
         return (
@@ -91,7 +91,7 @@ class AlbumShow extends React.Component {
                               <DownloadLink key={idx} title={song.title} url={song.song_url} />
                             )}
                           </ol>
-                          {bool ? (<div><input type='file'
+                          {bool.length ? (<div><input type='file'
                             name="file" id="file"
                             className="inputfile"
                             onInput={(e) => { this.handleSubmit(e) }} />
