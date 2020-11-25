@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/" component={SongShowContainer} />
         <AuthRoute exact path="/login" component={LoginContainer} />
         <Route exact path="/songPage/:songId" component={AlbumContainer} />
-        <ProtectedRoute exact path="/usrprofile" component={UserProfileContainer} />
+        <Route exact path="/usrprofile" component={UserProfileContainer} />
       </Switch>
 
     </div>

@@ -8,7 +8,9 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
   has_many :pictures, as: :imageable
   has_many :albums,
-    foreign_key: :artist_id
+    primary_key: :id,
+    foreign_key: :artist_id,
+    class_name: :Album
 
   # validates :check_file_presence
 
