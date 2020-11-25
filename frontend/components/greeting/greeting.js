@@ -94,7 +94,7 @@ class Greeting extends React.Component {
               <a
                 className="session-links"
                 onClick={() =>
-                  this.props.login({ username: "tutu", password: "pineapple1" })
+                  this.props.login({ username: "Tutu", password: "pineapple1" })
                 }
               >
                 demo login

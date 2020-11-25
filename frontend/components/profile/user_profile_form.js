@@ -1,6 +1,6 @@
 import React from 'react'
 import GreetingContainer from "../greeting/greeting_container";
-import { merge } from 'lodash';
+import UserAlbums from '../album/user_albums'
 import { faCamera, faEdit, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -50,6 +50,7 @@ class UserProf extends React.Component {
     e.preventDefault();
     // const user = merge({}, this.state);
     const user = new FormData();
+    user.append("user[username]",this.state.username);
     user.append("user[website]", this.state.website);
     user.append("user[location]", this.state.location);
     user.append("user[description]", this.state.description);
@@ -73,7 +74,7 @@ class UserProf extends React.Component {
   showDescription() {
     if (this.props.currentUser.description !== "undefined") {
       return (
-        <div id="web-description">{this.props.currentUser.description}</div>
+        <div id="web-description">about me: {this.props.currentUser.description}</div>
       );
     } else {
       return <div></div>;
@@ -212,11 +213,7 @@ class UserProf extends React.Component {
             </div>
           </div>
         </div>
-        {/* <ul>
-          <li>
-            
-          </li>
-        </ul> */}
+        <UserAlbums />
       </div>
     );
   }

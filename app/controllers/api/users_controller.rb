@@ -23,7 +23,8 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update!(website:params[:user][:website],location:params[:user][:location],description:params[:user][:description])
+    if @user.update!(website:params[:user][:website],location:params[:user][:location],
+                    description:params[:user][:description],username:params[:user][:username])
       @user.save!
     end
     render "api/users/profile"
