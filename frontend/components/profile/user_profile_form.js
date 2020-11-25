@@ -58,14 +58,14 @@ class UserProf extends React.Component {
 
   showLocation() {
     if (this.props.currentUser.location !== "undefined") {
-      return <div id="web-location">{this.props.currentUser.location}</div>;
+      return <div id="web-location">location: {this.props.currentUser.location}</div>;
     } else {
       return <div></div>;
     }
   }
   showWebsite() {
     if (this.props.currentUser.website !== "undefined") {
-      return <div id="web-link">{this.props.currentUser.website}</div>
+      return <div id="web-link"> personal site: {this.props.currentUser.website}</div>
     } else {
       return <div></div>
     }
@@ -212,11 +212,11 @@ class UserProf extends React.Component {
             </div>
           </div>
         </div>
-        <ul>
+        {/* <ul>
           <li>
             
           </li>
-        </ul>
+        </ul> */}
       </div>
     );
   }
