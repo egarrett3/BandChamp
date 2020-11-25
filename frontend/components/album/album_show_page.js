@@ -30,23 +30,6 @@ class AlbumShow extends React.Component {
     this.props.clearSongs();
   }
 
-  // componentDidUpdate(prevProps) {
-  //   if((prevProps.songs.length && this.props.songs.length) && (prevProps.songs !== this.props.songs)) {
-
-  //     if (prevProps.songs.length != this.props.songs.length) {
-  //       this.props.clearSongs();
-  //     }
-
-  //     for (let i = 0; i < prevProps.length; i++) {
-  //       let prevSong = prevProps.songs[i];
-  //       let curSong = this.props.songs[i];
-  //      debugger
-  //       if (prevSong.song_url !== curSong.song_url) {
-  //         this.props.clearSongs()
-  //       }
-  //     }
-  //   }
-  // }
 
   toggleShow() {
     this.setState((prevState) => ({
@@ -86,7 +69,6 @@ class AlbumShow extends React.Component {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);
     }
 
-    debugger;
     return (
       <>
         <GreetingContainer />
@@ -99,7 +81,10 @@ class AlbumShow extends React.Component {
                 <div id="song-info-title">
                   <div>
                     "{title}" posted by:
-                    <span onClick={this.toggleShow}> {name}</span>
+                    <span 
+                    onClick={this.toggleShow}
+                    className='username-for-album'
+                    > {name}</span>
                   </div>
                 </div>
                 <div id="trackANDalbum">

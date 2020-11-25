@@ -716,7 +716,7 @@ h6 {
 
 #audio-player2 {
     display: flex;
-    width: 330px;
+    width: 400px;
     height: 52px;
     /* position: relative;
     top: 75%;
@@ -751,7 +751,7 @@ input#audio-track2[type='range'] {
   -webkit-appearance: none; 
   padding: 0;
   margin: 0;
-  width: 250px;
+  width: 300px;
   height: 13px; 
   background: transparent; 
   border: 1px solid gray;
@@ -837,7 +837,7 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
     padding-left: 18px;
     padding-right: 18px;
     height: 52px;
-    width: 275px;
+    width: 325px;
     background: transparent;
 }
 
@@ -1766,7 +1766,7 @@ ul#social-media-list {
     flex-direction: column;
     justify-content: flex-start;
     width: 76%;
-    height: 70%;
+    height: 90%;
     background-color: white;
 }
 
@@ -2162,4 +2162,8 @@ form#edit-frame textarea:focus {
   display: flex;
   flex-direction:row;
   justify-content: center;
+}
+
+.username-for-album {
+    cursor: pointer;
 }
