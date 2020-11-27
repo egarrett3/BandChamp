@@ -1,4 +1,6 @@
 import React from "react";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class DownloadLink extends React.Component {
     constructor(props) {
@@ -18,9 +20,12 @@ class DownloadLink extends React.Component {
             <>
                 <li className='song-links'>
                     <div>{title}</div>
-                    <a href={url} target="_blank" rel="noopener noreferrer" className='link-link' download>
-                        download 
-                    </a>
+                    <div>
+                        <a href={url} target="_blank" rel="noopener noreferrer" className='link-link' download>
+                            <FontAwesomeIcon icon={faDownload} color={black}/>
+                        </a>
+                        
+                    </div>
                 </li>
                     
             </>

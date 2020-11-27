@@ -1845,9 +1845,8 @@ ul#social-media-list {
 
 #album-picture {
     display: flex;
-    justify-content: center;
-    /* height: 100%;
-    width: 50%; */
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 #album-picture-frame {

@@ -1,9 +1,9 @@
 class Api::SongsController < ApplicationController
 
     def show 
-        @album = Album.find(params[:album_id])
-        @songs = @album.songs
-        @song = @songs[params[:id].to_i]
+        # @album = Album.find(params[:album_id])
+        # @songs = @album.songs
+        @song = Song.find_by(id:(params[:id].to_i))
         render :show
     end
     
@@ -21,7 +21,10 @@ class Api::SongsController < ApplicationController
         else
             render json: @song.errors.full_messages
         end
+    end
 
+    def delete
+        @song = Song.find_by()
     end
 
     def song_params
