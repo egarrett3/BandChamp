@@ -29,6 +29,12 @@ export const clearSongs = () => {
   };
 };
 
+export const deleteSong = () => {
+  return {
+    type: DESTROY_SONG
+  }
+}
+
 const receiveSong = (song) => {
     return {
         type: RECEIVE_SONG,
@@ -51,3 +57,5 @@ export const fetchSgs = (albumId) => dispatch => fetchSongs(albumId)
 
 export const createSg = (song,albumId) => dispatch => makeSong(song,albumId)
     .then(song => dispatch(receiveSong(song)));
+
+export const deleteSG = (song, albumId) => dispatch => destroySong(song,)

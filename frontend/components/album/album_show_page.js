@@ -51,11 +51,12 @@ class AlbumShow extends React.Component {
   }
 
   render() {
+    debugger
      const photo_url = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId].photo_url
+      ? this.props.albums[this.props.match.params.songId-1].photo_url
       : "";
     const title = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId].title
+      ? this.props.albums[this.props.match.params.songId-1].title
       : "";
     let bool = false;
 
@@ -63,7 +64,7 @@ class AlbumShow extends React.Component {
       ? this.props.currentUser.user_albums
       : false;
     let name = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId].user.username
+      ? this.props.albums[this.props.match.params.songId-1].user.username
       : "";
     if (alb) {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);

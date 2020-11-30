@@ -22,7 +22,7 @@ class DownloadLink extends React.Component {
                     <div>{title}</div>
                     <div>
                         <a href={url} target="_blank" rel="noopener noreferrer" className='link-link' download>
-                            <FontAwesomeIcon icon={faDownload} color={black}/>
+                            <FontAwesomeIcon icon={faDownload} />
                         </a>
                         
                     </div>

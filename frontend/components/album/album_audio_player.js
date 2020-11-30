@@ -105,6 +105,7 @@ class AlbumAudioPlayer extends React.Component {
         const ct = this.getTime(this.state.currentTime);
         
         const AlLength = this.props.songs.length;
+        debugger
         const src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
 
         if (document.getElementById('ply1')) {
