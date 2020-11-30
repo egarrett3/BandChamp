@@ -25,8 +25,8 @@ class Api::SongsController < ApplicationController
 
     def delete
         @song = Song.find_by(id: params[:id].to_i)
-        if @song.delete!
-            render json: 'success', status: 200
+        if @song.song.purge! && @song.delete!
+            render json: 'successful delete', status: 200
         else
             render json: @song.errors.full_messages
         end

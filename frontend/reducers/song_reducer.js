@@ -7,6 +7,8 @@ const songReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SONG:
       return merge({}, state, action.song);
+    case DESTROY_SONG:
+      return {};
     default:
       return state;
   }

@@ -4,7 +4,6 @@ import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
 import DownloadLink from './download_link';
-import { Link } from 'react-router-dom'
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -17,7 +16,6 @@ class AlbumShow extends React.Component {
       counter: 0,
       show: false,
     };
-    this.toggleShow = this.toggleShow.bind(this);
   }
 
   componentDidMount() {
@@ -28,13 +26,6 @@ class AlbumShow extends React.Component {
 
   componentWillUnmount() {
     this.props.clearSongs();
-  }
-
-
-  toggleShow() {
-    this.setState((prevState) => ({
-      show: !prevState.show,
-    }));
   }
 
   handleSubmit(e) {
@@ -51,8 +42,8 @@ class AlbumShow extends React.Component {
   }
 
   render() {
-    debugger
-     const photo_url = this.props.albums.length
+    
+    const photo_url = this.props.albums.length
       ? this.props.albums[this.props.match.params.songId-1].photo_url
       : "";
     const title = this.props.albums.length
@@ -63,9 +54,13 @@ class AlbumShow extends React.Component {
     let alb = this.props.currentUser
       ? this.props.currentUser.user_albums
       : false;
-    let name = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId-1].user.username
+
+    let username = this.props.albums.length
+      ? this.props.albums[this.props.match.params.songId-1].user
       : "";
+
+    debugger
+
     if (alb) {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);
     }
@@ -82,10 +77,8 @@ class AlbumShow extends React.Component {
                 <div id="song-info-title">
                   <div>
                     "{title}" posted by:
-                    <span 
-                    onClick={this.toggleShow}
-                    className='username-for-album'
-                    > {name}</span>
+                    <span className='username-for-album'
+                    > {username}</span>
                   </div>
                 </div>
                 <div id="trackANDalbum">
@@ -133,7 +126,7 @@ class AlbumShow extends React.Component {
               </div>
               <div id="discogrpahy"></div>
             </div>
-            <div className={this.state.show ? "user-albums" : "disappear"}>
+            <div className="user-albums">
               {this.props.albums.map(function (album, idx) {
                 return (
                   <UserAlbums

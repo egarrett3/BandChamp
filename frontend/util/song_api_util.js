@@ -19,3 +19,10 @@ export const makeSong = (song, album_id) => (
         processData: false,
     })
 )
+
+export const deleteSong = (album_id,song_id) => (
+    $.ajax({
+        url:`/api/albums/${album_id}/songs/${song_id}`,
+        method:'DELETE'
+    })
+) 

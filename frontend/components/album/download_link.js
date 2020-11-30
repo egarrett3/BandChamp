@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class DownloadLink extends React.Component {
     constructor(props) {
-        super(props);
+        super(props); debugger
         this.state = {
             currentTime: 0,
             duration: 0,
@@ -20,11 +20,11 @@ class DownloadLink extends React.Component {
             <>
                 <li className='song-links'>
                     <div>{title}</div>
-                    <div>
+                    <div className='song-actions'>
                         <a href={url} target="_blank" rel="noopener noreferrer" className='link-link' download>
                             <FontAwesomeIcon icon={faDownload} />
                         </a>
-                        
+                        <a className='delete-link-icon'>X</a>
                     </div>
                 </li>
                     

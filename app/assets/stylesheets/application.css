@@ -1837,10 +1837,9 @@ ul#social-media-list {
     padding:20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     width: 50%;
     height: 90%;
-
 }
 
 #album-picture {
@@ -2164,5 +2163,16 @@ form#edit-frame textarea:focus {
 }
 
 .username-for-album {
+    cursor: pointer;
+}
+
+.song-actions {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 40px;
+}
+
+.delete-link-icon {
     cursor: pointer;
 }
