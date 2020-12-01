@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class DownloadLink extends React.Component {
     constructor(props) {
-        super(props); debugger
+        super(props); 
         this.state = {
             currentTime: 0,
             duration: 0,
@@ -30,6 +30,7 @@ class DownloadLink extends React.Component {
                         className='delete-link-icon'
                         onClick={() => this.props.deleteSong(this.props.album_id,this.props.id)
                                 .then(() => this.props.fetchSongs(this.props.album_id))
+                                .then(() => this.props.rerenderParentCallback())
                         }
                         >X</div>
                     </div>

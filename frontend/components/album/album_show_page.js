@@ -11,16 +11,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class AlbumShow extends React.Component {
   constructor(props) {
     super(props);
+    this.rerenderParentCallback = this.rerenderParentCallback.bind(this)
     this.state = {
       id: 1,
       counter: 0,
       show: false,
+      songs: []
     };
   }
 
   componentDidMount() {
     window.scroll(0, 0);
-    this.props.fetchSongs(this.props.match.params.songId);
+    this.props
+      .fetchSongs(this.props.match.params.songId)
+      .then((songs) => this.setState({ songs: songs.songs }));;
     this.props.fetchAlbums();
   }
 
@@ -38,11 +42,17 @@ class AlbumShow extends React.Component {
     song.append("song[album_id]", album_id);
     this.props
       .createSong(song, album_id)
-      .then(() => this.props.fetchSongs(this.props.match.params.songId));
+      .then(() => this.props.fetchSongs(this.props.match.params.songId))
+      .then((songs) => this.setState({songs:songs.songs}));
+      debugger
+  }
+
+  rerenderParentCallback() {
+    debugger
+    this.forceUpdate();
   }
 
   render() {
-    
     const photo_url = this.props.albums.length
       ? this.props.albums[this.props.match.params.songId].photo_url
       : "";
@@ -59,7 +69,7 @@ class AlbumShow extends React.Component {
       ? this.props.albums[this.props.match.params.songId].user.username
       : "";
 
-    debugger
+    debugger;
 
     if (alb) {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);
@@ -85,18 +95,19 @@ class AlbumShow extends React.Component {
                     <div>
                       <div id="full-package">
                         <AlbumAudioPlayer
-                          titles={this.props.songs.map((song) => song.title)}
-                          songs={this.props.songs}
+                          titles={this.state.songs.map((song) => song.title)}
+                          songs={this.state.songs}
                         />
                       </div>
                       <ol id="songLinkList">
-                        {this.props.songs.map((song, idx) => (
+                        {this.state.songs.map((song, idx) => (
                           <DownloadLink
                             key={idx}
                             id={song.id}
                             title={song.title}
                             url={song.song_url}
                             album_id={this.props.match.params.songId}
+                            rerenderParentCallback={this.rerenderParentCallback}
                           />
                         ))}
                       </ol>
