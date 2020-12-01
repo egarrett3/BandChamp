@@ -44,15 +44,8 @@ class AlbumShow extends React.Component {
       .createSong(song, album_id)
       .then(() => this.props.fetchSongs(this.props.match.params.songId))
       .then((songs) => this.setState({songs:songs.songs}));
-      debugger
   }
 
-  // componentDidUpdate(prevProps,prevState) {
-  //   debugger
-  //   if (prevState.songs.length !== this.state.songs.length) {
-  //     this.setState({songs: this.props.songs})
-  //   }
-  // }
 
   rerenderParentCallback(songs) {
     this.setState({songs:songs.songs})
@@ -74,8 +67,6 @@ class AlbumShow extends React.Component {
     let username = this.props.albums.length
       ? this.props.albums[this.props.match.params.songId].user.username
       : "";
-
-    debugger;
 
     if (alb) {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);
