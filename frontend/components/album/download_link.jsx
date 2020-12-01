@@ -30,7 +30,7 @@ class DownloadLink extends React.Component {
                         className='delete-link-icon'
                         onClick={() => this.props.deleteSong(this.props.album_id,this.props.id)
                                 .then(() => this.props.fetchSongs(this.props.album_id))
-                                .then(() => this.props.rerenderParentCallback())
+                                .then((songs) => this.props.rerenderParentCallback(songs))
                         }
                         >X</div>
                     </div>
@@ -51,7 +51,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     clearSongs: () => dispatch(clearSongs()),
     openSong: (song) => dispatch(openSong(song)),
-    deleteSong: (albumId, songId) => dispatch(deleteSg(albumId, songId)),
     fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
   };
 };

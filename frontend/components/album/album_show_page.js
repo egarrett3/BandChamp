@@ -47,9 +47,15 @@ class AlbumShow extends React.Component {
       debugger
   }
 
-  rerenderParentCallback() {
-    debugger
-    this.forceUpdate();
+  // componentDidUpdate(prevProps,prevState) {
+  //   debugger
+  //   if (prevState.songs.length !== this.state.songs.length) {
+  //     this.setState({songs: this.props.songs})
+  //   }
+  // }
+
+  rerenderParentCallback(songs) {
+    this.setState({songs:songs.songs})
   }
 
   render() {
@@ -104,6 +110,7 @@ class AlbumShow extends React.Component {
                           <DownloadLink
                             key={idx}
                             id={song.id}
+                            deleteSong={this.props.deleteSong}
                             title={song.title}
                             url={song.song_url}
                             album_id={this.props.match.params.songId}
