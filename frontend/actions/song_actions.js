@@ -10,7 +10,7 @@ export const OPEN_SONG = "OPEN_SONG";
 export const CLOSE_SONG = "CLOSE_SONG";
 
 export const CLEAR_SONGS = "CLEAR_SONGS";
-export const DESTROY_SONGS = "DESTROY_SONGS";
+export const DESTROY_SONG = "DESTROY_SONG";
 
 export const openSong = (photo_url) => {
   return {
@@ -31,9 +31,10 @@ export const clearSongs = () => {
   };
 };
 
-export const removeSong = () => {
+export const removeSong = (songs) => {
   return {
-    type: DESTROY_SONG
+    type: DESTROY_SONG,
+    songs
   }
 }
 
@@ -60,5 +61,5 @@ export const fetchSgs = (albumId) => dispatch => fetchSongs(albumId)
 export const createSg = (song,albumId) => dispatch => makeSong(song,albumId)
     .then(song => dispatch(receiveSong(song)));
 
-export const deleteSG = (album_id,song_id) => dispatch => deleteSong(album_id, song_id)
-    .then(() => dispatch(removeSong()))
+export const deleteSg = (album_id, song_id) => dispatch => deleteSong(album_id, song_id)
+    .then((songs) => dispatch(removeSong(songs)))

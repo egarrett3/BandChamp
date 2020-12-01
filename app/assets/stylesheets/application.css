@@ -1837,7 +1837,8 @@ ul#social-media-list {
     padding:20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
     width: 50%;
     height: 90%;
 }

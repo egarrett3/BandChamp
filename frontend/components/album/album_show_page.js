@@ -44,10 +44,10 @@ class AlbumShow extends React.Component {
   render() {
     
     const photo_url = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId-1].photo_url
+      ? this.props.albums[this.props.match.params.songId].photo_url
       : "";
     const title = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId-1].title
+      ? this.props.albums[this.props.match.params.songId].title
       : "";
     let bool = false;
 
@@ -56,7 +56,7 @@ class AlbumShow extends React.Component {
       : false;
 
     let username = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId-1].user
+      ? this.props.albums[this.props.match.params.songId].user.username
       : "";
 
     debugger
@@ -77,8 +77,7 @@ class AlbumShow extends React.Component {
                 <div id="song-info-title">
                   <div>
                     "{title}" posted by:
-                    <span className='username-for-album'
-                    > {username}</span>
+                    <span className="username-for-album"> {username}</span>
                   </div>
                 </div>
                 <div id="trackANDalbum">
@@ -94,8 +93,10 @@ class AlbumShow extends React.Component {
                         {this.props.songs.map((song, idx) => (
                           <DownloadLink
                             key={idx}
+                            id={song.id}
                             title={song.title}
                             url={song.song_url}
+                            album_id={this.props.match.params.songId}
                           />
                         ))}
                       </ol>

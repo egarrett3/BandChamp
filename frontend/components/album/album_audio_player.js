@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
-        super(props); debugger
+        super(props); 
         this.state = { 
             currentTime: 0,
             duration: 0,
