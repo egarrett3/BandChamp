@@ -4,14 +4,10 @@ import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
 import DownloadLink from './download_link';
-import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 class AlbumShow extends React.Component {
   constructor(props) {
     super(props);
-    this.rerenderParentCallback = this.rerenderParentCallback.bind(this)
     this.state = {
       id: 1,
       counter: 0,
@@ -22,10 +18,7 @@ class AlbumShow extends React.Component {
 
   componentDidMount() {
     window.scroll(0, 0);
-    this.props
-      .fetchSongs(this.props.match.params.songId)
-      .then((songs) => this.setState({ songs: songs.songs }));;
-    this.props.fetchAlbums();
+    this.props.fetchAlbum(this.props.match.params.songId)
   }
 
   componentWillUnmount() {
@@ -40,32 +33,25 @@ class AlbumShow extends React.Component {
     song.append("song[sg]", e.currentTarget.files[0]);
     song.append("song[title]", title);
     song.append("song[album_id]", album_id);
-    this.props
-      .createSong(song, album_id)
-      .then(() => this.props.fetchSongs(this.props.match.params.songId))
-      .then((songs) => this.setState({songs:songs.songs}));
+    this.props.createSong(song, album_id)
   }
 
-
-  rerenderParentCallback(songs) {
-    this.setState({songs:songs.songs})
-  }
-
+ 
   render() {
-    const photo_url = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId].photo_url
-      : "";
-    const title = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId].title
-      : "";
+    const photo_url = this.props.album.photo_url
+      // ? this.props.album.photo_url
+      // : "";
+    const title = this.props.album.title
+      // ? this.props.album[this.props.match.params.songId].title
+      // : "";
     let bool = false;
 
     let alb = this.props.currentUser
       ? this.props.currentUser.user_albums
       : false;
 
-    let username = this.props.albums.length
-      ? this.props.albums[this.props.match.params.songId].user.username
+    let username = this.props.album.user
+      ? this.props.album.user.username
       : "";
 
     if (alb) {
@@ -105,7 +91,6 @@ class AlbumShow extends React.Component {
                             title={song.title}
                             url={song.song_url}
                             album_id={this.props.match.params.songId}
-                            rerenderParentCallback={this.rerenderParentCallback}
                           />
                         ))}
                       </ol>

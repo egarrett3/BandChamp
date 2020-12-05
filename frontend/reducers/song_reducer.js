@@ -1,4 +1,4 @@
-import { RECEIVE_SONG } from "../actions/song_actions";
+import { ADD_SONG } from "../actions/song_actions";
 import { DESTROY_SONG } from "../actions/song_actions";
 import { merge } from 'lodash';
 
@@ -6,10 +6,9 @@ const songReducer = (state = {}, action) => {
   Object.freeze(state);
   
   switch (action.type) {
-    case RECEIVE_SONG:
-      return merge({}, state, action.song);
-    case DESTROY_SONG:
-      return merge({}, state)
+    case ADD_SONG:
+      const newSong = action.song;
+      return merge({}, state, { [action.song.id] : action.song })
     default:
       return state;
   }

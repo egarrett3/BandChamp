@@ -9,5 +9,9 @@ class Album < ApplicationRecord
       primary_key: :id,
       foreign_key: :artist_id,
       class_name: :User
+
+    has_many :albums,
+      through: :user,
+      source: :albums
     
 end

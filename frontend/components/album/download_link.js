@@ -1,6 +1,4 @@
 import React from "react";
-import { deleteSg, clearSongs, openSong, fetchSgs } from "../../actions/song_actions";
-import { connect } from "react-redux";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -28,10 +26,7 @@ class DownloadLink extends React.Component {
                         </a>
                         <div
                         className='delete-link-icon'
-                        onClick={() => this.props.deleteSong(this.props.album_id,this.props.id)
-                                .then(() => this.props.fetchSongs(this.props.album_id))
-                                .then((songs) => this.props.rerenderParentCallback(songs))
-                        }
+                        onClick={() => this.props.deleteSong(this.props.album_id,this.props.id)}
                         >X</div>
                     </div>
                 </li>
@@ -41,18 +36,4 @@ class DownloadLink extends React.Component {
     }
 }
 
-const mapStateToProps = ({ session, entities: { users } }) => {
-  return {
-    currentUser: users[session.id],
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearSongs: () => dispatch(clearSongs()),
-    openSong: (song) => dispatch(openSong(song)),
-    fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DownloadLink);
+export default DownloadLink;
