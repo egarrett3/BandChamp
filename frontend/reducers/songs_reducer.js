@@ -7,7 +7,7 @@ const songsReducer = (state = {}, action) => {
 
     switch (action.type) {
       case RECEIVE_ALL_SONGS:
-        return Object.assign({}, state, action.songs);
+        return Object.assign({}, action.songs);
       case DESTROY_SONG:
         return newState;
       case CLEAR_SONGS:

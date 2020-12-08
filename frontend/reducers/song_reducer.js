@@ -8,7 +8,6 @@ const songReducer = (state = {}, action) => {
   switch (action.type) {
     case ADD_SONG:
       const newSong = action.song;
-      debugger
       return merge({}, state, action.song )
     default:
       return state;

@@ -40,7 +40,6 @@ export const removeSong = (index) => {
 }
 
 const addSong = (song) => {
-  debugger
     return {
         type: ADD_SONG,
         song,
@@ -48,7 +47,6 @@ const addSong = (song) => {
 };
 
 const receiveAllSongs = (songs) => {
-  debugger
     return {
         type: RECEIVE_ALL_SONGS,
         songs,

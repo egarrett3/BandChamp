@@ -21,13 +21,17 @@ class AlbumShow extends React.Component {
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
-          for (let i=1;i<albs;i++) {
-            this.props.fetchAlbum(album.album.albums[i].id)
+          for (let i=0;i<albs;i++) {
+            if (album.album.albums[i].id === this.props.match.params.songId) {
+            } else {
+              this.props.fetchAlbum(album.album.albums[i].id);
+            }
           }
         }
       })
     this.props.fetchSongs(this.props.match.params.songId)
   }
+
 
   componentWillUnmount() {
     this.props.clearSongs();
@@ -68,11 +72,11 @@ class AlbumShow extends React.Component {
       ? showAlb.user.username
       : "";
 
-    debugger
-
     if (alb) {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);
     }
+
+    debugger
 
     return (
       <>

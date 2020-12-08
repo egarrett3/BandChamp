@@ -82,28 +82,37 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     componentDidUpdate() {
-        let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
-        if (this.source1 && src_url !== "" && this.state.loaded === false) {
-            this.source1.src = src_url;
-            this.audio1.pause();
-            this.audio1.load();
-            this.flipPausebtn();
-            this.setState({
-                ...this.state,
-                loaded: true,
-            })
-        }
-        if (this.audio1.buffered.length === 1 && this.state.loading) {
-            this.setState({
-                loading:false
-            })
-        }
+      let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
+      if (this.source1 && src_url !== "" && this.state.loaded === false) {
+          this.source1.src = src_url;
+          this.audio1.pause();
+          this.audio1.load();
+          this.flipPausebtn();
+          this.setState({
+              ...this.state,
+              loaded: true,
+          })
+      }
+
+      if (this.audio1.buffered.length === 1 && this.state.loading) {
+          this.setState({
+              loading:false
+          })
+      }
+    
+      if (this.props.songs.length === 0 && this.state.counter !== 0) {
+        debugger
+        this.setState({
+          counter: 0
+        })
+      }
     }
    
     render() {
         const dur = this.getTime(this.state.duration);
         const ct = this.getTime(this.state.currentTime);
         
+        debugger
         const AlLength = this.props.songs.length;
         const src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
 
