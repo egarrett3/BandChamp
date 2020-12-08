@@ -1,20 +1,20 @@
 import { RECEIVE_ALBUMS, RECEIVE_ALBUM } from "../actions/album_actions";
 import { merge } from "lodash";
 
-const albumReducer = (state = {}, action) => {
+const initialState = {};
+
+const albumReducer = (state = initialState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_ALBUMS:
-      const albumCollection = action.albums.forEach(function (album) {
-        merge(state, { [album.id]: album });
-      });
-      debugger;
-      return merge({}, state, { [action.album.id]: action.album });
+      const albumCollection = action.albums;
+      const obj = Object.assign({}, state, albumCollection)
+      return obj
     case RECEIVE_ALBUM:
-      const newAlbum = action.album;
+      const singleAlb = { [action.album.id]: action.album };
       debugger
-      return merge(state, newAlbum);
+      return Object.assign({}, state, singleAlb)
     default:
       return state;
   }

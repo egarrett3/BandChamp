@@ -18,7 +18,15 @@ class AlbumShow extends React.Component {
 
   componentDidMount() {
     window.scroll(0, 0);
-    this.props.fetchAlbum(this.props.match.params.songId)
+    this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
+      debugger
+      const albs = album.album.albums ? album.album.albums.length : 0;
+      for (let i=1;i<albs;i++) {
+        debugger
+        this.props.fetchAlbum(album.album.albums[i].id)
+      }
+    })
+    this.props.fetchSongs(this.props.match.params.songId)
   }
 
   componentWillUnmount() {
@@ -38,21 +46,23 @@ class AlbumShow extends React.Component {
 
  
   render() {
-    const photo_url = this.props.album.photo_url
-      // ? this.props.album.photo_url
-      // : "";
-    const title = this.props.album.title
-      // ? this.props.album[this.props.match.params.songId].title
-      // : "";
+    const photo_url = this.props.albums[this.props.match.params.songId]
+      ? this.props.albums[this.props.match.params.songId].photo_url
+      : "";
+    const title = this.props.albums[this.props.match.params.songId]
+      ? this.props.albums[this.props.match.params.songId].title
+      : "";
     let bool = false;
 
-    let alb = this.props.currentUser
-      ? this.props.currentUser.user_albums
-      : false;
+    let alb = this.props.albums[this.props.match.params.songId]
+      ? this.props.albums[this.props.match.params.songId].albums
+      : [];
 
-    let username = this.props.album.user
-      ? this.props.album.user.username
+    let username = this.props.albums[this.props.match.params.songId]
+      ? this.props.albums[this.props.match.params.songId].user.username
       : "";
+
+    debugger
 
     if (alb) {
       bool = alb.filter((album) => this.props.match.params.songId == album.id);
@@ -78,12 +88,12 @@ class AlbumShow extends React.Component {
                     <div>
                       <div id="full-package">
                         <AlbumAudioPlayer
-                          titles={this.state.songs.map((song) => song.title)}
-                          songs={this.state.songs}
+                          titles={this.props.songs.map((song) => song.title)}
+                          songs={this.props.songs}
                         />
                       </div>
                       <ol id="songLinkList">
-                        {this.state.songs.map((song, idx) => (
+                        {this.props.songs.map((song, idx) => (
                           <DownloadLink
                             key={idx}
                             id={song.id}

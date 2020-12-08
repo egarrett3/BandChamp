@@ -46,7 +46,6 @@ const addSong = (song) => {
 };
 
 const receiveAllSongs = (songs) => {
-  debugger
     return {
         type: RECEIVE_ALL_SONGS,
         songs,

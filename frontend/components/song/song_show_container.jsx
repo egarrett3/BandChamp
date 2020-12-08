@@ -3,12 +3,12 @@ import { fetchSgs, openSong, closeSong } from '../../actions/song_actions';
 import { fetchAls } from '../../actions/album_actions';
 import SongShow from './song_show_form';
 
-const mapStateToProps = ({ui,session,entities:{songs,users,albums,song}}) => {
+const mapStateToProps = ({ui,session,entities:{songs,users,album,song}}) => {
     return {
       currentUser: users[session.id],
       songs: Object.values(songs),
       song: song.song_url,
-      albums: Object.values(albums),
+      album: Object.values(album),
       photo_url: ui.switch,
     };
 }

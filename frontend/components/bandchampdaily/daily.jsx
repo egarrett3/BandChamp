@@ -36,8 +36,9 @@ class Daily extends React.Component {
 
 
   render() {
-
     let that = this;
+
+    debugger
 
     return (
         <div id="bandchamp-daily">
@@ -60,6 +61,6 @@ class Daily extends React.Component {
   }
 }
 
-export default Daily
+export default Daily;
 
 
