@@ -95,7 +95,7 @@ class AudioPlayer extends React.Component {
         that.flipPausebtn();
       }
     }
-
+    debugger
     return (
       <>
         <div id="audio-player">

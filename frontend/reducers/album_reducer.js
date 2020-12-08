@@ -13,7 +13,6 @@ const albumReducer = (state = initialState, action) => {
       return obj
     case RECEIVE_ALBUM:
       const singleAlb = { [action.album.id]: action.album };
-      debugger
       return Object.assign({}, state, singleAlb)
     default:
       return state;

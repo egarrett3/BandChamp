@@ -38,8 +38,6 @@ class Daily extends React.Component {
   render() {
     let that = this;
 
-    debugger
-
     return (
         <div id="bandchamp-daily">
           <h3 id="daily-title">BANDCHAMP DAILY</h3>

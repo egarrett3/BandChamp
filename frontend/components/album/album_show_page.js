@@ -19,11 +19,9 @@ class AlbumShow extends React.Component {
   componentDidMount() {
     window.scroll(0, 0);
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
-      debugger
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
           for (let i=1;i<albs;i++) {
-            debugger
             this.props.fetchAlbum(album.album.albums[i].id)
           }
         }
@@ -50,8 +48,8 @@ class AlbumShow extends React.Component {
   render() {
     let showAlb = false;
     let lb = [];
-    if (this.props.albums) {
-      lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id)
+    if (this.props.albums) {     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
+      lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
     let photo_url = showAlb
