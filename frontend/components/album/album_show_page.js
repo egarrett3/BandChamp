@@ -20,12 +20,14 @@ class AlbumShow extends React.Component {
     window.scroll(0, 0);
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
       debugger
-      const albs = album.album.albums ? album.album.albums.length : 0;
-      for (let i=1;i<albs;i++) {
-        debugger
-        this.props.fetchAlbum(album.album.albums[i].id)
-      }
-    })
+      if (album.album.albums.length > 1) {
+        const albs = album.album.albums ? album.album.albums.length : 0;
+          for (let i=1;i<albs;i++) {
+            debugger
+            this.props.fetchAlbum(album.album.albums[i].id)
+          }
+        }
+      })
     this.props.fetchSongs(this.props.match.params.songId)
   }
 
@@ -46,6 +48,7 @@ class AlbumShow extends React.Component {
 
  
   render() {
+    const showAlb = this.props.albums.filter((album) => this.props.match.params.songId == album.id)
     const photo_url = this.props.albums[this.props.match.params.songId]
       ? this.props.albums[this.props.match.params.songId].photo_url
       : "";
