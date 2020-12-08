@@ -17,7 +17,7 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    window.scroll(0, 0);
+    window.scroll(0, 0); // window appears at top of the page
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
@@ -52,6 +52,7 @@ class AlbumShow extends React.Component {
   render() {
     let showAlb = false;
     let lb = [];
+    let bool = false;
     if (this.props.albums) {     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
       lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
@@ -62,18 +63,21 @@ class AlbumShow extends React.Component {
     let title = showAlb
       ? showAlb.title
       : "";
-    let bool = false;
-
-    let alb = showAlb
+      
+      let alb = showAlb
       ? showAlb.albums
       : [];
-
-    let username = showAlb
+      
+      let username = showAlb
       ? showAlb.user.username
       : "";
 
-    if (alb) {
-      bool = alb.filter((album) => this.props.match.params.songId == album.id);
+    let user = this.props.currentUser ? this.props.currentUser.username : "";
+    debugger
+    if (username && user) {
+      if (user === username) {
+        bool = true;
+      }
     }
 
     debugger
@@ -114,7 +118,7 @@ class AlbumShow extends React.Component {
                           />
                         ))}
                       </ol>
-                      {bool.length ? (
+                      {bool ? (
                         <div>
                           <input
                             type="file"
@@ -136,22 +140,27 @@ class AlbumShow extends React.Component {
                     <div>
                       <img src={photo_url} id="album-picture-frame" />
                     </div>
+                    <div >
+                      <div id='album-frame-label'>{username}'s albums</div>
+                      <div id='album-frame'> 
+                        <div className="user-albums2">
+                          {this.props.albums.map(function (album, idx) {
+                            return (
+                              <UserAlbums
+                                key={idx}
+                                photo_url={album.photo_url}
+                                title={album.title}
+                                id={album.id}
+                              />
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <div id="discogrpahy"></div>
-            </div>
-            <div className="user-albums">
-              {this.props.albums.map(function (album, idx) {
-                return (
-                  <UserAlbums
-                    key={idx}
-                    photo_url={album.photo_url}
-                    title={album.title}
-                    id={album.id}
-                  />
-                );
-              })}
             </div>
           </div>
         </div>

@@ -31,15 +31,16 @@ export const clearSongs = () => {
   };
 };
 
-export const removeSong = (index) => {
+export const removeSong = (song) => {
   debugger
   return {
     type: DESTROY_SONG,
-    index
+    song
   }
 }
 
 const addSong = (song) => {
+  debugger
     return {
         type: ADD_SONG,
         song,
@@ -63,4 +64,4 @@ export const createSg = (song,albumId) => dispatch => makeSong(song,albumId)
     .then(song => dispatch(addSong(song)));
 
 export const deleteSg = (album_id, song_id) => dispatch => deleteSong(album_id, song_id)
-    .then((songs) => dispatch(removeSong(songs)))
+    .then((song) => dispatch(removeSong(song)))

@@ -25,10 +25,10 @@ class Api::SongsController < ApplicationController
 
     def destroy
         @song = Song.find_by(id: params[:id].to_i)
-        @song.song.purge
         
         if @song.delete
-            render 'api/songs/index'
+            render 'api/songs/show'
+            @song.song.purge
         else
             render json: @song.errors.full_messages
         end

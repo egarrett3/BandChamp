@@ -16,7 +16,7 @@ class UserAlbums extends React.Component {
     
     return (
       <a
-        className="album-page"
+        className="album-page2"
         onClick={() => {
           window.location.href = `/#/SongPage/${this.props.id}`,
           this.props.clearSongs(),
@@ -24,7 +24,7 @@ class UserAlbums extends React.Component {
         }}
       >
         <div>{this.props.title}</div>
-        <img className="img-block" src={this.props.photo_url} />
+        <img className="img-block2" src={this.props.photo_url} />
       </a>
     );
   }
