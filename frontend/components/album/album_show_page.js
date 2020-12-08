@@ -48,21 +48,26 @@ class AlbumShow extends React.Component {
 
  
   render() {
-    const showAlb = this.props.albums.filter((album) => this.props.match.params.songId == album.id)
-    const photo_url = this.props.albums[this.props.match.params.songId]
-      ? this.props.albums[this.props.match.params.songId].photo_url
+    let showAlb = false;
+    let lb = [];
+    if (this.props.albums) {
+      lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id)
+      showAlb = lb[0]
+    }
+    let photo_url = showAlb
+      ? showAlb.photo_url
       : "";
-    const title = this.props.albums[this.props.match.params.songId]
-      ? this.props.albums[this.props.match.params.songId].title
+    let title = showAlb
+      ? showAlb.title
       : "";
     let bool = false;
 
-    let alb = this.props.albums[this.props.match.params.songId]
-      ? this.props.albums[this.props.match.params.songId].albums
+    let alb = showAlb
+      ? showAlb.albums
       : [];
 
-    let username = this.props.albums[this.props.match.params.songId]
-      ? this.props.albums[this.props.match.params.songId].user.username
+    let username = showAlb
+      ? showAlb.user.username
       : "";
 
     debugger
