@@ -11,9 +11,6 @@ const songsReducer = (state = {}, action) => {
     switch (action.type) {
       case RECEIVE_ALL_SONGS:
         let songArray = action.songs;
-        songArray.sort(function(a,b) {
-          return a.id - b.id
-        })
         return Object.assign({}, songArray);
       case DESTROY_SONG:
         const id = action.song.id;
