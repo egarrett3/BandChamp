@@ -1,3 +1,4 @@
+import { bindActionCreators } from "redux"
 import { RECEIVE_ALL_SONGS } from "../actions/song_actions"
 import { CLEAR_SONGS, DESTROY_SONG } from "../actions/song_actions"
 import { ADD_SONG } from "../actions/song_actions"
@@ -5,10 +6,15 @@ import { ADD_SONG } from "../actions/song_actions"
 
 const songsReducer = (state = {}, action) => {
     Object.freeze(state)
-
+    
+    
     switch (action.type) {
       case RECEIVE_ALL_SONGS:
-        return Object.assign({}, action.songs);
+        let songArray = action.songs;
+        songArray.sort(function(a,b) {
+          return a.id - b.id
+        })
+        return Object.assign({}, songArray);
       case DESTROY_SONG:
         const id = action.song.id;
         const songs = Object.values(state)

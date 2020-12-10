@@ -9,18 +9,15 @@ class Song < ApplicationRecord
     #custom validation checking for song attachment 
 
     def song_attached?
-        debugger
         song.attached?
     end
 
     def song_attachment_validation
         bool = true
         unless song_attached?
-            debugger
             errors.add(:song,'must have song attached')
             bool = false
         end
-        debugger
         bool
     end
     
