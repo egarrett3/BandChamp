@@ -32,7 +32,7 @@ export const clearSongs = () => {
 };
 
 export const removeSong = (song) => {
-  debugger
+
   return {
     type: DESTROY_SONG,
     song
@@ -40,7 +40,7 @@ export const removeSong = (song) => {
 }
 
 const addSong = (song) => {
-  debugger
+
     return {
         type: ADD_SONG,
         song,

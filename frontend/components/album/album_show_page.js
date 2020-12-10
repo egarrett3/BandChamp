@@ -73,14 +73,12 @@ class AlbumShow extends React.Component {
       : "";
 
     let user = this.props.currentUser ? this.props.currentUser.username : "";
-    debugger
+  
     if (username && user) {
       if (user === username) {
         bool = true;
       }
     }
-
-    debugger
 
     return (
       <>

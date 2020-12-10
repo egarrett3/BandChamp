@@ -15,8 +15,9 @@ class Api::SongsController < ApplicationController
 
     def create 
         @song = Song.create(title: params[:song][:title], album_id: params[:song][:album_id])
-        if @song.save
-            @song.song.attach(io: File.open(params[:song][:sg].tempfile), filename: params[:song][:sg].original_filename)
+        @song.song.attach(io: File.open(params[:song][:sg].tempfile), filename: params[:song][:sg].original_filename)
+    
+        if @song.save && @song.song_attachment_validation
             render 'api/songs/show'
         else
             render json: @song.errors.full_messages

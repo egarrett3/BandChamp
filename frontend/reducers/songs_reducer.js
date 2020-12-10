@@ -13,7 +13,6 @@ const songsReducer = (state = {}, action) => {
         const id = action.song.id;
         const songs = Object.values(state)
         const newSongList = songs.filter((song) => song.id !== id);
-        debugger;
         return Object.assign({},newSongList)
       case CLEAR_SONGS:
         return (state = {});
