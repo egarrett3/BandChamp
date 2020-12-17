@@ -7,10 +7,6 @@ const albumReducer = (state = initialState, action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case RECEIVE_ALBUMS:
-      const albumCollection = action.albums;
-      const obj = Object.assign({}, state, albumCollection)
-      return obj
     case RECEIVE_ALBUM:
       const singleAlb = { [action.album.id]: action.album };
       return Object.assign({}, state, singleAlb)

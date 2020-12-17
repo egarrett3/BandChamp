@@ -63,7 +63,7 @@ class SongShow extends React.Component {
     }
 
     render() {
-      const albumList = this.props.album.map((al) => al.photo_url);
+      const albumList = this.props.albums.map((al) => al.photo_url);
       // let album = this.props.album ? this.props.album : albumList;
       // const songlist = this.props.songs.map((song) => song);
         return (
@@ -94,7 +94,7 @@ class SongShow extends React.Component {
                 }
               </div>
               <ul className="sidebar-container">
-                {this.props.album.map(function (al, idx) {
+                {this.props.albums.map(function (al, idx) {
                   if (idx < 3) {
                     // this.props.fetchAlbum(idx);
                     return <SideContainer key={idx} id={idx} album={al} />;
@@ -102,8 +102,8 @@ class SongShow extends React.Component {
                 })}
               </ul>
             </div>
-            <SellingItems albums={this.props.album} />
-            <Daily albums={this.props.album} />
+            <SellingItems albums={this.props.albums} />
+            <Daily albums={this.props.albums} />
             <FooterItem />
           </div>
         );  

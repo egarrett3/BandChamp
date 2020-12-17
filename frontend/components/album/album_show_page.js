@@ -24,12 +24,13 @@ class AlbumShow extends React.Component {
           for (let i=0;i<albs;i++) {
             if (album.album.albums[i].id === this.props.match.params.songId) {
             } else {
+              
               this.props.fetchAlbum(album.album.albums[i].id);
             }
           }
         }
       })
-    this.props.fetchSongs(this.props.match.params.songId)
+      this.props.fetchSongs(this.props.match.params.songId)
   }
 
 
@@ -53,27 +54,36 @@ class AlbumShow extends React.Component {
     let showAlb = false;
     let lb = [];
     let bool = false;
-    if (this.props.albums) {     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
-      lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id) 
+
+    if (this.props.album) {     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
+      lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
+    
     let photo_url = showAlb
       ? showAlb.photo_url
       : "";
+
     let title = showAlb
       ? showAlb.title
       : "";
       
-      let alb = showAlb
+    let alb = showAlb
       ? showAlb.albums
       : [];
+
+    // let albs = this.props.album
+    //   ? this.props.album.albums
+    //   : [];
       
-      let username = showAlb
+    let username = showAlb
       ? showAlb.user.username
       : "";
 
-    let user = this.props.currentUser ? this.props.currentUser.username : "";
-  
+    let user = this.props.currentUser 
+      ? this.props.currentUser.username 
+      : "";
+
     if (username && user) {
       if (user === username) {
         bool = true;
@@ -142,7 +152,8 @@ class AlbumShow extends React.Component {
                       <div id='album-frame-label'>{username}'s albums</div>
                       <div id='album-frame'> 
                         <div className="user-albums2">
-                          {this.props.albums.map(function (album, idx) {
+                          {this.props.album.map(function (album, idx) {
+                            
                             return (
                               <UserAlbums
                                 key={idx}

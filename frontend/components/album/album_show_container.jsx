@@ -4,11 +4,12 @@ import { fetchAls, fetchAl } from "../../actions/album_actions";
 import { createSg } from "../../actions/song_actions";
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ session, entities: { users, songs, album }}) => {
+const mapStateToProps = ({ session, entities: { users, songs, album, albums }}) => {
   return {
     currentUser: users[session.id],
     songs: Object.values(songs),
-    albums: Object.values(album),
+    album: Object.values(album),
+    albums: Object.values(albums),
   };
 };
 
