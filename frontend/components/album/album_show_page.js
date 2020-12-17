@@ -148,12 +148,11 @@ class AlbumShow extends React.Component {
                     <div>
                       <img src={photo_url} id="album-picture-frame" />
                     </div>
-                    <div >
+                    <div>
                       <div id='album-frame-label'>{username}'s albums</div>
                       <div id='album-frame'> 
                         <div className="user-albums2">
                           {this.props.album.map(function (album, idx) {
-                            
                             return (
                               <UserAlbums
                                 key={idx}

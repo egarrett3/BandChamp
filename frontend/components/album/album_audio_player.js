@@ -6,12 +6,12 @@ class AlbumAudioPlayer extends React.Component {
     constructor(props) {
         super(props); 
         this.state = { 
-            currentTime: 0,
-            duration: 0,
+            currentTime: 0,  // current time in song
+            duration: 0,     // lists full time of song
             user: false,
-            counter: 0,
-            loaded: false,
-            loading: false,
+            counter: 0,   // tracks songs in album
+            loaded: false, // flip to true after first to satisfy conditional in componentDidUpdate which loads song
+            loading: false,  // tracks whether to show buffer symbol
         };
         this.nextSong = this.nextSong.bind(this);
         this.previousSong = this.previousSong.bind(this);
@@ -83,6 +83,12 @@ class AlbumAudioPlayer extends React.Component {
 
     componentDidUpdate() {
       let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
+    
+      if (this.state.loaded && this.props.songs.length === 0) {
+        this.setState({
+          loaded: false
+        })
+      }
       if (this.source1 && src_url !== "" && this.state.loaded === false) {
           this.source1.src = src_url;
           this.audio1.pause();
@@ -101,7 +107,6 @@ class AlbumAudioPlayer extends React.Component {
       }
     
       if (this.props.songs.length === 0 && this.state.counter !== 0) {
-        
         this.setState({
           counter: 0
         })
@@ -111,7 +116,6 @@ class AlbumAudioPlayer extends React.Component {
     render() {
         const dur = this.getTime(this.state.duration);
         const ct = this.getTime(this.state.currentTime);
-        
     
         const AlLength = this.props.songs.length;
         const src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
