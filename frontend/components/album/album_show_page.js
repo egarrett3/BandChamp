@@ -4,6 +4,8 @@ import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
 import DownloadLink from './download_link';
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class AlbumShow extends React.Component {
   constructor(props) {
@@ -115,6 +117,7 @@ class AlbumShow extends React.Component {
                         />
                       </div>
                       <ol id="songLinkList">
+                        <div id="tracks">Tracks<FontAwesomeIcon icon={faChevronDown} className='expandable'/></div>
                         {this.props.songs.map((song, idx) => (
                           <DownloadLink
                             key={idx}
@@ -149,8 +152,8 @@ class AlbumShow extends React.Component {
                       <img src={photo_url} id="album-picture-frame" />
                     </div>
                     <div>
-                      <div id='album-frame-label'>{username}'s albums</div>
-                      <div id='album-frame'> 
+                      <div id="album-frame-label">{username}'s albums</div>
+                      <div id="album-frame">
                         <div className="user-albums2">
                           {this.props.album.map(function (album, idx) {
                             return (

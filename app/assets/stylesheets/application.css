@@ -2213,3 +2213,11 @@ form#edit-frame textarea:focus {
     margin-top:15px;
     text-decoration: underline;
 }
+
+#tracks {
+    text-decoration: underline;
+}
+
+.expandable {
+    padding-left: .73em;
+}
