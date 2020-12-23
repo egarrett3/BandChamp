@@ -4,7 +4,7 @@ import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
 import DownloadLink from './download_link';
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class AlbumShow extends React.Component {
@@ -126,15 +126,20 @@ class AlbumShow extends React.Component {
                       <ol id="songLinkList">
                         <div id="tracks">
                           Tracks
-                          <FontAwesomeIcon
+                          {this.state.expand ? <FontAwesomeIcon
                             icon={faChevronDown}
                             className="expandable"
                             onClick={() => this.toggleExpand()}
-                          />
+                          /> :
+                          <FontAwesomeIcon
+                            icon={faChevronUp}
+                            className="expandable"
+                            onClick={() => this.toggleExpand()}
+                          /> }
                         </div>
                         <div
                           className={
-                            this.state.expand ? "disappear" : "songList"
+                            this.state.expand ? "songListwindow" : "songList"
                           }
                         >
                           {this.props.songs.map((song, idx) => (

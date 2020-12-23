@@ -320,8 +320,6 @@ div.banner {
     height:105px;
 }
 
-
-
 .header {
    text-decoration: none;
    color: black;
@@ -2222,6 +2220,12 @@ form#edit-frame textarea:focus {
     padding-left: .73em;
 }
 
-.songList {
-    transition: height 1.5s;
+.songList > li{
+    opacity: 1;
+    transition: all .5s;
+}
+
+.songListwindow > li {
+    opacity: 0;
+    transition: all .5s;
 }
