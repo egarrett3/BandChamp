@@ -2221,3 +2221,7 @@ form#edit-frame textarea:focus {
 .expandable {
     padding-left: .73em;
 }
+
+.songList {
+    transition: height 1.5s;
+}

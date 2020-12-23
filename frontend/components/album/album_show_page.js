@@ -14,8 +14,10 @@ class AlbumShow extends React.Component {
       id: 1,
       counter: 0,
       show: false,
-      songs: []
+      songs: [],
+      expand: true
     };
+    this.toggleExpand = this.toggleExpand.bind(this)
   }
 
   componentDidMount() {
@@ -51,6 +53,11 @@ class AlbumShow extends React.Component {
     this.props.createSong(song, album_id)
   }
 
+  toggleExpand() {
+    this.setState((prevState) => ({
+      expand : !prevState.expand
+    }));
+  }
  
   render() {
     let showAlb = false;
@@ -117,17 +124,30 @@ class AlbumShow extends React.Component {
                         />
                       </div>
                       <ol id="songLinkList">
-                        <div id="tracks">Tracks<FontAwesomeIcon icon={faChevronDown} className='expandable'/></div>
-                        {this.props.songs.map((song, idx) => (
-                          <DownloadLink
-                            key={idx}
-                            id={song.id}
-                            deleteSong={this.props.deleteSong}
-                            title={song.title}
-                            url={song.song_url}
-                            album_id={this.props.match.params.songId}
+                        <div id="tracks">
+                          Tracks
+                          <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className="expandable"
+                            onClick={() => this.toggleExpand()}
                           />
-                        ))}
+                        </div>
+                        <div
+                          className={
+                            this.state.expand ? "disappear" : "songList"
+                          }
+                        >
+                          {this.props.songs.map((song, idx) => (
+                            <DownloadLink
+                              key={idx}
+                              id={song.id}
+                              deleteSong={this.props.deleteSong}
+                              title={song.title}
+                              url={song.song_url}
+                              album_id={this.props.match.params.songId}
+                            />
+                          ))}
+                        </div>
                       </ol>
                       {bool ? (
                         <div>
