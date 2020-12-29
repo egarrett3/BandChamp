@@ -3,6 +3,7 @@ import ModalLoginContainer from '../session_form/modal_login_container';
 import SignupContainer from '../session_form/signup_container';
 import AddImageContainer from '../profile/add_image';
 import BannerContainer from '../profile/banner';
+import AddAlbum from '../profile/add_album';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 
@@ -22,6 +23,9 @@ const Modal = ({modal, closeModal}) => {
             break;
         case 'addbanner':
             component = <BannerContainer />
+            break;
+        case 'addalbum':
+            component = <AddAlbum />
             break;
         default:
             return null;
@@ -70,6 +74,18 @@ const Modal = ({modal, closeModal}) => {
                 <div className='modal-content3' onClick={(e) => e.stopPropagation()}>
                     <div className='modal-header1'>
                         <h3 className="modal-login-header">Set banner image</h3>
+                        <button className="cancel-button" onClick={closeModal}>Cancel</button>
+                    </div>
+                    {component}
+                </div>
+            </div>
+        )
+    } else if(modal === 'addalbum') {
+        return (
+            <div className='bg-modal' onClick={closeModal}>
+                <div className='modal-content3' onClick={(e) => e.stopPropagation()}>
+                    <div className='modal-header1'>
+                        <h3 className="modal-login-header">Create new Album</h3>
                         <button className="cancel-button" onClick={closeModal}>Cancel</button>
                     </div>
                     {component}

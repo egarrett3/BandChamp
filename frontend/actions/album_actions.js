@@ -1,8 +1,11 @@
 import { fetchAlbum } from "../util/album_api_util";
 import { fetchAlbums } from "../util/album_api_util";
+import { deleteAlbum } from "../util/album_api_util";
 
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM"
 export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS"
+
+export const DESTROY_ALBUM = "DESTROY_ALBUM"
 
 const receiveAlbum = (album) => {
   return {
@@ -18,8 +21,21 @@ const receiveAlbums = (albums) => {
   };
 };
 
+export const removeAlbum = (album) => {
+  return {
+    type: DESTROY_ALBUM,
+    album
+  }
+}
+
 export const fetchAl = (albumId) => (dispatch) => fetchAlbum(albumId)
     .then((album) => dispatch(receiveAlbum(album)));
 
 export const fetchAls = () => (dispatch) => fetchAlbums()
     .then(albums => dispatch(receiveAlbums(albums)));
+
+export const createAl = (album) => dispatch => makeAlbum(album)
+  .then(album => dispatch(receiveAlbum(album)));
+
+export const deleteAl = (album_id) => dispatch => deleteAlbum(album_id)
+  .then((album) => dispatch(removeAlbum(album)))
