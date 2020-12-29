@@ -84,9 +84,12 @@ class AlbumShow extends React.Component {
     //   ? this.props.album.albums
     //   : [];
       
-    let username = showAlb
-      ? showAlb.user.username
-      : "";
+    let username
+    if (showAlb) {
+      let username = showAlb.user
+        ? showAlb.user.username
+        : ""
+    }
 
     let user = this.props.currentUser 
       ? this.props.currentUser.username 
