@@ -777,6 +777,7 @@ input[type='range']::-webkit-slider-thumb {
     height: 14px;
     width: 26px;
     background: rgb(84, 90, 97);
+    cursor: pointer;
 }
 
 input[type='range']::-webkit-slider-runnable-track {
@@ -879,6 +880,7 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
     border-style: solid;
     border-width: 11px 0px 11px 22px;
     border-color: transparent transparent transparent black;
+    cursor: pointer;
 }
 
 #pause-btn {
@@ -897,6 +899,7 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
     border-style: double;
     border-width: 0px 0px 0px 20px;
     border-color: black;
+    cursor: pointer;
 }
 
 .weekly-label {
@@ -2216,6 +2219,7 @@ form#edit-frame textarea:focus {
 
 .expandable {
     padding-left: .73em;
+    cursor: pointer;
 }
 
 .songList > li{

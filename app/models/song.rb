@@ -2,10 +2,10 @@ class Song < ApplicationRecord
     default_scope { order(id: :asc) }
     validates :title, presence: true
     validates :id, uniqueness: true
-    # validate :song_attachment_validation, on: :create
+    validate :song_attachment_validation, on: :create
 
     has_one_attached :song
-    has_many :pictures, as: :imageable
+    # has_many :pictures, as: :imageable
     belongs_to :album
 
     #custom validation checking for song attachment 

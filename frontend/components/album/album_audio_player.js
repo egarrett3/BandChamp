@@ -83,7 +83,7 @@ class AlbumAudioPlayer extends React.Component {
 
     componentDidUpdate() {
       let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
-    
+  
       if (this.state.loaded && this.props.songs.length === 0) {
         this.setState({
           loaded: false
@@ -111,6 +111,7 @@ class AlbumAudioPlayer extends React.Component {
           counter: 0
         })
       }
+
     }
    
     render() {
@@ -118,8 +119,13 @@ class AlbumAudioPlayer extends React.Component {
         const ct = this.getTime(this.state.currentTime);
     
         const AlLength = this.props.songs.length;
-        const src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
+        
+        let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
 
+        if (this.state.counter === this.props.songs.length && this.props.songs) {
+          let src_url = this.props.songs.length ? this.props.songs[this.state.counter-1].song_url : "";
+        } 
+        
         if (document.getElementById('ply1')) {
             if (this.audio1.ended) {
                 this.audio1.currentTime = 0;

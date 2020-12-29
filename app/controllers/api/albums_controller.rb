@@ -10,5 +10,13 @@ class Api::AlbumsController < ApplicationController
         render 'api/albums/show'
     end
 
+    def create
+
+    end
+
+    def delete
+
+    end
+
 
 end
