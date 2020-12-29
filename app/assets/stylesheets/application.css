@@ -2227,3 +2227,16 @@ form#edit-frame textarea:focus {
     opacity: 0;
     transition: all .5s;
 }
+
+.align-items {
+    display: flex;
+    justify-content: center;
+    width:100%;
+}
+
+.album-spacer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 93%;
+}

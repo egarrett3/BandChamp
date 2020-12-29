@@ -218,14 +218,16 @@ class UserProf extends React.Component {
             </div>
           </div>
         </div>
-        <div className="user-albums2">
-        {
-          this.props.album.map(function(alb, idx) {
-            return (
-              <UserAlbums id={alb.id} photo_url={alb.photo_url} key={idx}/>
-            )
-          })
-        }
+        <div className="align-items">
+          <div className="album-spacer">
+            {
+              this.props.album.map(function(alb, idx) {
+                return (
+                  <UserAlbums id={alb.id} photo_url={alb.photo_url} title={alb.title} key={idx}/>
+                )
+              })
+            }
+          </div>
         </div>
       </div>
     );
