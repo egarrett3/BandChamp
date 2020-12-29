@@ -2212,6 +2212,7 @@ form#edit-frame textarea:focus {
     margin-top:10px;
     display:flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #album-frame-label {

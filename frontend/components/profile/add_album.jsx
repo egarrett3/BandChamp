@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { createAl } from '../../actions/album_actions'
+import { closeModal } from "../../actions/modal_actions";
 import { faDesktop } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -50,11 +52,12 @@ class AddAlbum extends React.Component {
                         Upload an image from my Computer<div id='computer-icon'><FontAwesomeIcon icon={faDesktop} /></div>
                             <input type='file'
                             name="file" id="file"
-                            className={this.state.title ? "inputfile" : "inputfile disabled"}
+                            className="inputfile"
                             onChange={(e) => { this.handleSubmit(e) }} />
                     </label>
                     <button className="save-changes"
-                      type="submit">UPLOAD ALBUM
+                      type="submit"
+                      >UPLOAD ALBUM
                     </button>
                 </form>
                 <div id='stipulations'>480 pixels minimum (bigger is better), .jpg, .gif or .png, 4MB max</div>

@@ -12,13 +12,13 @@ class Api::AlbumsController < ApplicationController
 
     def create
         @album = Album.create(title: params[:album][:title], artist_id: params[:album][:artist_id])
-        debugger
-        @picture = @album.pictures.create(name: params[:user][:username])
-        debugger
+        
+        @picture = @album.pictures.create(name: params[:album][:title])
+        
         @picture.photo.attach(io: File.open(params[:album][:photo].tempfile), filename: params[:album][:photo].original_filename)
         
         if @album.save
-            render 'api/songs/show'
+            render 'api/albums/show'
         else
             render json: @album.errors.full_messages
         end
@@ -28,7 +28,7 @@ class Api::AlbumsController < ApplicationController
         @album = Album.find_by(id: params[:id].to_i)
         
         @album.pictures[0].photo.purge
-    
+        
         if @album.delete && @album.pictures[0].delete
             render 'api/albums/show'
         else
