@@ -2068,6 +2068,11 @@ button#close-audio:hover {
     resize: none;
 }
 
+.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 .save-changes {
     display: block;
     height: 31px;
@@ -2077,6 +2082,7 @@ button#close-audio:hover {
     border-radius: 5px;
     font-weight: bold;
     border-style: none;
+    margin-left: 160px;
 }
 .save-changes:active {
     text-decoration: none;

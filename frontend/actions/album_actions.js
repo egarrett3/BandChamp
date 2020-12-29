@@ -1,5 +1,6 @@
 import { fetchAlbum } from "../util/album_api_util";
 import { fetchAlbums } from "../util/album_api_util";
+import { createAlbum } from "../util/album_api_util";
 import { deleteAlbum } from "../util/album_api_util";
 
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM"
@@ -34,7 +35,7 @@ export const fetchAl = (albumId) => (dispatch) => fetchAlbum(albumId)
 export const fetchAls = () => (dispatch) => fetchAlbums()
     .then(albums => dispatch(receiveAlbums(albums)));
 
-export const createAl = (album) => dispatch => makeAlbum(album)
+export const createAl = (album) => dispatch => createAlbum(album)
   .then(album => dispatch(receiveAlbum(album)));
 
 export const deleteAl = (album_id) => dispatch => deleteAlbum(album_id)

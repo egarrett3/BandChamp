@@ -13,7 +13,7 @@ export const fetchAlbums = () => (
     })
 )
 
-export const makeAlbum = () => (
+export const createAlbum = (album) => (
     $.ajax({
         url: `/api/albums`,
         method: 'POST',
