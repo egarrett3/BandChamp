@@ -28,7 +28,6 @@ class AlbumShow extends React.Component {
           for (let i=0;i<albs;i++) {
             if (album.album.albums[i].id === this.props.match.params.songId) {
             } else {
-              
               this.props.fetchAlbum(album.album.albums[i].id);
             }
           }
