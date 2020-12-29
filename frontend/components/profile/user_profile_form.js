@@ -1,6 +1,6 @@
 import React from 'react'
 import GreetingContainer from "../greeting/greeting_container";
-import UserAlbums from '../album/user_albums'
+import UserAlbums from "../album/user_albums";
 import { faCamera, faEdit, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -23,15 +23,12 @@ class UserProf extends React.Component {
 
   componentDidMount() {
     this.props.getUser(this.props.currentUser.id).then((user) => {
-      debugger
       if (user.currentUser.albums.length > 0) {
-        debugger
         for (let i=0; i < user.currentUser.albums.length; i++) {
           this.props.fetchAlbum(user.currentUser.albums[i].id)
         }
       }
     });
-
   }
 
   profileFrame() {
@@ -90,7 +87,6 @@ class UserProf extends React.Component {
     }
   }
 
-  
   render() {    
     return (
       <div>
@@ -222,7 +218,15 @@ class UserProf extends React.Component {
             </div>
           </div>
         </div>
-        <UserAlbums />
+        <div className="user-albums2">
+        {
+          this.props.album.map(function(alb, idx) {
+            return (
+              <UserAlbums id={alb.id} photo_url={alb.photo_url} key={idx}/>
+            )
+          })
+        }
+        </div>
       </div>
     );
   }

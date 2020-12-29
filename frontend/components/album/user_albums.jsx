@@ -8,12 +8,11 @@ class UserAlbums extends React.Component {
     this.state = {
 
     }
-
   }
 
 
   render() {
-    
+    debugger
     return (
       <a
         className="album-page2"

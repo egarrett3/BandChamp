@@ -1391,7 +1391,6 @@ span#lng-color:hover {
     background-color: white;
     height: 280px;
     width: 208px;
-    /* margin-left:20px; */
     cursor: pointer;
 }
 .album-page2 {
@@ -1399,7 +1398,6 @@ span#lng-color:hover {
     background-color: white;
     height: 100px;
     width: 150px;
-    /* margin-left:20px; */
     cursor: pointer;
 }
 
