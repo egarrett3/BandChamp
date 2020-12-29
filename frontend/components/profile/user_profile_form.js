@@ -218,7 +218,10 @@ class UserProf extends React.Component {
             </div>
           </div>
         </div>
+        <div id='prof-albs'>
           <div id="alb-owner">{this.props.currentUser.username}'s albums</div>
+          <button id="create-alb">+ CREATE ALBUM</button>
+        </div>
         <div className="align-items">
           <div className="album-spacer">
             {

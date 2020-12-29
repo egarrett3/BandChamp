@@ -2241,7 +2241,30 @@ form#edit-frame textarea:focus {
     width: 93%;
 }
 
-#alb-owner {
-    margin-bottom:10px;
-    margin-left: 7%;
+#prof-albs {
+    position: relative;
+    left:45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:250px;
+    margin-bottom:30px;
 }
+
+#alb-owner {
+    text-decoration: underline;
+}
+
+#create-alb {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 6px;
+    font-size: 13px;
+    background-color: white;
+    color: rgb(95, 95, 95);
+    border: 1px solid rgb(165, 165, 165);
+    cursor: pointer;
+} 
+
