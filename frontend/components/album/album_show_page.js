@@ -90,7 +90,8 @@ class AlbumShow extends React.Component {
         ? showAlb.user.username
         : ""
     }
-
+    
+    debugger
     let user = this.props.currentUser 
       ? this.props.currentUser.username 
       : "";
