@@ -86,7 +86,7 @@ class AlbumShow extends React.Component {
       
     let username
     if (showAlb) {
-      let username = showAlb.user
+      username = showAlb.user
         ? showAlb.user.username
         : ""
     }

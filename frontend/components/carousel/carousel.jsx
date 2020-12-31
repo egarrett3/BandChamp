@@ -13,7 +13,7 @@ class SellingItems extends React.Component {
     }
 
     render() {
-      
+      debugger
         return (
           <div className="carousel-component">
             <div className="payment">
@@ -87,7 +87,7 @@ class SellingItems extends React.Component {
               </div>
             </div>
             <ul className="album-block">
-              {this.props.albs.map(function(album, idx) { 
+              {this.props.albums.map(function(album, idx) { 
                 if (idx > 7 && idx < 15) {
                   return <CarouselItem key={idx} album={album} />
                 }
@@ -99,18 +99,4 @@ class SellingItems extends React.Component {
 }
 
 
-const mapStateToProps = ({ entities: { songs, album } }) => {
-    return {
-        sng: Object.values(songs),
-        albs: Object.values(album)
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
-        fetchAlbums: () => dispatch(fetchAls())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SellingItems)
+export default SellingItems
