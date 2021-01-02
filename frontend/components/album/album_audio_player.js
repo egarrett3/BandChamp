@@ -83,12 +83,13 @@ class AlbumAudioPlayer extends React.Component {
 
     componentDidUpdate() {
       let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
-  
+      
       if (this.state.loaded && this.props.songs.length === 0) {
         this.setState({
           loaded: false
         })
       }
+
       if (this.source1 && src_url !== "" && this.state.loaded === false) {
           this.source1.src = src_url;
           this.audio1.pause();
@@ -108,7 +109,16 @@ class AlbumAudioPlayer extends React.Component {
     
       if (this.props.songs.length === 0 && this.state.counter !== 0) {
         this.setState({
-          counter: 0
+          counter: 0,
+        })
+      }
+
+      // loads audio to remove buffered audio (no TimeRanges obj) and sets duration to 0 so
+      // upon changing albums song duration === to '0:00' instead of the duration of buffered song
+      if (this.props.songs.length === 0 && this.audio1.buffered.length === 1 && this.source1) {
+        this.audio1.load();
+        this.setState({
+          duration:0,
         })
       }
 
