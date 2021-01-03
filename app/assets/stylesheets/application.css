@@ -1080,8 +1080,7 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
 
 .img-block2 {
     width: 90%;
-    height: 90%;
-    margin:0 auto;
+    height: 75%;
     margin-top:5px;
     margin-right:10px;
     border-style: solid;
@@ -1399,13 +1398,18 @@ span#lng-color:hover {
     width: 208px;
     cursor: pointer;
 }
+
 .album-page2 {
     text-decoration: none;
     background-color: white;
-    height: 100px;
-    width: 150px;
+    height: 6em;
+    width: 40%;
     cursor: pointer;
-    margin-bottom: 20px;
+}
+
+.album-collection {
+    height: 420px;
+    width: 100%;
 }
 
 .alb-pics {
@@ -2183,7 +2187,7 @@ form#edit-frame textarea:focus {
 }
 
 .user-albums {
-    width:100%;
+  width:100%;
   display: flex;
   flex-direction:row;
   justify-content: center;
@@ -2212,13 +2216,13 @@ form#edit-frame textarea:focus {
     cursor: pointer;
 }
 
-#album-frame {
-    width:300px;
-    margin-top:10px;
+/* #album-frame {
+    width: 300px;
+    margin-top: 10px;
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
+} */
 
 #album-frame-label {
     margin-top:15px;
@@ -2284,3 +2288,6 @@ form#edit-frame textarea:focus {
     cursor: pointer;
 } 
 
+.img-title {
+    color:rgb(39, 39, 39);
+}

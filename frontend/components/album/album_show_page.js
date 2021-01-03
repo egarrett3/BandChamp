@@ -21,7 +21,10 @@ class AlbumShow extends React.Component {
   }
 
   componentDidMount() {
-    window.scroll(0, 0); // window appears at top of the page
+    // window appears at top of the page
+    window.scroll(0, 0); 
+
+    //fetch album click on/passed through pathname and associated albums through user of clicked on album
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
@@ -63,7 +66,8 @@ class AlbumShow extends React.Component {
     let lb = [];
     let bool = false;
 
-    if (this.props.album) {     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
+    //when props exist, find id of album to be shown then key into to access album obj (showAlb)
+    if (this.props.album) {     
       lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
@@ -178,10 +182,10 @@ class AlbumShow extends React.Component {
                     <div>
                       <img src={photo_url} id="album-picture-frame" />
                     </div>
-                    <div>
+                    <div className='album-collection'>
                       <div id="album-frame-label">{username}'s albums</div>
-                      <div id="album-frame">
-                        <div className="user-albums2">
+                      {/* <div id="album-frame"> */}
+                        <ul className="user-albums2">
                           {this.props.album.map(function (album, idx) {
                             return (
                               <UserAlbums
@@ -192,8 +196,8 @@ class AlbumShow extends React.Component {
                               />
                             );
                           })}
-                        </div>
-                      </div>
+                        </ul>
+                      {/* </div> */}
                     </div>
                   </div>
                 </div>

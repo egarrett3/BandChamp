@@ -14,7 +14,7 @@ class UserAlbums extends React.Component {
   render() {
     
     return (
-      <a
+      <li
         className="album-page2"
         onClick={() => {
           window.location.href = `/#/SongPage/${this.props.id}`,
@@ -22,9 +22,9 @@ class UserAlbums extends React.Component {
           this.props.fetchSongs(this.props.id)
         }}
       >
-        <div>{this.props.title}</div>
+        <div className='img-title'>{this.props.title}</div>
         <img className="img-block2" src={this.props.photo_url} />
-      </a>
+      </li>
     );
   }
 }

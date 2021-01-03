@@ -185,7 +185,6 @@ class AlbumAudioPlayer extends React.Component {
               </div>
               <div className="audio-label2">
                 <div className="weekly-label">
-                  {/* <div className="date">{this.time()}</div> */}
                   <div className="timer2">
                     <span id="curTimeText">{ct}</span>/
                     <span id="durTimeText">{dur}</span>
@@ -209,7 +208,6 @@ class AlbumAudioPlayer extends React.Component {
                   </div>
                 </div>
                 <div className="lower-label">
-                  {/* <div className="afan">past shows</div> */}
                   <input
                     ref={(ref) => (this.seekbar1 = ref)}
                     type="range"
@@ -222,10 +220,6 @@ class AlbumAudioPlayer extends React.Component {
                   ></input>
                 </div>
               </div>
-              {/* <div className="timer">
-                        <span id="curTimeText">{ct}</span>/
-                        <span id="durTimeText">{dur}</span>
-                    </div> */}
             </div>
           </>
         );
