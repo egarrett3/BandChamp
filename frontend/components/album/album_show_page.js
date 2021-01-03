@@ -152,7 +152,7 @@ class AlbumShow extends React.Component {
                             <DownloadLink
                               key={idx}
                               id={song.id}
-                              deleteSong={this.props.deleteSong}
+                              deleteSong={bool ? this.props.deleteSong : bool}
                               title={song.title}
                               url={song.song_url}
                               album_id={this.props.match.params.songId}
