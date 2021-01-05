@@ -1,4 +1,4 @@
-import { RECEIVE_ALBUMS, DESTROY_ALBUM } from "../actions/album_actions";
+import { RECEIVE_ALBUMS, DESTROY_ALBUM, RECEIVE_ALBUM } from "../actions/album_actions";
 import { merge } from "lodash";
 
 // const initialState = {};
