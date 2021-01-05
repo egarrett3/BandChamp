@@ -1,11 +1,12 @@
 import { RECEIVE_ALBUMS, DESTROY_ALBUM } from "../actions/album_actions";
 import { merge } from "lodash";
 
-const initialState = {};
+// const initialState = {};
 
-const albumsReducer = (state = initialState, action) => {
+const albumsReducer = (state = {}, action) => {
     Object.freeze(state);
     
+    //integrate album reducer into albumsReducer
     switch (action.type) {
         case RECEIVE_ALBUMS:
             const albumCollection = action.albums;
@@ -15,6 +16,7 @@ const albumsReducer = (state = initialState, action) => {
             const id = action.album.id;
             const albums = Object.values(state)
             const newAlbumList = albums.filter((album) => album.id !== id);
+            debugger
             return Object.assign({}, newAlbumList)
         default:
             return state;

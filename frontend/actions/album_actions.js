@@ -9,6 +9,7 @@ export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS"
 export const DESTROY_ALBUM = "DESTROY_ALBUM"
 
 const receiveAlbum = (album) => {
+  debugger
   return {
     type: RECEIVE_ALBUM,
     album,
@@ -22,7 +23,8 @@ const receiveAlbums = (albums) => {
   };
 };
 
-export const removeAlbum = (album) => {
+const removeAlbum = (album) => {
+  debugger
   return {
     type: DESTROY_ALBUM,
     album
@@ -39,4 +41,4 @@ export const createAl = (album) => dispatch => createAlbum(album)
   .then(album => dispatch(receiveAlbum(album)));
 
 export const deleteAl = (album_id) => dispatch => deleteAlbum(album_id)
-  .then((album) => dispatch(removeAlbum(album)))
+  .then((album) => dispatch(removeAlbum(album)));

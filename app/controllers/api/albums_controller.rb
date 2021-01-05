@@ -27,10 +27,12 @@ class Api::AlbumsController < ApplicationController
     def destroy
         @album = Album.find_by(id: params[:id].to_i)
         
-        @album.pictures[0].photo.purge
-        
-        if @album.delete && @album.pictures[0].delete
-            render 'api/albums/show'
+        if @album.pictures[0].photo.purge
+            @album.pictures[0].delete
+        end
+        #add condition to delete songs if they exist.
+        if @album.delete 
+            render 'api/albums/album'
         else
             render json: @album.errors.full_messages
         end
