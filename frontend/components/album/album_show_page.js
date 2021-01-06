@@ -39,7 +39,6 @@ class AlbumShow extends React.Component {
       this.props.fetchSongs(this.props.match.params.songId)
   }
 
-
   componentWillUnmount() {
     this.props.clearSongs();
   }
@@ -67,15 +66,15 @@ class AlbumShow extends React.Component {
     let bool = false;
 
     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
-    if (this.props.album) {     
-      lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
+    if (this.props.albums) {     
+      lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
     
     let photo_url = showAlb
       ? showAlb.photo_url
       : "";
-
+    
     let title = showAlb
       ? showAlb.title
       : "";

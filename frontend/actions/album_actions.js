@@ -9,7 +9,6 @@ export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS"
 export const DESTROY_ALBUM = "DESTROY_ALBUM"
 
 const receiveAlbum = (album) => {
-  debugger
   return {
     type: RECEIVE_ALBUM,
     album,
@@ -24,7 +23,6 @@ const receiveAlbums = (albums) => {
 };
 
 const removeAlbum = (album) => {
-  debugger
   return {
     type: DESTROY_ALBUM,
     album

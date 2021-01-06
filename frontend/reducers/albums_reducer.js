@@ -13,13 +13,12 @@ const albumsReducer = (state = {}, action) => {
             return Object.assign({}, state, singleAlb)
         case RECEIVE_ALBUMS:
             const albumCollection = action.albums;
-            const obj = Object.assign({}, state, albumCollection)
+            const obj = Object.assign({}, albumCollection)
             return obj
         case DESTROY_ALBUM:
             const id = action.album.id;
             const albums = Object.values(state)
             const newAlbumList = albums.filter((album) => album.id !== id);
-            debugger
             return Object.assign({}, newAlbumList)
         default:
             return state;

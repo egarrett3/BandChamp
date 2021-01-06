@@ -30,7 +30,6 @@ class DownloadLink extends React.Component {
                         >X</div>
                     </div>
                 </li>
-                    
             </>
         );
     }
