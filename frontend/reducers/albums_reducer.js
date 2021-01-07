@@ -8,9 +8,9 @@ const albumsReducer = (state = {}, action) => {
     
     //integrate album reducer into albumsReducer
     switch (action.type) {
-        case RECEIVE_ALBUM:
-            const singleAlb = { [action.album.id]: action.album };
-            return Object.assign({}, singleAlb)
+        // case RECEIVE_ALBUM:
+        //     const singleAlb = { [action.album.id]: action.album };
+        //     return Object.assign({}, singleAlb)
         case RECEIVE_ALBUMS:
             const albumCollection = action.albums;
             return Object.assign({}, albumCollection)

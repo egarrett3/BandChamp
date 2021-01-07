@@ -25,10 +25,10 @@ class AddAlbum extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        const inputField = document.getElementsByClassName('inputfile')
         const artist_id = this.props.currentUser.id
         const album = new FormData();
-        debugger
-        album.append('album[photo]', e.currentTarget.files[0]);
+        album.append('album[photo]', inputField[0].files[0]);
         album.append('album[title]', this.state.title);
         album.append('album[artist_id]', artist_id);
 
@@ -38,7 +38,7 @@ class AddAlbum extends React.Component {
     render() {
         return (
             <div id='choose-file'>
-                <form className="modal-login-form2" onSubmit={this.handleSubmit}>
+                <form className="modal-login-form2" onSubmit={(e) => this.handleSubmit(e)}>
                     <div className="username">
                         <input
                             type="text"
@@ -52,10 +52,11 @@ class AddAlbum extends React.Component {
 
                     <label htmlFor="file" id='level'>
                         Upload an image from my Computer<div id='computer-icon'><FontAwesomeIcon icon={faDesktop} /></div>
-                            <input type='file'
-                            name="file" id="file"
-                            className="inputfile"
-                            onInput={(e) => { this.handleSubmit(e) }} />
+                            <input 
+                                type='file'
+                                name="file" id="file"
+                                className="inputfile"
+                            />
                     </label>
                     <button className="save-changes"
                       type="submit"
