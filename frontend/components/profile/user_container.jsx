@@ -5,10 +5,10 @@ import { changeUser } from '../../actions/user_actions';
 import { fetchAl } from "../../actions/album_actions";
 import UserProf from './user_profile_form';
 
-const mapStateToProps = ({ session, entities: { users, albums } }) => {
+const mapStateToProps = ({ session, entities: { users, album } }) => {
     return { 
         currentUser: users[session.id],
-        albums: Object.values(albums),
+        album: Object.values(album),
         id: session.id,
         photo: users[session.id].photo_url,
     };

@@ -227,7 +227,7 @@ class UserProf extends React.Component {
         <div className="align-items">
           <div className="album-spacer">
             {
-              this.props.albums.map(function(alb, idx) {
+              this.props.album.map(function(alb, idx) {
                 return (
                   <UserAlbums id={alb.id} photo_url={alb.photo_url} title={alb.title} key={idx}/>
                 )

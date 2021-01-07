@@ -1404,6 +1404,7 @@ li.album-page2 {
     width: 110px;
     cursor: pointer;
     list-style-type:none;
+    margin-right: 10px;
 }
 
 .album-collection {
@@ -2196,7 +2197,7 @@ form#edit-frame textarea:focus {
   width:100%;
   display: flex;
   flex-direction:row;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
