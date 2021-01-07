@@ -4,7 +4,7 @@ import GreetingContainer from "../greeting/greeting_container";
 import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
 import DownloadLink from './download_link';
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class AlbumShow extends React.Component {
@@ -15,7 +15,8 @@ class AlbumShow extends React.Component {
       counter: 0,
       show: false,
       songs: [],
-      expand: true
+      expand: true,
+      uploading: false
     };
     this.toggleExpand = this.toggleExpand.bind(this)
   }
@@ -44,6 +45,9 @@ class AlbumShow extends React.Component {
   }
 
   handleSubmit(e) {
+    this.setState({
+      uploading:true
+    })
     e.preventDefault();
     const album_id = this.props.match.params.songId;
     let title = e.currentTarget.files[0].name.split(".").slice(0, -1).join(".");
@@ -51,7 +55,11 @@ class AlbumShow extends React.Component {
     song.append("song[sg]", e.currentTarget.files[0]);
     song.append("song[title]", title);
     song.append("song[album_id]", album_id);
-    this.props.createSong(song, album_id)
+    this.props.createSong(song, album_id).then(() => {
+      this.setState({
+        uploading: false
+      })
+    })
   }
 
   toggleExpand() {
@@ -131,16 +139,19 @@ class AlbumShow extends React.Component {
                       <ol id="songLinkList">
                         <div id="tracks">
                           Tracks
-                          {this.state.expand ? <FontAwesomeIcon
-                            icon={faChevronDown}
-                            className="expandable"
-                            onClick={() => this.toggleExpand()}
-                          /> :
-                          <FontAwesomeIcon
-                            icon={faChevronUp}
-                            className="expandable"
-                            onClick={() => this.toggleExpand()}
-                          /> }
+                          {this.state.expand ? (
+                            <FontAwesomeIcon
+                              icon={faChevronDown}
+                              className="expandable"
+                              onClick={() => this.toggleExpand()}
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={faChevronUp}
+                              className="expandable"
+                              onClick={() => this.toggleExpand()}
+                            />
+                          )}
                         </div>
                         <div
                           className={
@@ -167,10 +178,15 @@ class AlbumShow extends React.Component {
                             id="file"
                             className="inputfile"
                             onInput={(e) => {
-                              this.handleSubmit(e);
-                            }}
+                              this.handleSubmit(e)
+                              }
+                            }
                           />
-                          <label htmlFor="file">Upload Song</label>
+                          {this.state.uploading ? (
+                            <label htmlFor="file"><FontAwesomeIcon icon={faSpinner} /></label>
+                          ) : (
+                            <label htmlFor="file">Upload Song</label>
+                          )}
                         </div>
                       ) : (
                         <div></div>
@@ -181,21 +197,21 @@ class AlbumShow extends React.Component {
                     <div>
                       <img src={photo_url} id="album-picture-frame" />
                     </div>
-                    <div className='album-collection'>
+                    <div className="album-collection">
                       <div id="album-frame-label">{username}'s albums</div>
                       {/* <div id="album-frame"> */}
-                        <ul className="user-albums2">
-                          {this.props.album.map(function (album, idx) {
-                            return (
-                              <UserAlbums
-                                key={idx}
-                                photo_url={album.photo_url}
-                                title={album.title}
-                                id={album.id}
-                              />
-                            );
-                          })}
-                        </ul>
+                      <ul className="user-albums2">
+                        {this.props.album.map(function (album, idx) {
+                          return (
+                            <UserAlbums
+                              key={idx}
+                              photo_url={album.photo_url}
+                              title={album.title}
+                              id={album.id}
+                            />
+                          );
+                        })}
+                      </ul>
                       {/* </div> */}
                     </div>
                   </div>
