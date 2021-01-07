@@ -429,6 +429,14 @@ button.modal-version {
     margin-top: 15px;
 }
 
+.modal-login-form2 {
+    height: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
 .afan {
     font-size: 12px;
     color: rgb(61, 154, 185);
@@ -1758,6 +1766,14 @@ input[type="file"]{
     color: rgb(138, 128, 128);
 }
 
+#level {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 328px;
+}
+
+
 ul#social-media-list {
     display: flex;
     flex-direction: row;
@@ -2090,8 +2106,9 @@ button#close-audio:hover {
     border-radius: 5px;
     font-weight: bold;
     border-style: none;
-    margin-left: 160px;
+    /* margin-left: 160px; */
 }
+
 .save-changes:active {
     text-decoration: none;
     border-style: none;

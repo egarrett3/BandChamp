@@ -36,7 +36,7 @@ class AddAlbum extends React.Component {
     render() {
         return (
             <div id='choose-file'>
-                <form className="modal-login-form" onSubmit={this.handleSubmit}>
+                <form className="modal-login-form2" onSubmit={this.handleSubmit}>
                     <div className="username">
                         <input
                             type="text"
@@ -48,7 +48,7 @@ class AddAlbum extends React.Component {
                         />
                     </div>
 
-                    <label htmlFor="file">
+                    <label htmlFor="file" id='level'>
                         Upload an image from my Computer<div id='computer-icon'><FontAwesomeIcon icon={faDesktop} /></div>
                             <input type='file'
                             name="file" id="file"
@@ -60,7 +60,7 @@ class AddAlbum extends React.Component {
                       >UPLOAD ALBUM
                     </button>
                 </form>
-                <div id='stipulations'>480 pixels minimum (bigger is better), .jpg, .gif or .png, 4MB max</div>
+                {/* <div id='stipulations'>480 pixels minimum (bigger is better), .jpg, .gif or .png, 4MB max</div> */}
             </div>
         )
     }
