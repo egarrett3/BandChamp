@@ -27,9 +27,11 @@ class AddAlbum extends React.Component {
         e.preventDefault();
         const artist_id = this.props.currentUser.id
         const album = new FormData();
+        debugger
         album.append('album[photo]', e.currentTarget.files[0]);
         album.append('album[title]', this.state.title);
         album.append('album[artist_id]', artist_id);
+
         this.props.makeAl(album).then(() => this.props.closeModal());
     }
 
@@ -53,7 +55,7 @@ class AddAlbum extends React.Component {
                             <input type='file'
                             name="file" id="file"
                             className="inputfile"
-                            onChange={(e) => { this.handleSubmit(e) }} />
+                            onInput={(e) => { this.handleSubmit(e) }} />
                     </label>
                     <button className="save-changes"
                       type="submit"
