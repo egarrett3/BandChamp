@@ -66,11 +66,11 @@ class AlbumShow extends React.Component {
     let bool = false;
 
     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
-    if (this.props.albums) {     
-      lb = this.props.albums.filter((album) => this.props.match.params.songId == album.id) 
+    if (this.props.album) {     
+      lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
-    
+
     let photo_url = showAlb
       ? showAlb.photo_url
       : "";
@@ -79,7 +79,7 @@ class AlbumShow extends React.Component {
       ? showAlb.title
       : "";
       
-    let alb = showAlb
+    let albs = showAlb
       ? showAlb.albums
       : [];
 
@@ -185,7 +185,7 @@ class AlbumShow extends React.Component {
                       <div id="album-frame-label">{username}'s albums</div>
                       {/* <div id="album-frame"> */}
                         <ul className="user-albums2">
-                          {this.props.albums.map(function (album, idx) {
+                          {this.props.album.map(function (album, idx) {
                             return (
                               <UserAlbums
                                 key={idx}
