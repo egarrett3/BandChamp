@@ -17,7 +17,6 @@ class AlbumShow extends React.Component {
       songs: [],
       expand: true,
       uploading: false,
-      nextAlbum: false
     };
     this.toggleExpand = this.toggleExpand.bind(this)
   }
@@ -47,23 +46,17 @@ class AlbumShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     let albId = this.props.match.params.songId
-    
+    let ids = this.props.album.map(album => album.id)
     if (prevProps.match.params.songId !== albId) {
       this.props.clearSongs(), 
       this.props.fetchSongs(albId);
     } 
-    if (prevProps.album.length !== this.props.album.length) {
+    if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
       for (let i = 0; i < this.props.album.length; i++) {
-        if ( this.props.album[i] && this.props.album[i].id !== parseInt(albId)) {
-          this.setState({
-            nextAlbum: this.props.album[i].id
-          })
-          break;
+        if (this.props.album[i]) {
+          window.location.href = `/#/SongPage/${this.props.album[i].id}`;
         } else if (this.props.album.length < 1) {
-          this.setState({
-            nextAlbum: false
-          })
-          break;
+          window.location.href = "/#/usrprofile";
         }
       }
     }
@@ -232,7 +225,6 @@ class AlbumShow extends React.Component {
                               photo_url={album.photo_url}
                               title={album.title}
                               id={album.id}
-                              nextAlbum={this.state.nextAlbum}
                               deleteAlbum={this.props.deleteAlbum}
                               clearSongs={this.props.clearSongs}
                               fetchSongs={this.props.fetchSongs}

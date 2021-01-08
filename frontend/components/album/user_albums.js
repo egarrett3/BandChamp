@@ -31,8 +31,8 @@ class UserAlbums extends React.Component {
           <span className="img-title">{this.props.title}</span>
           <span
             className="delete-album"
-            onClick={() => {this.props.deleteAlbum(this.props.id),
-                        this.routeAlbumPath(this.props.nextAlbum)
+            onClick={() => {
+              this.props.deleteAlbum(this.props.id)
             }}
             //need to call pathname to adjacent album after deleteAlbum
           >
