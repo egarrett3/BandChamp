@@ -17,7 +17,7 @@ class Album < ApplicationRecord
       source: :albums
 
     def purge_attachment
-        debugger
+      self.pictures[0].photo.purge
     end
     
 end

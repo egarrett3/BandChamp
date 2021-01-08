@@ -27,9 +27,6 @@ class Api::AlbumsController < ApplicationController
     def destroy
         @album = Album.find_by(id: params[:id].to_i)
         
-        if @album.pictures[0].photo.purge
-            @album.pictures[0].delete
-        end
         #add condition to delete songs if they exist.
         if @album.destroy
             render 'api/albums/album'

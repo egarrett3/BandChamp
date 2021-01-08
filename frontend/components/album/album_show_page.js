@@ -75,6 +75,7 @@ class AlbumShow extends React.Component {
 
     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
     if (this.props.album) {     
+      debugger
       lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
