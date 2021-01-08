@@ -44,6 +44,14 @@ class AlbumShow extends React.Component {
     this.props.clearSongs();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.songId !== this.props.match.params.songId ) {
+      debugger
+      // this.props.clearSongs(), 
+      // this.props.fetchSongs(this.props.match.params.songId);
+    }
+  }
+
   handleSubmit(e) {
     this.setState({
       uploading:true

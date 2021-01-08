@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch) => {
     clearSongs: () => dispatch(clearSongs()),
     openSong: (song) => dispatch(openSong(song)),
     fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
-    fetchSong: (albumId) => dispatch(fetchSg(albumId,songId)),
     deleteAlbum: (albumId) => dispatch(deleteAl(albumId)),
     fetchAlbum: (albumId) => dispatch(fetchAl(albumId)),
     createSong: (song, albumId) => dispatch(createSg(song, albumId)),

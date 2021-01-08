@@ -8,9 +8,10 @@ class UserAlbums extends React.Component {
     this.state = {
 
     }
+    this.routePathonAlbumDelete = this.routePathonAlbumDelete.bind(this);
   }
 
-  routePathonDelete(albumId) {
+  routePathonAlbumDelete(albumId) {
     let newPath
     if (albumId) {
       newPath = (
@@ -40,7 +41,9 @@ class UserAlbums extends React.Component {
           <span className="img-title">{this.props.title}</span>
           <span
             className="delete-album"
-            onClick={() => this.props.deleteAlbum(this.props.id)} 
+            onClick={() => this.props.deleteAlbum(this.props.id).then(()=>{
+              this.routePathonAlbumDelete(this.props.nextAlbum)
+            })} 
             //need to call pathname to adjacent album after deleteAlbum
           >
             X
