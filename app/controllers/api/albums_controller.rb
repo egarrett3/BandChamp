@@ -31,7 +31,7 @@ class Api::AlbumsController < ApplicationController
             @album.pictures[0].delete
         end
         #add condition to delete songs if they exist.
-        if @album.delete 
+        if @album.destroy
             render 'api/albums/album'
         else
             render json: @album.errors.full_messages

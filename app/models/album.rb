@@ -2,8 +2,10 @@ class Album < ApplicationRecord
     validates :title, presence: true
 
     has_one_attached :song
-    has_many :pictures, as: :imageable
-    has_many :songs
+    has_many :pictures, as: :imageable, dependent: :destroy
+    has_many :songs, dependent: :destroy
+
+    before_destroy :purge_attachment, prepend: true
 
     belongs_to :user,
       primary_key: :id,
@@ -13,5 +15,9 @@ class Album < ApplicationRecord
     has_many :albums,
       through: :user,
       source: :albums
+
+    def purge_attachment
+        debugger
+    end
     
 end
