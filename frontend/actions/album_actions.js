@@ -5,7 +5,7 @@ import { deleteAlbum } from "../util/album_api_util";
 
 export const RECEIVE_ALBUM = "RECEIVE_ALBUM"
 export const RECEIVE_ALBUMS = "RECEIVE_ALBUMS"
-
+export const CLEAR_ALBUMS = "CLEAR_ALBUMS"
 export const DESTROY_ALBUM = "DESTROY_ALBUM"
 
 const receiveAlbum = (album) => {
@@ -28,6 +28,12 @@ const removeAlbum = (album) => {
     album
   }
 }
+
+export const clearAlbums = () => {
+  return {
+    type: CLEAR_ALBUMS,
+  };
+};
 
 export const fetchAl = (albumId) => (dispatch) => fetchAlbum(albumId)
     .then((album) => dispatch(receiveAlbum(album)));
