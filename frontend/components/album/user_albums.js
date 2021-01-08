@@ -39,20 +39,4 @@ class UserAlbums extends React.Component {
   }
 }
 
-
-const mapStateToProps = ({ session, entities: { users } }) => {
-  return {
-    currentUser: users[session.id],
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearSongs: () => dispatch(clearSongs()),
-    openSong: (song) => dispatch(openSong(song)),
-    fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
-    deleteAlbum: (albumId) => dispatch(deleteAl(albumId))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserAlbums);
+export default (UserAlbums);

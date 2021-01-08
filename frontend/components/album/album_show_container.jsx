@@ -1,15 +1,14 @@
 import AlbumShow from './album_show_page';
 import { fetchSgs, clearSongs, deleteSg, fetchSg } from "../../actions/song_actions";
-import { fetchAls, fetchAl } from "../../actions/album_actions";
+import { deleteAl, fetchAl } from "../../actions/album_actions";
 import { createSg } from "../../actions/song_actions";
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({ session, entities: { users, songs, album, albums }}) => {
+const mapStateToProps = ({ session, entities: { users, songs, album, }}) => {
   return {
     currentUser: users[session.id],
     songs: Object.values(songs),
     album: Object.values(album),
-    albums: Object.values(albums),
   };
 };
 
@@ -19,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     openSong: (song) => dispatch(openSong(song)),
     fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
     fetchSong: (albumId) => dispatch(fetchSg(albumId,songId)),
-    fetchAlbums: () => dispatch(fetchAls()),
+    deleteAlbum: (albumId) => dispatch(deleteAl(albumId)),
     fetchAlbum: (albumId) => dispatch(fetchAl(albumId)),
     createSong: (song, albumId) => dispatch(createSg(song, albumId)),
     deleteSong: (albumId, songId) => dispatch(deleteSg(albumId, songId)),

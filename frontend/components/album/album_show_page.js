@@ -202,16 +202,17 @@ class AlbumShow extends React.Component {
                       <div id="album-frame-label">{username}'s albums</div>
                       {/* <div id="album-frame"> */}
                       <ul className="user-albums2">
-                        {this.props.album.map(function (album, idx) {
-                          return (
+                        {this.props.album.map((album, idx) => (
                             <UserAlbums
                               key={idx}
                               photo_url={album.photo_url}
                               title={album.title}
                               id={album.id}
+                              deleteAlbum={this.props.deleteAlbum}
+                              clearSongs={this.props.clearSongs}
+                              fetchSongs={this.props.fetchSongs}
                             />
-                          );
-                        })}
+                        ))}
                       </ul>
                       {/* </div> */}
                     </div>
