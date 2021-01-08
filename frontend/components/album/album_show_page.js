@@ -24,7 +24,7 @@ class AlbumShow extends React.Component {
   componentDidMount() {
     // window appears at top of the page
     window.scroll(0, 0); 
-
+    this.props.clearAlbums();
     //fetch album click on/passed through pathname and associated albums through user of clicked on album
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
       if (album.album.albums.length > 1) {
