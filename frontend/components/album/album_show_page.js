@@ -90,7 +90,7 @@ class AlbumShow extends React.Component {
     let showAlb = false;
     let lb = [];
     let bool = false;
-
+    debugger
     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
     if (this.props.album) {     
       lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
@@ -142,7 +142,12 @@ class AlbumShow extends React.Component {
                 <div id="song-info-title">
                   <div>
                     "{title}" posted by:
-                    <span className="username-for-album"> {username}</span>
+                    <span 
+                      className="username-for-album"
+                      onClick={() => {
+                        window.location.href = "/#/usrprofile";
+                      }}
+                    > {username}</span>
                   </div>
                 </div>
                 <div id="trackANDalbum">
@@ -234,6 +239,9 @@ class AlbumShow extends React.Component {
                       {/* </div> */}
                     </div>
                   </div>
+                  {/* <div id='profile-link'>
+                    {this.props.currentUser.username}
+                  </div> */}
                 </div>
               </div>
               <div id="discogrpahy"></div>
