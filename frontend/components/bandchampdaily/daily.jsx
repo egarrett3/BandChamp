@@ -37,7 +37,7 @@ class Daily extends React.Component {
 
   render() {
     let that = this;
-
+    let albCollectionLength = this.props.albums.length
     return (
         <div id="bandchamp-daily">
           <h3 id="daily-title">BANDCHAMP DAILY</h3>
@@ -45,12 +45,12 @@ class Daily extends React.Component {
             
             {this.props.albums.map(function (album, idx) {
               if (idx === 0) {
-                return <DailyItem key={idx} album={album} descrip={that.describers(album.id)}/>;
+                return <DailyItem key={idx} album={album} descrip={that.describers(album.id%albCollectionLength)}/>;
               }
             })}
             {this.props.albums.map(function (album, idx) {
               if (idx > 0 && idx < 7)
-              return <DailyItems key={idx} album={album} id={album.id} descrip={that.describers(album.id)}/>;    
+              return <DailyItems key={idx} album={album} id={album.id} descrip={that.describers(album.id%albCollectionLength)}/>;    
             })}
             
           </div>
