@@ -16,7 +16,8 @@ class AlbumShow extends React.Component {
       show: false,
       songs: [],
       expand: true,
-      uploading: false
+      uploading: false,
+      nextAlbum: false
     };
     this.toggleExpand = this.toggleExpand.bind(this)
   }
@@ -45,10 +46,26 @@ class AlbumShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.songId !== this.props.match.params.songId ) {
-      debugger
-      // this.props.clearSongs(), 
-      // this.props.fetchSongs(this.props.match.params.songId);
+    let albId = this.props.match.params.songId
+    
+    if (prevProps.match.params.songId !== albId) {
+      this.props.clearSongs(), 
+      this.props.fetchSongs(albId);
+    } 
+    if (prevProps.album.length !== this.props.album.length) {
+      for (let i = 0; i < this.props.album.length; i++) {
+        if ( this.props.album[i] && this.props.album[i].id !== parseInt(albId)) {
+          this.setState({
+            nextAlbum: this.props.album[i].id
+          })
+          break;
+        } else if (this.props.album.length < 1) {
+          this.setState({
+            nextAlbum: false
+          })
+          break;
+        }
+      }
     }
   }
 
@@ -83,7 +100,6 @@ class AlbumShow extends React.Component {
 
     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
     if (this.props.album) {     
-      debugger
       lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
       showAlb = lb[0]
     }
@@ -216,6 +232,7 @@ class AlbumShow extends React.Component {
                               photo_url={album.photo_url}
                               title={album.title}
                               id={album.id}
+                              nextAlbum={this.state.nextAlbum}
                               deleteAlbum={this.props.deleteAlbum}
                               clearSongs={this.props.clearSongs}
                               fetchSongs={this.props.fetchSongs}

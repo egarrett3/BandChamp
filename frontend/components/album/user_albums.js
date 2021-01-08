@@ -8,29 +8,19 @@ class UserAlbums extends React.Component {
     this.state = {
 
     }
-    this.routePathonAlbumDelete = this.routePathonAlbumDelete.bind(this);
+    this.routeAlbumPath = this.routeAlbumPath.bind(this);
   }
 
-  routePathonAlbumDelete(albumId) {
-    let newPath
+  routeAlbumPath(albumId) {
+    // let newPath
     if (albumId) {
-      newPath = (
-        <Link
-          to={{
-            pathname: `/#/SongPage/${albumId}`
-          }} 
-        />
-      ) // window.location.href/Pathname -> next album, clearSongs, fetchSongs
+      // window.location.href/Pathname -> next album, clearSongs, fetchSongs
+      window.location.href = `/#/SongPage/${albumId}`
     } else {
-      newPath = (
-        <Link
-          to={{
-            pathname: "/usrprofile",
-          }}
-        />
-      ); // fnc ( if no more albums, route to usrProf page )
+      // fnc ( if no more albums, route to usrProf page )
+      window.location.href = "/#/usrprofile"
     }
-    return newPath
+    // return newPath
   }
 
   render() {
@@ -41,9 +31,9 @@ class UserAlbums extends React.Component {
           <span className="img-title">{this.props.title}</span>
           <span
             className="delete-album"
-            onClick={() => this.props.deleteAlbum(this.props.id).then(()=>{
-              this.routePathonAlbumDelete(this.props.nextAlbum)
-            })} 
+            onClick={() => {this.props.deleteAlbum(this.props.id),
+                        this.routeAlbumPath(this.props.nextAlbum)
+            }}
             //need to call pathname to adjacent album after deleteAlbum
           >
             X
@@ -53,9 +43,7 @@ class UserAlbums extends React.Component {
           className="img-block2"
           src={this.props.photo_url}
           onClick={() => {
-            (window.location.href = `/#/SongPage/${this.props.id}`), 
-              this.props.clearSongs(),
-              this.props.fetchSongs(this.props.id);
+              this.routeAlbumPath(this.props.id);
           }}
         />
       </li>
