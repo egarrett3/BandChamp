@@ -7,12 +7,9 @@ class Api::PicturesController < ApplicationController
     # end
 
     def show
-        debugger
         @imageable_type = (params[:picture][:type])
         @id = (params[:id])
-        debugger
         @picture = @imageable_type.classify.constantize.find_by(id: @id)
-        debugger
         render `api/picture/show`
     end
 
