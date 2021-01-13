@@ -6,13 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class UserProf extends React.Component {
   constructor(props) {
-    super(props);
+    super(props); debugger
     this.state = {
       edited: true,
-      username: props.currentUser.username,
-      location: props.currentUser.location,
-      website: props.currentUser.website,
-      description: props.currentUser.description,  
+      username: props.currentUser.username ||= '',
+      location: props.currentUser.location ||= '',
+      website: props.currentUser.website ||= '',
+      description: props.currentUser.description ||= '',  
     };
     this.submitForm = this.submitForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -22,10 +22,10 @@ class UserProf extends React.Component {
   }
 
   componentDidMount() {
+    debugger
     this.props.clearAlbums();
     this.props.fetchUser(this.props.currentUser.id)
     .then((user) => {
-      debugger
       if (user.currentUser.albums) {
         for (let i=0; i < user.currentUser.albums.length; i++) {
           this.props.fetchAlbum(user.currentUser.albums[i].id)
@@ -91,6 +91,7 @@ class UserProf extends React.Component {
   }
 
   render() {    
+    debugger
     return (
       <div>
         <GreetingContainer />
