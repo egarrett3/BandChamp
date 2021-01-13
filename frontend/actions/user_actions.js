@@ -1,4 +1,4 @@
-import { editUser } from '../util/user_api_util'
+import { editUser,fetchUser } from '../util/user_api_util'
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 

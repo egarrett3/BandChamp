@@ -23,7 +23,7 @@ class UserProf extends React.Component {
 
   componentDidMount() {
     this.props.clearAlbums();
-    this.props.getUser(this.props.currentUser.id)
+    this.props.fetchUser(this.props.currentUser.id)
     .then((user) => {
       if (user.currentUser.albums.length > 0) {
         for (let i=0; i < user.currentUser.albums.length; i++) {
