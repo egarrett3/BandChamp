@@ -12,5 +12,5 @@ const receiveUser = (currentUser) => {
 export const changeUser = (user,id) => dispatch => editUser(user,id)
         .then(user => dispatch(receiveUser(user)))
 
-export const fetchUser = (id) => dispatch => fetchUser(id)
+export const fetchUsr = (id) => dispatch => fetchUser(id)
         .then(user => dispatch(receiveUser(user)))
