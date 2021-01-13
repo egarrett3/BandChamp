@@ -7,12 +7,13 @@ class Api::PicturesController < ApplicationController
     # end
 
     def show
-        @imageable = Picture.find_by(params[:picture][:id])
-        @picture = @imageable.pictures[0]
         debugger
-        @attached_obj = find_imageable_type.find_by(id: params[:id])
-        
-        render 'api/users/'
+        @imageable_type = (params[:picture][:type])
+        @id = (params[:id])
+        debugger
+        @picture = @imageable_type.classify.constantize.find_by(id: @id)
+        debugger
+        render `api/picture/show`
     end
 
     def update
@@ -40,15 +41,6 @@ class Api::PicturesController < ApplicationController
         if @picture.delete!
             render notice: 'delete successful'
         end
-    end
-
-    def find_imageable_type
-        params.each do |name,value|
-            if name =~ /type$/
-                return $1.classify.constantize
-            end
-        end
-        nil
     end
 
 end

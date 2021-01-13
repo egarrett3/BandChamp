@@ -7,7 +7,7 @@ export const editUser = (user, id) =>
     processData: false,
 });
 
-export const getUser = (id) => (
+export const fetchUser = (id) => (
   $.ajax({
     url: `/api/users/${id}`,
     method: 'GET',
