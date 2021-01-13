@@ -9,8 +9,4 @@ class Picture < ApplicationRecord
     #     picture.photo.attached?
     # end
 
-    # def picture_attachment_validation
-
-    # end
-
 end

@@ -1,7 +1,6 @@
 class Api::SessionsController < ApplicationController
 
   def create
-
     username = params[:user][:username] 
 
     @user1 = User.find_by(username: username) 

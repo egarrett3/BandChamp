@@ -1,15 +1,19 @@
-export const placePic = (user,user_id) => (
+export const placePic = (imageable,id) => (
     $.ajax({
-        url: `/api/pictures/${user_id}`,
+        url: `/api/pictures/${id}`,
         method: 'PATCH',
-        data: user,
+        data: imageable,
         contentType: false,
         processData: false,
     })
 )
 
-export const getPic = (user_id) => (
+export const getPic = (id) => (
     $.ajax({
-        url: `/api/users/${user_id}`,
+        url: `/api/pictures/${id}`,
+        method: 'GET',
+        data: imageable,
+        contentType: false,
+        processData: false,
     })
 )

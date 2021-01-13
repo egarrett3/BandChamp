@@ -7,9 +7,12 @@ class Api::PicturesController < ApplicationController
     # end
 
     def show
-        @imageable = Picture.find_by(params[:picture][:user_id])
+        @imageable = Picture.find_by(params[:picture][:id])
         @picture = @imageable.pictures[0]
-        render 'api/users/profile'
+        debugger
+        @attached_obj = find_imageable_type.find_by(id: params[:id])
+        
+        render 'api/users/'
     end
 
     def update
@@ -39,5 +42,13 @@ class Api::PicturesController < ApplicationController
         end
     end
 
+    def find_imageable_type
+        params.each do |name,value|
+            if name =~ /type$/
+                return $1.classify.constantize
+            end
+        end
+        nil
+    end
 
 end

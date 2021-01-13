@@ -7,7 +7,6 @@ export const fetchAlbum = (albumId) => (
 )
 
 export const fetchAlbums = () => (
-
     $.ajax({
         url: '/api/albums/',
     })
