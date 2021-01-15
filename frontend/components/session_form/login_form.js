@@ -10,7 +10,6 @@ class LoginForm extends React.Component {
       username: "",
       password: "",
     };
-    this.baseState = this.state;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }

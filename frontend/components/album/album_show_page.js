@@ -230,7 +230,7 @@ class AlbumShow extends React.Component {
                               photo_url={album.photo_url}
                               title={album.title}
                               id={album.id}
-                              deleteAlbum={this.props.deleteAlbum}
+                              deleteAlbum={bool ? this.props.deleteAlbum : bool}
                               clearSongs={this.props.clearSongs}
                               fetchSongs={this.props.fetchSongs}
                             />
