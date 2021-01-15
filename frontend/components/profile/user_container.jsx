@@ -9,7 +9,7 @@ const mapStateToProps = ({ session, entities: { users, album } }) => {
     return { 
         currentUser: users[session.id],
         album: Object.values(album),
-        id: session.id,
+        loggedIn: Boolean(session.id),
         photo: users[session.id].photo_url,
     };
 }

@@ -24,13 +24,14 @@ class UserAlbums extends React.Component {
   }
 
   render() {
-    
+    const bool = this.props.bool;
+
     return (
       <li className="album-page2">
         <div className="album-title-delete">
           <span className="img-title">{this.props.title}</span>
           <span
-            className="delete-album"
+            className={bool ? "delete-album" : 'disappear'}
             onClick={() => {
               this.props.deleteAlbum(this.props.id)
             }}
