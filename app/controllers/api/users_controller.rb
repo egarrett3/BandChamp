@@ -3,12 +3,12 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @albums = @user.albums
-    debugger
+    
     if @user.pictures[0].photo.attached?
-      debugger
+      
       render :profile
     else
-      debugger
+      
       render :show
     end
   end

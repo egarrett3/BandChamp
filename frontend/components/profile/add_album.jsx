@@ -9,11 +9,11 @@ class AddAlbum extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            photo: null,
+            file: "",
             title: "",
             disabled: true,
         }
-        // this.handleFile = this.handleFile.bind(this)
+        this.handleFile = this.handleFile.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -24,12 +24,20 @@ class AddAlbum extends React.Component {
         });
     }
 
+    handleFile(e) {
+        debugger
+        this.setState({
+            ...this.state,
+            [e.target.name]: e.currentTarget.files[0],
+        })
+    }
+
     handleSubmit(e) {
         e.preventDefault();
-        const inputField = document.getElementsByClassName('inputfile')
+        // const inputField = document.getElementsByClassName('inputfile')
         const artist_id = this.props.currentUser.id
         const album = new FormData();
-        album.append('album[photo]', inputField[0].files[0]);
+        album.append('album[photo]', this.state.file);
         album.append('album[title]', this.state.title);
         album.append('album[artist_id]', artist_id);
         this.props
@@ -41,13 +49,13 @@ class AddAlbum extends React.Component {
 
     componentDidUpdate(prevProps,prevState) {
         const inputField = document.getElementsByClassName("inputfile");
-        if (this.state.title && inputField[0].files.length) {
-            debugger
-          this.setState({
-            disabled: !prevState.disabled,
-          });
-        } 
-        debugger
+        // if (this.state.title && inputField[0].files.length) {
+        //     debugger
+        //   this.setState({
+        //     disabled: !prevState.disabled,
+        //   });
+        // } 
+        // debugger
     }
 
     render() {
@@ -71,6 +79,7 @@ class AddAlbum extends React.Component {
                                 type='file'
                                 name="file" id="file"
                                 className="inputfile"
+                                onChange={(e) => this.handleFile(e)}
                             />
                     </label>
                     <button 
