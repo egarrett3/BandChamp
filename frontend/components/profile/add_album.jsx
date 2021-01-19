@@ -49,13 +49,18 @@ class AddAlbum extends React.Component {
 
     componentDidUpdate(prevProps,prevState) {
         const inputField = document.getElementsByClassName("inputfile");
-        // if (this.state.title && inputField[0].files.length) {
-        //     debugger
-        //   this.setState({
-        //     disabled: !prevState.disabled,
-        //   });
-        // } 
-        // debugger
+        if (this.state.title !== "" && this.state.file !== "" && this.state.disabled) {
+            debugger
+          this.setState({
+            disabled: false,
+          });
+        } else if ((this.state.title === "" || this.state.file === "") && !this.state.disabled) {
+            debugger
+            this.setState({
+                disabled: true,
+            })
+        }
+        debugger
     }
 
     render() {
@@ -83,7 +88,7 @@ class AddAlbum extends React.Component {
                             />
                     </label>
                     <button 
-                      className={this.state.disabled ? "greyed-out.save-changes " : "save-changes"}
+                      className={this.state.disabled ? "save-changes.greyed-out" : "save-changes"}
                       type="submit"
                       disabled={this.state.disabled}
                       >UPLOAD ALBUM
