@@ -11,6 +11,7 @@ class AddAlbum extends React.Component {
         this.state = {
             photo: null,
             title: "",
+            disabled: true,
         }
         // this.handleFile = this.handleFile.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +32,22 @@ class AddAlbum extends React.Component {
         album.append('album[photo]', inputField[0].files[0]);
         album.append('album[title]', this.state.title);
         album.append('album[artist_id]', artist_id);
-        this.props.makeAl(album).then(() => this.props.closeModal());
+        this.props
+          .makeAl(album)
+          .then(
+            () => this.props.closeModal(),
+          );
+    }
+
+    componentDidUpdate(prevProps,prevState) {
+        const inputField = document.getElementsByClassName("inputfile");
+        if (this.state.title && inputField[0].files.length) {
+            debugger
+          this.setState({
+            disabled: !prevState.disabled,
+          });
+        } 
+        debugger
     }
 
     render() {
@@ -57,8 +73,10 @@ class AddAlbum extends React.Component {
                                 className="inputfile"
                             />
                     </label>
-                    <button className="save-changes"
+                    <button 
+                      className={this.state.disabled ? "greyed-out.save-changes " : "save-changes"}
                       type="submit"
+                      disabled={this.state.disabled}
                       >UPLOAD ALBUM
                     </button>
                 </form>

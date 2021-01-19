@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class UserProf extends React.Component {
   constructor(props) {
-    super(props); debugger
+    super(props);
     this.state = {
       edited: true,
       username: props.currentUser.username ||= '',
@@ -22,7 +22,6 @@ class UserProf extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     this.props.clearAlbums();
     this.props.fetchUser(this.props.currentUser.id)
     .then((user) => {
@@ -91,7 +90,9 @@ class UserProf extends React.Component {
   }
 
   render() {    
-    debugger
+    this.props.currentUser
+    this.props.album
+  
     return (
       <div>
         <GreetingContainer />
