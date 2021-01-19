@@ -237,6 +237,7 @@ class UserProf extends React.Component {
                     id={alb.id} 
                     photo_url={alb.photo_url} 
                     title={alb.title} 
+                    deleteAlbum={this.props.deleteAlbum}
                     bool={this.props.loggedIn}
                     key={idx}
                   />

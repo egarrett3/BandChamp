@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 import { fetchUsr } from '../../actions/user_actions';
 import { changeUser } from '../../actions/user_actions';
-import { fetchAl,clearAlbums } from "../../actions/album_actions";
+import { fetchAl,clearAlbums, deleteAl } from "../../actions/album_actions";
 import UserProf from './user_profile_form';
 
 const mapStateToProps = ({ session, entities: { users, album } }) => {
@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => {
         fetchUser: (id) => dispatch(fetchUsr(id)),
         fetchAlbum: (albumId) => dispatch(fetchAl(albumId)),
         changeUser: (user,id) => dispatch(changeUser(user,id)),
+        deleteAlbum: (albumId) => dispatch(deleteAl(albumId)),
     }
 }
 

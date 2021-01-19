@@ -25,7 +25,6 @@ class AddAlbum extends React.Component {
     }
 
     handleFile(e) {
-        debugger
         this.setState({
             ...this.state,
             [e.target.name]: e.currentTarget.files[0],
@@ -50,17 +49,14 @@ class AddAlbum extends React.Component {
     componentDidUpdate(prevProps,prevState) {
         const inputField = document.getElementsByClassName("inputfile");
         if (this.state.title !== "" && this.state.file !== "" && this.state.disabled) {
-            debugger
           this.setState({
             disabled: false,
           });
         } else if ((this.state.title === "" || this.state.file === "") && !this.state.disabled) {
-            debugger
             this.setState({
                 disabled: true,
             })
         }
-        debugger
     }
 
     render() {
