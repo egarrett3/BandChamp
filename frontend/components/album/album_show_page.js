@@ -36,6 +36,8 @@ class AlbumShow extends React.Component {
             }
           }
         }
+      
+        // this.props.fetchUser(album.album.user.id)
       })
       this.props.fetchSongs(this.props.match.params.songId)
   }
@@ -90,7 +92,7 @@ class AlbumShow extends React.Component {
     let showAlb = false;
     let lb = [];
     let bool = false;
-
+    
     //when props exist, find id of album to be shown then key into to access album obj (showAlb)
     if (this.props.album) {     
       lb = this.props.album.filter((album) => this.props.match.params.songId == album.id) 
@@ -241,11 +243,11 @@ class AlbumShow extends React.Component {
                     </div>
                   </div>
                   {/* <div id='profile-link'>
-                    {this.props.currentUser.username}
+                    
                   </div> */}
                 </div>
               </div>
-              <div id="discogrpahy"></div>
+              {/* <div id="discogrpahy"></div> */}
             </div>
           </div>
         </div>

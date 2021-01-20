@@ -1,6 +1,7 @@
 import AlbumShow from './album_show_page';
 import { fetchSgs, clearSongs, deleteSg, fetchSg } from "../../actions/song_actions";
 import { deleteAl, fetchAl, clearAlbums } from "../../actions/album_actions";
+import { fetchUsr } from "../../actions/user_actions";
 import { createSg } from "../../actions/song_actions";
 import { connect } from 'react-redux';
 
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchAlbum: (albumId) => dispatch(fetchAl(albumId)),
     createSong: (song, albumId) => dispatch(createSg(song, albumId)),
     deleteSong: (albumId, songId) => dispatch(deleteSg(albumId, songId)),
+    fetchUser: (id) => dispatch(fetchUsr(id)),
   };
 };
 
