@@ -44,7 +44,6 @@ class AlbumAudioPlayer extends React.Component {
         this.audio1.removeEventListener("loadedmetadata", () => { });
     }
 
-    
     flipPlaybtn() {
         $("div#play-btn2").addClass("disappear");
         $("div#pause-btn2").removeClass("disappear");
@@ -57,10 +56,12 @@ class AlbumAudioPlayer extends React.Component {
 
     playTrack() {
       this.audio1.play();
+      this.flipAudiobtn();
     }
 
     pauseTrack() {
       this.audio1.pause();
+      this.flipAudiobtn();
     }
 
     flipAudiobtn() {
@@ -183,7 +184,7 @@ class AlbumAudioPlayer extends React.Component {
                     id="play-btn2"
                     onClick={() => {
                       this.playTrack();
-                      this.flipAudiobtn();
+                      // this.flipAudiobtn();
                     }}
                   ></div>
                 ) : (
@@ -194,7 +195,7 @@ class AlbumAudioPlayer extends React.Component {
                   id="pause-btn2"
                   onClick={() => {
                     this.pauseTrack();
-                    this.flipAudiobtn();
+                    // this.flipAudiobtn();
                   }}
                 ></div>
               </div>
