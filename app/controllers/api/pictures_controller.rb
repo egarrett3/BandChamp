@@ -6,12 +6,12 @@ class Api::PicturesController < ApplicationController
     #     render :index
     # end
 
-    def show
-        @imageable_type = (params[:picture][:type])
-        @id = (params[:id])
-        @picture = @imageable_type.classify.constantize.find_by(id: @id)
-        render `api/picture/show`
-    end
+    # def show
+    #     @imageable_type = (params[:picture][:type])
+    #     @id = (params[:id])
+    #     @picture = @imageable_type.classify.constantize.find_by(id: @id)
+    #     render `api/picture/show`
+    # end
 
     def update
         if params[:picture][:type] == 'User'
@@ -26,10 +26,10 @@ class Api::PicturesController < ApplicationController
         if @picture.photo.attached?
             @picture.photo.purge
             @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
-            render 'api/users/profile'
+            render 'api/users/show'
         else
             @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
-            render 'api/users/profile'
+            render 'api/users/show'
         end
     end
 

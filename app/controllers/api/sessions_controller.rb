@@ -17,7 +17,12 @@ class Api::SessionsController < ApplicationController
       if @user
         login!(@user)
         @albums = @user.albums
-        render "api/users/show"
+        if @user.pictures[0].photo.attached?
+          render "api/users/show"
+        else
+          render "api/users/profile"
+        end
+        
       else
         render json: ['Incorrect username or password. Please try again'], status: 401
       end
@@ -29,7 +34,7 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout!
-      render "api/users/show"
+      render "api/users/profile"
     else
       render json: ["No one is signed in"], status: 404
     end

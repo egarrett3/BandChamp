@@ -5,10 +5,8 @@ class Api::UsersController < ApplicationController
     @albums = @user.albums
     
     if @user.pictures[0].photo.attached?
-      
       render :profile
     else
-      
       render :show
     end
   end
@@ -20,7 +18,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       # render "api/users/show" json.partial! "api/users/user", user: @user
       @user.pictures.create(name: params[:user][:username])
-      render "api/users/show"
+      render "api/users/profile"
     else
       render json: @user.errors.full_messages, status: 422
     end
@@ -33,7 +31,7 @@ class Api::UsersController < ApplicationController
                     description:params[:user][:description],username:params[:user][:username])
       @user.save!
     end
-    render "api/users/profile"
+    render "api/users/show"
   end
   
   

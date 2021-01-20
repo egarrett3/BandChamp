@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => {
     return { 
         clearAlbums: () => dispatch(clearAlbums()),
         openModal: (modal) => dispatch(openModal(modal)),
-        fetchUser: (id) => dispatch(fetchUsr(id)),
+        // fetchUser: (id) => dispatch(fetchUsr(id)),
         fetchAlbum: (albumId) => dispatch(fetchAl(albumId)),
         changeUser: (user,id) => dispatch(changeUser(user,id)),
         deleteAlbum: (albumId) => dispatch(deleteAl(albumId)),

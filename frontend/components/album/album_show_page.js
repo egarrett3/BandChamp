@@ -37,7 +37,7 @@ class AlbumShow extends React.Component {
           }
         }
       
-        // this.props.fetchUser(album.album.user.id)
+        this.props.fetchUser(album.album.user.id)
       })
       this.props.fetchSongs(this.props.match.params.songId)
   }
