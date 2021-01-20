@@ -6,7 +6,6 @@ const initialState = {};
 const albumReducer = (state = initialState, action) => {
   Object.freeze(state);
 
-  //move to albumsReducer
   switch (action.type) {
     case RECEIVE_ALBUM:
       const singleAlb = { [action.album.id]: action.album };

@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
     validates :title, presence: true
-
+    default_scope { order(id: :asc) }
+    
     has_one_attached :song
     has_many :pictures, as: :imageable, dependent: :destroy
     has_many :songs, dependent: :destroy
