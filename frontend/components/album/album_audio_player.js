@@ -12,6 +12,7 @@ class AlbumAudioPlayer extends React.Component {
             counter: 0,   // tracks songs in album
             loaded: false, // flip to true after first to satisfy conditional in componentDidUpdate which loads song
             loading: false,  // tracks whether to show buffer symbol
+            btn: false,
         };
         this.nextSong = this.nextSong.bind(this);
         this.previousSong = this.previousSong.bind(this);
@@ -53,7 +54,20 @@ class AlbumAudioPlayer extends React.Component {
         $("div#pause-btn2").addClass("disappear");
         $("div#play-btn2").removeClass("disappear");
     }
-    
+
+    playTrack() {
+      this.audio1.play();
+    }
+
+    pauseTrack() {
+      this.audio1.pause();
+    }
+
+    flipAudiobtn() {
+      this.setState({
+        btn: !this.state.btn
+      })
+    }
     
     getTime(time) {
         if (!isNaN(time)) {
@@ -165,21 +179,22 @@ class AlbumAudioPlayer extends React.Component {
                 <div id="timer2"></div>
                 {!this.state.loading ? (
                   <div
+                    className={this.state.btn ? "disappear" : ""}
                     id="play-btn2"
                     onClick={() => {
-                      this.audio1.play();
-                      this.flipPlaybtn();
+                      this.playTrack();
+                      this.flipAudiobtn();
                     }}
                   ></div>
                 ) : (
                   <FontAwesomeIcon icon={faSpinner} />
                 )}
                 <div
-                  className="disappear"
+                  className={this.state.btn ? "" : "disappear"}
                   id="pause-btn2"
                   onClick={() => {
-                    this.audio1.pause();
-                    this.flipPausebtn();
+                    this.pauseTrack();
+                    this.flipAudiobtn();
                   }}
                 ></div>
               </div>
