@@ -30,14 +30,12 @@ class AlbumShow extends React.Component {
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
           for (let i=0;i<albs;i++) {
-            debugger
             if (album.album.albums[i].id === this.props.match.params.songId) {
             } else {
               this.props.fetchAlbum(album.album.albums[i].id);
             }
           }
         }
-        debugger
         this.props.fetchUser(album.album.user.id)
       })
       this.props.fetchSongs(this.props.match.params.songId)
