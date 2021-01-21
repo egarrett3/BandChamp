@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom"
-
 
 class UserAlbums extends React.Component {
   constructor(props) {
@@ -25,11 +23,10 @@ class UserAlbums extends React.Component {
 
   render() {
     const bool = this.props.bool;
-
+    
     return (
       <li className="album-page2">
         <div className="album-title-delete">
-          <span className="img-title">{this.props.title}</span>
           <span
             className={bool ? "delete-album" : 'disappear'}
             onClick={() => {
@@ -37,9 +34,15 @@ class UserAlbums extends React.Component {
             }}
             //need to call pathname to adjacent album after deleteAlbum
           >
-            X
+            DELETE
           </span>
         </div>
+        <span 
+          className="img-title"
+          onClick={() => {
+            this.routeAlbumPath(this.props.id);
+          }}
+        >{this.props.title}</span>
         <img
           className="img-block2"
           src={this.props.photo_url}

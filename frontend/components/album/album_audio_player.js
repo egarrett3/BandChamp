@@ -44,16 +44,6 @@ class AlbumAudioPlayer extends React.Component {
         this.audio1.removeEventListener("loadedmetadata", () => { });
     }
 
-    // flipPlaybtn() {
-    //     $("div#play-btn2").addClass("disappear");
-    //     $("div#pause-btn2").removeClass("disappear");
-    // }
-
-    // flipPausebtn() {
-    //     $("div#pause-btn2").addClass("disappear");
-    //     $("div#play-btn2").removeClass("disappear");
-    // }
-
     playTrack() {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         this.audio1.play();
