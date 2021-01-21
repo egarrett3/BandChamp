@@ -44,19 +44,21 @@ class AlbumAudioPlayer extends React.Component {
         this.audio1.removeEventListener("loadedmetadata", () => { });
     }
 
-    flipPlaybtn() {
-        $("div#play-btn2").addClass("disappear");
-        $("div#pause-btn2").removeClass("disappear");
-    }
+    // flipPlaybtn() {
+    //     $("div#play-btn2").addClass("disappear");
+    //     $("div#pause-btn2").removeClass("disappear");
+    // }
 
-    flipPausebtn() {
-        $("div#pause-btn2").addClass("disappear");
-        $("div#play-btn2").removeClass("disappear");
-    }
+    // flipPausebtn() {
+    //     $("div#pause-btn2").addClass("disappear");
+    //     $("div#play-btn2").removeClass("disappear");
+    // }
 
     playTrack() {
-      this.audio1.play();
-      this.flipAudiobtn();
+      if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
+        this.audio1.play();
+        this.flipAudiobtn();
+      }
     }
 
     pauseTrack() {
@@ -109,7 +111,7 @@ class AlbumAudioPlayer extends React.Component {
           this.source1.src = src_url;
           this.audio1.pause();
           this.audio1.load();
-          this.flipPausebtn();
+          this.pauseTrack();
           this.setState({
               ...this.state,
               loaded: true,
