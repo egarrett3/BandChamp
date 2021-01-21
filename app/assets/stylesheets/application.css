@@ -1416,7 +1416,6 @@ li.album-page2 {
     list-style-type:none;
     margin-right: 10px;
     margin-bottom: 23px;
-    position: relative;
 }
 
 .album-collection {
@@ -2048,7 +2047,7 @@ button#close-audio:hover {
     width: 730px;
     height: 430px;
     background-color: rgb(255, 255, 255);
-    z-index: 1000;
+    z-index: 10000;
 }
 
 #name-input {
@@ -2226,9 +2225,9 @@ form#edit-frame textarea:focus {
   flex-wrap: wrap;
 }
 
-.username-for-album {
+/* .username-for-album {
     cursor: pointer;
-}
+} */
 
 .song-actions {
     display: flex;
@@ -2277,7 +2276,8 @@ form#edit-frame textarea:focus {
 .align-items {
     display: flex;
     justify-content: center;
-    width:100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .album-spacer {
@@ -2319,14 +2319,19 @@ form#edit-frame textarea:focus {
 
 .img-title {
     -webkit-text-fill-color: white; 
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: .8px;
     -webkit-text-stroke-color: black;
-    position: absolute;
     display: flex;
     flex-wrap: wrap;
-    top:25%;
-    left:10%;
-    font-size: 1.5em;
+    height: 80%;
+    width: 80%;
+    font-weight: bold;
+    opacity: 0;
+}
+
+.img-title:hover {
+    opacity: 1;
+    transition: .5s ease-in-out;
 }
 
 .album-title-delete {
@@ -2343,4 +2348,14 @@ form#edit-frame textarea:focus {
 .delete-album:hover {
     transition: opacity ease 1s;
     opacity: 1;
+}
+
+#album-img-container {
+    height:77px;
+    width:110px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

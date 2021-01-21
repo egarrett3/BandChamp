@@ -37,12 +37,19 @@ class UserAlbums extends React.Component {
             DELETE
           </span>
         </div>
-        <span 
-          className="img-title"
+        <div
           onClick={() => {
             this.routeAlbumPath(this.props.id);
-          }}
-        >{this.props.title}</span>
+          }} 
+          id='album-img-container'> 
+          <span
+            className="img-title"
+            onClick={() => {
+              this.routeAlbumPath(this.props.id);
+            }}>{this.props.title}
+          </span>
+        </div>
+          
         <img
           className="img-block2"
           src={this.props.photo_url}

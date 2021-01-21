@@ -145,9 +145,6 @@ class AlbumShow extends React.Component {
                     "{title}" posted by:
                     <span 
                       className="username-for-album"
-                      onClick={() => {
-                        window.location.href = "/#/usrprofile";
-                      }}
                     > {username}</span>
                   </div>
                 </div>
