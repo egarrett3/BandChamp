@@ -1,6 +1,8 @@
 import React from 'react'
-import DailyItem from './daily_item'
-import DailyItems from './daily_items'
+import { Suspense } from 'react';
+const DailyItem = React.lazy(() => import('./daily_item'));
+const DailyItems = React.lazy(() => import('./daily_items'));
+// import DailyItems from './daily_items'
 // import Carousel from "react-bootstrap/Carousel";
 
 class Daily extends React.Component {
@@ -45,14 +47,13 @@ class Daily extends React.Component {
             
             {this.props.albums.map(function (album, idx) {
               if (idx === 0) {
-                return <DailyItem key={idx} album={album} descrip={that.describers(album.id%albCollectionLength)}/>;
+                return <DailyItem key={idx} album={album} descrip={that.describers(album.id%albCollectionLength)}/>
               }
             })}
             {this.props.albums.map(function (album, idx) {
               if (idx > 0 && idx < 7)
-              return <DailyItems key={idx} album={album} id={album.id} descrip={that.describers(album.id%albCollectionLength)}/>;    
+              return <DailyItems key={idx} album={album} id={album.id} descrip={that.describers(album.id%albCollectionLength)}/>   
             })}
-            
           </div>
         </div>
     );

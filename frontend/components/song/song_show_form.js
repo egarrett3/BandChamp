@@ -1,4 +1,5 @@
 import React from 'react';
+import { Suspense } from 'react';
 import SellingItems from '../carousel/carousel';
 import FooterItem from '../footer/footer';
 import Daily from '../bandchampdaily/daily';
@@ -9,28 +10,20 @@ import SideContainer from './sidebar_component';
 
 class SongShow extends React.Component {
     constructor(props) {
+      debugger
         super(props); 
         this.state = {
            openShow: true
         }
-        // this.loggedIn = this.loggedIn.bind(this);
     }
     
     componentDidMount() {
-        // this.props.fetchSongs();
         this.props.fetchAlbums();
     }
 
     componentWillUnmount() {
       this.props.closeSong();
     }
-
-
-    // loggedIn() {
-    //     this.setState(() => ({
-    //         user: this.currentUsr()
-    //     }))
-    // }
 
     currentUsr() {
         let bool;
@@ -64,9 +57,7 @@ class SongShow extends React.Component {
 
     render() {
       const albumList = this.props.albums.map((al) => al.photo_url);
-      // let album = this.props.album ? this.props.album : albumList;
-      // const songlist = this.props.songs.map((song) => song);
-      
+
         return (
           <div>
             <GreetingContainer />
@@ -97,14 +88,16 @@ class SongShow extends React.Component {
               <ul className="sidebar-container">
                 {this.props.albums.map(function (al, idx) {
                   if (idx < 3) {
-                    // this.props.fetchAlbum(idx);
                     return <SideContainer key={idx} id={idx} album={al} />;
                   }
                 })}
               </ul>
             </div>
-            <SellingItems albums={this.props.albums} />
-            <Daily albums={this.props.albums} />
+            
+            <Suspense fallback={<div>loading...</div>}>
+              <SellingItems albums={this.props.albums} />
+              <Daily albums={this.props.albums} />
+            </Suspense>
             <FooterItem />
           </div>
         );  

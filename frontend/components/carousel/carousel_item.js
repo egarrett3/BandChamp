@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const countries = ['Germany','America','Japan','China','England','Argentina','Iran','India']
 
-const CarouselItem = props  => {
+let CarouselItem = props => {
     const module = <Link className='album' to={{
         pathname: `/songPage/${props.album.id}`
     }}>
