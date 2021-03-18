@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 const DailyItems = props => {
-    debugger
+    
     return (
         <Link className='album-page' to={{
             pathname:`/songPage/${props.album.id}`

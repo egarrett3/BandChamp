@@ -3,7 +3,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-BandChamp is meant to be a clone of BandCamp, and as of the current version is incomplete. Currently only a splash page exists with and audio player.
+BandChamp is meant to be a clone of BandCamp, and ...
 
 * Ruby version
  - 5.2.3.4

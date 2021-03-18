@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSgs } from '../../actions/song_actions';
+import CarouselItem from './carousel_item';
 
-const CarouselItem = React.lazy(() => import('./carousel_item'));
+// const CarouselItem = React.lazy(() => import('./carousel_item'));
 
 class SellingItems extends React.Component {
     constructor(props) {
@@ -88,9 +89,9 @@ class SellingItems extends React.Component {
             </div>
             <ul className="album-block">
               {this.props.albums.map(function(album, idx) { 
-                if (idx > 7 && idx < 15) {
+                // if (idx > 7 && idx < 15) {
                   return <CarouselItem key={idx} album={album} />
-                }
+                // }
               })}
             </ul>
           </div>

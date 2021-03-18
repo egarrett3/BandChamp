@@ -16,7 +16,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DailyItems = function DailyItems(props) {
-  debugger;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     className: "album-page",
     to: {

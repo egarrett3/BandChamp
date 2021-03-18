@@ -57,7 +57,7 @@ class SongShow extends React.Component {
 
     render() {
       const albumList = this.props.albums.map((al) => al.photo_url);
-
+        
         return (
           <div>
             <GreetingContainer />
@@ -96,6 +96,8 @@ class SongShow extends React.Component {
             
             <Suspense fallback={<div>loading...</div>}>
               <SellingItems albums={this.props.albums} />
+            </Suspense>
+            <Suspense fallback={<div>loading...</div>}>
               <Daily albums={this.props.albums} />
             </Suspense>
             <FooterItem />
