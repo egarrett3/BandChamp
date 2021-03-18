@@ -1,16 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSgs } from '../../actions/song_actions';
-import CarouselItem from './carousel_item';
+// import CarouselItem from './carousel_item';
 
-// const CarouselItem = React.lazy(() => import('./carousel_item'));
+const CarouselItem = React.lazy(() => import('./carousel_item'));
 
 class SellingItems extends React.Component {
     constructor(props) {
-      super(props); 
-        this.state = {
-            
-        }
+      super(props);
+    
     }
 
     render() {

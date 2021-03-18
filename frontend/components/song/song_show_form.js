@@ -10,7 +10,6 @@ import SideContainer from './sidebar_component';
 
 class SongShow extends React.Component {
     constructor(props) {
-      debugger
         super(props); 
         this.state = {
            openShow: true
@@ -62,12 +61,13 @@ class SongShow extends React.Component {
           <div>
             <GreetingContainer />
             <div
-              className={`img-container ${this.currentUsr() ? "adjust-small" : "adjust-large"
-                }`}
+              className={`img-container ${
+                this.currentUsr() ? "adjust-small" : "adjust-large"
+              }`}
             >
               <div className="graf-container">
-                <div className='selection-container'>
-                  <div id='bandchamp-selection'>
+                <div className="selection-container">
+                  <div id="bandchamp-selection">
                     Selection of BandChamp's Classics: {this.date()}
                   </div>
                   {/* <button id='read-more'>
@@ -75,15 +75,26 @@ class SongShow extends React.Component {
                     <span id="arrow">&#8594;</span>
                   </button> */}
                 </div>
-                <img src={!this.props.photo_url ? albumList[0] : this.props.photo_url }
-                  className={!this.props.photo_url ? "graffiti-image" : "full-screen-img"}
+                <img
+                  src={
+                    !this.props.photo_url ? albumList[0] : this.props.photo_url
+                  }
+                  className={
+                    !this.props.photo_url ? "graffiti-image" : "full-screen-img"
+                  }
                 />
-                {!this.props.photo_url ? <></> : <button onClick={this.props.closeSong} id="close-audio">
-                  X CLOSE SONG
-                </button>}
-                {!this.props.photo_url ? <></> : 
+                {!this.props.photo_url ? (
+                  <></>
+                ) : (
+                  <button onClick={this.props.closeSong} id="close-audio">
+                    X CLOSE SONG
+                  </button>
+                )}
+                {!this.props.photo_url ? (
+                  <></>
+                ) : (
                   <AudioPlayer song={this.props.song} />
-                }
+                )}
               </div>
               <ul className="sidebar-container">
                 {this.props.albums.map(function (al, idx) {
@@ -93,13 +104,15 @@ class SongShow extends React.Component {
                 })}
               </ul>
             </div>
-            
+
             <Suspense fallback={<div>loading...</div>}>
               <SellingItems albums={this.props.albums} />
             </Suspense>
+
             <Suspense fallback={<div>loading...</div>}>
               <Daily albums={this.props.albums} />
             </Suspense>
+
             <FooterItem />
           </div>
         );  
