@@ -6,9 +6,7 @@ class DownloadLink extends React.Component {
     constructor(props) {
         super(props); 
         this.state = {
-            currentTime: 0,
-            duration: 0,
-            user: false,
+           
         };
     }
 
@@ -16,7 +14,6 @@ class DownloadLink extends React.Component {
         const title = this.props.title;
         const url = this.props.url;
 
-        
         return (
             <>
                 <li className='song-links'>

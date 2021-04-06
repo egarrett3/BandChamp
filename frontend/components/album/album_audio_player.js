@@ -1,6 +1,7 @@
 import React from "react";
 import { faChevronRight, faChevronLeft, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AudioButton from '../audio/audio_button';
 
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
@@ -168,8 +169,9 @@ class AlbumAudioPlayer extends React.Component {
                   src={src_url}
                 />
               </audio>
-              <div className="btns2">
-                <div id="timer2"></div>
+              <AudioButton loading={this.state.loading} active={this.state.btn}/>
+              {/* <div className="btns2">
+                
                 {!this.state.loading ? (
                   <div
                     className={this.state.btn ? "disappear" : ""}
@@ -190,7 +192,7 @@ class AlbumAudioPlayer extends React.Component {
                     // this.flipAudiobtn();
                   }}
                 ></div>
-              </div>
+              </div> */}
               <div className="audio-label2">
                 <div className="weekly-label">
                   <div className="timer2">

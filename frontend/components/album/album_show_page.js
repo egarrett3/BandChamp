@@ -2,13 +2,13 @@ import React from 'react'
 import FooterItem from "../footer/footer";
 import GreetingContainer from "../greeting/greeting_container";
 import { Suspense, lazy } from 'react';
-// import AlbumAudioPlayer from './album_audio_player';
+import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
 import DownloadLink from './download_link';
 import { faChevronDown, faChevronUp, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const AlbumAudioPlayer = React.lazy(() => import('./album_audio_player'));
+// const AlbumAudioPlayer = React.lazy(() => import('./album_audio_player'));
 
 class AlbumShow extends React.Component {
   constructor(props) {
@@ -155,12 +155,12 @@ class AlbumShow extends React.Component {
                   <div id="musicPlayerTrack">
                     <div>
                       <div id="full-package">
-                        <Suspense fallback={<div>loading...</div>}>
+                        {/* <Suspense fallback={<div>loading...</div>}> */}
                           <AlbumAudioPlayer
                             titles={this.props.songs.map((song) => song.title)}
                             songs={this.props.songs}
                           />
-                        </Suspense>
+                        {/* </Suspense> */}
                       </div>
                       <ol id="songLinkList">
                         <div id="tracks">
