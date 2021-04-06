@@ -1,13 +1,19 @@
 import React from 'react';
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const PlayButton = ({toggleButton}) => {
-    
+
+const PlayButton = ({loading, toggleButton}) => {
+
     return (
       <>
-        <div 
-          id="play-btn2"
-          onClick={toggleButton}
-        ></div>
+        {!loading ? 
+            (<div 
+            id="play-btn2"
+            onClick={toggleButton}>
+            </div>) 
+            :
+        <FontAwesomeIcon icon={faSpinner} />}
       </>
     );
 };
