@@ -18,6 +18,8 @@ class AlbumAudioPlayer extends React.Component {
         this.nextSong = this.nextSong.bind(this);
         this.previousSong = this.previousSong.bind(this);
         this.getTime = this.getTime.bind(this);
+        this.playTrack = this.playTrack.bind(this);
+        this.pauseTrack = this.pauseTrack.bind(this);
     }
 
     componentDidMount() {
@@ -48,45 +50,43 @@ class AlbumAudioPlayer extends React.Component {
     playTrack() {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         this.audio1.play();
-        this.flipAudiobtn();
       }
     }
 
     pauseTrack() {
       this.audio1.pause();
-      this.flipAudiobtn();
     }
 
-    flipAudiobtn() {
-      this.setState({
-        btn: !this.state.btn
-      })
-    }
+    // flipAudiobtn() {
+    //   this.setState({
+    //     btn: !this.state.btn
+    //   })
+    // }
     
     getTime(time) {
-        if (!isNaN(time)) {
-            return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
-        }
+      if (!isNaN(time)) {
+          return Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2);
+      }
     }
         
     nextSong(songListLength) {
-        if (this.state.counter < songListLength - 1) {
-            this.setState({
-                counter: this.state.counter + 1,
-                loaded: false,
-                loading: true
-            })
-        }
+      if (this.state.counter < songListLength - 1) {
+        this.setState({
+          counter: this.state.counter + 1,
+          loaded: false,
+          loading: true
+        })
+      }
     }
     
     previousSong() {
-        if (this.state.counter >= 1) {
-            this.setState({
-                counter: this.state.counter - 1,
-                loaded: false,
-                loading: true
-            })
-        }
+      if (this.state.counter >= 1) {
+        this.setState({
+          counter: this.state.counter - 1,
+          loaded: false,
+          loading: true
+        })
+      }
     }
 
     componentDidUpdate() {
@@ -145,12 +145,12 @@ class AlbumAudioPlayer extends React.Component {
         } 
         
         if (document.getElementById('ply1')) {
-            if (this.audio1.ended) {
-                this.audio1.currentTime = 0;
-                this.flipPausebtn();
-            }
+          if (this.audio1.ended) {
+            this.audio1.currentTime = 0;
+            this.flipPausebtn();
+          }
         }
-        
+        debugger
         return (
           <>
             <div id="audio-player2">
@@ -169,7 +169,12 @@ class AlbumAudioPlayer extends React.Component {
                   src={src_url}
                 />
               </audio>
-              <AudioButton loading={this.state.loading} active={this.state.btn}/>
+              <AudioButton 
+                loading={this.state.loading} 
+                btn={this.state.btn}
+                playTrack={this.playTrack}
+                pauseTrack={this.pauseTrack}
+              />
               {/* <div className="btns2">
                 
                 {!this.state.loading ? (
