@@ -2,6 +2,7 @@ import React from "react";
 import { faChevronRight, faChevronLeft, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AudioButton from '../audio/audio_button';
+import AudioPlayer from '../audio/audio_player';
 
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
@@ -56,12 +57,6 @@ class AlbumAudioPlayer extends React.Component {
     pauseTrack() {
       this.audio1.pause();
     }
-
-    // flipAudiobtn() {
-    //   this.setState({
-    //     btn: !this.state.btn
-    //   })
-    // }
     
     getTime(time) {
       if (!isNaN(time)) {
@@ -144,16 +139,18 @@ class AlbumAudioPlayer extends React.Component {
           let src_url = this.props.songs.length ? this.props.songs[this.state.counter-1].song_url : "";
         } 
         
+
         if (document.getElementById('ply1')) {
           if (this.audio1.ended) {
             this.audio1.currentTime = 0;
-            this.flipPausebtn();
+            this.pauseTrack();
           }
         }
-        debugger
+
         return (
           <>
             <div id="audio-player2">
+              {/* <AudioPlayer src_url={src_url}/> */}
               <audio
                 id="ply1"
                 ref={(ref) => (this.audio1 = ref)}
