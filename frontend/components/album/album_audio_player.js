@@ -172,29 +172,6 @@ class AlbumAudioPlayer extends React.Component {
                 playTrack={this.playTrack}
                 pauseTrack={this.pauseTrack}
               />
-              {/* <div className="btns2">
-                
-                {!this.state.loading ? (
-                  <div
-                    className={this.state.btn ? "disappear" : ""}
-                    id="play-btn2"
-                    onClick={() => {
-                      this.playTrack();
-                      // this.flipAudiobtn();
-                    }}
-                  ></div>
-                ) : (
-                  <FontAwesomeIcon icon={faSpinner} />
-                )}
-                <div
-                  className={this.state.btn ? "" : "disappear"}
-                  id="pause-btn2"
-                  onClick={() => {
-                    this.pauseTrack();
-                    // this.flipAudiobtn();
-                  }}
-                ></div>
-              </div> */}
               <div className="audio-label2">
                 <div className="weekly-label">
                   <div className="timer2">
