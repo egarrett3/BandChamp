@@ -186,7 +186,7 @@ class AlbumShow extends React.Component {
                         >
                           {this.props.songs.map((song, idx) => (
                             <DownloadLink
-                              key={idx}
+                              key={song.id}
                               id={song.id}
                               deleteSong={bool ? this.props.deleteSong : bool}
                               title={song.title}
