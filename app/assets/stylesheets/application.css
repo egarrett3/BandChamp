@@ -1424,7 +1424,7 @@ li.album-page2 {
 
 .album-collection {
     height: 420px;
-    width: 100%;
+    width: 70%;
 }
 
 .alb-pics {
@@ -1848,9 +1848,11 @@ ul#social-media-list {
     flex-direction: row;
 }
 
-#album-track-title {
-    width: 85%;
+#audio-title-container {
+    display: flex;
+    width: 80%;
     height: 100%;
+    flex-direction: column;
 }
 
 #discography {
@@ -1862,12 +1864,12 @@ ul#social-media-list {
 #song-info-title {
     display:flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
-    padding-left:40px;
-    padding-right:40px;
+    box-sizing: border-box;
+    padding-left:30px;
     width:100%;
-    height:15%;
+    height:8%;
     font-size:30px;
     font-weight: bold;
 }
@@ -1880,12 +1882,13 @@ ul#social-media-list {
 }
 
 #musicPlayerTrack {
-    padding:20px;
+    box-sizing: border-box;
+    padding:15px 0px 30px 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    width: 50%;
+    align-items: flex-start;
+    width: 100%;
     height: 90%;
 }
 
@@ -2229,9 +2232,12 @@ form#edit-frame textarea:focus {
   flex-wrap: wrap;
 }
 
-/* .username-for-album {
+.username-for-album {
+    font-size: 18px;
+    font-weight: lighter;
+    margin-top: 5px;
     cursor: pointer;
-} */
+}
 
 .song-actions {
     display: flex;

@@ -142,83 +142,83 @@ class AlbumShow extends React.Component {
           <div id="single-track">
             <div id="music-community"></div>
             <div className="song-info">
-              <div id="album-track-title">
+              <div id='audio-title-container'>
                 <div id="song-info-title">
-                  <div>
-                    "{title}" posted by:
-                    <span 
-                      className="username-for-album"
-                    > {username}</span>
+                  <div> {title} 
+                    <div className="username-for-album">album by: {username}</div>
                   </div>
                 </div>
-                <div id="trackANDalbum">
-                  <div id="musicPlayerTrack">
-                    <div>
-                      <div id="full-package">
-                        {/* <Suspense fallback={<div>loading...</div>}> */}
-                          <AlbumAudioPlayer
-                            titles={this.props.songs.map((song) => song.title)}
-                            songs={this.props.songs}
+                <div id="musicPlayerTrack">
+                  <div>
+                    <div id="full-package">
+                      {/* <Suspense fallback={<div>loading...</div>}> */}
+                        <AlbumAudioPlayer
+                          titles={this.props.songs.map((song) => song.title)}
+                          songs={this.props.songs}
+                        />
+                      {/* </Suspense> */}
+                    </div>
+                    <ol id="songLinkList">
+                      <div id="tracks">
+                        Tracks
+                        {this.state.expand ? (
+                          <FontAwesomeIcon
+                            icon={faChevronDown}
+                            className="expandable"
+                            onClick={() => this.toggleExpand()}
                           />
-                        {/* </Suspense> */}
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faChevronUp}
+                            className="expandable"
+                            onClick={() => this.toggleExpand()}
+                          />
+                        )}
                       </div>
-                      <ol id="songLinkList">
-                        <div id="tracks">
-                          Tracks
-                          {this.state.expand ? (
-                            <FontAwesomeIcon
-                              icon={faChevronDown}
-                              className="expandable"
-                              onClick={() => this.toggleExpand()}
-                            />
-                          ) : (
-                            <FontAwesomeIcon
-                              icon={faChevronUp}
-                              className="expandable"
-                              onClick={() => this.toggleExpand()}
-                            />
-                          )}
-                        </div>
-                        <div
-                          className={
-                            this.state.expand ? "songListwindow" : "songList"
-                          }
-                        >
-                          {this.props.songs.map((song, idx) => (
-                            <DownloadLink
-                              key={song.id}
-                              id={song.id}
-                              deleteSong={bool ? this.props.deleteSong : bool}
-                              title={song.title}
-                              url={song.song_url}
-                              album_id={this.props.match.params.songId}
-                            />
-                          ))}
-                        </div>
-                      </ol>
-                      {bool ? (
-                        <div>
-                          <input
-                            type="file"
-                            name="file"
-                            id="file"
-                            className="inputfile"
-                            onInput={(e) => {
-                              this.handleSubmit(e)
-                              }
-                            }
+                      <div
+                        className={
+                          this.state.expand ? "songListwindow" : "songList"
+                        }
+                      >
+                        {this.props.songs.map((song, idx) => (
+                          <DownloadLink
+                            key={song.id}
+                            id={song.id}
+                            deleteSong={bool ? this.props.deleteSong : bool}
+                            title={song.title}
+                            url={song.song_url}
+                            album_id={this.props.match.params.songId}
                           />
-                          {this.state.uploading ? (
-                            <label htmlFor="file"><FontAwesomeIcon icon={faSpinner} /></label>
+                        ))}
+                      </div>
+                    </ol>
+                    {bool ? (
+                      <div>
+                        <input
+                          type="file"
+                          name="file"
+                          id="file"
+                          className="inputfile"
+                          onInput={(e) => {
+                            this.handleSubmit(e)
+                            }
+                          }
+                        />
+                        {this.state.uploading ? (
+                          <label htmlFor="file"><FontAwesomeIcon icon={faSpinner} /></label>
                           ) : (
                             <label htmlFor="file">Upload Song</label>
-                          )}
-                        </div>
-                      ) : (
-                        <div></div>
+                            )}
+                      </div>
+                    ) : (
+                      <div></div>
                       )}
-                    </div>
                   </div>
+                </div>
+
+              </div>
+
+                <div id="trackANDalbum">
                   <div id="album-picture">
                     <div>
                       <img src={photo_url} id="album-picture-frame" />
@@ -247,7 +247,6 @@ class AlbumShow extends React.Component {
                     
                   </div> */}
                 </div>
-              </div>
               {/* <div id="discogrpahy"></div> */}
             </div>
           </div>
