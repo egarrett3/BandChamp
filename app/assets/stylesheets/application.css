@@ -937,9 +937,9 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
     width: 100%;
 }
 
-.weekly {
+/* .weekly {
     font-weight: 600;
-}
+} */
 
 .timer {
     font-size: 11px;
@@ -954,11 +954,12 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
 }
 
 .timer2 {
-    font-size: 11px;
+    font-size: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 13px;
+    justify-content: space-around;
+    height: 12px;
+    width: 70px;
 }
 
 .graffiti-image {

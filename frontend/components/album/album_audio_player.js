@@ -175,13 +175,13 @@ class AlbumAudioPlayer extends React.Component {
               />
               <div className="audio-label2">
                 <div className="weekly-label">
+                  <h3 className="weekly">
+                    {this.props.titles[this.state.counter]}
+                  </h3>
                   <div className="timer2">
                     <span id="curTimeText">{ct}</span>/
                     <span id="durTimeText">{dur}</span>
                   </div>
-                  <h3 className="weekly">
-                    Title: {this.props.titles[this.state.counter]}
-                  </h3>
                   <div id="space-it-out">
                     <button
                       className="next-song-arrow"
