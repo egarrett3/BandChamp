@@ -229,7 +229,7 @@ class AlbumShow extends React.Component {
                       <ul className="user-albums2">
                         {this.props.album.map((album, idx) => (
                             <UserAlbums
-                              key={idx}
+                              key={album.id}
                               photo_url={album.photo_url}
                               title={album.title}
                               id={album.id}
