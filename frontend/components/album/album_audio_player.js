@@ -170,6 +170,8 @@ class AlbumAudioPlayer extends React.Component {
                 btn={this.state.btn}
                 playTrack={this.playTrack}
                 pauseTrack={this.pauseTrack}
+                duration={dur}
+                currentTime={ct}
               />
               <div className="audio-label2">
                 <div className="weekly-label">
