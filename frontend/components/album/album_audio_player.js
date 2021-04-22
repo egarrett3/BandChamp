@@ -2,7 +2,6 @@ import React from "react";
 import { faChevronRight, faChevronLeft, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AudioButton from '../audio/audio_button';
-import AudioPlayer from '../audio/audio_player';
 
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
@@ -45,7 +44,6 @@ class AlbumAudioPlayer extends React.Component {
 
     componentWillUnmount() {
         this.audio1.removeEventListener("timeupdate", () => { });
-        this.audio1.removeEventListener("loadedmetadata", () => { });
     }
 
     playTrack() {
@@ -85,8 +83,9 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     componentDidUpdate() {
-      let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
       
+      let src_url = this.props.songs.length ? this.props.songs[this.state.counter].song_url : "";
+     
       if (this.state.loaded && this.props.songs.length === 0) {
         this.setState({
           loaded: false
@@ -128,6 +127,7 @@ class AlbumAudioPlayer extends React.Component {
     }
    
     render() {
+    
         const dur = this.getTime(this.state.duration);
         const ct = this.getTime(this.state.currentTime);
     
@@ -139,7 +139,6 @@ class AlbumAudioPlayer extends React.Component {
           let src_url = this.props.songs.length ? this.props.songs[this.state.counter-1].song_url : "";
         } 
         
-
         if (document.getElementById('ply1')) {
           if (this.audio1.ended) {
             this.audio1.currentTime = 0;
@@ -201,7 +200,7 @@ class AlbumAudioPlayer extends React.Component {
                     ref={(ref) => (this.seekbar1 = ref)}
                     type="range"
                     min="0"
-                    step="0.01"
+                    step="0.1"
                     id="audio-track2"
                     onChange={() =>
                       (this.audio1.currentTime = this.seekbar1.value)

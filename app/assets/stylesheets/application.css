@@ -758,7 +758,7 @@ input[type='range']::-ms-track {
 }
 
 input[type='range']::-webkit-slider-thumb {
-    /* -webkit-appearance: none; */
+    -webkit-appearance: none;
     border: none;
     height: 14px;
     width: 26px;
@@ -788,8 +788,9 @@ input#audio-track2[type='range'] {
   -webkit-appearance: none; 
   padding: 0;
   margin: 0;
-  width: 300px;
+  width: 250px;
   height: 8px; 
+  bottom: 0%;
   background: rgb(239, 242, 245);
   border: 1px solid gray;
 }

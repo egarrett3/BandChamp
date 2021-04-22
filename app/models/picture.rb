@@ -9,4 +9,8 @@ class Picture < ApplicationRecord
     #     picture.photo.attached?
     # end
 
+    def carousel_size
+        self.picture.photo.variant(resize: '400X400').processed_url
+    end
+
 end

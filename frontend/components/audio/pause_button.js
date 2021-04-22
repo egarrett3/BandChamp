@@ -1,7 +1,7 @@
 import React from "react";
 
 const PauseButton = ({toggleButton}) => {
-  
+
   return (
     <>
       <div 
