@@ -1,5 +1,5 @@
 import React from "react";
-import { faChevronRight, faChevronLeft, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faFastForward, faFastBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AudioButton from '../audio/audio_button';
 
@@ -182,20 +182,6 @@ class AlbumAudioPlayer extends React.Component {
                     <span id="curTimeText">{ct}</span>/
                     <span id="durTimeText">{dur}</span>
                   </div>
-                  <div id="space-it-out">
-                    <button
-                      className="next-song-arrow"
-                      onClick={() => this.previousSong()}
-                    >
-                      <FontAwesomeIcon icon={faChevronLeft} />
-                    </button>
-                    <button
-                      className="next-song-arrow"
-                      onClick={() => this.nextSong(AlLength)}
-                    >
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </button>
-                  </div>
                 </div>
                 <div className="lower-label">
                   <input
@@ -208,6 +194,20 @@ class AlbumAudioPlayer extends React.Component {
                       (this.audio1.currentTime = this.seekbar1.value)
                     }
                   ></input>
+                  <div id="space-it-out">
+                    <button
+                      className="next-song-arrow"
+                      onClick={() => this.previousSong()}
+                    >
+                      <FontAwesomeIcon icon={faFastBackward} />
+                    </button>
+                    <button
+                      className="next-song-arrow"
+                      onClick={() => this.nextSong(AlLength)}
+                    >
+                      <FontAwesomeIcon icon={faFastForward} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
