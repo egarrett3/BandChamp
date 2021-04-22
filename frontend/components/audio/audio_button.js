@@ -15,7 +15,7 @@ const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack}) =>
     if (duration === currentTime && currentTime > "0:01") {
       setActive(!active);
     }
-  }, [duration,currentTime,pauseTrack])
+  }, [duration,currentTime])
 
   return (
     <div className="btns2">
