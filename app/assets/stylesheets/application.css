@@ -864,8 +864,8 @@ input#audio-track2[type='range']::-webkit-slider-runnable-track {
     display:flex;
     justify-content: center;
     align-items: center;
-    background: transparent;
-    border: 1px solid black;
+    background: white;
+    border: 1px solid rgb(135, 135, 135);
     height: 52px;
     width: 50px;   
 }
