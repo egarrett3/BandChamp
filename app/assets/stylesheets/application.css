@@ -2209,6 +2209,7 @@ form#edit-frame textarea:focus {
 
 .song-links {
     margin:10px;
+    font-size:14px;
 }
 
 .link-link, .delete-link-icon {
