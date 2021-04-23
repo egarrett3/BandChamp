@@ -21,7 +21,7 @@ class AlbumShow extends React.Component {
       expand: true,
       uploading: false,
     };
-    this.toggleExpand = this.toggleExpand.bind(this)
+    // this.toggleExpand = this.toggleExpand.bind(this)
   }
 
   componentDidMount() {
@@ -84,11 +84,11 @@ class AlbumShow extends React.Component {
     })
   }
 
-  toggleExpand() {
-    this.setState((prevState) => ({
-      expand : !prevState.expand
-    }));
-  }
+  // toggleExpand() {
+  //   this.setState((prevState) => ({
+  //     expand : !prevState.expand
+  //   }));
+  // }
  
   render() {
     let showAlb = false;
@@ -142,23 +142,30 @@ class AlbumShow extends React.Component {
           <div id="single-track">
             <div id="music-community"></div>
             <div className="song-info">
-              <div id='audio-title-container'>
+              <div id="audio-title-container">
                 <div id="song-info-title">
-                  <div> {title} 
-                    <div className="username-for-album">album by: {username}</div>
+                  <div>
+                    {" "}
+                    {title}
+                    <div className="username-for-album">
+                      album by: {username}
+                    </div>
                   </div>
                 </div>
                 <div id="musicPlayerTrack">
                   <div>
                     <div id="full-package">
                       {/* <Suspense fallback={<div>loading...</div>}> */}
-                        <AlbumAudioPlayer
-                          titles={this.props.songs.map((song) => song.title)}
-                          songs={this.props.songs}
-                        />
+                      <AlbumAudioPlayer
+                        titles={this.props.songs.map((song) => song.title)}
+                        songs={this.props.songs}
+                        deleteSong={bool ? this.props.deleteSong : bool}
+                        album_id={this.props.match.params.songId}
+                        bool={bool}
+                      />
                       {/* </Suspense> */}
                     </div>
-                    <ol id="songLinkList">
+                    {/* <ol id="songLinkList">
                       <div id="tracks">
                         Tracks
                         {this.state.expand ? (
@@ -191,7 +198,7 @@ class AlbumShow extends React.Component {
                           />
                         ))}
                       </div>
-                    </ol>
+                    </ol> */}
                     {bool ? (
                       <div>
                         <input
@@ -200,53 +207,53 @@ class AlbumShow extends React.Component {
                           id="file"
                           className="inputfile"
                           onInput={(e) => {
-                            this.handleSubmit(e)
-                            }
-                          }
+                            this.handleSubmit(e);
+                          }}
                         />
                         {this.state.uploading ? (
-                          <label htmlFor="file"><FontAwesomeIcon icon={faSpinner} /></label>
-                          ) : (
-                            <label htmlFor="file">Upload Song</label>
-                            )}
+                          <label htmlFor="file">
+                            <FontAwesomeIcon icon={faSpinner} />
+                          </label>
+                        ) : (
+                          <label htmlFor="file">Upload Song</label>
+                        )}
                       </div>
                     ) : (
                       <div></div>
-                      )}
+                    )}
                   </div>
                 </div>
-
               </div>
 
-                <div id="trackANDalbum">
-                  <div id="album-picture">
-                    <div>
-                      <img src={photo_url} id="album-picture-frame" />
-                    </div>
-                    <div className="album-collection">
-                      <div id="album-frame-label">{username}'s albums</div>
-                      {/* <div id="album-frame"> */}
-                      <ul className="user-albums2">
-                        {this.props.album.map((album, idx) => (
-                            <UserAlbums
-                              key={album.id}
-                              photo_url={album.photo_url}
-                              title={album.title}
-                              id={album.id}
-                              bool={bool}
-                              deleteAlbum={bool ? this.props.deleteAlbum : bool}
-                              clearSongs={this.props.clearSongs}
-                              fetchSongs={this.props.fetchSongs}
-                            />
-                        ))}
-                      </ul>
-                      {/* </div> */}
-                    </div>
+              <div id="trackANDalbum">
+                <div id="album-picture">
+                  <div>
+                    <img src={photo_url} id="album-picture-frame" />
                   </div>
-                  {/* <div id='profile-link'>
+                  <div className="album-collection">
+                    <div id="album-frame-label">{username}'s albums</div>
+                    {/* <div id="album-frame"> */}
+                    <ul className="user-albums2">
+                      {this.props.album.map((album, idx) => (
+                        <UserAlbums
+                          key={album.id}
+                          photo_url={album.photo_url}
+                          title={album.title}
+                          id={album.id}
+                          bool={bool}
+                          deleteAlbum={bool ? this.props.deleteAlbum : bool}
+                          clearSongs={this.props.clearSongs}
+                          fetchSongs={this.props.fetchSongs}
+                        />
+                      ))}
+                    </ul>
+                    {/* </div> */}
+                  </div>
+                </div>
+                {/* <div id='profile-link'>
                     
                   </div> */}
-                </div>
+              </div>
               {/* <div id="discogrpahy"></div> */}
             </div>
           </div>
