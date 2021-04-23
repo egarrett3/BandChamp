@@ -233,8 +233,8 @@ class AlbumAudioPlayer extends React.Component {
             </div>
           </div>
         </div>
-        <ol id="songLinkList">
-          <div id="tracks">
+        <table id="songLinkList">
+          <thead id="tracks">
             Tracks
             {this.state.expand ? (
               <FontAwesomeIcon
@@ -249,9 +249,9 @@ class AlbumAudioPlayer extends React.Component {
                 onClick={() => this.toggleExpand()}
               />
             )}
-          </div>
-          <div className={this.state.expand ? "songListwindow" : "songList"}>
-          
+          </thead>
+          <tbody className={this.state.expand ? "songListwindow" : "songList"}>
+            <tr>
               {this.props.songs.map((song) => (
                 <AudioButton
                   url={song.url}
@@ -264,27 +264,23 @@ class AlbumAudioPlayer extends React.Component {
                   duration={dur}
                   currentTime={ct}
                   btnType="btn3"
-                >
-                  {"btns3"}
-                </AudioButton>
+                >{"btns3"}</AudioButton>
               ))}
-            
-            
               {this.props.songs.map((song) => (
-                <DownloadLink
-                  key={song.id}
-                  id={song.id}
-                  deleteSong={
-                    this.props.bool ? this.props.deleteSong : this.props.bool
-                  }
-                  title={song.title}
-                  url={song.song_url}
-                  album_id={this.props.album_id}
-                />
-              ))}
-          
-          </div>
-        </ol>
+                  <DownloadLink
+                    key={song.id}
+                    id={song.id}
+                    deleteSong={
+                      this.props.bool ? this.props.deleteSong : this.props.bool
+                    }
+                    title={song.title}
+                    url={song.song_url}
+                    album_id={this.props.album_id}
+                  />
+              ))}          
+            </tr>
+          </tbody>
+        </table>
       </>
     );
   }
