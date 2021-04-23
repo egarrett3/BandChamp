@@ -2,7 +2,7 @@ import React from "react";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class DownloadLink extends React.Component {
+class DeleteLink extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -23,4 +23,4 @@ class DownloadLink extends React.Component {
   }
 }
 
-export default DownloadLink;
+export default DeleteLink;

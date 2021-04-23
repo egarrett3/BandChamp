@@ -3,6 +3,8 @@ import { faFastForward, faFastBackward, faChevronUp, faChevronDown } from "@fort
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AudioButton from '../audio/audio_button';
 import DownloadLink from './download_link'
+import Title from './title';
+import DeleteLink from './delete_link';
 
 class AlbumAudioPlayer extends React.Component {
   constructor(props) {
@@ -233,8 +235,8 @@ class AlbumAudioPlayer extends React.Component {
             </div>
           </div>
         </div>
-        <table id="songLinkList">
-          <thead id="tracks">
+        <ol id="songLinkList">
+          <div id="tracks">
             Tracks
             {this.state.expand ? (
               <FontAwesomeIcon
@@ -249,10 +251,10 @@ class AlbumAudioPlayer extends React.Component {
                 onClick={() => this.toggleExpand()}
               />
             )}
-          </thead>
-          <tbody className={this.state.expand ? "songListwindow" : "songList"}>
-            <tr>
-              {this.props.songs.map((song) => (
+          </div>
+          <div className={this.state.expand ? "songListwindow" : "songList"}>
+            {this.props.songs.map((song) => (
+              <>
                 <AudioButton
                   url={song.url}
                   key={song.id}
@@ -264,23 +266,30 @@ class AlbumAudioPlayer extends React.Component {
                   duration={dur}
                   currentTime={ct}
                   btnType="btn3"
-                >{"btns3"}</AudioButton>
-              ))}
-              {this.props.songs.map((song) => (
-                  <DownloadLink
-                    key={song.id}
-                    id={song.id}
-                    deleteSong={
-                      this.props.bool ? this.props.deleteSong : this.props.bool
-                    }
-                    title={song.title}
-                    url={song.song_url}
-                    album_id={this.props.album_id}
-                  />
-              ))}          
-            </tr>
-          </tbody>
-        </table>
+                >
+                  {"btns3"}
+                </AudioButton>
+                <Title title={song.title} />
+                <DownloadLink
+                  key={song.id}
+                  url={song.song_url}
+                />
+                <DeleteLink
+                  deleteSong={
+                    this.props.bool ? this.props.deleteSong : this.props.bool
+                  }
+                  album_id={this.props.album_id}
+                  id={song.id}
+                />
+              </>
+            ))}
+
+
+
+            
+            
+          </div>
+        </ol>
       </>
     );
   }
