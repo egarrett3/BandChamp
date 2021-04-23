@@ -2208,8 +2208,8 @@ form#edit-frame textarea:focus {
 }
 
 .song-links {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     margin:10px;
 }
 
