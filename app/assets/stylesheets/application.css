@@ -2208,13 +2208,14 @@ form#edit-frame textarea:focus {
 }
 
 .song-links {
-    /* display: flex;
-    justify-content: space-between; */
     margin:10px;
 }
 
-.link-link {
-    display: flex;
+.link-link, .delete-link-icon {
+    box-sizing: content-box;
+    display: inline-block;
+    cursor: pointer;
+    padding:2px;
 }
 
 .user-albums {
@@ -2240,14 +2241,9 @@ form#edit-frame textarea:focus {
 }
 
 .song-actions {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 40px;
-}
-
-.delete-link-icon {
-    cursor: pointer;
+    white-space: nowrap;
+    float: right;
+    width: 20px;
 }
 
 /* #album-frame {

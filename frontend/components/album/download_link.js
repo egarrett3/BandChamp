@@ -1,6 +1,7 @@
 import React from "react";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AudioButton from '../audio/audio_button';
 
 class DownloadLink extends React.Component {
     constructor(props) {
