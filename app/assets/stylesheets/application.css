@@ -2195,8 +2195,8 @@ form#edit-frame textarea:focus {
 
 #full-package {
     display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items:baseline;
 }
 
