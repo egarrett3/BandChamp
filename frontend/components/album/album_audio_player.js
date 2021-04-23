@@ -279,7 +279,7 @@ class AlbumAudioPlayer extends React.Component {
                     this.props.bool ? this.props.deleteSong : this.props.bool
                   }
                   album_id={this.props.album_id}
-                  id={song.id}
+                  song_id={song.id}
                 />
               </>
             ))}
