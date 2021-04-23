@@ -187,6 +187,7 @@ class AlbumAudioPlayer extends React.Component {
             pauseTrack={this.pauseTrack}
             duration={dur}
             currentTime={ct}
+            btnType="btn2"
           />
           <div className="audio-label2">
             <div className="weekly-label">

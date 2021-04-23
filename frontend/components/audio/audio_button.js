@@ -21,11 +21,11 @@ const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack,btnT
     <div className="btns2">
       {active ? (
         <PauseButton>
-          <div id={"pause-"+props.btnType} onClick={toggleButton}></div>
+          <div id={"pause-"+btnType} onClick={toggleButton}></div>
         </PauseButton>
       ) : (
         <PlayButton loading={loading}>
-          <div id={"play-"+props.btnType} onClick={toggleButton}></div>
+          <div id={"play-"+btnType} onClick={toggleButton}></div>
         </PlayButton>
       )}
     </div>
