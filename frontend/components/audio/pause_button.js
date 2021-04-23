@@ -4,7 +4,9 @@ const PauseButton = (props) => {
 
   return (
     <>
-      {props.children}
+      <div id={"pause-" + props.btnType} 
+        onClick={props.toggleButton}>
+      </div>
     </>
   );
 };

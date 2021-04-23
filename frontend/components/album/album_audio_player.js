@@ -22,6 +22,7 @@ class AlbumAudioPlayer extends React.Component {
     this.getTime = this.getTime.bind(this);
     this.playTrack = this.playTrack.bind(this);
     this.pauseTrack = this.pauseTrack.bind(this);
+    this.loadTrack = this.loadTrack.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +57,11 @@ class AlbumAudioPlayer extends React.Component {
 
   pauseTrack() {
     this.audio1.pause();
+  }
+
+  loadTrack(src) {
+    this.source1.src = src;
+    this.audio1.load();
   }
 
   getTime(time) {
@@ -188,7 +194,9 @@ class AlbumAudioPlayer extends React.Component {
             duration={dur}
             currentTime={ct}
             btnType="btn2"
-          />
+          >
+            {"btns2"}
+          </AudioButton>
           <div className="audio-label2">
             <div className="weekly-label">
               <h3 className="weekly">
@@ -243,16 +251,38 @@ class AlbumAudioPlayer extends React.Component {
             )}
           </div>
           <div className={this.state.expand ? "songListwindow" : "songList"}>
-            {this.props.songs.map((song) => (
-              <DownloadLink
-                key={song.id}
-                id={song.id}
-                deleteSong={this.props.bool ? this.props.deleteSong : this.props.bool}
-                title={song.title}
-                url={song.song_url}
-                album_id={this.props.album_id}
-              />
-            ))}
+          
+              {this.props.songs.map((song) => (
+                <AudioButton
+                  url={song.url}
+                  key={song.id}
+                  loading={this.state.loading}
+                  btn={this.state.btn}
+                  loadTrack={this.loadTrack}
+                  playTrack={this.playTrack}
+                  pauseTrack={this.pauseTrack}
+                  duration={dur}
+                  currentTime={ct}
+                  btnType="btn3"
+                >
+                  {"btns3"}
+                </AudioButton>
+              ))}
+            
+            
+              {this.props.songs.map((song) => (
+                <DownloadLink
+                  key={song.id}
+                  id={song.id}
+                  deleteSong={
+                    this.props.bool ? this.props.deleteSong : this.props.bool
+                  }
+                  title={song.title}
+                  url={song.song_url}
+                  album_id={this.props.album_id}
+                />
+              ))}
+          
           </div>
         </ol>
       </>

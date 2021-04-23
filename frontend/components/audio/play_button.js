@@ -6,8 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const PlayButton = (props) => {
 
     return (
-      <>
-        {!props.loading ? props.children 
+      <>  
+        {!props.loading ? 
+        ( <div id={"play-"+props.btnType} 
+               onClick={props.toggleButton}
+          ></div> )
           :
         <FontAwesomeIcon icon={faSpinner} />}
       </>
