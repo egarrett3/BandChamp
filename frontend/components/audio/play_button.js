@@ -3,16 +3,12 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const PlayButton = ({loading, toggleButton}) => {
+const PlayButton = (props) => {
 
     return (
       <>
-        {!loading ? 
-            (<div 
-            id="play-btn2"
-            onClick={toggleButton}>
-            </div>) 
-            :
+        {!props.loading ? props.children 
+          :
         <FontAwesomeIcon icon={faSpinner} />}
       </>
     );

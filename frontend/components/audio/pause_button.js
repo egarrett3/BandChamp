@@ -1,13 +1,10 @@
 import React from "react";
 
-const PauseButton = ({toggleButton}) => {
+const PauseButton = (props) => {
 
   return (
     <>
-      <div 
-        id="pause-btn2"
-        onClick={toggleButton}
-      ></div>
+      {props.children}
     </>
   );
 };
