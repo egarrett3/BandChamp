@@ -204,9 +204,8 @@ class AlbumAudioPlayer extends React.Component {
             duration={dur}
             currentTime={ct}
             btnType="btn2"
-          >
-            {"btns2"}
-          </AudioButton>
+            classType="btns2"
+          />
           <div className="audio-label2">
             <div className="weekly-label">
               <h3 className="weekly">
@@ -261,7 +260,7 @@ class AlbumAudioPlayer extends React.Component {
             )}
           </div>
           <div className={this.state.expand ? "songListwindow" : "songList"}>
-            {this.props.songs.map((song,idx) => (
+            {this.props.songs.map((song) => (
               <SongList 
                 key={song.id}
                 url={song.url}

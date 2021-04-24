@@ -7,6 +7,8 @@ import DeleteLink from './delete_link';
 const SongList = ({url,btn,loading,loadTrack,playTrack,pauseTrack,duration
                   ,currentTime,btnType,classType,title,deleteSong,bool,album_id
                   ,id}) => {
+                    
+        debugger
 
     return (
       <>

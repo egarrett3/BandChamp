@@ -2230,10 +2230,6 @@ form#edit-frame textarea:focus {
     width: 360px;
 }
 
-.song-links {
-    font-size:14px;
-}
-
 .link-link, .delete-link-icon {
     box-sizing: content-box;
     display: inline-block;
@@ -2263,11 +2259,7 @@ form#edit-frame textarea:focus {
     cursor: pointer;
 }
 
-.song-actions {
-    white-space: nowrap;
-    float: right;
-    width: 20px;
-}
+
 
 /* #album-frame {
     width: 300px;
