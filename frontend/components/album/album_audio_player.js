@@ -283,11 +283,6 @@ class AlbumAudioPlayer extends React.Component {
                 />
               </>
             ))}
-
-
-
-            
-            
           </div>
         </ol>
       </>
