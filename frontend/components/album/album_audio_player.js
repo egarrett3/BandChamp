@@ -5,6 +5,7 @@ import AudioButton from '../audio/audio_button';
 import DownloadLink from './download_link'
 import Title from './title';
 import DeleteLink from './delete_link';
+import SongList from "./audio_list";
 
 class AlbumAudioPlayer extends React.Component {
   constructor(props) {
@@ -148,6 +149,13 @@ class AlbumAudioPlayer extends React.Component {
     }
   }
 
+  mapAComponent(Comp, ...prps) {
+    debugger
+    this.props.songs.map((song,idx) => {
+      <Comp props={prps} key={song.id}/>
+    })
+  }
+
   render() {
     const dur = this.getTime(this.state.duration);
     const ct = this.getTime(this.state.currentTime);
@@ -253,35 +261,25 @@ class AlbumAudioPlayer extends React.Component {
             )}
           </div>
           <div className={this.state.expand ? "songListwindow" : "songList"}>
-            {this.props.songs.map((song) => (
-              <>
-                <AudioButton
-                  url={song.url}
-                  key={song.id}
-                  loading={this.state.loading}
-                  btn={this.state.btn}
-                  loadTrack={this.loadTrack}
-                  playTrack={this.playTrack}
-                  pauseTrack={this.pauseTrack}
-                  duration={dur}
-                  currentTime={ct}
-                  btnType="btn3"
-                >
-                  {"btns3"}
-                </AudioButton>
-                <Title title={song.title} />
-                <DownloadLink
-                  key={song.id}
-                  url={song.song_url}
-                />
-                <DeleteLink
-                  deleteSong={
-                    this.props.bool ? this.props.deleteSong : this.props.bool
-                  }
-                  album_id={this.props.album_id}
-                  song_id={song.id}
-                />
-              </>
+            {this.props.songs.map((song,idx) => (
+              <SongList 
+                key={song.id}
+                url={song.url}
+                btn={this.state.button}
+                loading={this.state.loading}
+                loadTrack={this.loadTrack}
+                playTrack={this.playTrack}
+                pauseTrack={this.pauseTrack}
+                duration={this.state.duration}
+                currentTime={this.state.currentTime}
+                btnType="btn3"
+                classType="btns3"
+                title={song.title}
+                deleteSong={this.props.deleteSong}
+                bool={this.props.bool}
+                album_id={this.props.album_id}
+                id={song.id}
+              />
             ))}
           </div>
         </ol>

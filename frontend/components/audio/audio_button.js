@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PauseButton from './pause_button'
 import PlayButton from './play_button'
 
-const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack,btnType,children,loadTrack,url}) => {
+const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack,btnType,classType,loadTrack,url}) => {
   const [active, setActive] = useState(btn);
 
   const toggleButton = () => {
@@ -18,7 +18,7 @@ const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack,btnT
   }, [duration,currentTime])
 
   return (
-    <div className={children}>
+    <div className={classType}>
       {active ? (
         <PauseButton btnType={btnType} toggleButton={toggleButton}/>          
       ) : (
