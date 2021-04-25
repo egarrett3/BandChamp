@@ -163,42 +163,9 @@ class AlbumShow extends React.Component {
                       album_id={this.props.match.params.songId}
                       bool={bool}
                     />
-                    {/* </Suspense> */}
+                    
                   </div>
-                  {/* <ol id="songLinkList">
-                    <div id="tracks">
-                      Tracks
-                      {this.state.expand ? (
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          className="expandable"
-                          onClick={() => this.toggleExpand()}
-                        />
-                      ) : (
-                        <FontAwesomeIcon
-                          icon={faChevronUp}
-                          className="expandable"
-                          onClick={() => this.toggleExpand()}
-                        />
-                      )}
-                    </div>
-                    <div
-                      className={
-                        this.state.expand ? "songListwindow" : "songList"
-                      }
-                    >
-                      {this.props.songs.map((song, idx) => (
-                        <DownloadLink
-                          key={song.id}
-                          id={song.id}
-                          deleteSong={bool ? this.props.deleteSong : bool}
-                          title={song.title}
-                          url={song.song_url}
-                          album_id={this.props.match.params.songId}
-                        />
-                      ))}
-                    </div>
-                  </ol> */}
+                  
                   {bool ? (
                     <div>
                       <input
@@ -247,12 +214,9 @@ class AlbumShow extends React.Component {
                         />
                       ))}
                     </ul>
-                    {/* </div> */}
                   </div>
                 </div>
-                {/* <div id='profile-link'>
-                    
-                  </div> */}
+               
               </div>
               {/* <div id="discogrpahy"></div> */}
             </div>
