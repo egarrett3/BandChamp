@@ -2295,11 +2295,6 @@ form#edit-frame textarea:focus {
     cursor: pointer;
 }
 
-/* .songList > *{
-    display: inline-block;
-    opacity: 1;
-    transition: all .5s;
-} */
 
 .songListwindow {
     opacity: 1;
@@ -2308,10 +2303,6 @@ form#edit-frame textarea:focus {
 
 .idx-spacer {
    margin-right: 4px;
-}
-
-.dur-spacer {
-    margin-left: 8px;
 }
 
 .style-row {

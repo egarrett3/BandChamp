@@ -28,7 +28,6 @@ const SongList = React.forwardRef(({url,btn,loading,loadTrack,playTrack,pauseTra
             <div className='song-list-item'>
               <div className='idx-spacer'>{`${idx + 1}.`}</div>
               <Title title={title} />
-              <span id="durTimeText" className='dur-spacer'>{duration}</span>
             </div>
           </div>
           <div>
