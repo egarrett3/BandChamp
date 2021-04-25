@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import PauseButton from './pause_button'
 import PlayButton from './play_button'
 
-const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack,btnType,classType,loadTrack,url}) => {
+const AudioButton = React.forwardRef(({duration,currentTime,btn,loading,playTrack,pauseTrack,btnType,classType,loadTrack,url},ref) => {
   const [active, setActive] = useState(btn);
-
+  
   const toggleButton = () => {
     setActive(!active)
     if (!active) {playTrack()}
@@ -26,6 +26,6 @@ const AudioButton = ({duration,currentTime,btn,loading,playTrack,pauseTrack,btnT
       )}
     </div>
   );
-};
+});
 
 export default AudioButton;
