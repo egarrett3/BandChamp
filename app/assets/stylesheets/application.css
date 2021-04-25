@@ -301,7 +301,7 @@ label {
 }
 
 .disappear {
-    display:none;
+    display:none !important;
 }
 
 footer {
@@ -2277,6 +2277,7 @@ form#edit-frame textarea:focus {
 
 #tracks {
     text-decoration: underline;
+    margin-bottom: 10px;
 }
 
 .expandable {
@@ -2284,16 +2285,44 @@ form#edit-frame textarea:focus {
     cursor: pointer;
 }
 
-.songList > *{
+/* .songList > *{
     display: inline-block;
     opacity: 1;
     transition: all .5s;
+} */
+
+.songListwindow {
+    opacity: 1;
+    /* transition: all .5s; */
 }
 
-.songListwindow > *{
-    display: inline-block;
-    opacity: 0;
-    transition: all .5s;
+.idx-spacer {
+   margin-right: 4px;
+}
+
+.dur-spacer {
+    margin-left: 8px;
+}
+
+.style-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.audio-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.song-list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15px;
+    font-size: 14px;
 }
 
 .align-items {

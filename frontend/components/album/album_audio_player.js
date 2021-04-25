@@ -259,18 +259,19 @@ class AlbumAudioPlayer extends React.Component {
               />
             )}
           </div>
-          <div className={this.state.expand ? "songListwindow" : "songList"}>
-            {this.props.songs.map((song) => (
+          <div className="songListwindow">
+            {this.props.songs.map((song,idx) => (
               <SongList 
                 key={song.id}
                 url={song.url}
+                idx={idx}
                 btn={this.state.button}
                 loading={this.state.loading}
                 loadTrack={this.loadTrack}
                 playTrack={this.playTrack}
                 pauseTrack={this.pauseTrack}
-                duration={this.state.duration}
-                currentTime={this.state.currentTime}
+                duration={dur}
+                currentTime={ct}
                 btnType="btn3"
                 classType="btns3"
                 title={song.title}
