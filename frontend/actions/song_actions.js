@@ -4,24 +4,25 @@ import { makeSong } from '../util/song_api_util';
 import { deleteSong } from '../util/song_api_util';
 
 export const ADD_SONG = 'ADD_SONG';
+export const OPEN_SONG = 'OPEN_SONG';
 export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 
-export const OPEN_SONG = "OPEN_SONG";
-export const CLOSE_SONG = "CLOSE_SONG";
+export const OPEN_IMG = "OPEN_IMG";
+export const CLOSE_IMG = "CLOSE_IMG";
 
 export const CLEAR_SONGS = "CLEAR_SONGS";
 export const DESTROY_SONG = "DESTROY_SONG";
 
-export const openSong = (photo_url) => {
+export const openImg = (photo_url) => {
   return {
-    type: OPEN_SONG,
+    type: OPEN_IMG,
     photo_url
   };
 };
 
-export const closeSong = () => {
+export const closeImg = () => {
   return {
-    type: CLOSE_SONG,
+    type: CLOSE_IMG,
   };
 };
 
@@ -39,13 +40,19 @@ export const removeSong = (song) => {
   }
 }
 
-const addSong = (song) => {
-
+export const addSong = (song) => {
     return {
         type: ADD_SONG,
         song,
     }
 };
+
+export const openSong = (song) => {
+  return {
+    type: OPEN_SONG,
+    song
+  }
+}
 
 const receiveAllSongs = (songs) => {
     return {

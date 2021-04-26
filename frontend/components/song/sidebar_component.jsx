@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { openSong, closeSong } from '../../actions/song_actions';
+import { openImg, closeImg } from '../../actions/song_actions';
 import { fetchSg } from '../../actions/song_actions';
 
 class SideContainer extends React.Component {
@@ -36,7 +36,7 @@ class SideContainer extends React.Component {
   }
 
   getSong(photo_url) {
-    this.props.fetchSong(this.props.album.id,0).then(() => this.props.openSong(photo_url));
+    this.props.fetchSong(this.props.album.id,0).then(() => this.props.openImg(photo_url));
   }
   
   render() {
@@ -67,8 +67,7 @@ const mapStateToProps = ({ session, entities: { users } }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSong: (album_id,song_id) => dispatch(fetchSg(album_id,song_id)),
-    openSong: (album_id) => dispatch(openSong(album_id)),
-    // closeSong: () => dispatch(closeSong()),
+    openImg: (album_id) => dispatch(openImg(album_id)),
   };
 }
 

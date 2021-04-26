@@ -1,36 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import PauseButton from './pause_button'
 import PlayButton from './play_button'
+import songReducer from '../../reducers/song_reducer';
 
 const AudioButton = React.forwardRef(({passSong,btn,loading,playTrack,pauseTrack,btnType,classType,song},ref) => {
   const [active, setActive] = useState(btn);
   const [command, setCommand] = useState(false);
-  
+  const [state,dispatch] = useReducer(songReducer,song)
+
   const handleClick = (e) => {
     setActive(!active)
     setCommand(e.currentTarget.id)
   }
 
-  const changeMainBtn = () => {
-    debugger
-    if (ref && classType === "btns2" && ref.ended) {setActive(false)}
-    if (ref && classType === "btns2" && !ref.ended) {setActive(true)}
-  }
-
   useEffect(() => {
     if (command === "pause-btn2" || "pause-btn3") {
-      
       pauseTrack()
-      if (command === "pause-btn3") {changeMainBtn()}
     } 
     if (command === "play-btn2") {
       playTrack()
     }
     if (command === "play-btn3") {
-      passSong(song)
-      changeMainBtn()
+      dispatch({type: 'OPEN_SONG',song: song})
     }
-  }, [command,classType,ref])
+  }, [command])
 
   return (
     <div className={classType}>

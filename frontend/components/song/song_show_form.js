@@ -21,7 +21,7 @@ class SongShow extends React.Component {
     }
 
     componentWillUnmount() {
-      this.props.closeSong();
+      this.props.closeImg();
     }
 
     currentUsr() {
@@ -86,7 +86,7 @@ class SongShow extends React.Component {
                 {!this.props.photo_url ? (
                   <></>
                 ) : (
-                  <button onClick={this.props.closeSong} id="close-audio">
+                  <button onClick={this.props.closeImg} id="close-audio">
                     X CLOSE SONG
                   </button>
                 )}
