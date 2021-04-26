@@ -4,9 +4,9 @@ import Title from './title';
 import DownloadLink from './download_link';
 import DeleteLink from './delete_link';
 
-const SongList = React.forwardRef(({url,btn,loading,loadTrack,playTrack,pauseTrack,duration
-                  ,currentTime,btnType,classType,title,deleteSong,bool,album_id
-                  ,id,idx},ref) => {
+const SongList = React.forwardRef(({passSong,song,btn,loading,playTrack,pauseTrack
+                  ,btnType,classType,deleteSong,bool,album_id,id,idx},ref) => {
+                    
 
     return (
       <>
@@ -14,24 +14,22 @@ const SongList = React.forwardRef(({url,btn,loading,loadTrack,playTrack,pauseTra
           <div className="style-row">
             <AudioButton
               ref={ref}
-              url={url}
+              passSong={passSong}
+              song={song}
               loading={loading}
-              btn={btn}
-              loadTrack={loadTrack}
               playTrack={playTrack}
+              btn={btn}
               pauseTrack={pauseTrack}
-              duration={duration}
-              currentTime={currentTime}
               btnType={btnType}
               classType={classType}
             />
-            <div className='song-list-item'>
-              <div className='idx-spacer'>{`${idx + 1}.`}</div>
-              <Title title={title} />
+            <div className="song-list-item">
+              <div className="idx-spacer">{`${idx + 1}.`}</div>
+              <Title title={song.title} />
             </div>
           </div>
           <div>
-            <DownloadLink url={url} />
+            <DownloadLink url={song.song_url} />
             <DeleteLink
               deleteSong={bool ? deleteSong : bool}
               album_id={album_id}

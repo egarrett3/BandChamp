@@ -1,12 +1,11 @@
 import React from 'react'
 import FooterItem from "../footer/footer";
 import GreetingContainer from "../greeting/greeting_container";
-import { Suspense, lazy } from 'react';
 import AlbumAudioPlayer from './album_audio_player';
 import UserAlbums from './user_albums';
-import DownloadLink from './download_link';
 import { faChevronDown, faChevronUp, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 // const AlbumAudioPlayer = React.lazy(() => import('./album_audio_player'));
 
@@ -20,8 +19,11 @@ class AlbumShow extends React.Component {
       songs: [],
       expand: true,
       uploading: false,
+      ready: false,
+      play: false,
     };
     // this.toggleExpand = this.toggleExpand.bind(this)
+  
   }
 
   componentDidMount() {
@@ -42,6 +44,11 @@ class AlbumShow extends React.Component {
         this.props.fetchUser(album.album.user.id)
       })
       this.props.fetchSongs(this.props.match.params.songId)
+        .then(songs => {
+          this.setState({
+            song: songs.songs[0]
+          })
+        })
   }
 
   componentWillUnmount() {
@@ -89,7 +96,9 @@ class AlbumShow extends React.Component {
   //     expand : !prevState.expand
   //   }));
   // }
- 
+
+
+
   render() {
     let showAlb = false;
     let lb = [];
@@ -109,9 +118,9 @@ class AlbumShow extends React.Component {
       ? showAlb.title
       : "";
       
-    let albs = showAlb
-      ? showAlb.albums
-      : [];
+    // let albs = showAlb
+    //   ? showAlb.albums
+    //   : [];
 
     // let albs = this.props.album
     //   ? this.props.album.albums
@@ -133,7 +142,8 @@ class AlbumShow extends React.Component {
         bool = true;
       }
     }
-
+    
+  
     return (
       <>
         <GreetingContainer />
@@ -153,19 +163,56 @@ class AlbumShow extends React.Component {
                   </div>
                 </div>
                 <div id="musicPlayerTrack">
-                  
                   <div id="full-package">
                     {/* <Suspense fallback={<div>loading...</div>}> */}
                     <AlbumAudioPlayer
                       titles={this.props.songs.map((song) => song.title)}
                       songs={this.props.songs}
+                      song={this.state.song}
+                      
                       deleteSong={bool ? this.props.deleteSong : bool}
                       album_id={this.props.match.params.songId}
                       bool={bool}
                     />
-                    
                   </div>
-                  
+                  {/* <div id="songLinkList">
+                    <div id="tracks">
+                      Tracks
+                      {this.state.expand ? (
+                        <FontAwesomeIcon
+                          icon={faChevronDown}
+                          className="expandable"
+                          onClick={() => this.toggleExpand()}
+                        />
+                      ) : (
+                        <FontAwesomeIcon
+                          icon={faChevronUp}
+                          className="expandable"
+                          onClick={() => this.toggleExpand()}
+                        />
+                      )}
+                    </div>
+                    <div className="songListwindow">
+                      {this.props.songs.map((song, idx) => (
+                        <SongList
+                          key={song.id}
+                          song={song}
+                          idx={idx}
+                          btn={this.state.button}
+                          passSongSrc={this.passSongSrc}
+                          pauseTrack={this.pauseTrack}
+                          btnType="btn3"
+                          classType="btns3"
+                          title={song.title}
+                          deleteSong={this.props.deleteSong}
+                          bool={this.props.bool}
+                          album_id={this.props.album_id}
+                          id={song.id}
+                        />
+                      ))}
+                    </div>
+                  </div> */}
+
                   {bool ? (
                     <div>
                       <input
@@ -188,7 +235,6 @@ class AlbumShow extends React.Component {
                   ) : (
                     <div></div>
                   )}
-                  
                 </div>
               </div>
 
@@ -216,7 +262,6 @@ class AlbumShow extends React.Component {
                     </ul>
                   </div>
                 </div>
-               
               </div>
               {/* <div id="discogrpahy"></div> */}
             </div>

@@ -9,7 +9,7 @@ const PlayButton = (props) => {
       <>  
         {!props.loading ? 
         ( <div id={"play-"+props.btnType} 
-               onClick={props.toggleButton}
+               onClick={props.handleClick}
           ></div> )
           :
         <FontAwesomeIcon icon={faSpinner} />}

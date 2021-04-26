@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AudioButton from '../audio/audio_button';
 import SongList from "./audio_list";
 
-
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
       super(props);
@@ -23,7 +22,7 @@ class AlbumAudioPlayer extends React.Component {
       this.getTime = this.getTime.bind(this);
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
-      this.loadTrack = this.loadTrack.bind(this);
+      this.passSong = this.passSong.bind(this)
     }
   
     componentDidMount() {
@@ -58,12 +57,15 @@ class AlbumAudioPlayer extends React.Component {
   
     pauseTrack() {
       this.audio1.pause();
+      this.setState({
+        btn: !this.state.btn
+      })
     }
   
-    loadTrack(src) {
-      this.source1.src = src;
-      this.audio1.load();
-    }
+    // loadTrack(src) {
+    //   this.source1.src = src;
+    //   this.audio1.load();
+    // }
   
     getTime(time) {
       if (!isNaN(time)) {
@@ -98,17 +100,31 @@ class AlbumAudioPlayer extends React.Component {
         expand: !prevState.expand,
       }));
     }
+
+    passSong(song) {
+      this.source1.src = song.song_url
+      this.audio1.autoplay = true;
+      this.audio1.load();
+      this.setState({
+        btn: !this.state.btn
+      })
+    }
   
-    componentDidUpdate() {
-      let src_url = this.props.songs.length
-        ? this.props.songs[this.state.counter].song_url
+    componentDidUpdate(prevProps) {
+      // if (prevProps.song !== this.props.song && this.audio1 && this.audio1.readyState===4) {
+      //   this.setState({
+      //     duration: this.audio1.duration
+      //   })
+      // }
+      let src_url = this.props.song
+        ? this.props.song.song_url
         : "";
-  
-      if (this.state.loaded && this.props.songs.length === 0) {
-        this.setState({
-          loaded: false,
-        });
-      }
+
+      // if (this.state.loaded && this.props.songs.length === 0) {
+      //   this.setState({
+      //     loaded: false,
+      //   });
+      // }
   
       if (this.source1 && src_url !== "" && this.state.loaded === false) {
         this.source1.src = src_url;
@@ -125,11 +141,11 @@ class AlbumAudioPlayer extends React.Component {
         });
       }
   
-      if (this.props.songs.length === 0 && this.state.counter !== 0) {
-        this.setState({
-          counter: 0,
-        });
-      }
+      // if (this.props.songs.length === 0 && this.state.counter !== 0) {
+      //   this.setState({
+      //     counter: 0,
+      //   });
+      // }
   
       // loads audio to remove buffered audio (no TimeRanges obj) and sets duration to 0 so
       // upon changing albums song duration === to '0:00' instead of the duration of buffered song
@@ -148,27 +164,37 @@ class AlbumAudioPlayer extends React.Component {
     
   
     render() {
+      
       const dur = this.getTime(this.state.duration);
       const ct = this.getTime(this.state.currentTime);
   
       const AlLength = this.props.songs.length;
   
-      let src_url = this.props.songs.length
-        ? this.props.songs[this.state.counter].song_url
+      let title = this.props.song ? this.props.song.title : ""
+      
+      let src_url = this.props.song
+        ? this.props.song.song_url
         : "";
   
-      if (this.state.counter === this.props.songs.length && this.props.songs) {
-        let src_url = this.props.songs.length
-          ? this.props.songs[this.state.counter - 1].song_url
-          : "";
+      // if (this.state.counter === this.props.songs.length && this.props.songs) {
+      //   let src_url = this.props.songs.length
+      //     ? this.props.songs[this.state.counter - 1].song_url
+      //     : "";
+      // }
+      if (this.audio1 && this.audio1.readyState === 4 && this.props.play) {
+        this.playTrack()
+      } 
+
+      if (this.state.paused === true) {
+        this.pauseTrack();
       }
   
-      // if (document.getElementById("ply1")) {
-      //   if (this.audio1.ended) {
-      //     this.audio1.currentTime = 0;
-      //     this.pauseTrack();
-      //   }
-      // }
+      if (document.getElementById("ply1")) {
+        if (this.audio1.ended) {
+          this.audio1.currentTime = 0;
+          this.pauseTrack();
+        }
+      }
   
       return (
         <>
@@ -194,16 +220,13 @@ class AlbumAudioPlayer extends React.Component {
               btn={this.state.btn}
               playTrack={this.playTrack}
               pauseTrack={this.pauseTrack}
-              loadTrack={this.loadTrack}
-              duration={dur}
-              currentTime={ct}
               btnType="btn2"
               classType="btns2"
             />
             <div className="audio-label2">
               <div className="weekly-label">
                 <h3 className="weekly">
-                  {this.props.titles[this.state.counter]}
+                  {title}
                 </h3>
                 <div className="timer2">
                   <span id="curTimeText">{ct}</span>/
@@ -236,7 +259,7 @@ class AlbumAudioPlayer extends React.Component {
               </div>
             </div>
           </div>
-          <ol id="songLinkList">
+          <div id="songLinkList">
             <div id="tracks">
               Tracks
               {this.state.expand ? (
@@ -258,18 +281,16 @@ class AlbumAudioPlayer extends React.Component {
                 <SongList 
                   ref={this.audio1}
                   key={song.id}
-                  url={song.url}
+                  song={song}
                   idx={idx}
                   btn={this.state.button}
-                  loading={this.state.loading}
-                  loadTrack={this.loadTrack}
+                  passSong={this.passSong}
                   playTrack={this.playTrack}
                   pauseTrack={this.pauseTrack}
                   duration={dur}
                   currentTime={ct}
                   btnType="btn3"
                   classType="btns3"
-                  title={song.title}
                   deleteSong={this.props.deleteSong}
                   bool={this.props.bool}
                   album_id={this.props.album_id}
@@ -277,7 +298,7 @@ class AlbumAudioPlayer extends React.Component {
                 />
               ))}
             </div>
-          </ol>
+          </div>
         </>
       );
     }
