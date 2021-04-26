@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useReducer } from "react";
-import PauseButton from './pause_button'
-import PlayButton from './play_button'
-import songReducer from '../../reducers/song_reducer';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import PauseButton from './pause_button';
+import PlayButton from './play_button';
 
-const AudioButton = React.forwardRef(({passSong,btn,loading,playTrack,pauseTrack,btnType,classType,song},ref) => {
+const AudioButton = React.forwardRef(({openSong,btn,loading,playTrack,pauseTrack,btnType,classType,song},ref) => {
   const [active, setActive] = useState(btn);
   const [command, setCommand] = useState(false);
-  const [state,dispatch] = useReducer(songReducer,song)
+
+  const dispatch = useDispatch();
 
   const handleClick = (e) => {
     setActive(!active)
@@ -21,7 +22,7 @@ const AudioButton = React.forwardRef(({passSong,btn,loading,playTrack,pauseTrack
       playTrack()
     }
     if (command === "play-btn3") {
-      dispatch({type: 'OPEN_SONG',song: song})
+      dispatch(openSong(song))
     }
   }, [command])
 

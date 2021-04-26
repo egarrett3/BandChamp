@@ -200,16 +200,16 @@ class AlbumAudioPlayer extends React.Component {
                 id="src2"
               />
             </audio>
-            {/* <AudioButton
+            <AudioButton
               ref={this.audio1}
-              url={src_url}
+              url={this.props.song.song_url}
               loading={this.state.loading}
               btn={this.state.btn}
               playTrack={this.playTrack}
               pauseTrack={this.pauseTrack}
               btnType="btn2"
               classType="btns2"
-            /> */}
+            />
             <div className="audio-label2">
               <div className="weekly-label">
                 <h3 className="weekly">
@@ -264,8 +264,9 @@ class AlbumAudioPlayer extends React.Component {
               )}
             </div>
             <div className="songListwindow">
-              {/* {this.props.songs.map((song,idx) => (
+              {this.props.songs.map((song,idx) => (
                 <SongList 
+                  openSong={this.props.openSong}
                   ref={this.audio1}
                   key={song.id}
                   song={song}
@@ -283,7 +284,7 @@ class AlbumAudioPlayer extends React.Component {
                   album_id={this.props.album_id}
                   id={song.id}
                 />
-              ))} */}
+              ))}
             </div>
           </div>
         </>

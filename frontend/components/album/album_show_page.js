@@ -170,45 +170,10 @@ class AlbumShow extends React.Component {
                       deleteSong={bool ? this.props.deleteSong : bool}
                       album_id={this.props.match.params.songId}
                       bool={bool}
+                      openSong={this.props.openSong}
                     />
                   </div>
-                  {/* <div id="songLinkList">
-                    <div id="tracks">
-                      Tracks
-                      {this.state.expand ? (
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                          className="expandable"
-                          onClick={() => this.toggleExpand()}
-                        />
-                      ) : (
-                        <FontAwesomeIcon
-                          icon={faChevronUp}
-                          className="expandable"
-                          onClick={() => this.toggleExpand()}
-                        />
-                      )}
-                    </div>
-                    <div className="songListwindow">
-                      {this.props.songs.map((song, idx) => (
-                        <SongList
-                          key={song.id}
-                          song={song}
-                          idx={idx}
-                          btn={this.state.button}
-                          passSongSrc={this.passSongSrc}
-                          pauseTrack={this.pauseTrack}
-                          btnType="btn3"
-                          classType="btns3"
-                          title={song.title}
-                          deleteSong={this.props.deleteSong}
-                          bool={this.props.bool}
-                          album_id={this.props.album_id}
-                          id={song.id}
-                        />
-                      ))}
-                    </div>
-                  </div> */}
+                  
 
                   {bool ? (
                     <div>

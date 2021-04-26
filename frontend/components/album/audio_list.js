@@ -4,7 +4,7 @@ import Title from './title';
 import DownloadLink from './download_link';
 import DeleteLink from './delete_link';
 
-const SongList = React.forwardRef(({passSong,song,btn,loading,playTrack,pauseTrack
+const SongList = React.forwardRef(({openSong,passSong,song,btn,loading,playTrack,pauseTrack
                   ,btnType,classType,deleteSong,bool,album_id,id,idx},ref) => {
                     
 
@@ -13,6 +13,7 @@ const SongList = React.forwardRef(({passSong,song,btn,loading,playTrack,pauseTra
         <span className="audio-list">
           <div className="style-row">
             <AudioButton
+              openSong={openSong}
               ref={ref}
               passSong={passSong}
               song={song}
