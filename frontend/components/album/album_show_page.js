@@ -44,11 +44,7 @@ class AlbumShow extends React.Component {
         this.props.fetchUser(album.album.user.id)
       })
       this.props.fetchSongs(this.props.match.params.songId)
-        .then(songs => {
-          this.setState({
-            song: songs.songs[0]
-          })
-        })
+      this.props.fetchSong(this.props.match.params.songId,0);
   }
 
   componentWillUnmount() {
@@ -70,6 +66,9 @@ class AlbumShow extends React.Component {
           window.location.href = "/#/usrprofile";
         }
       }
+    }
+    if (this.props.song.id === "undefined") {
+      this.props.fetchSong(albId, 0);
     }
   }
 
@@ -143,7 +142,6 @@ class AlbumShow extends React.Component {
       }
     }
     
-  
     return (
       <>
         <GreetingContainer />
@@ -168,8 +166,7 @@ class AlbumShow extends React.Component {
                     <AlbumAudioPlayer
                       titles={this.props.songs.map((song) => song.title)}
                       songs={this.props.songs}
-                      song={this.state.song}
-                      
+                      song={this.props.song}
                       deleteSong={bool ? this.props.deleteSong : bool}
                       album_id={this.props.match.params.songId}
                       bool={bool}

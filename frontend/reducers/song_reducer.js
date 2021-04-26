@@ -4,7 +4,7 @@ import { merge } from 'lodash';
 
 const songReducer = (state = {}, action) => {
   Object.freeze(state);
-  debugger
+  
   switch (action.type) {
     case ADD_SONG:
       const newSong = action.song;

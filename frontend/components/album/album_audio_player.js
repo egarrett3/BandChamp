@@ -22,7 +22,6 @@ class AlbumAudioPlayer extends React.Component {
       this.getTime = this.getTime.bind(this);
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
-      this.passSong = this.passSong.bind(this)
     }
   
     componentDidMount() {
@@ -53,6 +52,7 @@ class AlbumAudioPlayer extends React.Component {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         this.audio1.play();
       }
+    
     }
   
     pauseTrack() {
@@ -100,15 +100,6 @@ class AlbumAudioPlayer extends React.Component {
         expand: !prevState.expand,
       }));
     }
-
-    passSong(song) {
-      this.source1.src = song.song_url
-      this.audio1.autoplay = true;
-      this.audio1.load();
-      this.setState({
-        btn: !this.state.btn
-      })
-    }
   
     componentDidUpdate(prevProps) {
       // if (prevProps.song !== this.props.song && this.audio1 && this.audio1.readyState===4) {
@@ -119,14 +110,13 @@ class AlbumAudioPlayer extends React.Component {
       let src_url = this.props.song
         ? this.props.song.song_url
         : "";
-
+    
       // if (this.state.loaded && this.props.songs.length === 0) {
       //   this.setState({
       //     loaded: false,
       //   });
       // }
-  
-      if (this.source1 && src_url !== "" && this.state.loaded === false) {
+      if (this.source1.src === "" && this.state.loaded === false && src_url) {
         this.source1.src = src_url;
         this.audio1.load();
         this.setState({
@@ -171,8 +161,6 @@ class AlbumAudioPlayer extends React.Component {
       const AlLength = this.props.songs.length;
   
       let title = this.props.song ? this.props.song.title : ""
-      
-      let src_url = this.props.song
         ? this.props.song.song_url
         : "";
   
@@ -195,7 +183,7 @@ class AlbumAudioPlayer extends React.Component {
           this.pauseTrack();
         }
       }
-  
+
       return (
         <>
           <div id="audio-player2">
@@ -210,10 +198,9 @@ class AlbumAudioPlayer extends React.Component {
               <source
                 ref={(ref) => (this.source1 = ref)}
                 id="src2"
-                src={src_url}
               />
             </audio>
-            <AudioButton
+            {/* <AudioButton
               ref={this.audio1}
               url={src_url}
               loading={this.state.loading}
@@ -222,7 +209,7 @@ class AlbumAudioPlayer extends React.Component {
               pauseTrack={this.pauseTrack}
               btnType="btn2"
               classType="btns2"
-            />
+            /> */}
             <div className="audio-label2">
               <div className="weekly-label">
                 <h3 className="weekly">
@@ -277,7 +264,7 @@ class AlbumAudioPlayer extends React.Component {
               )}
             </div>
             <div className="songListwindow">
-              {this.props.songs.map((song,idx) => (
+              {/* {this.props.songs.map((song,idx) => (
                 <SongList 
                   ref={this.audio1}
                   key={song.id}
@@ -296,7 +283,7 @@ class AlbumAudioPlayer extends React.Component {
                   album_id={this.props.album_id}
                   id={song.id}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </>

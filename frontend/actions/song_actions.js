@@ -62,7 +62,7 @@ const receiveAllSongs = (songs) => {
 };
 
 export const fetchSg = (albumId,songId) => dispatch => fetchSong(albumId,songId)
-    .then(song => dispatch(addSong(song)));
+    .then(song => dispatch(openSong(song)));
 
 export const fetchSgs = (albumId) => dispatch => fetchSongs(albumId)
     .then(songs => dispatch(receiveAllSongs(songs)));
