@@ -16,14 +16,12 @@ class AlbumAudioPlayer extends React.Component {
         loading: false, // tracks whether to show buffer symbol
         btn: false,
         expand: true,
-        play: true,
       };
       this.nextSong = this.nextSong.bind(this);
       this.previousSong = this.previousSong.bind(this);
       this.getTime = this.getTime.bind(this);
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
-      this.handleToggle = this.handleToggle.bind(this);
     }
   
     componentDidMount() {
@@ -62,13 +60,6 @@ class AlbumAudioPlayer extends React.Component {
       this.handleToggle();
     }
 
-    handleToggle() {
-      this.setState({
-        play: !this.state.play,
-      });
-    
-    }
-  
     getTime(time) {
       if (!isNaN(time)) {
         return (
