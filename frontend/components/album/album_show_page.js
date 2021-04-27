@@ -173,8 +173,7 @@ class AlbumShow extends React.Component {
                       openSong={this.props.openSong}
                     />
                   </div>
-                  
-
+                
                   {bool ? (
                     <div>
                       <input

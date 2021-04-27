@@ -16,12 +16,14 @@ class AlbumAudioPlayer extends React.Component {
         loading: false, // tracks whether to show buffer symbol
         btn: false,
         expand: true,
+        play: true,
       };
       this.nextSong = this.nextSong.bind(this);
       this.previousSong = this.previousSong.bind(this);
       this.getTime = this.getTime.bind(this);
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
+      this.handleToggle = this.handleToggle.bind(this);
     }
   
     componentDidMount() {
@@ -51,21 +53,21 @@ class AlbumAudioPlayer extends React.Component {
     playTrack() {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         this.audio1.play();
+        this.handleToggle();
       }
-    
     }
   
     pauseTrack() {
       this.audio1.pause();
-      this.setState({
-        btn: !this.state.btn
-      })
+      this.handleToggle();
     }
-  
-    // loadTrack(src) {
-    //   this.source1.src = src;
-    //   this.audio1.load();
-    // }
+
+    handleToggle() {
+      this.setState({
+        play: !this.state.play,
+      });
+    
+    }
   
     getTime(time) {
       if (!isNaN(time)) {
@@ -116,6 +118,14 @@ class AlbumAudioPlayer extends React.Component {
       //     loaded: false,
       //   });
       // }
+
+      if (prevProps.song.id && this.props.song.id && prevProps.song.id !== this.props.song.id) {
+        this.source1.src = src_url;
+        this.audio1.load();
+        this.playTrack();
+        
+      }
+
       if (this.source1.src === "" && this.state.loaded === false && src_url) {
         this.source1.src = src_url;
         this.audio1.load();
@@ -154,24 +164,18 @@ class AlbumAudioPlayer extends React.Component {
     
   
     render() {
-      
       const dur = this.getTime(this.state.duration);
       const ct = this.getTime(this.state.currentTime);
   
-      const AlLength = this.props.songs.length;
+      // const AlLength = this.props.songs.length;
   
       let title = this.props.song ? this.props.song.title : ""
-        ? this.props.song.song_url
-        : "";
   
       // if (this.state.counter === this.props.songs.length && this.props.songs) {
       //   let src_url = this.props.songs.length
       //     ? this.props.songs[this.state.counter - 1].song_url
       //     : "";
       // }
-      if (this.audio1 && this.audio1.readyState === 4 && this.props.play) {
-        this.playTrack()
-      } 
 
       if (this.state.paused === true) {
         this.pauseTrack();
@@ -193,18 +197,19 @@ class AlbumAudioPlayer extends React.Component {
               ref={(ref) => (this.audio1 = ref)}
               type="audio/mpeg"
               preload="auto"
-              onLoadedMetadata={() => (this.seekbar1.max = this.audio1.duration)}
+              onLoadedMetadata={() =>
+                (this.seekbar1.max = this.audio1.duration)
+              }
             >
-              <source
-                ref={(ref) => (this.source1 = ref)}
-                id="src2"
-              />
+              <source ref={(ref) => (this.source1 = ref)} id="src2" />
             </audio>
             <AudioButton
               ref={this.audio1}
               url={this.props.song.song_url}
               loading={this.state.loading}
               btn={this.state.btn}
+  
+              play={this.state.play}
               playTrack={this.playTrack}
               pauseTrack={this.pauseTrack}
               btnType="btn2"
@@ -212,9 +217,7 @@ class AlbumAudioPlayer extends React.Component {
             />
             <div className="audio-label2">
               <div className="weekly-label">
-                <h3 className="weekly">
-                  {title}
-                </h3>
+                <h3 className="weekly">{title}</h3>
                 <div className="timer2">
                   <span id="curTimeText">{ct}</span>/
                   <span id="durTimeText">{dur}</span>
@@ -227,7 +230,9 @@ class AlbumAudioPlayer extends React.Component {
                   min="0"
                   step="0.1"
                   id="audio-track2"
-                  onChange={() => (this.audio1.currentTime = this.seekbar1.value)}
+                  onChange={() =>
+                    (this.audio1.currentTime = this.seekbar1.value)
+                  }
                 ></input>
                 <div id="space-it-out">
                   <button
@@ -264,8 +269,10 @@ class AlbumAudioPlayer extends React.Component {
               )}
             </div>
             <div className="songListwindow">
-              {this.props.songs.map((song,idx) => (
-                <SongList 
+              {this.props.songs.map((song, idx) => (
+                <SongList
+                  play={true}
+                  handleToggle={this.handleToggle}
                   openSong={this.props.openSong}
                   ref={this.audio1}
                   key={song.id}
