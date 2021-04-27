@@ -17,7 +17,7 @@ class AlbumAudioPlayer extends React.Component {
         loading: false, // tracks whether to show buffer symbol
         btn: false,
         expand: true,
-        played: false,
+        // played: false,
       };
       this.nextSong = this.nextSong.bind(this);
       this.previousSong = this.previousSong.bind(this);
@@ -50,14 +50,16 @@ class AlbumAudioPlayer extends React.Component {
       this.audio1.removeEventListener("timeupdate", () => {});
     }
   
-    playTrack(callback) {
+    playTrack(callback,data) {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
-        this.audio1.play();
-        if (typeof callback === 'function') { 
+        if (typeof callback === 'function' && typeof data !== 'object') { 
           callback() 
+          this.audio1.play();
         }
-        if (typeof callback !== 'function') {
-          this.props.openSong(callback)
+        if (typeof callback === 'function' && typeof data === 'object') {
+          this.props.openSong(data)
+          callback()
+          this.audio1.play()
         }
       }
     }
@@ -117,17 +119,17 @@ class AlbumAudioPlayer extends React.Component {
       //   });
       // }
 
-      if (this.state.currentTime > 0 && this.state.currentTime < this.state.duration && this.state.played === false) {
-        this.setState({
-          played: true
-        })
-      }
+      // if (this.state.currentTime > 0 && this.state.currentTime < this.state.duration && this.state.played === false) {
+      //   this.setState({
+      //     played: true
+      //   })
+      // }
 
-      if (this.state.currentTime === 0 && this.state.played && this.audio1.ended) {
-        this.setState({
-          played: false
-        })
-      }
+      // if (this.state.currentTime === 0 && this.state.played && this.audio1.ended) {
+      //   this.setState({
+      //     played: false
+      //   })
+      // }
 
       if (prevProps.song.id && this.props.song.id && prevProps.song.id !== this.props.song.id) {
         this.source1.src = src_url;
@@ -276,9 +278,10 @@ class AlbumAudioPlayer extends React.Component {
             <div className="songListwindow">
               {this.props.songs.map((song, idx) => (
                 <SongList
-                  played={this.state.played}
+                  // played={this.state.played}
                   key={song.id}
                   sng={song}
+                  song={this.props.song}
                   idx={idx}
                   pauseTrack={this.pauseTrack}
                   playTrack={this.playTrack}

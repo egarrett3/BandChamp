@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PauseButton from './pause_button';
 import PlayButton from './play_button';
 
-const MainAudioButton = ({openSong,played,pauseTrack,playTrack,btnType,classType,sng}) => {
+const AudioButton = ({played,pauseTrack,playTrack,btnType,classType,sng,song}) => {
   const [active, setActive] = useState(false);
   const [command, setCommand] = useState(false);
 
@@ -19,10 +19,10 @@ const MainAudioButton = ({openSong,played,pauseTrack,playTrack,btnType,classType
       pauseTrack(toggleActive)
     } 
     if (command === "play-btn3") {
-      if (played) {
+      if (sng.id === song.id) {
         playTrack(toggleActive)
       } else {
-        playTrack(sng)
+        playTrack(toggleActive,sng)
       }
     }
   }, [command,played])
@@ -38,4 +38,4 @@ const MainAudioButton = ({openSong,played,pauseTrack,playTrack,btnType,classType
   );
 };
 
-export default MainAudioButton;
+export default AudioButton;

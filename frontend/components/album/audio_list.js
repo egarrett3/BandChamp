@@ -4,7 +4,7 @@ import Title from './title';
 import DownloadLink from './download_link';
 import DeleteLink from './delete_link';
 
-const SongList = ({sng,played,playTrack,pauseTrack
+const SongList = ({sng,song,played,playTrack,pauseTrack
                   ,btnType,classType,deleteSong,bool,album_id,id,idx}) => {
                     
     return (
@@ -14,6 +14,7 @@ const SongList = ({sng,played,playTrack,pauseTrack
             <AudioButton
               played={played}
               sng={sng}
+              song={song}
               playTrack={playTrack}
               pauseTrack={pauseTrack}
               btnType={btnType}
@@ -21,11 +22,11 @@ const SongList = ({sng,played,playTrack,pauseTrack
             />
             <div className="song-list-item">
               <div className="idx-spacer">{`${idx + 1}.`}</div>
-              <Title title={song.title} />
+              <Title title={sng.title} />
             </div>
           </div>
           <div>
-            <DownloadLink url={song.song_url} />
+            <DownloadLink url={sng.song_url} />
             <DeleteLink
               deleteSong={bool ? deleteSong : bool}
               album_id={album_id}
