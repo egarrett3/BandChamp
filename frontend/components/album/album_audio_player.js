@@ -1,8 +1,9 @@
 import React from "react";
 import { faFastForward, faFastBackward, faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import AudioButton from '../audio/audio_button';
+import MainAudioButton from '../audio/main_audio_button';
 import SongList from "./audio_list";
+
 
 class AlbumAudioPlayer extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class AlbumAudioPlayer extends React.Component {
         loading: false, // tracks whether to show buffer symbol
         btn: false,
         expand: true,
+        played: false,
       };
       this.nextSong = this.nextSong.bind(this);
       this.previousSong = this.previousSong.bind(this);
@@ -48,16 +50,21 @@ class AlbumAudioPlayer extends React.Component {
       this.audio1.removeEventListener("timeupdate", () => {});
     }
   
-    playTrack() {
+    playTrack(callback) {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         this.audio1.play();
-        this.handleToggle();
+        if (typeof callback === 'function') { 
+          callback() 
+        }
+        if (typeof callback !== 'function') {
+          this.props.openSong(callback)
+        }
       }
     }
   
-    pauseTrack() {
+    pauseTrack(callback) {
       this.audio1.pause();
-      this.handleToggle();
+      if (callback) {callback()};
     }
 
     getTime(time) {
@@ -110,11 +117,22 @@ class AlbumAudioPlayer extends React.Component {
       //   });
       // }
 
+      if (this.state.currentTime > 0 && this.state.currentTime < this.state.duration && this.state.played === false) {
+        this.setState({
+          played: true
+        })
+      }
+
+      if (this.state.currentTime === 0 && this.state.played && this.audio1.ended) {
+        this.setState({
+          played: false
+        })
+      }
+
       if (prevProps.song.id && this.props.song.id && prevProps.song.id !== this.props.song.id) {
         this.source1.src = src_url;
         this.audio1.load();
-        this.playTrack();
-        
+        // this.playTrack();
       }
 
       if (this.source1.src === "" && this.state.loaded === false && src_url) {
@@ -169,13 +187,13 @@ class AlbumAudioPlayer extends React.Component {
       // }
 
       if (this.state.paused === true) {
-        this.pauseTrack();
+        // this.pauseTrack();
       }
   
       if (document.getElementById("ply1")) {
         if (this.audio1.ended) {
           this.audio1.currentTime = 0;
-          this.pauseTrack();
+          // this.pauseTrack();
         }
       }
 
@@ -194,13 +212,9 @@ class AlbumAudioPlayer extends React.Component {
             >
               <source ref={(ref) => (this.source1 = ref)} id="src2" />
             </audio>
-            <AudioButton
-              ref={this.audio1}
-              url={this.props.song.song_url}
+            <MainAudioButton
               loading={this.state.loading}
               btn={this.state.btn}
-  
-              play={this.state.play}
               playTrack={this.playTrack}
               pauseTrack={this.pauseTrack}
               btnType="btn2"
@@ -262,17 +276,12 @@ class AlbumAudioPlayer extends React.Component {
             <div className="songListwindow">
               {this.props.songs.map((song, idx) => (
                 <SongList
-                  play={true}
-                  handleToggle={this.handleToggle}
-                  openSong={this.props.openSong}
-                  ref={this.audio1}
+                  played={this.state.played}
                   key={song.id}
-                  song={song}
+                  sng={song}
                   idx={idx}
-                  btn={this.state.button}
-                  passSong={this.passSong}
-                  playTrack={this.playTrack}
                   pauseTrack={this.pauseTrack}
+                  playTrack={this.playTrack}
                   duration={dur}
                   currentTime={ct}
                   btnType="btn3"

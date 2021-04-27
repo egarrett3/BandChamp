@@ -2,21 +2,25 @@ import React, { useState, useEffect } from "react";
 import PauseButton from "./pause_button";
 import PlayButton from "./play_button";
 
-const AudioButton = ({ loading, playTrack, pauseTrack, btnType, classType, btn}) => {
+const AudioButton = ({ loading, playTrack, pauseTrack, btnType, classType, }) => {
     const [active, setActive] = useState(false);
     const [command, setCommand] = useState(false);
 
     const handleClick = (e) => {
-      setActive(!active);
-      setCommand(e.currentTarget.id);
+    //   setActive(!active);
+      if (e) {setCommand(e.currentTarget.id)};
     };
+
+    const toggleActive = () => {
+        setActive(!active)
+    }
 
     useEffect(() => {
       if (command === "pause-btn2") {
-        pauseTrack();
+        pauseTrack(toggleActive);
       }
       if (command === "play-btn2") {
-        playTrack();
+        playTrack(toggleActive);
       }
     }, [command]);
 

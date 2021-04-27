@@ -4,22 +4,17 @@ import Title from './title';
 import DownloadLink from './download_link';
 import DeleteLink from './delete_link';
 
-const SongList = React.forwardRef(({openSong,passSong,song,btn,loading,playTrack,pauseTrack
-                  ,btnType,classType,deleteSong,bool,album_id,id,idx},ref) => {
+const SongList = ({sng,played,playTrack,pauseTrack
+                  ,btnType,classType,deleteSong,bool,album_id,id,idx}) => {
                     
-
     return (
       <>
         <span className="audio-list">
           <div className="style-row">
             <AudioButton
-              openSong={openSong}
-              ref={ref}
-              passSong={passSong}
-              song={song}
-              loading={loading}
+              played={played}
+              sng={sng}
               playTrack={playTrack}
-              btn={btn}
               pauseTrack={pauseTrack}
               btnType={btnType}
               classType={classType}
@@ -40,6 +35,6 @@ const SongList = React.forwardRef(({openSong,passSong,song,btn,loading,playTrack
         </span>
       </>
     );
-});
+}
 
 export default SongList;

@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
 import PauseButton from './pause_button';
 import PlayButton from './play_button';
 
-const AudioButton = React.forwardRef(({openSong,loading,pauseTrack,btnType,classType,song},ref) => {
+const MainAudioButton = ({openSong,played,pauseTrack,playTrack,btnType,classType,sng}) => {
   const [active, setActive] = useState(false);
   const [command, setCommand] = useState(false);
 
-  const dispatch = useDispatch();
-
   const handleClick = (e) => {
-    setActive(!active)
     setCommand(e.currentTarget.id)
   }
 
+  const toggleActive = () => {
+    setActive(!active);
+  };
+
   useEffect(() => {
     if (command === "pause-btn3") {
-      pauseTrack()
+      pauseTrack(toggleActive)
     } 
     if (command === "play-btn3") {
-      dispatch(openSong(song))
+      if (played) {
+        playTrack(toggleActive)
+      } else {
+        playTrack(sng)
+      }
     }
-  }, [command])
+  }, [command,played])
 
   return (
     <div className={classType}>
       {active ? (
         <PauseButton btnType={btnType} handleClick={handleClick}/>          
       ) : (
-        <PlayButton btnType={btnType} loading={loading} handleClick={handleClick}/>
+        <PlayButton btnType={btnType} handleClick={handleClick}/>
       )}
     </div>
   );
-});
+};
 
-export default AudioButton;
+export default MainAudioButton;
