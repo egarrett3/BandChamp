@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import PauseButton from './pause_button';
 import PlayButton from './play_button';
 
-const AudioButton = React.forwardRef(({openSong,loading,playTrack,pauseTrack,btnType,classType,song},ref) => {
+const AudioButton = React.forwardRef(({openSong,loading,pauseTrack,btnType,classType,song},ref) => {
   const [active, setActive] = useState(false);
   const [command, setCommand] = useState(false);
 
@@ -15,12 +15,9 @@ const AudioButton = React.forwardRef(({openSong,loading,playTrack,pauseTrack,btn
   }
 
   useEffect(() => {
-    if (command === "pause-btn2" || command === "pause-btn3") {
+    if (command === "pause-btn3") {
       pauseTrack()
     } 
-    if (command === "play-btn2") {
-      playTrack()
-    }
     if (command === "play-btn3") {
       dispatch(openSong(song))
     }
