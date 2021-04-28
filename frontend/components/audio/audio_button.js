@@ -5,14 +5,16 @@ import PlayButton from './play_button';
 const AudioButton = ({played,pauseTrack,playTrack,btnType,classType,sng,song}) => {
   const [active, setActive] = useState(false);
   const [command, setCommand] = useState(false);
+  // const playbtn2 = document.querySelector("#play-btn2");
+  // const pausebtn2 = document.querySelector("#pause-btn2");
 
+  const toggleActive = () => {
+    setActive(!active)
+  };
+  
   const handleClick = (e) => {
     setCommand(e.currentTarget.id)
   }
-
-  const toggleActive = () => {
-    setActive(!active);
-  };
 
   useEffect(() => {
     if (command === "pause-btn3") {

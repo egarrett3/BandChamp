@@ -63,15 +63,16 @@ class AlbumAudioPlayer extends React.Component {
     }
   
     playTrack(callback,data) {
+      debugger
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         if (typeof callback === 'function' && typeof data !== 'object') { 
+          callback(); 
           this.audio1.play();
-          callback() 
         }
         
         if (typeof callback === 'function' && typeof data === 'object') {
           this.props.openSong(data)
-          this.stall()
+          this.stall();
           callback();
         }
       }
@@ -84,6 +85,7 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     pauseTrack(callback) {
+      debugger
       this.audio1.pause();
       if (callback) {callback()};
     }
