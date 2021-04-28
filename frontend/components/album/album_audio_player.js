@@ -17,13 +17,13 @@ class AlbumAudioPlayer extends React.Component {
         loading: false, // tracks whether to show buffer symbol
         btn: false,
         expand: true,
-        // played: false,
       };
       this.nextSong = this.nextSong.bind(this);
       this.previousSong = this.previousSong.bind(this);
       this.getTime = this.getTime.bind(this);
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
+      this.stall = this.stall.bind(this);
     }
   
     componentDidMount() {
@@ -40,12 +40,24 @@ class AlbumAudioPlayer extends React.Component {
           currentTime: e.target.currentTime,
         });
       });
+
+      this.audio1.addEventListener("canplaythrough", (e) => {
+        this.setState({
+          loading: false,
+        });
+      });
+
+      this.audio1.addEventListener("loadstart", (e) => {
+        this.setState({
+          loading: true,
+        });
+      });
   
       this.audio1.addEventListener("timeupdate", (e) => {
         this.seekbar1.value = e.target.currentTime;
       });
     }
-  
+
     componentWillUnmount() {
       this.audio1.removeEventListener("timeupdate", () => {});
     }
@@ -53,17 +65,24 @@ class AlbumAudioPlayer extends React.Component {
     playTrack(callback,data) {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         if (typeof callback === 'function' && typeof data !== 'object') { 
-          callback() 
           this.audio1.play();
+          callback() 
         }
+        
         if (typeof callback === 'function' && typeof data === 'object') {
           this.props.openSong(data)
-          callback()
-          this.audio1.play()
+          this.stall()
+          callback();
         }
       }
     }
-  
+
+    stall() {
+      setTimeout(() => {
+          this.audio1.play();
+      }, 1000);
+    }
+
     pauseTrack(callback) {
       this.audio1.pause();
       if (callback) {callback()};
@@ -82,7 +101,6 @@ class AlbumAudioPlayer extends React.Component {
         this.setState({
           counter: this.state.counter + 1,
           loaded: false,
-          loading: true,
         });
       }
     }
@@ -92,7 +110,6 @@ class AlbumAudioPlayer extends React.Component {
         this.setState({
           counter: this.state.counter - 1,
           loaded: false,
-          loading: true,
         });
       }
     }
@@ -104,37 +121,14 @@ class AlbumAudioPlayer extends React.Component {
     }
   
     componentDidUpdate(prevProps) {
-      // if (prevProps.song !== this.props.song && this.audio1 && this.audio1.readyState===4) {
-      //   this.setState({
-      //     duration: this.audio1.duration
-      //   })
-      // }
+      
       let src_url = this.props.song
         ? this.props.song.song_url
         : "";
-    
-      // if (this.state.loaded && this.props.songs.length === 0) {
-      //   this.setState({
-      //     loaded: false,
-      //   });
-      // }
-
-      // if (this.state.currentTime > 0 && this.state.currentTime < this.state.duration && this.state.played === false) {
-      //   this.setState({
-      //     played: true
-      //   })
-      // }
-
-      // if (this.state.currentTime === 0 && this.state.played && this.audio1.ended) {
-      //   this.setState({
-      //     played: false
-      //   })
-      // }
 
       if (prevProps.song.id && this.props.song.id && prevProps.song.id !== this.props.song.id) {
         this.source1.src = src_url;
         this.audio1.load();
-        // this.playTrack();
       }
 
       if (this.source1.src === "" && this.state.loaded === false && src_url) {
@@ -145,18 +139,6 @@ class AlbumAudioPlayer extends React.Component {
           loaded: true,
         });
       }
-  
-      if (this.audio1.buffered.length === 1 && this.state.loading) {
-        this.setState({
-          loading: false,
-        });
-      }
-  
-      // if (this.props.songs.length === 0 && this.state.counter !== 0) {
-      //   this.setState({
-      //     counter: 0,
-      //   });
-      // }
   
       // loads audio to remove buffered audio (no TimeRanges obj) and sets duration to 0 so
       // upon changing albums song duration === to '0:00' instead of the duration of buffered song
@@ -187,10 +169,6 @@ class AlbumAudioPlayer extends React.Component {
       //     ? this.props.songs[this.state.counter - 1].song_url
       //     : "";
       // }
-
-      if (this.state.paused === true) {
-        // this.pauseTrack();
-      }
   
       if (document.getElementById("ply1")) {
         if (this.audio1.ended) {
@@ -216,7 +194,6 @@ class AlbumAudioPlayer extends React.Component {
             </audio>
             <MainAudioButton
               loading={this.state.loading}
-              btn={this.state.btn}
               playTrack={this.playTrack}
               pauseTrack={this.pauseTrack}
               btnType="btn2"
@@ -278,15 +255,12 @@ class AlbumAudioPlayer extends React.Component {
             <div className="songListwindow">
               {this.props.songs.map((song, idx) => (
                 <SongList
-                  // played={this.state.played}
                   key={song.id}
                   sng={song}
                   song={this.props.song}
                   idx={idx}
                   pauseTrack={this.pauseTrack}
                   playTrack={this.playTrack}
-                  duration={dur}
-                  currentTime={ct}
                   btnType="btn3"
                   classType="btns3"
                   deleteSong={this.props.deleteSong}
