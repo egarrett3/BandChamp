@@ -4,7 +4,7 @@ import Title from './title';
 import DownloadLink from './download_link';
 import DeleteLink from './delete_link';
 
-const SongList = ({sng,song,played,playTrack,pauseTrack
+const SongList = ({sng,song,playTrack,pauseTrack
                   ,btnType,classType,deleteSong,bool,album_id,id,idx}) => {
                     
     return (
@@ -12,7 +12,6 @@ const SongList = ({sng,song,played,playTrack,pauseTrack
         <span className="audio-list">
           <div className="style-row">
             <AudioButton
-              played={played}
               sng={sng}
               song={song}
               playTrack={playTrack}

@@ -1,30 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PauseButton from "./pause_button";
 import PlayButton from "./play_button";
 
 const MainAudioButton = ({ loading, playTrack, pauseTrack, btnType, classType, }) => {
-    const [active, setActive] = useState(false);
+    const [mainactive, setmainActive] = useState(false);
     const [command, setCommand] = useState(false);
     const [isInit, setisInit] = useState(false);
     // const songBtns = document.querySelectorAll('div.btns3')
-    
-    const toggleActive = () => {
-      debugger
-        setActive(!active)
-    }
+
+    const mainToggleActive = useCallback(
+      () => {
+        setmainActive(!mainactive)
+      },
+      [mainactive],
+    )
 
     useEffect(() => {
       debugger
       window.onload = (event) => {
+        const nodeCollect = document.querySelector(".songListwindow");
+        const songBtnCollection = nodeCollect.getElementsByTagName('div')
         debugger
-        const songBtns = document.querySelectorAll("div.btns3");
-        songBtns.forEach(node => {
-          debugger
-          node.addEventListener('click', (e) => {
+        for (let index = 0; index < songBtnCollection.length; index++) {
+          if (index % 7 === 1) {
             debugger
-            toggleActive();
-          })
-        })
+            songBtnCollection[index].addEventListener('click', (e) => {
+              setmainActive(!mainactive)
+            });
+          }
+        }
       }
 
         // if (songBtns.length > 0 && !isInit) {
@@ -54,10 +58,9 @@ const MainAudioButton = ({ loading, playTrack, pauseTrack, btnType, classType, }
             // });
             
           };
-        },[])
+        },[mainactive])
       
     const handleClick = (e) => {
-        debugger
         setCommand(e.currentTarget.id)
         debugger
     };
@@ -65,16 +68,18 @@ const MainAudioButton = ({ loading, playTrack, pauseTrack, btnType, classType, }
     useEffect(() => {
       debugger
       if (command === "pause-btn2") {
-        pauseTrack(toggleActive);
+        mainToggleActive();
+        pauseTrack();
       }
       if (command === "play-btn2") {
-        playTrack(toggleActive);
+        mainToggleActive();
+        playTrack();
       }
     }, [command]);
 
     return (
       <div className={classType}>
-        {active ? (
+        {mainactive ? (
           <PauseButton btnType={btnType} 
           handleClick={handleClick} />
         ) : (

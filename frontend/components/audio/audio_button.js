@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PauseButton from './pause_button';
 import PlayButton from './play_button';
 
-const AudioButton = ({played,pauseTrack,playTrack,btnType,classType,sng,song}) => {
+const AudioButton = ({pauseTrack,playTrack,btnType,classType,sng,song}) => {
   const [active, setActive] = useState(false);
   const [command, setCommand] = useState(false);
   // const playbtn2 = document.querySelector("#play-btn2");
@@ -10,24 +10,30 @@ const AudioButton = ({played,pauseTrack,playTrack,btnType,classType,sng,song}) =
 
   const toggleActive = () => {
     setActive(!active)
+    debugger
   };
   
   const handleClick = (e) => {
+    debugger
     setCommand(e.currentTarget.id)
   }
 
   useEffect(() => {
+    debugger
     if (command === "pause-btn3") {
-      pauseTrack(toggleActive)
+      toggleActive();
+      pauseTrack()
     } 
     if (command === "play-btn3") {
       if (sng.id === song.id) {
-        playTrack(toggleActive)
+        toggleActive();
+        playTrack();
       } else {
-        playTrack(toggleActive,sng)
+        toggleActive();
+        playTrack(sng)
       }
     }
-  }, [command,played])
+  }, [command])
 
   return (
     <div className={classType}>

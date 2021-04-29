@@ -62,18 +62,16 @@ class AlbumAudioPlayer extends React.Component {
       this.audio1.removeEventListener("timeupdate", () => {});
     }
   
-    playTrack(callback,data) {
+    playTrack(data) {
       debugger
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         if (typeof callback === 'function' && typeof data !== 'object') { 
-          callback(); 
           this.audio1.play();
         }
         
         if (typeof callback === 'function' && typeof data === 'object') {
           this.props.openSong(data)
           this.stall();
-          callback();
         }
       }
     }
