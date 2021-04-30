@@ -65,7 +65,6 @@ class AlbumAudioPlayer extends React.Component {
     }
   
     playTrack(data) {
-      debugger
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         if (typeof data !== 'object') { 
           this.audio1.play();
@@ -73,7 +72,6 @@ class AlbumAudioPlayer extends React.Component {
             toggle: true,
             mainToggle: true,
           });
-          debugger
         }
         
         if (typeof data === 'object' && data.id !== this.props.song.id) {
