@@ -76,7 +76,6 @@ class AlbumAudioPlayer extends React.Component {
             this.flipAudioBtn()
                 .then(() => this.props.openSong(data))
             
-            debugger
             this.stall()
                 .then(() => { this.playSong() });
         }
@@ -88,7 +87,6 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     flipAudioBtn() {
-      debugger
       return Promise.resolve(
         this.setState({
           toggle: false,
@@ -98,7 +96,6 @@ class AlbumAudioPlayer extends React.Component {
     }
     
     playSong() {
-      debugger
       this.setState({
         toggle: true,
         mainToggle: true,
