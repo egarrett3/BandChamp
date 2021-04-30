@@ -7,8 +7,6 @@ import { faChevronDown, faChevronUp, faSpinner } from "@fortawesome/free-solid-s
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
-// const AlbumAudioPlayer = React.lazy(() => import('./album_audio_player'));
-
 class AlbumShow extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +20,6 @@ class AlbumShow extends React.Component {
       ready: false,
       play: false,
     };
-    // this.toggleExpand = this.toggleExpand.bind(this)
   
   }
 
@@ -90,14 +87,6 @@ class AlbumShow extends React.Component {
     })
   }
 
-  // toggleExpand() {
-  //   this.setState((prevState) => ({
-  //     expand : !prevState.expand
-  //   }));
-  // }
-
-
-
   render() {
     let showAlb = false;
     let lb = [];
@@ -116,14 +105,6 @@ class AlbumShow extends React.Component {
     let title = showAlb
       ? showAlb.title
       : "";
-      
-    // let albs = showAlb
-    //   ? showAlb.albums
-    //   : [];
-
-    // let albs = this.props.album
-    //   ? this.props.album.albums
-    //   : [];
       
     let username
     if (showAlb) {
@@ -162,7 +143,6 @@ class AlbumShow extends React.Component {
                 </div>
                 <div id="musicPlayerTrack">
                   <div id="full-package">
-                    {/* <Suspense fallback={<div>loading...</div>}> */}
                     <AlbumAudioPlayer
                       titles={this.props.songs.map((song) => song.title)}
                       songs={this.props.songs}
@@ -206,7 +186,6 @@ class AlbumShow extends React.Component {
                   </div>
                   <div className="album-collection">
                     <div id="album-frame-label">{username}'s albums</div>
-                    {/* <div id="album-frame"> */}
                     <ul className="user-albums2">
                       {this.props.album.map((album, idx) => (
                         <UserAlbums
@@ -224,7 +203,6 @@ class AlbumShow extends React.Component {
                   </div>
                 </div>
               </div>
-              {/* <div id="discogrpahy"></div> */}
             </div>
           </div>
         </div>

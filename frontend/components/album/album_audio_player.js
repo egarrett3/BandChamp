@@ -89,7 +89,6 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     playSong() {
-      debugger
       this.setState({
         toggle: true,
         mainToggle: true,
@@ -106,7 +105,6 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     loadAdjacentSong() {
-      debugger
       this.props.openSong(this.props.songs[this.state.counter]);
     }
 
@@ -139,7 +137,7 @@ class AlbumAudioPlayer extends React.Component {
   
     nextSong() {
       let numOfSongs = this.props.songs.length;
-      
+
       if (this.state.counter < numOfSongs - 1) {
         this.setSong('add').then(()=> {
           this.loadAdjacentSong();
@@ -148,7 +146,6 @@ class AlbumAudioPlayer extends React.Component {
     }
   
     previousSong() {
-      debugger
       if (this.state.counter >= 1) {
         this.setSong('sub').then(() => {
           this.loadAdjacentSong();
@@ -201,9 +198,7 @@ class AlbumAudioPlayer extends React.Component {
     render() {
       const dur = this.getTime(this.state.duration);
       const ct = this.getTime(this.state.currentTime);
-  
-      // const AlLength = this.props.songs.length;
-  
+    
       let title = this.props.song ? this.props.song.title : ""
   
       // if (this.state.counter === this.props.songs.length && this.props.songs) {
@@ -221,7 +216,6 @@ class AlbumAudioPlayer extends React.Component {
       return (
         <>
           <div id="audio-player2">
-            {/* <AudioPlayer src_url={src_url}/> */}
             <audio
               id="ply1"
               ref={(ref) => (this.audio1 = ref)}
