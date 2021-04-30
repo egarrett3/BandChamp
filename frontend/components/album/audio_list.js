@@ -5,7 +5,7 @@ import DownloadLink from './download_link';
 import DeleteLink from './delete_link';
 
 const SongList = ({sng,song,playTrack,pauseTrack
-                  ,btnType,classType,deleteSong,bool,album_id,id,idx}) => {
+                  ,btnType,classType,deleteSong,bool,album_id,id,idx,toggle}) => {
                     
     return (
       <>
@@ -13,6 +13,7 @@ const SongList = ({sng,song,playTrack,pauseTrack
           <div className="style-row">
             <AudioButton
               sng={sng}
+              toggle={toggle}
               song={song}
               playTrack={playTrack}
               pauseTrack={pauseTrack}

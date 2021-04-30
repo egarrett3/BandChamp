@@ -3,15 +3,24 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const PlayButton = (props) => {
+const PlayButton = ({loading, playTrack, sng, song, btnType}) => {
+
+  function determineSong() {
+    if (sng && sng.id === song.id) {
+      return playTrack()
+    } else {
+      return playTrack(sng)
+    }
+  }
 
     return (
-      <>  
-        {!props.loading ? 
-        ( <div id={"play-"+props.btnType} 
-               onClick={props.handleClick}
-          ></div> )
-          :
+      <>
+        {!loading ? 
+            (<div 
+            id={"play-"+btnType}
+            onClick={determineSong}>
+            </div>) 
+            :
         <FontAwesomeIcon icon={faSpinner} />}
       </>
     );

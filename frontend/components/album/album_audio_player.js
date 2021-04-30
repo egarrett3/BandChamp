@@ -17,6 +17,8 @@ class AlbumAudioPlayer extends React.Component {
         loading: false, // tracks whether to show buffer symbol
         btn: false,
         expand: true,
+        toggle:false,
+        mainToggle: false,
       };
       this.nextSong = this.nextSong.bind(this);
       this.previousSong = this.previousSong.bind(this);
@@ -65,13 +67,22 @@ class AlbumAudioPlayer extends React.Component {
     playTrack(data) {
       debugger
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
-        if (typeof callback === 'function' && typeof data !== 'object') { 
+        if (typeof data !== 'object') { 
           this.audio1.play();
+          this.setState({
+            toggle: true,
+            mainToggle: true,
+          });
+          debugger
         }
         
-        if (typeof callback === 'function' && typeof data === 'object') {
+        if (typeof data === 'object' && data.id !== this.props.song.id) {
           this.props.openSong(data)
           this.stall();
+          this.setState({
+            toggle: true,
+            mainToggle: true
+          });
         }
       }
     }
@@ -82,10 +93,13 @@ class AlbumAudioPlayer extends React.Component {
       }, 1000);
     }
 
-    pauseTrack(callback) {
-      debugger
+    pauseTrack() {
       this.audio1.pause();
-      if (callback) {callback()};
+      this.setState({
+        toggle: false,
+        mainToggle: false,
+      });
+      // if (callback) {callback()};
     }
 
     getTime(time) {
@@ -193,6 +207,7 @@ class AlbumAudioPlayer extends React.Component {
               <source ref={(ref) => (this.source1 = ref)} id="src2" />
             </audio>
             <MainAudioButton
+              mainToggle={this.state.mainToggle}
               loading={this.state.loading}
               playTrack={this.playTrack}
               pauseTrack={this.pauseTrack}
@@ -255,6 +270,7 @@ class AlbumAudioPlayer extends React.Component {
             <div className="songListwindow">
               {this.props.songs.map((song, idx) => (
                 <SongList
+                  toggle={this.state.toggle}
                   key={song.id}
                   sng={song}
                   song={this.props.song}
