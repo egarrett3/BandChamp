@@ -26,6 +26,8 @@ class AlbumAudioPlayer extends React.Component {
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
       this.stall = this.stall.bind(this);
+      this.loadSong = this.loadSong.bind(this);
+      this.loadAdjacentSong = this.loadAdjacentSong.bind(this);
     }
   
     componentDidMount() {
@@ -67,37 +69,45 @@ class AlbumAudioPlayer extends React.Component {
     playTrack(data) {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         if (typeof data !== 'object') { 
-          this.audio1.play();
-          this.setState({
-            toggle: true,
-            mainToggle: true,
-          });
+          this.playSong();
         }
         
         if (typeof data === 'object' && data.id !== this.props.song.id) {
           this.props.openSong(data)
-          this.stall();
-          this.setState({
-            toggle: true,
-            mainToggle: true
+          this.stall().then(() => {
+            this.playSong()
           });
         }
       }
     }
 
     stall() {
-      setTimeout(() => {
-          this.audio1.play();
-      }, 1000);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 500);
+      })
+    }
+
+    playSong() {
+      debugger
+      this.setState({
+        toggle: true,
+        mainToggle: true,
+      });
+      this.audio1.play();
     }
 
     pauseTrack() {
-      this.audio1.pause();
       this.setState({
         toggle: false,
         mainToggle: false,
       });
-      // if (callback) {callback()};
+      this.audio1.pause();
+    }
+
+    loadAdjacentSong() {
+        this.props.openSong(this.props.songs[this.state.counter]);
     }
 
     getTime(time) {
@@ -108,12 +118,13 @@ class AlbumAudioPlayer extends React.Component {
       }
     }
   
-    nextSong(songListLength) {
+    nextSong() {
       if (this.state.counter < songListLength - 1) {
         this.setState({
           counter: this.state.counter + 1,
           loaded: false,
         });
+        this.loadAdjacentSong();
       }
     }
   
@@ -123,6 +134,7 @@ class AlbumAudioPlayer extends React.Component {
           counter: this.state.counter - 1,
           loaded: false,
         });
+        this.loadAdjacentSong();
       }
     }
   
@@ -185,7 +197,6 @@ class AlbumAudioPlayer extends React.Component {
       if (document.getElementById("ply1")) {
         if (this.audio1.ended) {
           this.audio1.currentTime = 0;
-          // this.pauseTrack();
         }
       }
 
@@ -240,7 +251,7 @@ class AlbumAudioPlayer extends React.Component {
                   </button>
                   <button
                     className="next-song-arrow"
-                    onClick={() => this.nextSong(AlLength)}
+                    onClick={() => this.nextSong()}
                   >
                     <FontAwesomeIcon icon={faFastForward} />
                   </button>
