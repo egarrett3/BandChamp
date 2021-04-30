@@ -66,18 +66,18 @@ class AlbumAudioPlayer extends React.Component {
       this.audio1.removeEventListener("timeupdate", () => {});
     }
   
-    playTrack(data) {
+    playTrack(data,idx) {
       if (this.source1.src.split("http://localhost:3000/")[1] !== "") {
         if (typeof data !== 'object') { 
           this.playSong();
         }
         
         if (typeof data === 'object' && data.id !== this.props.song.id) {
-            this.flipAudioBtn()
-                .then(() => this.props.openSong(data))
-            
-            this.stall()
-                .then(() => { this.playSong() });
+          this.flipAudioBtn(idx)
+              .then(() => this.props.openSong(data))
+          
+          this.stall()
+              .then(() => { this.playSong() });
         }
       }
     }
@@ -86,11 +86,12 @@ class AlbumAudioPlayer extends React.Component {
       return Promise.resolve(setTimeout(()=>{},500))
     }
 
-    flipAudioBtn() {
+    flipAudioBtn(idx) {
       return Promise.resolve(
         this.setState({
           toggle: false,
           mainToggle: false,
+          counter: idx,
         })
       );
     }
@@ -141,13 +142,12 @@ class AlbumAudioPlayer extends React.Component {
       }
     }
 
-  
     nextSong() {
       let numOfSongs = this.props.songs.length;
 
       if (this.state.counter < numOfSongs - 1) {
         this.setSong('add')
-          .then(()=> { this.flipAudioBtn() })
+          .then(()=> { this.flipAudioBtn(this.state.counter) })
             .then(()=> { this.loadAdjacentSong() })
       }
     }
@@ -155,7 +155,7 @@ class AlbumAudioPlayer extends React.Component {
     previousSong() {
       if (this.state.counter >= 1) {
         this.setSong('sub')
-          .then(() => { this.flipAudioBtn() })
+          .then(() => { this.flipAudioBtn(this.state.counter) })
             .then(() => { this.loadAdjacentSong() })
       }
     }

@@ -3,13 +3,13 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const PlayButton = ({loading, playTrack, sng, song, btnType}) => {
+const PlayButton = ({loading, playTrack, sng, song, btnType,idx}) => {
 
   function determineSong() {
     if (sng && sng.id === song.id) {
       return playTrack()
     } else {
-      return playTrack(sng)
+      return playTrack(sng,idx)
     }
   }
 

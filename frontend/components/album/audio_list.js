@@ -13,6 +13,7 @@ const SongList = ({sng,song,playTrack,pauseTrack
           <div className="style-row">
             <AudioButton
               sng={sng}
+              idx={idx}
               toggle={toggle}
               song={song}
               playTrack={playTrack}
