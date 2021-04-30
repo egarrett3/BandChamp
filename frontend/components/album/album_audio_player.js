@@ -26,7 +26,6 @@ class AlbumAudioPlayer extends React.Component {
       this.playTrack = this.playTrack.bind(this);
       this.pauseTrack = this.pauseTrack.bind(this);
       this.stall = this.stall.bind(this);
-      this.loadSong = this.loadSong.bind(this);
       this.loadAdjacentSong = this.loadAdjacentSong.bind(this);
     }
   
@@ -107,7 +106,8 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     loadAdjacentSong() {
-        this.props.openSong(this.props.songs[this.state.counter]);
+      debugger
+      this.props.openSong(this.props.songs[this.state.counter]);
     }
 
     getTime(time) {
@@ -117,24 +117,42 @@ class AlbumAudioPlayer extends React.Component {
         );
       }
     }
-  
-    nextSong() {
-      if (this.state.counter < songListLength - 1) {
+
+    setSong(op) {
+      return new Promise((resolve) => {
         this.setState({
-          counter: this.state.counter + 1,
+          counter: this.addOrSubCounter(op),
           loaded: false,
         });
-        this.loadAdjacentSong();
+        resolve();
+      })
+    }
+
+    addOrSubCounter(op) {
+      if (op === 'add') {
+        return this.state.counter+1;
+      } else if (op === 'sub') {
+        return this.state.counter-1;
+      }
+    }
+
+  
+    nextSong() {
+      let numOfSongs = this.props.songs.length;
+      
+      if (this.state.counter < numOfSongs - 1) {
+        this.setSong('add').then(()=> {
+          this.loadAdjacentSong();
+        })
       }
     }
   
     previousSong() {
+      debugger
       if (this.state.counter >= 1) {
-        this.setState({
-          counter: this.state.counter - 1,
-          loaded: false,
+        this.setSong('sub').then(() => {
+          this.loadAdjacentSong();
         });
-        this.loadAdjacentSong();
       }
     }
   
