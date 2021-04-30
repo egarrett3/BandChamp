@@ -27,6 +27,7 @@ class AlbumAudioPlayer extends React.Component {
       this.pauseTrack = this.pauseTrack.bind(this);
       this.stall = this.stall.bind(this);
       this.loadAdjacentSong = this.loadAdjacentSong.bind(this);
+      this.flipAudioBtn = this.flipAudioBtn.bind(this);
     }
   
     componentDidMount() {
@@ -72,23 +73,32 @@ class AlbumAudioPlayer extends React.Component {
         }
         
         if (typeof data === 'object' && data.id !== this.props.song.id) {
-          this.props.openSong(data)
-          this.stall().then(() => {
-            this.playSong()
-          });
+            this.flipAudioBtn()
+                .then(() => this.props.openSong(data))
+            
+            debugger
+            this.stall()
+                .then(() => { this.playSong() });
         }
       }
     }
 
     stall() {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve();
-        }, 500);
-      })
+      return Promise.resolve(setTimeout(()=>{},500))
     }
 
+    flipAudioBtn() {
+      debugger
+      return Promise.resolve(
+        this.setState({
+          toggle: false,
+          mainToggle: false,
+        })
+      );
+    }
+    
     playSong() {
+      debugger
       this.setState({
         toggle: true,
         mainToggle: true,
@@ -139,17 +149,17 @@ class AlbumAudioPlayer extends React.Component {
       let numOfSongs = this.props.songs.length;
 
       if (this.state.counter < numOfSongs - 1) {
-        this.setSong('add').then(()=> {
-          this.loadAdjacentSong();
-        })
+        this.setSong('add')
+          .then(()=> { this.flipAudioBtn() })
+            .then(()=> { this.loadAdjacentSong() })
       }
     }
   
     previousSong() {
       if (this.state.counter >= 1) {
-        this.setSong('sub').then(() => {
-          this.loadAdjacentSong();
-        });
+        this.setSong('sub')
+          .then(() => { this.flipAudioBtn() })
+            .then(() => { this.loadAdjacentSong() })
       }
     }
   
