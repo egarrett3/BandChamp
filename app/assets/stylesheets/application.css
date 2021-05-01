@@ -760,7 +760,7 @@ input[type='range']::-ms-track {
 input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
     border: none;
-    height: 14px;
+    height: 13px;
     width: 26px;
     background: rgb(200, 201, 201);
     cursor: pointer;
