@@ -40,7 +40,7 @@ class AlbumShow extends React.Component {
         }
         this.props.fetchUser(album.album.user.id)
       })
-      this.props.fetchSongs(this.props.match.params.songId)
+      this.props.fetchSongs(this.props.match.params.songId);
       this.props.fetchSong(this.props.match.params.songId,0);
   }
 
@@ -54,6 +54,7 @@ class AlbumShow extends React.Component {
     if (prevProps.match.params.songId !== albId) {
       this.props.clearSongs(), 
       this.props.fetchSongs(albId);
+      this.props.fetchSong(albId, 0);
     } 
     if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
       for (let i = 0; i < this.props.album.length; i++) {
