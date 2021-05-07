@@ -1,9 +1,10 @@
 # README
 
-###BANDCHAMP
+### BANDCHAMP
 
 **BandChamp** is meant to be a clone of _BandCamp.com_. I decided to build a fullstck clone of an existing website to practice building refined and practical Front-end & Back-end features without spending time on the site design. Building a clone is a great way to practice developing and end with a beautiful and functional app. I chose Bandcamp because I love music and wanted to learn about handling audio.
 
+![bandChamp_albumPage](https://user-images.githubusercontent.com/37485814/117491246-cbee2f00-af24-11eb-9bba-7b03a2e411ee.png)
 
 
 * Rails v5.2.3.4
