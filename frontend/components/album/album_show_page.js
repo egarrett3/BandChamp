@@ -30,7 +30,6 @@ class AlbumShow extends React.Component {
     //fetch album click on/passed through pathname and associated albums through user of clicked on album
     
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
-      
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
           for (let i=0;i<albs;i++) {
@@ -40,10 +39,12 @@ class AlbumShow extends React.Component {
             }
           }
         }
+        
         if (!this.props.currentUser) {this.props.fetchUser(album.album.user.id)}
-        if (album.has_song) {
-          this.props.fetchSongs(this.props.match.params.songId);
-          this.props.fetchSong(this.props.match.params.songId,0);
+        if (!album.album.has_song) {
+          this.props.fetchSongs(this.props.match.params.songId).then(() => {
+            this.props.fetchSong(this.props.match.params.songId,0);
+          });
         }
       })
   }

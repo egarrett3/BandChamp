@@ -2219,7 +2219,7 @@ form#edit-frame textarea:focus {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100px;
+    width: 50px;
 }
 
 .next-song-arrow {
