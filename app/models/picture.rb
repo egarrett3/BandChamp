@@ -10,7 +10,12 @@ class Picture < ApplicationRecord
     # end
 
     def carousel_size
-        self.picture.photo.variant(resize: '400X400').processed_url
+        debugger
+        self.photo.variant(resize: '400X400').processed_url
+    end
+
+    def main_page_size
+        self.photo.variant(resize: '800X800').processed_url
     end
 
 end

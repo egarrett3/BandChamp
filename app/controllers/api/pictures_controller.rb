@@ -26,9 +26,11 @@ class Api::PicturesController < ApplicationController
         if @picture.photo.attached?
             @picture.photo.purge
             @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
+            
             render 'api/users/show'
         else
             @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
+            
             render 'api/users/show'
         end
     end

@@ -1,6 +1,6 @@
 # README
 
-###BANDCHAMP
+### BANDCHAMP
 
 **BandChamp** is meant to be a clone of _BandCamp.com_. I decided to build a fullstck clone of an existing website to practice building refined and practical Front-end & Back-end features without spending time on the site design. Building a clone is a great way to practice developing and end with a beautiful and functional app. I chose Bandcamp because I love music and wanted to learn about handling audio.
 

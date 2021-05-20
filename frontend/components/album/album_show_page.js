@@ -28,7 +28,9 @@ class AlbumShow extends React.Component {
     window.scroll(0, 0); 
     this.props.clearAlbums();
     //fetch album click on/passed through pathname and associated albums through user of clicked on album
+    
     this.props.fetchAlbum(this.props.match.params.songId).then((album) => {
+      
       if (album.album.albums.length > 1) {
         const albs = album.album.albums ? album.album.albums.length : 0;
           for (let i=0;i<albs;i++) {
@@ -38,10 +40,12 @@ class AlbumShow extends React.Component {
             }
           }
         }
-        this.props.fetchUser(album.album.user.id)
+        if (!this.props.currentUser) {this.props.fetchUser(album.album.user.id)}
+        if (album.has_song) {
+          this.props.fetchSongs(this.props.match.params.songId);
+          this.props.fetchSong(this.props.match.params.songId,0);
+        }
       })
-      this.props.fetchSongs(this.props.match.params.songId);
-      this.props.fetchSong(this.props.match.params.songId,0);
   }
 
   componentWillUnmount() {

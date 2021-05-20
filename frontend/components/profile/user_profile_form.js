@@ -96,7 +96,7 @@ class UserProf extends React.Component {
         <div id="Profile-canvas">
           <div id="profile-banner">
             <div id="spacer-banner">
-              <div id="add-banner">
+              {/* <div id="add-banner">
                 <FontAwesomeIcon icon={faCamera} size="2x" />
                 <div
                   className="banner-image"
@@ -104,7 +104,7 @@ class UserProf extends React.Component {
                 >
                   set banner image
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div id="profile-settings">

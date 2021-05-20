@@ -7,6 +7,13 @@ class Api::AlbumsController < ApplicationController
 
     def show 
         @album = Album.find_by(id: params[:id])
+        @songs = @album.songs
+        
+        if @songs.empty?
+            @no_song = true
+        else
+            @no_song = false;
+        end
         render 'api/albums/show'
     end
 

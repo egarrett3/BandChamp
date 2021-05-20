@@ -7,3 +7,4 @@ else
 end
 json.user @album.user
 json.albums @album.albums
+json.has_song @no_song

@@ -613,9 +613,9 @@ h6 {
     margin:0 auto;
 }
 .modal-error-password {
-    position:absolute;
+    position: absolute;
     display: block;
-    left: 22%;
+    left: 5%;
     top: 40%;
     color: red;
     margin:0 auto;
@@ -2074,18 +2074,18 @@ button#close-audio:hover {
 .row {
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
-    height: 74px;
+    align-items: flex-start;
+    height: 50px;
 }
 
 #edit-frame {
     display: flex;
     flex-direction: column;
-    padding: 43px;
+    padding: 20px 43px 43px 43px;
     width: 730px;
-    height: 430px;
+    /* height: 430px; */
     background-color: rgb(255, 255, 255);
-    z-index: 10000;
+    z-index: 100000;
 }
 
 #name-input {
@@ -2107,7 +2107,7 @@ button#close-audio:hover {
 }
 
 #about-me {
-    height: 143px;
+    height: 73px;
     width: 647px;
     border: 1px solid rgb(170, 170, 170);
     resize: none;
@@ -2133,7 +2133,8 @@ button#close-audio:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 157px;
+    justify-content: center;
+    height: 140px;
     resize: none;
 }
 
@@ -2168,6 +2169,7 @@ button#close-audio:hover {
     width: 66px;
     margin-left:12px;
     margin-bottom:7px;
+    margin-top:5px;
     border:none;
     background-color: transparent;
     font-weight: bold;
@@ -2217,7 +2219,7 @@ form#edit-frame textarea:focus {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 40px;
+    width: 100px;
 }
 
 .next-song-arrow {
