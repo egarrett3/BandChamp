@@ -13,7 +13,7 @@ class Api::AlbumsController < ApplicationController
         # test for proper h,w then write resize image function
 
         if @songs.empty?
-            @no_song = true
+            @no_song = true;
         else
             @no_song = false;
         end

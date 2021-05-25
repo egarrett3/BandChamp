@@ -56,10 +56,13 @@ class AlbumShow extends React.Component {
   componentDidUpdate(prevProps) {
     let albId = this.props.match.params.songId
     let ids = this.props.album.map(album => album.id)
+    let currentAl = this.props.album.filter((album) => (album.id === parseInt(albId)))
     if (prevProps.match.params.songId !== albId) {
-      this.props.clearSongs(), 
-      this.props.fetchSongs(albId);
-      this.props.fetchSong(albId, 0);
+      this.props.clearSongs()
+      if (!currentAl[0].has_song) {
+        this.props.fetchSongs(albId);
+        this.props.fetchSong(albId, 0);
+      }
     } 
     if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
       for (let i = 0; i < this.props.album.length; i++) {

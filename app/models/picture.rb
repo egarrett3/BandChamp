@@ -26,13 +26,11 @@ class Picture < ApplicationRecord
     end
 
     def check_dimensions
-        debugger
         image = MiniMagick::Image.open(self.photo.service_url)
         image.dimensions
     end
 
     def resized_image
-        debugger
         image = MiniMagick::Image.open(self.photo.service_url)
         image.resize("900X900")
         image

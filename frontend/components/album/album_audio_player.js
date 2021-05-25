@@ -167,7 +167,7 @@ class AlbumAudioPlayer extends React.Component {
     }
   
     componentDidUpdate(prevProps) {
-      
+      debugger
       let src_url = this.props.song
         ? this.props.song.song_url
         : "";
