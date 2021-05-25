@@ -9,6 +9,9 @@ class Api::AlbumsController < ApplicationController
         @album = Album.find_by(id: params[:id])
         @songs = @album.songs
         
+        @album.pictures[0].resize_image
+        # test for proper h,w then write resize image function
+
         if @songs.empty?
             @no_song = true
         else
@@ -22,7 +25,9 @@ class Api::AlbumsController < ApplicationController
         
         @picture = @album.pictures.create(name: params[:album][:title])
         
-        @picture.photo.attach(io: File.open(params[:album][:photo].tempfile), filename: params[:album][:photo].original_filename)
+        @resized_image = @picture.main_page_size(params)
+        
+        @picture.photo.attach(io: File.open(@resized_image.path), filename: params[:album][:photo].original_filename)
         
         if @album.save
             render 'api/albums/show'

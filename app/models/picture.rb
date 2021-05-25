@@ -8,14 +8,34 @@ class Picture < ApplicationRecord
     # def picture_attached?
     #     picture.photo.attached?
     # end
-
-    def carousel_size
-        debugger
-        self.photo.variant(resize: '400X400').processed_url
+    def main_page_size(params)
+        resized_image = MiniMagick::Image.read(params[:picture][:photo].tempfile)
+        resized_image = resized_image.resize "350x250"
     end
 
-    def main_page_size
-        self.photo.variant(resize: '800X800').processed_url
+    def resize_image 
+        width,height = self.check_dimensions
+
+        if height > 900 && width > 900
+            image = self.resized_image
+            if self.photo.attached?
+                self.photo.purge
+            end
+            self.photo.attach(io: File.open(image.path), filename: self.name)
+        end
+    end
+
+    def check_dimensions
+        debugger
+        image = MiniMagick::Image.open(self.photo.service_url)
+        image.dimensions
+    end
+
+    def resized_image
+        debugger
+        image = MiniMagick::Image.open(self.photo.service_url)
+        image.resize("900X900")
+        image
     end
 
 end

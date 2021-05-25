@@ -22,14 +22,16 @@ class Api::PicturesController < ApplicationController
             @picture = @album.pictures[0]
         end
         # @picture = Picture.find_by(imageable_id: @id)
-
+        
+        @resized_image = @picture.main_page_size(params)
+        debugger
         if @picture.photo.attached?
             @picture.photo.purge
-            @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
+            @picture.photo.attach(io: File.open(@resized_image.path), filename: params[:picture][:photo].original_filename)
             
             render 'api/users/show'
         else
-            @picture.photo.attach(io: File.open(params[:picture][:photo].tempfile), filename: params[:picture][:photo].original_filename)
+            @picture.photo.attach(io: File.open(@resized_image.path), filename: params[:picture][:photo].original_filename)
             
             render 'api/users/show'
         end

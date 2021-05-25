@@ -55,6 +55,7 @@ class SongShow extends React.Component {
     }
 
     render() {
+
       const albumList = this.props.albums.map((al) => al.photo_url);
         
         return (
