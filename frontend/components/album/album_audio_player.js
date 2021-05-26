@@ -176,13 +176,16 @@ class AlbumAudioPlayer extends React.Component {
         : "";
 
       if (prevProps.song.id && this.props.song.id && prevProps.song.id !== this.props.song.id) {
+        debugger
         this.source1.src = src_url;
         this.audio1.load();
+        this.setState({
+          loaded: true
+        })
       }
 
       if (src_url === undefined && this.state.loaded) {
-        this.source1.setAttribute('src',"");
-        this.audio1.setAttribute('src', "");
+        this.source1.src = "";
         this.audio1.load();
         this.setState({
           loaded: false
