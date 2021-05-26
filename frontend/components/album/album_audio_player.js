@@ -34,6 +34,7 @@ class AlbumAudioPlayer extends React.Component {
       let aud = document.getElementById("audio-track2");
       aud.value = "0";
       this.audio1.addEventListener("durationchange", (e) => {
+        console.log('durationchange: ' + this.state.loading)
         this.setState({
           duration: e.target.duration,
         });
@@ -49,6 +50,7 @@ class AlbumAudioPlayer extends React.Component {
         this.setState({
           loading: false,
         });
+        console.log('canplaythrough: ' + this.state.loading)
       });
 
       this.audio1.addEventListener("loadstart", (e) => {
@@ -56,6 +58,7 @@ class AlbumAudioPlayer extends React.Component {
           loading: true,
           duration: 0,
         });
+        console.log('loadstart: '+this.state.loading)
       });
   
       this.audio1.addEventListener("timeupdate", (e) => {
@@ -198,6 +201,12 @@ class AlbumAudioPlayer extends React.Component {
           loaded:true
         })
       }
+
+      if (this.audio1.readyState < 3 && this.audio1.buffered.length > 1) {
+        this.setState({
+          loading: true
+        })
+      }
     }
   
     
@@ -207,12 +216,6 @@ class AlbumAudioPlayer extends React.Component {
       const ct = this.getTime(this.state.currentTime);
     
       let title = this.props.song ? this.props.song.title : ""
-  
-      // if (this.state.counter === this.props.songs.length && this.props.songs) {
-      //   let src_url = this.props.songs.length
-      //     ? this.props.songs[this.state.counter - 1].song_url
-      //     : "";
-      // }
   
       if (document.getElementById("ply1")) {
         if (this.audio1.ended) {

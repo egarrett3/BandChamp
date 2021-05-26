@@ -8,8 +8,11 @@ const MainAudioButton = ({ loading, playTrack, pauseTrack, btnType, classType, m
     return (
       <div className={classType}>
         {mainToggle ? (
-          <PauseButton btnType={btnType} 
-          pauseTrack={pauseTrack} />
+          <PauseButton 
+            btnType={btnType} 
+            pauseTrack={pauseTrack} 
+            loading={loading}
+          />
         ) : (
           <PlayButton
             btnType={btnType}

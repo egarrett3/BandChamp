@@ -66,15 +66,15 @@ class AlbumShow extends React.Component {
         this.props.fetchSong(albId, 0);
       }
     } 
-    // if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
-    //   for (let i = 0; i < this.props.album.length; i++) {
-    //     if (this.props.album[i]) {
-    //       window.location.href = `/#/SongPage/${this.props.album[i].id}`;
-    //     } else if (this.props.album.length < 1) {
-    //       window.location.href = "/#/usrprofile";
-    //     }
-    //   }
-    // }
+    if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
+      for (let i = 0; i < this.props.album.length; i++) {
+        if (this.props.album[i]) {
+          window.location.href = `/#/SongPage/${this.props.album[i].id}`;
+        } else if (this.props.album.length < 1) {
+          window.location.href = "/#/usrprofile";
+        }
+      }
+    }
     if (this.props.song.id === "undefined") {
       this.props.fetchSong(albId, 0);
     }
