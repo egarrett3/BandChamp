@@ -34,7 +34,6 @@ class AlbumAudioPlayer extends React.Component {
       let aud = document.getElementById("audio-track2");
       aud.value = "0";
       this.audio1.addEventListener("durationchange", (e) => {
-        console.log('durationchange: ' + this.state.loading)
         this.setState({
           duration: e.target.duration,
         });
@@ -50,7 +49,6 @@ class AlbumAudioPlayer extends React.Component {
         this.setState({
           loading: false,
         });
-        console.log('canplaythrough: ' + this.state.loading)
       });
 
       this.audio1.addEventListener("loadstart", (e) => {
@@ -58,7 +56,6 @@ class AlbumAudioPlayer extends React.Component {
           loading: true,
           duration: 0,
         });
-        console.log('loadstart: '+this.state.loading)
       });
   
       this.audio1.addEventListener("timeupdate", (e) => {
