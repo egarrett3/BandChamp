@@ -1,5 +1,5 @@
 import AlbumShow from './album_show_page';
-import { fetchSgs, clearSongs, deleteSg, fetchSg, openSong } from "../../actions/song_actions";
+import { fetchSgs, clearSongs, clearSong, deleteSg, fetchSg, openSong } from "../../actions/song_actions";
 import { deleteAl, fetchAl, clearAlbums } from "../../actions/album_actions";
 import { fetchUsr } from "../../actions/user_actions";
 import { createSg } from "../../actions/song_actions";
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     clearAlbums: () => dispatch(clearAlbums()),
     clearSongs: () => dispatch(clearSongs()),
+    clearSong: () => dispatch(clearSong()),
     openSong: (song) => dispatch(openSong(song)),
     fetchSongs: (albumId) => dispatch(fetchSgs(albumId)),
     fetchSong: (albumId,songId) => dispatch(fetchSg(albumId,songId)),

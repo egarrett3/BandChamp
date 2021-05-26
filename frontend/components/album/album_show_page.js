@@ -51,6 +51,7 @@ class AlbumShow extends React.Component {
 
   componentWillUnmount() {
     this.props.clearSongs();
+    this.props.clearSong();
   }
 
   componentDidUpdate(prevProps) {
@@ -59,20 +60,21 @@ class AlbumShow extends React.Component {
     let currentAl = this.props.album.filter((album) => (album.id === parseInt(albId)))
     if (prevProps.match.params.songId !== albId) {
       this.props.clearSongs()
+      this.props.clearSong()
       if (!currentAl[0].has_song) {
         this.props.fetchSongs(albId);
         this.props.fetchSong(albId, 0);
       }
     } 
-    if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
-      for (let i = 0; i < this.props.album.length; i++) {
-        if (this.props.album[i]) {
-          window.location.href = `/#/SongPage/${this.props.album[i].id}`;
-        } else if (this.props.album.length < 1) {
-          window.location.href = "/#/usrprofile";
-        }
-      }
-    }
+    // if (prevProps.album.length > this.props.album.length && (!(ids.includes(parseInt(albId))))) {
+    //   for (let i = 0; i < this.props.album.length; i++) {
+    //     if (this.props.album[i]) {
+    //       window.location.href = `/#/SongPage/${this.props.album[i].id}`;
+    //     } else if (this.props.album.length < 1) {
+    //       window.location.href = "/#/usrprofile";
+    //     }
+    //   }
+    // }
     if (this.props.song.id === "undefined") {
       this.props.fetchSong(albId, 0);
     }
@@ -204,7 +206,6 @@ class AlbumShow extends React.Component {
                           id={album.id}
                           bool={bool}
                           deleteAlbum={bool ? this.props.deleteAlbum : bool}
-                          clearSongs={this.props.clearSongs}
                           fetchSongs={this.props.fetchSongs}
                         />
                       ))}

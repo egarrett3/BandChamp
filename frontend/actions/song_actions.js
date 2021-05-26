@@ -10,6 +10,7 @@ export const RECEIVE_ALL_SONGS = 'RECEIVE_ALL_SONGS';
 export const OPEN_IMG = "OPEN_IMG";
 export const CLOSE_IMG = "CLOSE_IMG";
 
+export const CLEAR_SONG = "CLEAR_SONG";
 export const CLEAR_SONGS = "CLEAR_SONGS";
 export const DESTROY_SONG = "DESTROY_SONG";
 
@@ -28,7 +29,13 @@ export const closeImg = () => {
 
 export const clearSongs = () => {
   return {
-    type: CLEAR_SONGS,
+    type: CLEAR_SONGS
+  };
+};
+
+export const clearSong = () => {
+  return {
+    type: CLEAR_SONG
   };
 };
 

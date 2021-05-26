@@ -33,7 +33,9 @@ class AlbumAudioPlayer extends React.Component {
     componentDidMount() {
       let aud = document.getElementById("audio-track2");
       aud.value = "0";
-      this.audio1.addEventListener("loadedmetadata", (e) => {
+      this.audio1.addEventListener("durationchange", (e) => {
+        console.log('durationChange');
+        debugger
         this.setState({
           duration: e.target.duration,
         });
@@ -44,16 +46,19 @@ class AlbumAudioPlayer extends React.Component {
           currentTime: e.target.currentTime,
         });
       });
-
+      
       this.audio1.addEventListener("canplaythrough", (e) => {
+        console.log('done')
         this.setState({
           loading: false,
         });
       });
 
       this.audio1.addEventListener("loadstart", (e) => {
+        console.log('start')
         this.setState({
           loading: true,
+          duration: 0,
         });
       });
   
@@ -63,7 +68,11 @@ class AlbumAudioPlayer extends React.Component {
     }
 
     componentWillUnmount() {
+      debugger
       this.audio1.removeEventListener("timeupdate", () => {});
+      this.audio1.removeEventListener("durationchange", () => {});
+      this.audio1.removeEventListener("loadstart", () => {});
+      this.audio1.removeEventListener("canplaythrough", () => {});
     }
   
     playTrack(data,idx) {
@@ -128,7 +137,6 @@ class AlbumAudioPlayer extends React.Component {
       return new Promise((resolve) => {
         this.setState({
           counter: this.addOrSubCounter(op),
-          loaded: false,
         });
         resolve();
       })
@@ -167,7 +175,7 @@ class AlbumAudioPlayer extends React.Component {
     }
   
     componentDidUpdate(prevProps) {
-      debugger
+      
       let src_url = this.props.song
         ? this.props.song.song_url
         : "";
@@ -177,26 +185,21 @@ class AlbumAudioPlayer extends React.Component {
         this.audio1.load();
       }
 
-      if (this.source1.src === "" && this.state.loaded === false && src_url) {
+      if (src_url === undefined && this.state.loaded) {
+        this.source1.setAttribute('src',"");
+        this.audio1.setAttribute('src', "");
+        this.audio1.load();
+        this.setState({
+          loaded: false
+        })
+      }
+
+      if (src_url && this.state.loaded === false && this.source1.src.split("http://localhost:3000/")[1] !== src_url) {
         this.source1.src = src_url;
         this.audio1.load();
         this.setState({
-          ...this.state,
-          loaded: true,
-        });
-      }
-  
-      // loads audio to remove buffered audio (no TimeRanges obj) and sets duration to 0 so
-      // upon changing albums song duration === to '0:00' instead of the duration of buffered song
-      if (
-        this.props.songs.length === 0 &&
-        this.audio1.buffered.length === 1 &&
-        this.source1
-      ) {
-        this.audio1.load();
-        this.setState({
-          duration: 0,
-        });
+          loaded:true
+        })
       }
     }
   

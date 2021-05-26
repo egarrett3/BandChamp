@@ -1,4 +1,4 @@
-import { ADD_SONG,OPEN_SONG } from "../actions/song_actions";
+import { ADD_SONG,OPEN_SONG,CLEAR_SONG } from "../actions/song_actions";
 import { DESTROY_SONG } from "../actions/song_actions";
 import { merge } from 'lodash';
 
@@ -12,6 +12,8 @@ const songReducer = (state = {}, action) => {
     case OPEN_SONG:
       const currentSong = action.song;
       return merge({}, state, currentSong)
+    case CLEAR_SONG:
+      return (state = {});
     default:
       return state;
   }

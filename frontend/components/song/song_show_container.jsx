@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchSgs, openImg, closeImg, clearSongs } from '../../actions/song_actions';
+import { fetchSgs, openImg, closeImg, clearSongs,clearSong } from '../../actions/song_actions';
 import { fetchAls } from '../../actions/album_actions';
 import SongShow from './song_show_form';
 
@@ -19,7 +19,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchAlbums: () => dispatch(fetchAls()),
         openImg: (song) => dispatch(openImg(song)),
         closeImg: () => dispatch(closeImg()),
-        clearSongs: () => dispatch(clearSongs())
+        clearSongs: () => dispatch(clearSongs()),
+        clearSong: () => dispatch(clearSong())
     }
 }
 
